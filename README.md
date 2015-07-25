@@ -22,7 +22,7 @@ npm link
 In the directory of a project that uses dops-components:
 
 ```bash
-npm link dops-components
+npm link @automattic/dops-components
 ```
 
 # Usage
