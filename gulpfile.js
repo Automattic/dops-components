@@ -1,18 +1,17 @@
+'use strict';
+
 var gulp = require('gulp');
 var source = require('vinyl-source-stream'); // Used to stream bundle for further handling
 var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var babelify = require('babelify');
-var streamify = require('gulp-streamify');
 var gutil = require('gulp-util');
-var shell = require('gulp-shell');
-var glob = require('glob');
 var sass = require('gulp-sass');
 
-// External dependencies you do not want to rebundle while developing,
-// but include in your application deployment
+// External dependencies
 var dependencies = [
+	'jquery',
 	'react',
 	'react/addons',
 	'babelify/polyfill'
@@ -37,7 +36,6 @@ var browserifyTask = function (options) {
 
 	// The rebundle process
 	var rebundle = function () {
-		var start = Date.now();
 		console.log('Building demo bundle');
 		appBundler.bundle()
 			.on('error', gutil.log )
@@ -76,14 +74,13 @@ var browserifyTask = function (options) {
 		.on('end', function() {
 			console.log('Vendors js finished.');
 		});
-}
+};
 
 var cssTask = function (options) {
 	var run = function () {
 		if ( arguments.length ) {
 			console.log('Sass file ' + arguments[0].path + ' changed.');
 		}
-		var start = new Date();
 		console.log('Building CSS bundle');
 		gulp.src( options.srcFile )
 			.pipe( sass().on('error', sass.logError ) )
@@ -94,23 +91,21 @@ var cssTask = function (options) {
 	};
 	run();
 	gulp.watch( options.srcPaths, run );
-}
+};
 
 // Starts our development workflow
 gulp.task('default', function () {
-	var isDev = (process.env.NODE_ENV !== 'production');
 
 	browserifyTask({
-		development: isDev,
+		development: true,
 		src: './client/demo.js',
 		dest: './dist'
 	});
 
 	cssTask({
-		development: isDev,
+		development: true,
 		srcFile: './css/scss/demo.scss',
 		srcPaths: ['./css/scss/**/*.scss'],
 		dest: './css'
 	});
-
 });
