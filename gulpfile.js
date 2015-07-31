@@ -1,13 +1,12 @@
+'use strict';
+
 var gulp = require('gulp');
 var source = require('vinyl-source-stream'); // Used to stream bundle for further handling
 var browserify = require('browserify');
 var watchify = require('watchify');
 var reactify = require('reactify');
 var babelify = require('babelify');
-var streamify = require('gulp-streamify');
 var gutil = require('gulp-util');
-var shell = require('gulp-shell');
-var glob = require('glob');
 var sass = require('gulp-sass');
 
 // External dependencies you do not want to rebundle while developing,
@@ -37,7 +36,6 @@ var browserifyTask = function (options) {
 
 	// The rebundle process
 	var rebundle = function () {
-		var start = Date.now();
 		console.log('Building demo bundle');
 		appBundler.bundle()
 			.on('error', gutil.log )
@@ -76,14 +74,13 @@ var browserifyTask = function (options) {
 		.on('end', function() {
 			console.log('Vendors js finished.');
 		});
-}
+};
 
 var cssTask = function (options) {
 	var run = function () {
 		if ( arguments.length ) {
 			console.log('Sass file ' + arguments[0].path + ' changed.');
 		}
-		var start = new Date();
 		console.log('Building CSS bundle');
 		gulp.src( options.srcFile )
 			.pipe( sass().on('error', sass.logError ) )
@@ -94,7 +91,7 @@ var cssTask = function (options) {
 	};
 	run();
 	gulp.watch( options.srcPaths, run );
-}
+};
 
 // Starts our development workflow
 gulp.task('default', function () {
