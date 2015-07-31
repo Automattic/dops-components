@@ -9,9 +9,9 @@ var babelify = require('babelify');
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 
-// External dependencies you do not want to rebundle while developing,
-// but include in your application deployment
+// External dependencies
 var dependencies = [
+	'jquery',
 	'react',
 	'react/addons',
 	'babelify/polyfill'
@@ -95,19 +95,17 @@ var cssTask = function (options) {
 
 // Starts our development workflow
 gulp.task('default', function () {
-	var isDev = (process.env.NODE_ENV !== 'production');
 
 	browserifyTask({
-		development: isDev,
+		development: true,
 		src: './client/demo.js',
 		dest: './dist'
 	});
 
 	cssTask({
-		development: isDev,
+		development: true,
 		srcFile: './css/scss/demo.scss',
 		srcPaths: ['./css/scss/**/*.scss'],
 		dest: './css'
 	});
-
 });
