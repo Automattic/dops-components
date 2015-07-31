@@ -15,5 +15,8 @@
   "dependencies": {
     "react": "^0.13.3"
   },
-  "private": true
+  "private": true,
+  "browserify": {
+    "transform": ["reactify"]
+  }
 }
