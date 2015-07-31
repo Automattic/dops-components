@@ -2,4 +2,19 @@
  * demo style
  */
 body {
-  font-family: 'san-serif'; }
+  margin: 0;
+  font-family: 'Open Sans', sans-serif; }
+
+.core_container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px; }
+
+.core_content {
+  background: #F5F5F5;
+  padding: 57px 0; }
+
+.core_content:after {
+  clear: both;
+  content: '';
+  display: block; }
