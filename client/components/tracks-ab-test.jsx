@@ -4,7 +4,8 @@ var React = require('react'),
 // Simple AbTest wrapper which sends events to Tracks
 var Experiment = React.createClass({
 	propTypes: {
-		name: React.PropTypes.string.isRequired
+		name: React.PropTypes.string.isRequired,
+		namespace: React.PropTypes.string.isRequired
 	},
 
 	clearCookie: function() {
@@ -13,7 +14,7 @@ var Experiment = React.createClass({
 
 	handleChoice: function(experiment, variant) {
 		var _tkq = window._tkq || [];
-		_tkq.push(['recordEvent', 'akismet_abtest_start',{'abtest_name':experiment,'abtest_variation':variant}]);
+		_tkq.push(['recordEvent', this.props.namespace+'_abtest_start',{'abtest_name':experiment,'abtest_variation':variant}]);
 	},
 
 	render: function() {
