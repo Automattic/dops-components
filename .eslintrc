@@ -1,31 +1,61 @@
 {
-    "ecmaFeatures": {
-        "blockBindings": true,
-        "forOf": true,
-        "jsx": true,
-        "spread": true
-    },
-    "env": {
-    	"browser": true,
-    	"node": true
-    },
-    "parser": "babel-eslint",
-    "plugins": [
-		"react"
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"es6": true,
+		"mocha": true,
+		"node": true
+	},
+	"ecmaFeatures": {
+		"jsx": true,
+		"spread": true,
+		"modules": true
+	},
+	"plugins": [
+		"eslint-plugin-react"
 	],
-    "rules": {
-        "semi": 2,
-        "no-trailing-spaces": 0,
-        "no-underscore-dangle": 0,
-        "strict": 0,
-        "quotes": 0,
-        "new-cap": 0,
-        "space-infix-ops": 0,
-        "camelcase": 0,
-        "comma-spacing": 0,
-        "no-use-before-define": [2, "nofunc"]
-    },
-    "globals": {
-        jQuery: true, Akismet: true
-    }
+	"rules": {
+		"brace-style": [ 2, "1tbs" ],
+		// REST API objects include underscores
+		"camelcase": 0,
+		"comma-dangle": 0,
+		// Allows returning early as undefined
+		"consistent-return": 0,
+		"eqeqeq": [ 2, "allow-null" ],
+		"indent": [ 2, "tab" ],
+		// Most common is "Emitter", should be improved
+		"new-cap": 1,
+		"no-else-return": 1,
+		// Flux stores use switch case fallthrough
+		"no-fallthrough": 0,
+		"no-lonely-if": 2,
+		"no-mixed-requires": 0,
+		"no-multiple-empty-lines": [ 2, { max: 1 } ],
+		"no-nested-ternary": 2,
+		"no-underscore-dangle": 0,
+		// Allows Chai `expect` expressions
+		"no-unused-expressions": 0,
+		// Allows function use before declaration
+		"no-use-before-define": [ 2, "nofunc" ],
+		// We split external, internal, module variables
+		"one-var": 0,
+		"operator-linebreak": [ 2, "after" ],
+		"padded-blocks": [ 2, "never" ],
+		"quote-props": [ 2, "as-needed" ],
+		"quotes": [ 2, "single", "avoid-escape" ],
+		"space-after-keywords": [ 2, "always" ],
+		"space-before-blocks": [ 2, "always" ],
+		"space-before-function-paren": [ 2, "never" ],
+		// Our array literal index exception violates this rule
+		"space-in-brackets": 0,
+		"space-in-parens": [ 2, "always" ],
+		// Ideal for "!" but not for "++"
+		"space-unary-ops": 0,
+		// Assumed by default with Babel
+		"strict": [ 2, "never" ],
+		"valid-jsdoc": [ 1, { "requireReturn": false } ],
+		// Common top-of-file requires, expressions between external, interal
+		"vars-on-top": 1,
+		"yoda": 0
+	}
 }

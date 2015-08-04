@@ -1,7 +1,9 @@
-require('./demo.scss');
-var React = require( 'react' );
+var Demo,
+	React = require( 'react' );
 
-var Demo = React.createClass( {
+require( './demo.scss' );
+
+Demo = React.createClass( {
 	render: function() {
 		return (
 			<div>
@@ -11,7 +13,7 @@ var Demo = React.createClass( {
 	}
 } );
 
-jQuery( document ).ready( function () {
+jQuery( document ).ready( function() {
 	React.render(
 		React.createElement( Demo, {} ), document.getElementById( 'demo' )
 	);
