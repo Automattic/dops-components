@@ -6,16 +6,6 @@ var webpack = require("webpack");
 var assign = require('lodash/object/assign');
 var WebpackDevServer = require("webpack-dev-server");
 
-// console.log(webpackConfig);
-
-// External dependencies you do not want to rebundle while developing,
-// but include in your application deployment
-// var dependencies = [
-// 	'react',
-// 	'react/addons',
-// 	'babelify/polyfill'
-// ];
-
 // By default run a server for development
 gulp.task("default", ["webpack-dev-server"]);
 
