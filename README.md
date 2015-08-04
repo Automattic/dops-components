@@ -11,7 +11,7 @@ To launch a development server:
 gulp
 ```
 
-Then open http://localhost:8085/demo.html in your browser. Any changes you make to SCSS or JS/JSX files should be updated as your save.
+Then open (http://localhost:8085/demo.html)[http://localhost:8085/demo.html] in your browser. Any changes you make to SCSS or JS/JSX files should be updated as your save.
 
 If you wish to compile a bundle (which shouldn't be something you do in this package, but I'll indulge you), you can run:
 
