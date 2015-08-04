@@ -1,7 +1,6 @@
 var gulp = require('gulp');
 var path = require('path');
 var gutil = require('gulp-util');
-var shell = require('gulp-shell');
 var merge = require('merge-stream');
 var webpack = require("webpack");
 var assign = require('lodash/object/assign');
