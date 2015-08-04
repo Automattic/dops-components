@@ -1,5 +1,5 @@
-var jQuery = require( 'jquery' ),
-	React = require( 'react' );
+require('./demo.scss');
+var React = require( 'react' );
 
 var Demo = React.createClass( {
 	render: function() {

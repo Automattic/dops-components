@@ -1,0 +1,31 @@
+{
+    "ecmaFeatures": {
+        "blockBindings": true,
+        "forOf": true,
+        "jsx": true,
+        "spread": true
+    },
+    "env": {
+    	"browser": true,
+    	"node": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+		"react"
+	],
+    "rules": {
+        "semi": 2,
+        "no-trailing-spaces": 0,
+        "no-underscore-dangle": 0,
+        "strict": 0,
+        "quotes": 0,
+        "new-cap": 0,
+        "space-infix-ops": 0,
+        "camelcase": 0,
+        "comma-spacing": 0,
+        "no-use-before-define": [2, "nofunc"]
+    },
+    "globals": {
+        jQuery: true, Akismet: true
+    }
+}

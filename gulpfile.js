@@ -1,111 +1,106 @@
-'use strict';
-
 var gulp = require('gulp');
-var source = require('vinyl-source-stream'); // Used to stream bundle for further handling
-var browserify = require('browserify');
-var watchify = require('watchify');
-var reactify = require('reactify');
-var babelify = require('babelify');
+var path = require('path');
 var gutil = require('gulp-util');
-var sass = require('gulp-sass');
+var shell = require('gulp-shell');
+var merge = require('merge-stream');
+var webpack = require("webpack");
+var assign = require('lodash/object/assign');
+var WebpackDevServer = require("webpack-dev-server");
 
-// External dependencies
-var dependencies = [
-	'jquery',
-	'react',
-	'react/addons',
-	'babelify/polyfill'
-];
+// console.log(webpackConfig);
 
-var browserifyTask = function (options) {
+// External dependencies you do not want to rebundle while developing,
+// but include in your application deployment
+// var dependencies = [
+// 	'react',
+// 	'react/addons',
+// 	'babelify/polyfill'
+// ];
 
-	// Our app bundler
-	var appBundler = browserify({
-		entries: [options.src], // Only need initial file, browserify finds the rest
-		transform: [reactify, babelify.configure({ stage: 1 })], // We want to convert JSX to normal javascript
-		paths: ['./node_modules','./client'],
-		extensions: ['.js','.jsx'],
-		debug: options.development, // Gives us sourcemapping
-		cache: {}, packageCache: {}, fullPaths: options.development // Requirement of watchify
-	});
+// By default run a server for development
+gulp.task("default", ["webpack-dev-server"]);
 
-	// // We set our dependencies as externals on our app bundler when developing
-	(options.development ? dependencies : []).forEach(function (dep) {
-		appBundler.external(dep);
-	});
+// Production build
+gulp.task("build", ["webpack:build"]);
 
-	// The rebundle process
-	var rebundle = function () {
-		console.log('Building demo bundle');
-		appBundler.bundle()
-			.on('error', gutil.log )
-			.pipe( source('demo.js') )
-			.pipe( gulp.dest( options.dest ) )
-			.on('end', function() {
-				console.log('Demo js finished.');
-			});
-	};
+// Production build
+gulp.task("webpack:build", function(callback) {
+	// modify some webpack config options
+	process.env.NODE_ENV = "production"
+	var buildConfig = Object.create(getWebpackConfig());
+	buildConfig.plugins = buildConfig.plugins.concat(
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.UglifyJsPlugin()
+	);
 
-	// Fire up Watchify when developing
-	if (options.development) {
-		appBundler = watchify(appBundler);
-		appBundler.on('update', rebundle);
-	}
-
-	rebundle();
-
-	// Remove react-addons when deploying, as it is only for testing
-	if ( ! options.development ) {
-		dependencies.splice( dependencies.indexOf('react-addons'), 1 );
-	}
-
-	// Bundle dependencies
-	var vendorsBundler = browserify({
-		debug: true,
-		require: dependencies
-	});
-
-	// Run the vendor bundle
-	console.log('Building vendors bundle');
-	vendorsBundler.bundle()
-		.on('error', gutil.log )
-		.pipe( source('vendors.js') )
-		.pipe( gulp.dest( options.dest ) )
-		.on('end', function() {
-			console.log('Vendors js finished.');
-		});
-};
-
-var cssTask = function (options) {
-	var run = function () {
-		if ( arguments.length ) {
-			console.log('Sass file ' + arguments[0].path + ' changed.');
-		}
-		console.log('Building CSS bundle');
-		gulp.src( options.srcFile )
-			.pipe( sass().on('error', sass.logError ) )
-			.pipe( gulp.dest( options.dest ) )
-			.on('end', function() {
-				console.log('CSS finished.');
-			});
-	};
-	run();
-	gulp.watch( options.srcPaths, run );
-};
-
-// Starts our development workflow
-gulp.task('default', function () {
-
-	browserifyTask({
-		development: true,
-		src: './client/demo.js',
-		dest: './dist'
-	});
-
-	cssTask({
-		development: true,
-		srcFile: './css/scss/demo.scss',
-		srcPaths: ['./css/scss/**/*.scss'],
-		dest: './css'
+	// run webpack
+	webpack(buildConfig, function(err, stats) {
+		if(err) throw new gutil.PluginError("webpack:build", err);
+		gutil.log("[webpack:build]", stats.toString({
+			colors: true
+		}));
+		callback();
 	});
 });
+
+gulp.task("webpack:build-dev", function(callback) {
+    process.env.NODE_ENV = "production"
+
+    var devAccountConfig = Object.create(getWebpackConfig());
+	devAccountConfig.devtool = "sourcemap";
+	devAccountConfig.debug = true;
+
+	// create a single instance of the compiler to allow caching
+	var devCompiler = webpack(devAccountConfig);
+
+    devCompiler.run(function(err, stats) {
+        if(err) throw new gutil.PluginError("webpack", err);
+        gutil.log("[webpack:build-dev]", stats.toString({
+            colors: true
+        }));
+        callback();
+    });
+});
+
+gulp.task("webpack-dev-server", function(callback) {
+    // Start a webpack-dev-server
+    var serverConfig = Object.create(getWebpackConfig());
+    var entry = {}
+    Object.keys(serverConfig.entry).forEach( function( key ) {
+    	entry[key] = ["webpack/hot/dev-server", serverConfig.entry[key]];
+    });
+
+    serverConfig.entry = entry;
+    serverConfig.devtool = "sourcemap";//"eval" for performance, but no JSX :(
+	serverConfig.debug = true;
+
+	// console.log(serverConfig.output);
+
+    new WebpackDevServer(webpack(serverConfig), {
+        publicPath: serverConfig.output.publicPath,
+        hot: true,
+        historyApiFallback: true,
+        stats: {
+        	colors: true
+        }
+    }).listen(8085, "localhost", function(err) {
+        if(err) throw new gutil.PluginError("webpack-dev-server", err);
+        // Server listening
+        gutil.log("[webpack-dev-server]", "http://localhost:8085/webpack-dev-server/index.html");
+
+        // keep the server alive or continue?
+        // callback();
+    });
+});
+
+function getWebpackConfig() {
+	var entries = {
+		"demo": "./client/demo.js"
+	};
+
+	// clone and extend webpackConfig
+	var customConfig = Object.create(require("./webpack.config.js"));
+	customConfig.entry = entries;
+
+	return customConfig;
+}
