@@ -7,19 +7,39 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-.core_container {
+.core-container {
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 0 20px;
 }
 
-.core_content {
+.core-content {
 	background: #F5F5F5;
 	padding: 57px 0;
-}
 
-.core_content:after {
-	clear: both;
-	content: '';
-	display: block;
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+
+	.primary {
+		clear: none;
+		float: right;
+		margin: 0 0 0 -300px;
+		width: 100%;
+	}
+
+	.demo-container {
+		overflow: hidden;
+		margin: 0 0 0 300px;
+		font-size: 14px;
+	}
+
+	.secondary {
+		clear: none;
+		float: left;
+		overflow: hidden;
+		width: 260px;
+	}
 }
