@@ -5,6 +5,8 @@ var React = require( 'react/addons' ),
 	classNames = require( 'classnames' ),
 	_ = require( 'underscore' );
 
+require( './style.scss' );
+
 var Navigation = React.createClass( {
 
 	propTypes: {
@@ -22,12 +24,11 @@ var Navigation = React.createClass( {
 	renderLink: function( link, i ) {
 		var linkClasses = classNames( {
 			selected: this.isSection( link, this.props.path ),
-		} );
+		}, link.icon );
 
 		return (
 			<li className={ linkClasses } key={ i }>
 				<a href={ link.url }>
-					<i className={ 'fa fa-' + link.icon } />
 					<span className='menu-link-text'>{ link.title }</span>
 				</a>
 			</li>
@@ -36,7 +37,7 @@ var Navigation = React.createClass( {
 
 	renderSection: function( section, i ) {
 		return (
-			<div className='navigation-container' key={ i }>
+			<div className='navigation-container sidebar-menu' key={ i }>
 				<h3 className='sidebar-heading'>{ section.title }</h3>
 				<ul>
 					{ section.items.map( this.renderLink ) }
@@ -47,7 +48,7 @@ var Navigation = React.createClass( {
 
 	render: function() {
 		return (
-			<div className="navigation-container">
+			<div className="navigation-container sidebar">
 				{ this.props.navigation.map( this.renderSection ) }
 			</div>
 		);

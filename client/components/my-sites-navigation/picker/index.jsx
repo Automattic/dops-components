@@ -60,6 +60,8 @@ module.exports = React.createClass( {
 				sites={ this.props.sites }
 				allSitesPath={ this.props.allSitesPath }
 				siteBasePath={ this.props.siteBasePath }
+				addNewString={ this.props.addNewString }
+				addNewPath={ this.props.addNewPath }
 				onClose={ this.onClose }
 			/>
 		);

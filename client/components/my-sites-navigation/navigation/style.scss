@@ -1,0 +1,150 @@
+/**
+ * The main navigation Sidebar
+ */
+
+@import "../../../scss/calypso-colors";
+@import "../../../scss/calypso-mixins";
+
+.sidebar {
+	font-size: 13px;
+	position: relative;
+	margin: 0;
+	z-index: 10;
+	list-style-type: none;
+
+	.noticon-external {
+		color: $gray;
+		font-size: 16px;
+		align-self: flex-end;
+	}
+}
+
+.sidebar .sidebar-menu {
+	clear: both;
+	margin: 0 0 16px;
+	overflow: hidden;
+	padding: 0;
+
+	@include responsive( one-col ) {
+		margin-top: 0;	// Collapse margins between sections for mobile
+	}
+
+	// Remove the inherited top margin on the first grouping in the sidebar, so it aligns with the filter bar
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+// Sidebar lists
+.sidebar .sidebar-menu ul {
+	list-style: none;
+	margin: 0;
+}
+
+.sidebar .sidebar-menu li {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+/**
+ * Sidebar links
+ */
+.sidebar .sidebar-menu a {
+	border-radius: 2px;
+	color: $gray-dark;
+	border: none;
+	display: block;
+	padding: 12px 16px;
+	text-decoration: none;
+
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:first-child {
+		flex: 1 0 auto;
+		width: 0; // Firefox needs explicit width (even 0)
+		&::before {
+			@include noticon( '\f475', 16px );
+			min-width: 18px;
+			color: $gray;
+			margin-right: 14px;
+		}
+	}
+
+	.menu-link-text {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		flex: 1 0 auto;
+		width: 0; // Firefox needs explicit width (even 0)
+		line-height: 16px;
+	}
+
+	&.add-new {
+		background-color: $gray-light;
+		border-radius: 2px;
+		color: $gray;
+		font-size: 10px;
+		padding: 4px 10px;
+		margin-right: 10px;
+		align-self: center;
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+// Currently selected sidebar item
+.sidebar .sidebar-menu .selected {
+	background-color: $blue-medium;
+
+	a {
+		color: $white;
+		&:first-child {
+			&:before {
+				color: $white;
+			}
+		}
+		&.add-new {
+			background: $white;
+			color: $blue-medium;
+		}
+	}
+}
+
+// note: for some reason the noflip content was moved around when nested
+// inside the .sidebar stuff above
+/*rtl:ignore*/
+.rtl .sidebar > .sidebar-menu .action.new:before {
+	margin: 10px -58% 0 0;
+}
+
+.sidebar-heading {
+	color: $gray;
+	font-size: 11px;
+	display: inline-block;
+	margin-bottom: 8px;
+	padding: 0 8px 0 0;
+	position: relative;
+	text-transform: uppercase;
+	vertical-align: top;
+
+	&:after {
+		border-top: 1px solid lighten( $gray, 20% );
+		content: '';
+		display: block;
+		position: absolute;
+			left: 100%;
+			top: 8px;
+		width: 240px;
+		width: 100vw;
+	}
+}

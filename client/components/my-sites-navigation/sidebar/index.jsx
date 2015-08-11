@@ -30,7 +30,7 @@ module.exports = React.createClass( {
 
 	getSelectedSite: function() {
 		if ( this.props.sites.get().length === 1 ) {
-			return this.props.sites.getPrimary();
+			return this.props.sites.get().shift();
 		}
 
 		return this.props.sites.getSelectedSite();
@@ -43,8 +43,13 @@ module.exports = React.createClass( {
 	render: function() {
 		return (
 			<ul className="wpcom-sidebar sidebar">
-				<CurrentSite sites={ this.props.sites } siteCount={ this.props.sites.length } />
-				<Navigation path='' navigation={ this.props.navigation } />
+				<CurrentSite
+					addNewString={ this.props.addNewString }
+					addNewPath={ this.props.addNewPath }
+					sites={ this.props.sites }
+					siteCount={ this.props.sites.get().length }
+				/>
+				<Navigation path={ this.props.path } navigation={ this.props.navigation } />
 			</ul>
 		);
 	}

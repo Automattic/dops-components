@@ -7,10 +7,13 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var AllSitesIcon = require( '../all-sites-icon' );
+var translate = require ( '../../../mixins/translate' ),
+	AllSitesIcon = require( '../all-sites-icon' );
 
 module.exports = React.createClass( {
 	displayName: 'AllSites',
+
+	mixins: [ translate ],
 
 	getDefaultProps: function() {
 		return {

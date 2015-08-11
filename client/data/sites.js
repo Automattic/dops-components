@@ -1,6 +1,8 @@
 /*
  * Fake data for site list. Implement this in your app, however you've structured it.
  */
+var _sites;
+
 module.exports = {
 	initialized: true,
 	selected: 'site-1',

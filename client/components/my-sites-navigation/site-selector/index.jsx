@@ -106,9 +106,9 @@ module.exports = React.createClass( {
 		}
 
 		return (
-			<a className="site-selector__add-new-wordpress" href={ '#?ref=calypso-selector' } target="_blank">
+			<a className="site-selector__add-new-wordpress" href={ this.props.addNewPath } target="_blank">
 				<span className="noticon noticon-plus" />
-				{ this.translate( 'Add New WordPress' ) }
+				{ this.props.addNewString }
 			</a>
 		);
 	},
@@ -126,7 +126,8 @@ module.exports = React.createClass( {
 		var isLarge = this.getCount() > 6,
 			hasOneSite = this.getCount() === 1,
 			allSitesPath = this.props.allSitesPath,
-			sites, selectorClass, postsBase;
+			siteBasePath = this.props.siteBasePath,
+			sites, selectorClass;
 
 		if ( this.state.search ) {
 			sites = this.props.sites.search( this.state.search );
@@ -135,27 +136,12 @@ module.exports = React.createClass( {
 		}
 
 		// Render sites
-		sites = sites.map( function( site ) {
-			var siteBasePath = this.props.siteBasePath;
-			postsBase = ( site.jetpack || site.single_user_site ) ? '/posts' : '/posts/my';
-
-			// Default posts to /posts/my when possible and /posts when not
-			siteBasePath = siteBasePath.replace( /^\/posts\b(\/my)?/, postsBase );
-
-			// Default stats to /stats/slug when on a 3rd level post/page summary
-			if ( siteBasePath.match( /^\/stats\/(post|page)\// ) ) {
-				siteBasePath = '/stats';
-			}
-
-			if ( siteBasePath.match( /^\/domains\/manage\// ) ) {
-				siteBasePath = '/domains/manage';
-			}
-
+		sites = sites.map( function( site, i ) {
 			return (
 				<Site
 					site={ site }
-					href={ siteBasePath + '/' + site.slug }
-					key={ 'site-' + site.ID }
+					href={ siteBasePath + '/' + site.id }
+					key={ i }
 					indicator={ this.props.indicator }
 					onSelect={ this.onSiteSelect }
 					isSelected={ this.props.sites.selected === site.domain }
@@ -164,13 +150,6 @@ module.exports = React.createClass( {
 		}, this );
 
 		if ( this.props.showAllSites && ! this.state.search && allSitesPath ) {
-			// default posts links to /posts/my when possible and /posts when not
-			postsBase = ( this.props.sites.allSingleSites ) ? '/posts' : '/posts/my';
-			allSitesPath = allSitesPath.replace( /^\/posts\b(\/my)?/, postsBase );
-
-			// There is currently no "all sites" version of the insights page
-			allSitesPath = allSitesPath.replace( /^\/stats\/insights\/?$/, '/stats/day' );
-
 			sites.unshift(
 				<AllSites
 					key="selector-all-sites"

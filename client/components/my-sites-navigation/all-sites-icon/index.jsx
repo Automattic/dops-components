@@ -38,8 +38,8 @@ module.exports = React.createClass( {
 	getIcons: function() {
 		var sites = union( this.getSitesWithIcons(), this.getMaxSites() ).slice( 0, 3 );
 
-		return sites.map( function( site ) {
-			return <SiteIcon site={ site } key={ site.ID + '-icon' } size={ 15 } />;
+		return sites.map( function( site, i ) {
+			return <SiteIcon site={ site } key={ i + '-icon' } size={ 15 } />;
 		} );
 	},
 

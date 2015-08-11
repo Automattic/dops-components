@@ -8,7 +8,6 @@ var React = require( 'react/addons' );
  */
 var translate = require ( '../../../mixins/translate' ),
 	AllSites = require( '../all-sites' ),
-	// Card = require( 'components/card' ),
 	Site = require( '../site' );
 
 require( './style.scss' );
@@ -30,7 +29,7 @@ module.exports = React.createClass( {
 
 	getSelectedSite: function() {
 		if ( this.props.sites.get().length === 1 ) {
-			return this.props.sites.getPrimary();
+			return this.props.sites.get().shift();
 		}
 
 		return this.props.sites.getSelectedSite();
@@ -52,7 +51,7 @@ module.exports = React.createClass( {
 						</a>
 					</div>
 					{ hasOneSite ?
-						<a className="current-site__add-new-wordpress" href={ config( 'signup_url' ) + '?ref=calypso-sites' } target="_blank">{ this.translate( 'Add New WordPress' ) }</a>
+						<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a>
 					: <span className="current-site__switch-sites" /> }
 				</div>
 			);
@@ -60,15 +59,13 @@ module.exports = React.createClass( {
 
 		if ( this.props.sites.selected ) {
 			site = this.props.sites.getSelectedSite();
-		} else {
-			site = this.props.sites.getPrimary();
 		}
 
 		return (
 			<div className="current-site">
 				{ this.props.sites.selected ? <Site site={ site } /> : <AllSites sites={ this.props.sites } /> }
 				{ hasOneSite ?
-					<a className="current-site__add-new-wordpress" href={ config( 'signup_url' ) + '?ref=calypso-sites' } target="_blank">{ this.translate( 'Add New WordPress' ) }</a>
+					<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a>
 				: <span className="current-site__switch-sites" onClick={ this.switchSites }>{ this.translate( 'Switch Site' ) }</span> }
 			</div>
 		);

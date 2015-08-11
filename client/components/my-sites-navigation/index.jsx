@@ -27,17 +27,21 @@ module.exports = React.createClass( {
 		return (
 			<div className="sites-navigation" style={ { height: containerHeight } } >
 				<Picker
-					sites={ this.props.sites }
+					addNewPath={ this.props.addNewPath }
+					addNewString={ this.props.addNewString }
 					allSitesPath={ this.props.allSitesPath }
-					siteBasePath={ this.props.siteBasePath }
 					onClose={ this.preventPickerDefault }
+					siteBasePath={ this.props.siteBasePath }
+					sites={ this.props.sites }
 				/>
 				<Sidebar
-					sites={ this.props.sites }
+					addNewPath={ this.props.addNewPath }
+					addNewString={ this.props.addNewString }
 					allSitesPath={ this.props.allSitesPath }
+					navigation={ this.props.navigation }
 					path={ this.props.path }
 					siteBasePath={ this.props.siteBasePath }
-					navigation={ this.props.navigation }
+					sites={ this.props.sites }
 				/>
 			</div>
 		);

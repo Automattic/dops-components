@@ -5,8 +5,8 @@
 @import "../../../scss/calypso-colors";
 @import "../../../scss/calypso-mixins";
 
-.current-site.card {
-	margin: 0 0 10px;
+.current-site {
+	margin: 0 0 20px;
 	padding: 0;
 
 	&.is-loading {
