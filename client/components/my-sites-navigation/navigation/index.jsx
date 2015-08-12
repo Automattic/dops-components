@@ -7,7 +7,8 @@ var React = require( 'react/addons' ),
 
 require( './style.scss' );
 
-var Navigation = React.createClass( {
+module.exports = React.createClass( {
+	displayName: 'Navigation',
 
 	propTypes: {
 		navigation: React.PropTypes.array.isRequired,
@@ -55,5 +56,3 @@ var Navigation = React.createClass( {
 	}
 
 } );
-
-module.exports = Navigation;

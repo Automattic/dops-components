@@ -10,11 +10,11 @@ var React = require( 'react/addons' ),
 var Picker = require( './picker' ),
 	Sidebar = require( './sidebar' );
 
-require( './style.scss' );
-
 var SITE_HEIGHT = 66,
 	EXTRA_SITE_ITEMS_HEIGHT = 200,
 	MAX_SIDEBAR_HEIGHT = 1200;
+
+require( './style.scss' );
 
 module.exports = React.createClass( {
 	displayName: 'MySitesNavigation',
