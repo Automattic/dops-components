@@ -17,6 +17,6 @@ jQuery( document ).ready( function() {
 		React.createElement( Demo, {} ), document.getElementById( 'demo' )
 	);
 	React.render(
-		React.createElement( Sidebar, {} ), document.getElementById( 'sidebar' )
+		React.createElement( Sidebar, {} ), document.getElementById( 'secondary' )
 	);
 } );
