@@ -57,7 +57,7 @@ module.exports = React.createClass( {
 
 		return (
 			<div className={ siteClass }>
-				<a className="site__content" href={ this.props.href } onTouchTap={ this.onSelect }>
+				<a className="site__content" href={ this.props.href } onClick={ this.onSelect } onTouchTap={ this.onSelect }>
 					<SiteIcon site={ site } />
 					<div className="site__info">
 						<div className="site__title">{ site.title }</div>

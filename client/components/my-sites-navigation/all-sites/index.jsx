@@ -49,7 +49,7 @@ module.exports = React.createClass( {
 
 		return (
 			<div className={ allSitesClass }>
-				<a className="site__content" href={ this.props.href } onTouchTap={ this.onSelect }>
+				<a className="site__content" href={ this.props.href } onClick={ this.onSelect } onTouchTap={ this.onSelect }>
 					<AllSitesIcon sites={ this.props.sites } />
 					<div className="site__info">
 						<span className="site__title">{ this.translate( 'All My Sites' ) }</span>

@@ -22,11 +22,6 @@ module.exports = React.createClass( {
 		siteCount: React.PropTypes.number.isRequired
 	},
 
-	switchSites: function( event ) {
-		event.preventDefault();
-		event.stopPropagation();
-	},
-
 	getSelectedSite: function() {
 		if ( this.props.sites.get().length === 1 ) {
 			return this.props.sites.get().shift();
@@ -66,7 +61,7 @@ module.exports = React.createClass( {
 				{ this.props.sites.selected ? <Site site={ site } /> : <AllSites sites={ this.props.sites } /> }
 				{ hasOneSite ?
 					<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a>
-				: <span className="current-site__switch-sites" onClick={ this.switchSites }>{ this.translate( 'Switch Site' ) }</span> }
+				: <span className="current-site__switch-sites" onClick={ this.props.onSwitchClick }>{ this.translate( 'Switch Site' ) }</span> }
 			</div>
 		);
 	}

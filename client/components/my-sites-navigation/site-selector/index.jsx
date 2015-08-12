@@ -52,17 +52,12 @@ module.exports = React.createClass( {
 	},
 
 	onSiteSelect: function( event ) {
-		this.closeSelector();
 		this.props.onClose( event );
 
 		// ignore mouse events as the default page() click event will handle navigation
 		if ( event.type !== 'mouseup' ) {
 			page( event.currentTarget.pathname );
 		}
-	},
-
-	closeSelector: function() {
-		React.findDOMNode( this.refs.searchInput ).blur();
 	},
 
 	visibleCount: function() {
@@ -155,7 +150,7 @@ module.exports = React.createClass( {
 					key="selector-all-sites"
 					sites={ this.props.sites }
 					href={ allSitesPath }
-					onSelect={ this.closeSelector }
+					onSelect={ this.onSiteSelect }
 					isSelected={ ! this.props.sites.selected }
 				/>
 			);
