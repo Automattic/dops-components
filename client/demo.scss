@@ -1,6 +1,7 @@
 /**
  * demo style
  */
+@import 'scss/reset';
 
 body {
 	margin: 0;
@@ -41,5 +42,33 @@ body {
 		float: left;
 		overflow: hidden;
 		width: 260px;
+	}
+}
+
+.sites-navigation {
+	a, a:hover, a:active, a:focus {
+		text-decoration: none;
+	}
+}
+
+/**
+ * Sets the icons for all the possible menu items
+ */
+.sidebar .sidebar-menu {
+	a:first-child:before {
+		font: normal normal normal 14px/1 FontAwesome !important;
+	}
+
+	/**
+	 * Subscriptions
+	 */
+	.briefcase a:first-child:before {
+		content: '\f0b1';
+	}
+	.moon a:first-child:before {
+		content: '\f186';
+	}
+	.leaf a:first-child:before {
+		content: '\f06c';
 	}
 }
