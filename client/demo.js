@@ -1,4 +1,5 @@
 var Demo,
+	Sidebar = require( './components/sidebar' ),
 	React = require( 'react' );
 
 require( './demo.scss' );
@@ -6,9 +7,7 @@ require( './demo.scss' );
 Demo = React.createClass( {
 	render: function() {
 		return (
-			<div>
-				<h1>It works!</h1>
-			</div>
+			<h1>It works!</h1>
 		);
 	}
 } );
@@ -16,5 +15,8 @@ Demo = React.createClass( {
 jQuery( document ).ready( function() {
 	React.render(
 		React.createElement( Demo, {} ), document.getElementById( 'demo' )
+	);
+	React.render(
+		React.createElement( Sidebar, {} ), document.getElementById( 'secondary' )
 	);
 } );

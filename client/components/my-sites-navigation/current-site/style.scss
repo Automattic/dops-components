@@ -1,0 +1,70 @@
+/**
+ * The currently selected site block
+ * at the top of the sidebar in My Sites
+ */
+@import "../../../scss/calypso-colors";
+@import "../../../scss/calypso-mixins";
+
+.current-site {
+	margin: 0 0 20px;
+	padding: 0;
+
+	&.is-loading {
+		.site-icon {
+			animation: pulse-light 0.8s ease-in-out infinite;
+		}
+
+		.site__title {
+			color: darken( $gray, 20% );
+			line-height: 35px;
+		}
+
+		.current-site__switch-sites {
+			cursor: default;
+
+			&::before {
+				visibility: hidden;
+			}
+		}
+	}
+}
+
+.current-site .site {
+	box-shadow: 0 1px 0 rgba( $gray-dark, 0.05 );
+}
+
+.current-site__switch-sites,
+.current-site__add-new-wordpress {
+	background-color: $gray-light;
+	color: darken( $gray, 20% );
+	cursor: pointer;
+	font-size: 10px;
+	display: block;
+	line-height: 1.8;
+	margin-top: 1px;
+	padding: 8px 0 8px 18px;
+	text-transform: uppercase;
+
+	&::before {
+		@include noticon( '\f430', 18px );
+		margin-right: 4px;
+	}
+
+	&:hover {
+		background-color: $gray-dark;
+		color: $white;
+	}
+}
+
+.current-site__add-new-wordpress::before {
+	content: '\f510';
+	font-size: 13px;
+	margin-right: 4px;
+	margin-top: 1px;
+}
+
+.rtl .current-site__switch-sites {
+	&:before {
+		content: '\f429';
+	}
+}

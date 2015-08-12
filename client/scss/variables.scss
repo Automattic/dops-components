@@ -1,0 +1,79 @@
+@import "./wpcom-colors";      // Dotcom Colors
+@import "./vaultpress-colors"; // VaultPress Colors
+@import "./typography";        // Typography
+
+// ==========================================================================
+// SITE-SPECIFIC VARIABLES (overrides)
+// ==========================================================================
+
+// Text
+$font__main: 'Open Sans';
+$font__size-main: 1.3;
+$font__size-nav: 1.4;
+$font__size-meta: 1.0;
+$font__size-h1: 1.4;
+$font__size-h2: 1.1;
+
+$line-height__text: 1.6;
+
+// Site Defaults
+$color__text:      #555;
+$color__text-meta: #99999b;
+
+$color__link:       hsl( hue( #133639 ), 30%, 35% );
+$color__link-hover: hsl( hue( #133639 ), 25%, 50% );
+$color__link-meta:  hsl( hue( #143739 ), 10%, 55% );
+
+$color__background-container: white;
+
+// Cards
+$color__text-card-head:       $color__text;
+$color__background-card-head: #f8f8fa;
+$color__text-card-body:       $color__text;
+$color__background-card-body: #ffffff;
+$color__border-card:          #e8e8ea;
+
+// Site Switcher (defaults to card colors, but has its own hover state)
+$color__text-switcher-hover: hsl( hue( #143739 ), 10%, 40% );
+$color__background-switcher-hover: lighten( $color__background-card-head, 1% );
+$color__border-switcher-hover: $color__border-card;
+
+// Navigation
+$color__text-menu-heading:       #898989;
+$color__border-menu:             #ebebeb;
+$color__nav-icon:                #bbbbbb;
+$color__text-menu:               $color__text;
+$color__text-menu-current:       white;
+$color__background-menu-current: #ac0300;
+$color__text-menu-hover:         $color__text;
+$color__background-menu-hover:   #f8f8fa;
+
+// Alerts
+$color__alert-green:  #52a328; // Bolder green
+$color__alert-orange: #cd6931; // Dusty orange to play off the bold red
+$color__alert-yellow: #f0b849; // WP.com "Warning Yellow"
+$color__alert-red:    #ac0300; // VaultPress red
+
+// Buttons
+$color__background-button: #f8f8fa;
+$color__border-button: #dcdce0;
+$color__text-button: #555;
+
+$color__background-button-primary: $blue-medium;
+$color__border-button-primary: $blue-wordpress;
+$color__text-button-primary: white;
+$color__background-button-primary-hover: $blue-dark;
+$color__border-button-primary-focus: $blue-dark;
+
+$color__border-button-hover: darken( #dcdce0, 10% );
+$color__text-button-hover: #555;
+
+// ==========================================================================
+// UTILITY MIXINS
+// ==========================================================================
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 10) * 1px;
+	font-size: $sizeValue * 1rem;
+}

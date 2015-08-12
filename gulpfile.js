@@ -60,10 +60,8 @@ gulp.task("webpack-dev-server", function(callback) {
 	});
 
 	serverConfig.entry = entry;
-	serverConfig.devtool = "sourcemap";//"eval" for performance, but no JSX :(
+	serverConfig.devtool = "sourcemap"; //"eval" for performance, but no JSX :(
 	serverConfig.debug = true;
-
-	// console.log(serverConfig.output);
 
 	new WebpackDevServer(webpack(serverConfig), {
 		publicPath: serverConfig.output.publicPath,
