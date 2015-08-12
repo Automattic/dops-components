@@ -43,7 +43,7 @@ module.exports = {
 
 	get: function() {
 		return [ {
-			ID: 1,
+			id: 1,
 			slug: 'site-1',
 			title: 'My Awesome Site',
 			domain: 'redradar.net',
@@ -52,10 +52,10 @@ module.exports = {
 			jetpack: false,
 			single_user_site: true,
 			icon: {
-				img: 'https://cldup.com/_zwF8rBDEL.png'
+				img: 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/36x36/1f300.png'
 			}
 		}, {
-			ID: 2,
+			id: 2,
 			slug: 'site-2',
 			title: 'Another Site',
 			domain: 'themes.redradar.net',
@@ -64,10 +64,10 @@ module.exports = {
 			jetpack: false,
 			single_user_site: true,
 			icon: {
-				img: 'https://cldup.com/_zwF8rBDEL.png'
+				img: 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/36x36/1f3aa.png'
 			}
 		}, {
-			ID: 3,
+			id: 3,
 			slug: 'site-3',
 			title: 'Another Site',
 			domain: 'my.redradar.net',
@@ -76,7 +76,7 @@ module.exports = {
 			jetpack: false,
 			single_user_site: true,
 			icon: {
-				img: 'https://cldup.com/_zwF8rBDEL.png'
+				img: 'https://raw.githubusercontent.com/twitter/twemoji/gh-pages/36x36/1f6b4.png'
 			}
 		} ];
 	}
