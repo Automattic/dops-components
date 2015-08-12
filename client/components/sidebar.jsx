@@ -5,9 +5,11 @@ var _navigation = require( '../data/navigation' ),
 module.exports = React.createClass( {
 	render: function() {
 		var params = {
-			allSitesPath: '',
-			siteBasePath: '',
-			path: '/react/sites/',
+			siteBasePath: '#site',
+			allSitesPath: '#all',
+			addNewString: 'Add New Site',
+			addNewPath: '#new',
+			path: '#',
 			sites: _sites,
 			navigation: _navigation
 		};
