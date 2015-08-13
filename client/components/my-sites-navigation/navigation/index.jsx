@@ -3,7 +3,7 @@
  */
 var React = require( 'react/addons' ),
 	classNames = require( 'classnames' ),
-	_ = require( 'underscore' );
+	find = require( 'lodash/collection/find' );
 
 require( './style.scss' );
 
@@ -16,7 +16,7 @@ module.exports = React.createClass( {
 	},
 
 	isSection: function( link, path ) {
-		var result = _.find( link.paths, function( test ) {
+		var result = find( link.paths, function( test ) {
 			return test.test( path );
 		} );
 		return ( 'undefined' !== typeof result );
