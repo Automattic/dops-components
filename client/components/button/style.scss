@@ -1,0 +1,97 @@
+@import "../../scss/calypso-colors";
+
+$green: #518d2a;
+$lighter-green: #57972d;
+
+.ak-button {
+	border-radius: 3px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	transition: background 0.2s;
+}
+
+.ak-button-disabled {
+	background: #f9f9f9;
+	border-color: $gray-light;
+	color: $gray-light;
+	&:hover {
+		background: #f9f9f9;
+		border-color: $gray-light;
+		color: $gray-light;
+	}
+}
+
+.ak-button-inline {
+	display: inline-block;
+}
+
+/**
+ * Colors
+ */
+
+.ak-button-color-gray {
+	background: linear-gradient(#fff, #f9f9f9);
+	border-color: $gray-light;
+	color: $gray-dark;
+	&:hover {
+		color: $gray
+	}
+}
+
+.ak-button-color-blue {
+	background: $blue-light;
+	border-color: rgba(0,0,0,0.6);
+	color: white;
+	&:hover {
+		background: $blue-medium;
+	}
+}
+
+.ak-button-color-green {
+	background: $green;
+	color: white;
+	border-color: rgba(0,0,0,0.6);
+	&:hover {
+		background: $lighter-green;
+	}
+}
+
+/**
+ * Themes
+ */
+
+
+.ak-button-theme-jetpack {
+	padding: 18px 24px 15px;
+	border-radius: 6px;
+	border-style: none;
+	box-shadow: 0 6px 0 #3e6c20,0 6px 3px rgba(0,0,0,0.4);
+}
+
+/**
+ * Size
+ */
+
+.ak-button-size-tiny {
+	font-size: 10px;
+	padding: 2px 10px;
+}
+
+.ak-button-size-normal {
+	font-size: 13px;
+	padding: 5px 10px;
+}
+
+.ak-button-size-big {
+	font-size: 16px;
+	padding: 20px 40px;
+}
