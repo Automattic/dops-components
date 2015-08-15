@@ -1,0 +1,80 @@
+/* Section */
+
+.card-section {
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	padding: 10px 0;
+
+	.card-section-label {
+		color: #999;
+		font-size: 12px;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+
+	.card-section-orient-vertical {
+		.card-section-label {
+			margin-bottom: 10px;
+		}
+	}
+
+	.card-section-orient-horizontal {
+		.card-section-label {
+			float: left;
+			width: 30%;
+			@media all and ( max-width: 590px ) {
+				margin-bottom: 10px;
+				float: none;
+				width: 100%;
+			}	
+		}
+		
+		.card-section-content {
+			float: right;
+			width: 70%;
+			@media all and ( max-width: 590px ) {
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+}
+		
+/* Footer */
+
+.card-footer {
+	background: #f9f9f9;
+	margin: -1px -20px -25px;
+	padding: 15px 20px;
+}
+
+.card {
+	background: #fff;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ddd;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba( 0, 0, 0, 0.05 );
+	padding: 25px 20px;
+	@media all and ( max-width: 1000px ) {
+		float: none;
+		width: 100%;
+	}
+
+	&.card-stacked {
+		margin-bottom: 40px;
+		@media all and ( max-width: 590px ) {
+			margin-bottom: 10px;
+		}
+	}
+
+	.card-title {
+		border-bottom: 1px solid #eee;
+		color: #444;
+		font: 14px 'Open Sans', Helvetica, Arial, sans-serif;
+		margin: 0px;
+		margin-bottom: 10px;
+		padding-bottom: 5px;
+		text-transform: uppercase;
+	}
+}
