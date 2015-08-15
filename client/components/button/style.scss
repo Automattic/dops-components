@@ -1,9 +1,11 @@
 @import "../../scss/calypso-colors";
 
+// TODO: factor out these colors
 $green: #518d2a;
 $lighter-green: #57972d;
+$blue: #029DD6;
 
-.ak-button {
+.ak-btn {
 	border-radius: 3px;
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 	border-width: 1px;
@@ -19,7 +21,7 @@ $lighter-green: #57972d;
 	transition: background 0.2s;
 }
 
-.ak-button-disabled {
+.ak-btn-disabled {
 	background: #f9f9f9;
 	border-color: $gray-light;
 	color: $gray-light;
@@ -30,7 +32,7 @@ $lighter-green: #57972d;
 	}
 }
 
-.ak-button-inline {
+.ak-btn-inline {
 	display: inline-block;
 }
 
@@ -38,17 +40,17 @@ $lighter-green: #57972d;
  * Colors
  */
 
-.ak-button-color-gray {
+.ak-btn-color-gray {
 	background: linear-gradient(#fff, #f9f9f9);
-	border-color: $gray-light;
+	border-color: $gray;
 	color: $gray-dark;
 	&:hover {
 		color: $gray
 	}
 }
 
-.ak-button-color-blue {
-	background: $blue-light;
+.ak-btn-color-blue {
+	background: $blue;
 	border-color: rgba(0,0,0,0.6);
 	color: white;
 	&:hover {
@@ -56,7 +58,7 @@ $lighter-green: #57972d;
 	}
 }
 
-.ak-button-color-green {
+.ak-btn-color-green {
 	background: $green;
 	color: white;
 	border-color: rgba(0,0,0,0.6);
@@ -70,7 +72,7 @@ $lighter-green: #57972d;
  */
 
 
-.ak-button-theme-jetpack {
+.ak-btn-theme-jetpack {
 	padding: 18px 24px 15px;
 	border-radius: 6px;
 	border-style: none;
@@ -81,17 +83,17 @@ $lighter-green: #57972d;
  * Size
  */
 
-.ak-button-size-tiny {
+.ak-btn-size-tiny {
 	font-size: 10px;
 	padding: 2px 10px;
 }
 
-.ak-button-size-normal {
+.ak-btn-size-normal {
 	font-size: 13px;
 	padding: 5px 10px;
 }
 
-.ak-button-size-big {
+.ak-btn-size-big {
 	font-size: 16px;
 	padding: 20px 40px;
 }
