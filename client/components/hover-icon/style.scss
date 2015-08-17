@@ -1,0 +1,35 @@
+@import '../../scss/typography';
+
+.genericon {
+	
+	.dops-hovericon {
+		display: none;
+		font-size: 12px;
+		font-family: $sans;
+		padding: 5px 5px 8px;
+		position: absolute;
+		left: 0px;
+		top: 100%;
+		z-index: 999;
+
+		&.dops-hovericon-light {
+			border-radius: 3px;
+			box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+			border: 1px solid #bbb;
+			background-color: #fff;
+			color: #000;
+		}
+
+		&.dops-hovericon-dark {
+			border-radius: 3px;
+			background: rgba( 0, 0, 0, 0.9 );
+			color: #fff;
+		}
+	}
+
+	&:hover {
+		.dops-hovericon {
+			display: block;
+		}
+	}
+}
