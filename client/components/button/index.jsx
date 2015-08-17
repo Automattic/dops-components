@@ -28,14 +28,14 @@ Button = React.createClass( {
 
 		var callback;
 
-		var className = 'ak-btn ak-btn-color-'+color+' ak-btn-theme-'+theme+' ak-btn-size-'+size;
+		var className = 'dops-btn dops-btn-color-'+color+' dops-btn-theme-'+theme+' dops-btn-size-'+size;
 
 		if ( disabled ) {
-			className += ' ak-btn-disabled';
+			className += ' dops-btn-disabled';
 		}
 
 		if ( inline ) {
-			className += ' ak-btn-inline';	
+			className += ' dops-btn-inline';	
 		}
 
 		if ( href && !onClick ) {

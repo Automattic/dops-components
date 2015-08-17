@@ -1,25 +1,25 @@
 /* Section */
 
-.card-section {
+.dops-card-section {
 	border-bottom: 1px solid #eee;
 	font-size: 14px;
 	padding: 10px 0;
 
-	.card-section-label {
+	.dops-card-section-label {
 		color: #999;
 		font-size: 12px;
 		font-weight: normal;
 		text-transform: uppercase;
 	}
 
-	.card-section-orient-vertical {
-		.card-section-label {
+	.dops-card-section-orient-vertical {
+		.dops-card-section-label {
 			margin-bottom: 10px;
 		}
 	}
 
-	.card-section-orient-horizontal {
-		.card-section-label {
+	.dops-card-section-orient-horizontal {
+		.dops-card-section-label {
 			float: left;
 			width: 30%;
 			@media all and ( max-width: 590px ) {
@@ -29,7 +29,7 @@
 			}	
 		}
 		
-		.card-section-content {
+		.dops-card-section-content {
 			float: right;
 			width: 70%;
 			@media all and ( max-width: 590px ) {
@@ -42,13 +42,13 @@
 		
 /* Footer */
 
-.card-footer {
+.dops-card-footer {
 	background: #f9f9f9;
 	margin: -1px -20px -25px;
 	padding: 15px 20px;
 }
 
-.card {
+.dops-card {
 	background: #fff;
 	border-width: 1px;
 	border-style: solid;
@@ -61,14 +61,14 @@
 		width: 100%;
 	}
 
-	&.card-stacked {
+	&.dops-card-stacked {
 		margin-bottom: 40px;
 		@media all and ( max-width: 590px ) {
 			margin-bottom: 10px;
 		}
 	}
 
-	.card-title {
+	.dops-card-title {
 		border-bottom: 1px solid #eee;
 		color: #444;
 		font: 14px 'Open Sans', Helvetica, Arial, sans-serif;
@@ -76,5 +76,19 @@
 		margin-bottom: 10px;
 		padding-bottom: 5px;
 		text-transform: uppercase;
+	}
+}
+
+.dops-card-icon {
+	float: right;
+	text-transform: capitalize;
+
+	.genericon {
+		border-radius: 50%;
+		width: 16px;
+		height: 16px;
+		margin-right: 10px;
+		color: #fff;
+		background: #81bf16;
 	}
 }

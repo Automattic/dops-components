@@ -1,8 +1,5 @@
 var React = require( 'react' ),
-	Icon = require( '../icon' ),
-	Radium = require( 'radium' ),
-	styles = require( '../../styles' ),
-	m = require( '../../utils/m' );
+	Icon = require( '../icon' );
 
 require( './style.scss' );
 
@@ -21,7 +18,7 @@ let CardSection = React.createClass( {
 
 	render: function( ) {
 		return (
-			<div className="card-section" style={this.props.style}>
+			<div className="dops-card-section" style={this.props.style}>
 				{this.props.title ? 
 					this._renderWithTitle( ) : 
 					this.props.children
@@ -33,14 +30,14 @@ let CardSection = React.createClass( {
 
 	_renderWithTitle: function( ) {
 		var orientation = this.props.vertical ? 'vertical' : 'horizontal';
-		var wrapperClassName = "card-section-orient-" + orientation;
+		var wrapperClassName = "dops-card-section-orient-" + orientation;
 		
 		return (
 			<div className={wrapperClassName}>
-				<h4 ref="label" className="card-section-label">
+				<h4 ref="label" className="dops-card-section-label">
 					{this.props.title}
 				</h4>
-				<div ref="content" className="card-section-content">
+				<div ref="content" className="dops-card-section-content">
 						{this.props.children}
 				</div>
 			</div>
@@ -52,7 +49,7 @@ let CardFooter = React.createClass( {
 
 	render: function( ) {
 		return (
-			<div className="card-footer">
+			<div className="dops-card-footer">
 				{this.props.children}
 			</div>
 		);
@@ -72,16 +69,16 @@ let Card = React.createClass( {
 
 	getDefaultProps: function( ) {
 		return {
-			iconColor: styles.colors.gray
+			iconColor: '#787878'
 		};
 	},
 
 	render: function( ) {
 		var { style, title, icon, iconLabel, ...other } = this.props;
 		return (
-			<div {...other} className="card card-stacked" style={this.props.style}>
+			<div {...other} className="dops-card dops-card-stacked" style={this.props.style}>
 				{this.props.title && (
-					<h2 className="card-title">
+					<h2 className="dops-card-title">
 						{title}
 						{( icon || iconLabel ) && (
 							this._renderIcon( )
@@ -96,8 +93,8 @@ let Card = React.createClass( {
 
 	_renderIcon: function( ) {
 		return (
-			<span style={[styles.right, styles.accountStatus, {color: this.props.iconColor}]}>
-				{this.props.icon && <Icon name={this.props.icon} style={m( styles.accountStatusNoticon, {backgroundColor: this.props.iconColor} )}/>}
+			<span className="dops-card-icon" style={{color: this.props.iconColor}}>
+				{this.props.icon && <Icon name={this.props.icon} style={{backgroundColor: this.props.iconColor}}/>}
 				{this.props.iconLabel}
 			</span>
 		);
@@ -105,9 +102,7 @@ let Card = React.createClass( {
 
 } );
 
-let RadiumCard = Radium( Card );
+Card.Section = CardSection;
+Card.Footer = CardFooter;
 
-RadiumCard.Section = Radium( CardSection );
-RadiumCard.Footer = CardFooter;
-
-module.exports = RadiumCard;
+module.exports = Card;
