@@ -1,0 +1,21 @@
+@mixin col {
+	width: 50%;
+	@media all and (max-width: 590px) {
+		width: 100%;
+		float: none;
+	}
+}
+
+.dops-col-right { 
+	@include col;
+	float: right;
+}
+
+.dops-col-left {
+	@include col;
+	float: left;
+	padding-right: 10px;
+	@media all and (max-width: 590px) {
+		padding-right: 0;
+	}
+}
