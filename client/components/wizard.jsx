@@ -1,7 +1,7 @@
-var React = require('react'),
-	TimeoutTransitionGroup = require('./timeout-transition-group');
+var React = require( 'react' ),
+	TimeoutTransitionGroup = require( './timeout-transition-group' );
 
-var Wizard = React.createClass({
+var Wizard = React.createClass( {
 
 	propTypes: {
 		width: React.PropTypes.any,
@@ -23,19 +23,19 @@ var Wizard = React.createClass({
 
 	next: function() {
 		// transition to next slide
-		this.setStep(this.state.step+1);
+		this.setStep( this.state.step+1 );
 	},
 
 	prev: function() {
 		// transition to previous slide
-		this.setStep(this.state.step-1);
+		this.setStep( this.state.step-1 );
 	},
 
 	setStep: function( stepNum ) {
 		if ( stepNum < this.state.step ) {
-			this.setState({ transitionType: "slideLTR", step: stepNum });	
+			this.setState( { transitionType: "slideLTR", step: stepNum } );	
 		} else {
-			this.setState({ transitionType: "slideRTL", step: stepNum });
+			this.setState( { transitionType: "slideRTL", step: stepNum } );
 		}
 	},
 
@@ -64,6 +64,6 @@ var Wizard = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 module.exports = Wizard;
