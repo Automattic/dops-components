@@ -1,0 +1,18 @@
+.dops-slider {
+	position: relative;
+
+	.handle {
+		cursor: pointer;
+
+		&.active {
+			background-color: grey;
+		}
+	}
+
+	.bar {
+		border: 1px solid #a6c9e2;
+		border-radius: 5px;
+		top: 10px;
+		height: 10px;	
+	}
+}
