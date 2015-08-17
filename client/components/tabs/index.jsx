@@ -63,7 +63,6 @@ let Tabs = React.createClass( {
 						return null;
 					}.bind( this ) )}
 				</div>
-				<div style={styles.clear}></div>
 			</div>
 		);
 	},
@@ -85,7 +84,6 @@ let Tabs = React.createClass( {
 						</li>		
 					);
 				}.bind( this ) )}
-				<div style={styles.clear}/>
 			</ul>
 		);
 	}
