@@ -8,8 +8,8 @@ var Experiment = React.createClass( {
 		namespace: React.PropTypes.string.isRequired
 	},
 
-	clearCookie: function( ) {
-		this.refs.experiment.clearCookie( );
+	clearCookie: function() {
+		this.refs.experiment.clearCookie();
 	},
 
 	handleChoice: function( experiment, variant ) {
@@ -17,7 +17,7 @@ var Experiment = React.createClass( {
 		_tkq.push( ['recordEvent', this.props.namespace+'_abtest_start',{abtest_name:experiment,abtest_variation:variant}] );
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<AbTest.Experiment ref="experiment" onChoice={this.handleChoice} name={this.props.name}>
 				{this.props.children}
@@ -31,7 +31,7 @@ var Variant = React.createClass( {
 		name: React.PropTypes.string.isRequired
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<AbTest.Variant name={this.props.name}>
 				{this.props.children}

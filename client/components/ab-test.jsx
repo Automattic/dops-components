@@ -1,13 +1,13 @@
 // adapted from https://github.com/olahol/react-ab
 var React = require( 'react' );
 
-var random = function( ) {
+var random = function() {
 	try {
 		let arr = new Uint16Array( 1 );
 		window.crypto.getRandomValues( arr );
 		return arr[0] / 65536;
 	} catch ( e ) {
-		return Math.random( );
+		return Math.random();
 	}
 };
 
@@ -35,9 +35,9 @@ var cookie = {
 			date = null;
 
 		if ( typeof seconds !== "undefined" ) {
-			date = new Date( );
-			date.setTime( date.getTime( ) + ( seconds * 1000 ) );
-			expires = "expires=" + date.toGMTString( );
+			date = new Date();
+			date.setTime( date.getTime() + ( seconds * 1000 ) );
+			expires = "expires=" + date.toGMTString();
 		}
 
 		document.cookie = [key, expires, path].join( ";" );
@@ -54,7 +54,7 @@ var Variant = React.createClass( {
 		children: React.PropTypes.node.isRequired
 	},
 
-	render: function( ) {
+	render: function() {
 		if ( React.Children.count( this.props.children ) === 1 ) {
 			return this.props.children;
 		}
@@ -64,7 +64,7 @@ var Variant = React.createClass( {
 } );
 
 var Experiment = React.createClass( {
-	getDefaultProps: function( ) {
+	getDefaultProps: function() {
 		return {
 			get: cookie.get,
 			set: cookie.set,
@@ -73,7 +73,7 @@ var Experiment = React.createClass( {
 		};
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
 			index: null
 		};
@@ -85,7 +85,7 @@ var Experiment = React.createClass( {
 		onChoice: React.PropTypes.func.isRequired
 	},
 
-	componentWillMount: function( ) {
+	componentWillMount: function() {
 		var variant = this.props.get( this.cookieName() );
 
 		for ( let i = 0; i < this.props.children.length; i += 1 ) {
@@ -98,14 +98,14 @@ var Experiment = React.createClass( {
 			}
 		}
 
-		this.chooseVariant( );
+		this.chooseVariant();
 	},
 
-	chooseVariant: function( ) { //fire
-		var index = Math.floor( this.props.random( ) * this.props.children.length ),
+	chooseVariant: function() { //fire
+		var index = Math.floor( this.props.random() * this.props.children.length ),
 			variant = this.props.children[index].props.name;
 
-		this.props.set( this.cookieName( ), variant );
+		this.props.set( this.cookieName(), variant );
 
 		this.setState( {
 			index: index
@@ -115,22 +115,22 @@ var Experiment = React.createClass( {
 		return index;
 	},
 
-	getVariant: function( ) {
+	getVariant: function() {
 		var child = this.props.children[this.state.index],
 			variant = child.props.name;
 
 		return variant;
 	},
 
-	cookieName: function( ) {
+	cookieName: function() {
 		return "react_ab_" + this.props.name;
 	},
 
-	clearCookie: function( ) {
-		this.props.del( this.cookieName( ) );
+	clearCookie: function() {
+		this.props.del( this.cookieName() );
 	},
 
-	render: function( ) {
+	render: function() {
 		var child = this.props.children[this.state.index];
 
 		return child;

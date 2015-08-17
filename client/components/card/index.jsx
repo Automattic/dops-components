@@ -12,22 +12,22 @@ let CardSection = React.createClass( {
 		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'phone'] )
 	},
 
-	getDefaultProps: function( ) {
+	getDefaultProps: function() {
 		return { vertical: null };
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div className="dops-card-section" style={this.props.style}>
 				{this.props.title ? 
-					this._renderWithTitle( ) : 
+					this._renderWithTitle() : 
 					this.props.children
 				}
 			</div>
 		);
 	},
 
-	_renderWithTitle: function( ) {
+	_renderWithTitle: function() {
 		var orientation = this.props.vertical ? 'vertical' : 'horizontal';
 		var wrapperClassName = "dops-card-section-orient-" + orientation;
 		
@@ -46,7 +46,7 @@ let CardSection = React.createClass( {
 
 let CardFooter = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div className="dops-card-footer">
 				{this.props.children}
@@ -66,13 +66,13 @@ let Card = React.createClass( {
 		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'mobile'] )
 	},
 
-	getDefaultProps: function( ) {
+	getDefaultProps: function() {
 		return {
 			iconColor: '#787878'
 		};
 	},
 
-	render: function( ) {
+	render: function() {
 		var { style, title, icon, iconLabel, ...other } = this.props;
 		return (
 			<div {...other} className="dops-card dops-card-stacked" style={this.props.style}>
@@ -80,7 +80,7 @@ let Card = React.createClass( {
 					<h2 className="dops-card-title">
 						{title}
 						{( icon || iconLabel ) && (
-							this._renderIcon( )
+							this._renderIcon()
 						)}
 					</h2>
 				)}
@@ -90,7 +90,7 @@ let Card = React.createClass( {
 		);
 	},
 
-	_renderIcon: function( ) {
+	_renderIcon: function() {
 		return (
 			<span className="dops-card-icon" style={{color: this.props.iconColor}}>
 				{this.props.icon && <Icon name={this.props.icon} style={{backgroundColor: this.props.iconColor}}/>}

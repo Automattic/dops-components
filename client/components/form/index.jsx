@@ -6,7 +6,7 @@ require( './style.scss' );
 
 let idCounter = 0;
 
-function getUniqueId( ) {
+function getUniqueId() {
 	return 'formid' + ( idCounter++ );
 }
 
@@ -22,23 +22,23 @@ let Form = React.createClass( {
 		validationErrors: React.PropTypes.object
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {};
 	},
 
-	isValid: function( ) {
-		return this.refs.form.isValid( );
+	isValid: function() {
+		return this.refs.form.isValid();
 	},
 
 	// setValidationErrors: function( errors ) {
 	// 	this.setState( { validationErrors: errors } );
 	// },
 
-	submit: function( ) {
-		this.refs.form.submit( );
+	submit: function() {
+		this.refs.form.submit();
 	},
 
-	render: function( ) {
+	render: function() {
 		var { style, ...other } = this.props;
 		return (
 			<div className="dops-form" style={style}>
@@ -57,7 +57,7 @@ let Section = React.createClass( {
 		id: React.PropTypes.string
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div id={this.props.id}>
 				{this.props.title ? 
@@ -93,13 +93,13 @@ let TextInput = React.createClass( {
 		onChange: React.PropTypes.func
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
-			uniqueId: getUniqueId( )
+			uniqueId: getUniqueId()
 		};
 	},
 
-	getDefaultProps: function( ) {
+	getDefaultProps: function() {
 		return { type: "text" };
 	},
 
@@ -110,7 +110,7 @@ let TextInput = React.createClass( {
 		}
 	},
 
-	render: function( ) {
+	render: function() {
 		var { style, labelSuffix, label, ...other } = this.props;
 
 		if ( this.props.label ) {
@@ -128,10 +128,10 @@ let TextInput = React.createClass( {
 
 		style = style || {};
 
-		if ( !this.isPristine( ) ) {
-			errorMessage = this.showError( ) ? this.getErrorMessage( ) : null;
+		if ( !this.isPristine() ) {
+			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired( ) ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}							
 		}
 
@@ -146,7 +146,7 @@ let TextInput = React.createClass( {
 					{ ...other }
 					placeholder={this.props.placeholder}
 					onChange={this.changeValue} 
-					value={this.getValue( )} />
+					value={this.getValue()} />
 
 				{this.props.children}
 				<div className="clear"></div>
@@ -167,7 +167,7 @@ let Label = React.createClass( {
 		inline: React.PropTypes.any
 	},
 
-	render: function( ) {
+	render: function() {
 		if ( this.props.label ) {
 			return (
 				<div className="dops-form-label" style={this.props.style}>
@@ -187,7 +187,7 @@ let Label = React.createClass( {
 } );
 
 let Row = React.createClass( {
-	render: function( ) {
+	render: function() {
 		return (
 			<div className="dops-form-row">
 				{this.props.children}
@@ -209,13 +209,13 @@ let Checkbox = React.createClass( {
 		validationError: React.PropTypes.string
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
-			uniqueId: getUniqueId( )
+			uniqueId: getUniqueId()
 		};
 	},
 
-	getDefaultProps: function( ) {
+	getDefaultProps: function() {
 		return { required: false };
 	},
 
@@ -223,15 +223,15 @@ let Checkbox = React.createClass( {
 		this.setValue( event.target.checked );
 	},
 
-	render: function( ) {
+	render: function() {
 		var { style, labelSuffix, label, ...other } = this.props;
 		var uniqueId = this.state.uniqueId;
 		var errorMessage;
 
-		if ( !this.isPristine( ) ) {
-			errorMessage = this.showError( ) ? this.getErrorMessage( ) : null;
+		if ( !this.isPristine() ) {
+			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired( ) ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}
 		}
 
@@ -246,7 +246,7 @@ let Checkbox = React.createClass( {
 						id={uniqueId}
 						{ ...other }
 						onChange={this.changeValue} 
-						checked={this.getValue( )} />
+						checked={this.getValue()} />
 				</Form.Label>
 				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
 			</div>
@@ -261,7 +261,7 @@ let RadioInput = React.createClass( {
 		name: React.PropTypes.string.isRequired
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<p>Radio button</p>
 		);
@@ -275,9 +275,9 @@ let Hidden = React.createClass( {
 		name: React.PropTypes.string.isRequired
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
-			<input type="hidden" value={this.getValue( )}/>
+			<input type="hidden" value={this.getValue()}/>
 		);
 	}
 } );
@@ -297,9 +297,9 @@ let SelectInput = React.createClass( {
 		validationError: React.PropTypes.string
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
-			uniqueId: getUniqueId( )
+			uniqueId: getUniqueId()
 		};
 	},
 
@@ -307,13 +307,13 @@ let SelectInput = React.createClass( {
 		this.setValue( event.target.value );
 	},
 
-	render: function( ) {
+	render: function() {
 		var errorMessage;
 
-		if ( !this.isPristine( ) ) {
-			errorMessage = this.showError( ) ? this.getErrorMessage( ) : null;
+		if ( !this.isPristine() ) {
+			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired( ) ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}
 		}
 
@@ -342,7 +342,7 @@ let ActionBar = React.createClass( {
 		style: React.PropTypes.object
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div className="dops-form-actionbar" style={this.props.style}>
 				{this.props.children}
@@ -354,7 +354,7 @@ let ActionBar = React.createClass( {
 // simple button that submits the form
 let Submit = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		var { ...other } = this.props;
 
 		return (
