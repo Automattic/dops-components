@@ -1,8 +1,8 @@
-var React = require('react');
+var React = require( 'react' );
 
 require( './style.scss' );
 
-let Col = React.createClass({
+let Col = React.createClass( {
 	render: function() {
 		var className = this.props.left ? "dops-col-left" : "dops-col-right";
 		return (
@@ -11,6 +11,6 @@ let Col = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 module.exports = Col;
