@@ -1,5 +1,5 @@
 var React = require( 'react' ),
-	TimeoutTransitionGroup = require( './timeout-transition-group' );
+	TimeoutTransitionGroup = require( '../timeout-transition-group' );
 
 var Wizard = React.createClass( {
 
