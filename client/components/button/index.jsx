@@ -1,8 +1,8 @@
-var React = require( 'react' ), Button;
+var React = require( 'react' );
 
 require( './style.scss' );
 
-Button = React.createClass( {
+let Button = React.createClass( {
 
 	propTypes: {
 		size: React.PropTypes.oneOf( ['tiny', 'normal', 'big'] ),
