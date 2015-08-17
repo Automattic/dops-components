@@ -1,0 +1,67 @@
+.dops-tabs-vertical {
+	& > ul {
+		width: 30%;
+		float: left;
+
+		& > li {
+			list-style: none;
+			margin: 0;
+
+			& > a {
+				display: block;
+				border-left: 2px solid transparent;
+				color: #999;
+				margin: 0 10px 10px 0;
+				padding: 4px 6px;
+			}
+
+			&.active, &:hover {
+				& > a {
+					border-color: #029dd6;
+					color: #029dd6;
+					background-color: #f9f9f9;
+					text-decoration: none
+				}
+			}
+		}
+	}
+
+	& > div {
+		float: right;
+		width: 70%;
+	}
+}
+
+.dops-tabs-horizontal {
+	& > ul {
+		border-bottom: 1px solid #eee;
+		margin-left: 0px;
+		margin-top: -10px;
+		clear: both;
+
+		& > li {
+			border-right: 1px solid #eee;
+			list-style: none;
+			margin: 0 0 -1px;
+			float: left;
+
+			& > a {
+				color: #aaa;
+				display: block;
+				font-size: 14px;
+				margin: 0 15px;
+				padding: 10px 0;
+				text-align: center;
+				text-transform: uppercase;
+			}
+
+			&.active, &:hover {
+				& > a {
+					border-bottom: 2px solid #029dd6;
+					color: #444;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
