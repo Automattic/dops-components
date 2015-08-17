@@ -1,10 +1,8 @@
-var React = require( 'react' ),
-	styles = require( '../../styles' ),
-	m = require( '../../utils/m' );
+var React = require( 'react' );
 
 require( './style.scss' );
 
-var Panel = React.createClass( {
+let Panel = React.createClass( {
 	propTypes: {
 		title: React.PropTypes.any.isRequired
 	},
@@ -14,60 +12,10 @@ var Panel = React.createClass( {
 	}
 } );
 
-var Tabs = React.createClass( {
+let Tabs = React.createClass( {
 
 	propTypes: {
 		layout: React.PropTypes.oneOf( ['horizontal', 'vertical'] )
-	},
-
-	styles: {
-		horizontal: {
-
-			link: {
-				color: '#aaa',
-				display: 'block',
-				fontSize: 14,
-				margin: '0 15px',
-				padding: '10px 0',
-				textAlign: 'center',
-				textTransform: 'uppercase'
-			},
-			activeLink: {
-				borderBottom: '2px solid #029dd6',
-				color: '#444',
-				textDecoration: 'none'
-			},
-			content: {
-
-			}
-		},
-		vertical: {
-			wrapper: {
-				width: '30%',
-				float: 'left'
-			},
-			item: {
-				listStyle: 'none',
-				margin: '0 0'
-			},
-			link: {
-				display: 'block',
-				borderLeft: '2px solid transparent',
-				color: '#999',
-				margin: '0 10px 10px 0',
-				padding: '4px 6px'
-			},
-			activeLink: {
-				borderColor: '#029dd6',
-				color: '#029dd6',
-				background: '#f9f9f9',
-				textDecoration: 'none'
-			},
-			content: {
-				float: 'right',
-				width: '70%'
-			}
-		}
 	},
 
 	getDefaultProps: function() {
@@ -107,7 +55,7 @@ var Tabs = React.createClass( {
 		return (
 			<div className={"dops-tabs-"+theme}>
 				{this._renderNav()}
-				<div style={theme.content}>
+				<div>
 					{React.Children.map( this.props.children, function( child, index ) {
 						if ( index === this.state.activeTab ) {
 							return child;
