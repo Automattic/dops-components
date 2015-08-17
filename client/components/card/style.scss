@@ -1,6 +1,9 @@
+@import '../../scss/layout';
+
 /* Section */
 
 .dops-card-section {
+	@include clearfix;
 	border-bottom: 1px solid #eee;
 	font-size: 14px;
 	padding: 10px 0;

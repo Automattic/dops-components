@@ -23,7 +23,6 @@ let CardSection = React.createClass( {
 					this._renderWithTitle( ) : 
 					this.props.children
 				}
-				<div className="clearfix"/>
 			</div>
 		);
 	},
@@ -38,7 +37,7 @@ let CardSection = React.createClass( {
 					{this.props.title}
 				</h4>
 				<div ref="content" className="dops-card-section-content">
-						{this.props.children}
+					{this.props.children}
 				</div>
 			</div>
 		);

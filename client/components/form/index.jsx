@@ -189,7 +189,7 @@ let Label = React.createClass( {
 let Row = React.createClass( {
 	render: function( ) {
 		return (
-			<div style={styles.clear}>
+			<div className="dops-form-row">
 				{this.props.children}
 			</div>
 		);
@@ -338,28 +338,13 @@ let SelectInput = React.createClass( {
 } );
 
 let ActionBar = React.createClass( {
-	style: {
-		wrapper: {
-			background: '#f9f9f9',
-			color: '#aaa',
-			marginTop: 0,
-			marginBottom: 0,
-			marginLeft: -20,
-			marginRight: -20,
-			paddingTop: 15,
-			paddingBottom: 15,
-			paddingLeft: 20,
-			paddingRight: 20
-		}
-	},
-
 	propTypes: {
 		style: React.PropTypes.object
 	},
 
 	render: function( ) {
 		return (
-			<div style={[this.style.wrapper, this.props.style]}>
+			<div className="dops-form-actionbar" style={this.props.style}>
 				{this.props.children}
 			</div>
 		);
