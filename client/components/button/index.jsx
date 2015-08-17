@@ -11,7 +11,8 @@ let Button = React.createClass( {
 		inline: React.PropTypes.bool,
 		onClick: React.PropTypes.func,
 		disabled: React.PropTypes.bool,
-		href: React.PropTypes.string
+		href: React.PropTypes.string,
+		style: React.PropTypes.object
 	},
 
 	getDefaultProps: function() {
