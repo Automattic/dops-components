@@ -6,10 +6,7 @@ require( './style.scss' );
 let Modal = React.createClass( {
 	
 	propTypes: {
-		title: React.PropTypes.any.isRequired,
-		subtitle: React.PropTypes.any,
 		style: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
-		onRequestClose: React.PropTypes.func
 	},
 
 	getDefaultProps: function() {
@@ -18,14 +15,17 @@ let Modal = React.createClass( {
 		};
 	},
 
-	handleClose: function( e ) {
-		e.preventDefault();
-		e.stopPropagation();
-		this.props.onRequestClose();
+	componentDidMount: function() {
+		jQuery( 'body' ).addClass( 'dops-modal-showing' );
+	},
+
+	componentWillUnmount: function() {
+		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
 	},
 
 	render: function() {
 		var containerStyle;
+
 		switch ( this.props.style ) {
 		case 'wide':
 			containerStyle = { maxWidth: 'inherit' };
@@ -40,20 +40,7 @@ let Modal = React.createClass( {
 			<div>
 				<div className="dops-modal-overlay"></div>
 				<div className="dops-modal" style={containerStyle}>
-					<div className="dops-modal-header">
-						<h1>{this.props.title}</h1>
-						{this.props.subtitle && 
-							<h2>{this.props.subtitle}</h2>
-						}
-					</div>
-					<div>
-						{this.props.children}
-					</div>
-					<a href="#" 
-						onClick={this.handleClose} 
-						className="dops-modal-close">
-						<Icon name="close-alt" />
-					</a>
+					{this.props.children}
 				</div>
 			</div>
 		);
