@@ -1,9 +1,9 @@
 @import '../../scss/layout';
 
 .dops-tabs-vertical {
-	@include clearfix;
+	@include clear-fix;
 	& > ul {
-		@include clearfix;
+		@include clear-fix;
 		width: 30%;
 		float: left;
 
@@ -37,9 +37,9 @@
 }
 
 .dops-tabs-horizontal {
-	@include clearfix;
+	@include clear-fix;
 	& > ul {
-		@include clearfix;
+		@include clear-fix;
 		border-bottom: 1px solid #eee;
 		margin-left: 0px;
 		margin-top: -10px;

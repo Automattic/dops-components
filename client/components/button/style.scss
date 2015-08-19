@@ -97,3 +97,206 @@ $blue: #029DD6;
 	font-size: 16px;
 	padding: 20px 40px;
 }
+
+/**
+ * New Calypso-style button, from _buttons.scss
+ */
+
+button {
+	background: transparent;
+	border: none;
+	outline: 0;
+	padding: 0;
+	font-size: 14px;
+	-webkit-appearance: none;
+	appearance: none;
+	vertical-align: baseline;
+}
+
+.button {
+	background: $gray-light;
+	border-color: lighten( $gray, 20% );
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	color: $gray-dark;
+	cursor: pointer;
+	display: inline-block;
+	margin: 0;
+	outline: 0;
+	overflow: hidden;
+	font-weight: 600;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	vertical-align: top;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 21px;
+	border-radius: 4px;
+	padding: 7px 14px 9px;
+	-webkit-appearance: none;
+	appearance: none;
+
+	&:hover {
+		border-color: lighten( $gray, 10% );
+		color: $gray-dark;
+	}
+
+	&:active {
+		border-width: 2px 1px 1px;
+	}
+
+	&:visited {
+		color: $gray-dark;
+	}
+
+	&[disabled],
+	&:disabled {
+		color: lighten( $gray, 30% );
+		background: $white;
+		border-color: lighten( $gray, 30% );
+		cursor: default;
+
+		&:active {
+			border-width: 1px 1px 2px;
+		}
+	}
+
+	&:focus {
+		border-color: $blue-medium;
+		box-shadow: 0 0 0 2px $blue-light;
+	}
+}
+
+.button.is-link {
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	color: $blue-medium;
+	font-weight: 400;
+	font-size: inherit;
+	line-height: 1.65;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: $link-highlight;
+		box-shadow: none;
+	}
+}
+
+.button.hidden {
+	display: none;
+}
+
+// Positions and resets font styles of noticons applied to buttons
+.button.noticon {
+	line-height: inherit;
+
+	&:before {
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: -2px;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: normal;
+	}
+}
+
+/* Primary buttons */
+.button.is-primary {
+	background: $blue-medium;
+	border-color: $blue-wordpress;
+	color: $white;
+
+	&:hover {
+		border-color: $blue-dark;
+		color: $white;
+	}
+
+	&:focus {
+		border-color: $blue-dark;
+	}
+
+	&[disabled] {
+		background: tint( $blue-light, 50% );
+		border-color: tint( $blue-wordpress, 55% );
+		color: $white;
+	}
+}
+
+/* Danger buttons */
+.button.is-dangerous {
+	color: $alert-red;
+
+	&[disabled] {
+		color: lighten( $alert-red, 30% );
+	}
+}
+
+.button.is-destructive {
+	background: $alert-red;
+	border-color: darken( $alert-red, 20% );
+	color: $white;
+
+	&[disabled] {
+		background: lighten( $alert-red, 20% );
+		border-color: tint( $alert-red, 30% );
+	}
+}
+
+/* Custom-sized buttons */
+.button.button-large,
+.button-group.button-large .button {
+	height: 30px;
+	line-height: 28px;
+	padding: 0 12px 2px
+}
+
+.button.button-small,
+.button-group.button-small .button {
+	height: 24px;
+	line-height: 22px;
+	padding: 0 8px 1px;
+	font-size: 11px
+}
+
+.button.button-hero,
+.button-group.button-hero .button {
+	font-size: 14px;
+	height: 46px;
+	line-height: 44px;
+	padding: 0 36px
+}
+
+/* NOTE: removed .wp-content prefix from all these selectors when copying from Calypso */
+
+/* Turn Reset 'buttons' into regular text links */
+input {
+	&[type=reset],
+	&[type=reset]:hover,
+	&[type=reset]:active,
+	&[type=reset]:focus {
+		background: 0 0;
+		border: 0;
+		padding: 0 2px 1px;
+		width: auto;
+		box-shadow: none;
+	}
+}
+
+/* Buttons within sentences sit on the text baseline. */
+p .button {
+	vertical-align: baseline
+}
+
+/* Firefox Junk */
+button::-moz-focus-inner,
+input[type=reset]::-moz-focus-inner,
+input[type=button]::-moz-focus-inner,
+input[type=submit]::-moz-focus-inner {
+	border-width: 1px 0;
+	border-style: solid none;
+	border-color: transparent;
+	padding: 0
+}

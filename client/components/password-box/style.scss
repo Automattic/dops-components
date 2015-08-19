@@ -1,5 +1,26 @@
+@import '../../scss/calypso-colors';
+@import '../../scss/akismet-colors';
+@import '../../scss/calypso-form';
+
 .dops-password-box {
-	border-radius: 2px;
-	padding: 5px 10px;
-	background: #f5f5f5;
+	&.dops-password-box-hidden {
+		.dops-password-field {
+			color: #DDDDDD;
+		}		
+	}
+
+	.dops-password-field {
+		display: inline-block;
+		width: calc(100% - 120px);
+		border: 1px solid #DDD;
+		@extend %form-field;
+	}
+
+	.dops-password-button {
+		margin-left: 20px;
+		width: calc(100px);
+		button {
+			width: 100px;
+		}
+	}
 }

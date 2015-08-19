@@ -1,0 +1,59 @@
+@import '../../scss/calypso-colors';
+
+$offwhite: #f9f9f9;
+.dops-modal {
+	position: absolute;
+	top: 80px;
+	left: 0px;
+	right: 0px;
+	display: block;
+	padding: 30px;
+	margin: 0 auto;
+	max-width: 550px;
+	width: 90%;
+	background: #fff;
+	border-radius: 2px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	z-index: 100;
+	clear: both;
+
+	.dops-modal-header {
+		margin-bottom: 30px;
+
+		h1 {
+			font-size: 2em;
+			line-height: 1.3;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 1.2em;
+			margin: 0px;
+		}
+	}
+
+	.dops-modal-close {
+		position: absolute;
+		top: 0px;
+		right: 0;
+		height: 46px;
+		padding: 15px;
+		color: $gray;
+		&:hover {
+			background: $offwhite;
+			text-decoration: none;
+		}
+	}
+}
+
+.dops-modal-overlay {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}

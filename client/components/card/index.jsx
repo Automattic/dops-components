@@ -59,26 +59,30 @@ let Card = React.createClass( {
 
 	propTypes: {
 		title: React.PropTypes.any,
+		meta: React.PropTypes.any,
 		icon: React.PropTypes.string,
 		iconLabel: React.PropTypes.any,
 		iconColor: React.PropTypes.string,
 		style: React.PropTypes.object,
+		className: React.PropTypes.string,
 		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'mobile'] )
 	},
 
 	getDefaultProps: function() {
 		return {
-			iconColor: '#787878'
+			iconColor: '#787878',
+			className: ''
 		};
 	},
 
 	render: function() {
-		var { style, title, icon, iconLabel, ...other } = this.props;
+		var { style, title, meta, icon, iconLabel, ...other } = this.props;
 		return (
-			<div {...other} className="dops-card dops-card-stacked" style={this.props.style}>
+			<div {...other} className={"dops-card dops-card-stacked "+this.props.className} style={this.props.style}>
 				{this.props.title && (
 					<h2 className="dops-card-title">
 						{title}
+						{meta && <span className="dops-card-meta">{meta}</span>}
 						{( icon || iconLabel ) && (
 							this._renderIcon()
 						)}

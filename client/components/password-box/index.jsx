@@ -36,15 +36,19 @@ let PasswordBox = React.createClass( {
 
 	render: function() {
 		return (
-			<div className="dops-password-box">
+			<div className={"dops-password-box" + ( this.state.showPass ? "" : " dops-password-box-hidden" )}>
 				{this.state.showPass ? 
 					( <div>
-						<span>{this.props.value}</span>
-						<Button size="tiny" style={{float: 'right'}} onClick={this.handleHidePass}>{this.props.hideLabel}</Button>
+						<span className="dops-password-field">{this.props.value}</span>
+						<span className="dops-password-button">
+							<Button className="dops-password-button" onClick={this.handleHidePass}>{this.props.hideLabel}</Button>
+						</span>
 					</div> ) : 
 					( <div>
-						<span>************</span>
-						<Button size="tiny" style={{float: 'right'}} onClick={this.handleShowPass}>{this.props.showLabel}</Button>
+						<span className="dops-password-field">************</span>
+						<span className="dops-password-button">
+							<Button onClick={this.handleShowPass}>{this.props.showLabel}</Button>
+						</span>
 					</div> )
 				}
 			</div>

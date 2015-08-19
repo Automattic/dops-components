@@ -5,10 +5,12 @@ require( './style.scss' );
 let Button = React.createClass( {
 
 	propTypes: {
-		size: React.PropTypes.oneOf( ['tiny', 'normal', 'big'] ),
+		size: React.PropTypes.oneOf( ['small', 'normal', 'large', 'hero'] ),
 		color: React.PropTypes.oneOf( ['gray', 'blue', 'green'] ),
-		theme: React.PropTypes.oneOf( ['wp', 'jetpack'] ),
-		inline: React.PropTypes.bool,
+		// theme: React.PropTypes.oneOf( ['wp', 'jetpack'] ),
+		primary: React.PropTypes.any,
+		dangerous: React.PropTypes.any,
+		destructive: React.PropTypes.any,
 		onClick: React.PropTypes.func,
 		disabled: React.PropTypes.bool,
 		href: React.PropTypes.string,
@@ -25,18 +27,22 @@ let Button = React.createClass( {
 	},
 
 	render: function() {
-		var { size, color, inline, onClick, theme, href, disabled, ...other } = this.props;
+		var { size, color, onClick, href, primary, dangerous, destructive, disabled, ...other } = this.props;
 
 		var callback;
 
-		var className = 'dops-btn dops-btn-color-'+color+' dops-btn-theme-'+theme+' dops-btn-size-'+size;
+		var className = 'button button-'+size;
 
-		if ( disabled ) {
-			className += ' dops-btn-disabled';
+		if ( href ) {
+			className += ' is-link';
 		}
 
-		if ( inline ) {
-			className += ' dops-btn-inline';	
+		if ( primary ) {
+			className += ' is-primary';
+		}
+
+		if ( disabled ) {
+			className += ' button-disabled';
 		}
 
 		if ( href && !onClick ) {
@@ -46,7 +52,7 @@ let Button = React.createClass( {
 		}
 
 		return (
-			<button {...other} className={className} style={this.props.style} onClick={callback} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+			<button {...other} className={className} style={this.props.style} onClick={callback}>
 				{this.props.children}
 			</button>
 		);
