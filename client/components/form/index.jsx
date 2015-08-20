@@ -83,6 +83,7 @@ let TextInput = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		className: React.PropTypes.string,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
 		type: React.PropTypes.string,
@@ -111,19 +112,23 @@ let TextInput = React.createClass( {
 	},
 
 	render: function() {
-		var { style, labelSuffix, label, ...other } = this.props;
+		var { style, labelSuffix, label, className, ...other } = this.props;
+
+		if ( !className ) {
+			className = 'field-' + this.props.name;
+		}
 
 		if ( this.props.label ) {
 			return (
-				<Form.Label style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
-					{this._renderInput( this.props.label, null, ...other )}
+				<Form.Label className={className} style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
+					{this._renderInput( this.props.label, null, null, ...other )}
 				</Form.Label>
 			);
 		}
-		return this._renderInput( this.props.name, style, ...other );
+		return this._renderInput( this.props.name, style, className, ...other );
 	},
 
-	_renderInput: function( label, style, ...other ) {
+	_renderInput: function( label, style, extraClassName, ...other ) {
 		var errorMessage;
 
 		style = style || {};
@@ -136,7 +141,8 @@ let TextInput = React.createClass( {
 		}
 
 		let className = "dops-form-text" + 
-			( errorMessage ? " dops-form-error" : "" );
+			( errorMessage ? " dops-form-error" : "" ) + 
+			( extraClassName ? ' '+extraClassName : "" );
 
 		return (
 			<div className={className} style={style}>
@@ -174,7 +180,7 @@ let Label = React.createClass( {
 				( this.props.required ? '*' : '' );
 			return (
 				<div className="dops-form-label" style={this.props.style}>
-					<label htmlFor={this.props.htmlFor}>
+					<label htmlFor={this.props.htmlFor} className="dops-form-label">
 						{this.props.inline && this.props.children}{label}
 					</label>
 					{!this.props.inline && this.props.children}
@@ -249,7 +255,8 @@ let Checkbox = React.createClass( {
 						id={uniqueId}
 						{ ...other }
 						onChange={this.changeValue} 
-						checked={this.getValue()} />
+						checked={this.getValue()} 
+						className="form-checkbox"/>
 				</Form.Label>
 				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
 			</div>
