@@ -131,7 +131,7 @@ let TextInput = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}							
 		}
 
@@ -169,10 +169,11 @@ let Label = React.createClass( {
 
 	render: function() {
 		if ( this.props.label ) {
+			let label = this.props.label + this.props.labelSuffix + ( this.props.required ? '*' : '' );
 			return (
 				<div className="dops-form-label" style={this.props.style}>
 					<label htmlFor={this.props.htmlFor}>
-						{this.props.inline && this.props.children}{this.props.label}{this.props.labelSuffix}{this.props.required && '*'}
+						{this.props.inline && this.props.children}{label}
 					</label>
 					{!this.props.inline && this.props.children}
 				</div>
@@ -231,7 +232,7 @@ let Checkbox = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}
 		}
 
@@ -313,7 +314,7 @@ let SelectInput = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredLabelFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
 			}
 		}
 
@@ -397,7 +398,7 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 } );
 
 // this can be overridden with a custom function so that you can internationalise the output
-Form.requiredLabelFormatter = function( label ) {
+Form.requiredFieldErrorFormatter = function( label ) {
 	return label + " is required";
 };
 
