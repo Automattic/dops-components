@@ -25,21 +25,31 @@ module.exports = React.createClass( {
 		};
 	},
 
-	preventPickerDefault: function( event ) {
+	closeSites: function( event ) {
 		event.preventDefault();
 		event.stopPropagation();
 
+		// Already closed :)
+		if ( ! this.state.showSites ) {
+			return;
+		}
+
 		this.setState( {
-			showSites: ( ! this.state.showSites )
+			showSites: false,
 		} );
 	},
 
-	toggleShowingSites: function( event ) {
+	showSites: function( event ) {
 		event.preventDefault();
 		event.stopPropagation();
 
+		// Already open :)
+		if ( this.state.showSites ) {
+			return;
+		}
+
 		this.setState( {
-			showSites: ( ! this.state.showSites )
+			showSites: true,
 		} );
 	},
 
@@ -56,7 +66,8 @@ module.exports = React.createClass( {
 					addNewPath={ this.props.addNewPath }
 					addNewString={ this.props.addNewString }
 					allSitesPath={ this.props.allSitesPath }
-					onClose={ this.preventPickerDefault }
+					onClose={ this.closeSites }
+					onOutsideClose={ this.closeSites }
 					siteBasePath={ this.props.siteBasePath }
 					sites={ this.props.sites }
 				/>
@@ -68,7 +79,7 @@ module.exports = React.createClass( {
 					path={ this.props.path }
 					siteBasePath={ this.props.siteBasePath }
 					sites={ this.props.sites }
-					onSwitchClick={ this.toggleShowingSites }
+					onSwitchClick={ this.showSites }
 				/>
 			</div>
 		);

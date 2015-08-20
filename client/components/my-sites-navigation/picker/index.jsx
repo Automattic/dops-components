@@ -32,21 +32,18 @@ module.exports = React.createClass( {
 	},
 
 	onClose: function( event ) {
-		this.closePicker();
 		this.props.onClose( event );
-	},
-
-	closePicker: function() {
-		document.getElementById( 'secondary' ).scrollTop = 0;
-		window.scrollTo( 0, 0 );
 	},
 
 	closePickerOnOutsideClick: function( event ) {
 		var pickerNode = React.findDOMNode( this.refs.siteSelector );
 
 		// If the user clicks outside the Picker, let's close it
-		if ( ! pickerNode.contains( event.target ) && event.target !== pickerNode ) {
-			this.closePicker();
+		if (
+			( ! pickerNode.contains( event.target ) && event.target !== pickerNode ) &&
+			( -1 === event.target.className.indexOf( 'current-site__switch-sites' ) )
+		) {
+			this.props.onOutsideClose( event );
 		}
 	},
 
