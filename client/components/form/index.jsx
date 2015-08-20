@@ -169,7 +169,9 @@ let Label = React.createClass( {
 
 	render: function() {
 		if ( this.props.label ) {
-			let label = this.props.label + this.props.labelSuffix + ( this.props.required ? '*' : '' );
+			let label = this.props.label + 
+				( this.props.labelSuffix ? this.props.labelSuffix : '' ) + 
+				( this.props.required ? '*' : '' );
 			return (
 				<div className="dops-form-label" style={this.props.style}>
 					<label htmlFor={this.props.htmlFor}>
