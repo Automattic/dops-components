@@ -70,6 +70,7 @@ module.exports = React.createClass( {
 					onOutsideClose={ this.closeSites }
 					siteBasePath={ this.props.siteBasePath }
 					sites={ this.props.sites }
+					showingSites={ this.state.showSites }
 				/>
 				<Sidebar
 					addNewPath={ this.props.addNewPath }
