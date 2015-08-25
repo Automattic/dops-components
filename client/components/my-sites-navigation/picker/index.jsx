@@ -38,8 +38,8 @@ module.exports = React.createClass( {
 	closePickerOnOutsideClick: function( event ) {
 		var pickerNode = React.findDOMNode( this.refs.siteSelector );
 
-		// If the user clicks outside the Picker, let's close it
-		if (
+		// If the picker is open & the user clicks outside of it, let's close it
+		if ( this.props.showingSites &&
 			( ! pickerNode.contains( event.target ) && event.target !== pickerNode ) &&
 			( -1 === event.target.className.indexOf( 'current-site__switch-sites' ) )
 		) {
