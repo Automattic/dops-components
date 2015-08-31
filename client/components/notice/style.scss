@@ -1,0 +1,235 @@
+@import "../../scss/calypso-colors";
+@import '../../scss/layout';
+@import '../../scss/extends';
+
+.notice {
+	position: relative;
+	margin-bottom: 24px;
+	padding: 11px 24px;
+	border-radius: 1px;
+	background: $gray-light;
+	box-sizing: border-box;
+	font-size: 14px;
+	line-height: 1.4285;
+	animation: appear .3s ease-in-out;
+
+	&.is-dismissable {
+		padding-right: 68px;
+	}
+
+	@include breakpoint( ">660px" ) {
+		padding: 13px 48px;
+		font-size: inherit;
+
+		&.is-dismissable {
+			padding-right: 60px;
+		}
+
+		&::before {
+			@extend %noticon;
+			content: '\f456';
+			position: absolute;
+			top: 23px;
+			left: 20px;
+			margin: -12px 0px 0 -8px;
+			font-size: 24px;
+			line-height: 1;
+		}
+	}
+
+	// Success!
+	&.is-success {
+		background: $alert-green;
+
+		@include breakpoint( ">660px" ) {
+			&:before {
+				content: '\f418';
+			}
+		}
+	}
+
+	// Warning
+	&.is-warning {
+		background: $alert-yellow;
+
+		&:before {
+		}
+	}
+
+	// Error! OHNO!
+	&.is-error {
+		background: $alert-red;
+
+		&:before {
+		}
+	}
+
+	// Information
+	&.is-info {
+		background: $blue-wordpress;
+
+		@include breakpoint( ">660px" ) {
+			&:before {
+				content: '\f455';
+			}
+		}
+	}
+}
+
+// General styles for html elements
+// rendered inside a notice
+.notice {
+
+	a,
+	button.is-link {
+		line-height: 1.4285;
+		font-weight: 600;
+
+		// Medium text underline hack
+		background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, #fff 50%);
+		background-repeat: repeat-x;
+		background-size: 2px 2px;
+		background-position: 0 1.14em; // ~18/15
+
+		@media not all, only screen and (min-resolution: 2dppx), only screen and (-webkit-min-device-pixel-ratio: 2) {
+			background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, #fff 75%);
+			background-repeat: repeat-x;
+		}
+	}
+
+	ul {
+		margin-bottom: 0;
+		margin-left: 0;
+	}
+
+	li {
+		margin-left: 2em;
+		margin-top: 0.5em;
+	}
+
+	p {
+		margin-bottom: 0;
+		margin-top: 0.5em;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	&.is-success, // TODO fix this in pre-oss to be less bad
+	&.is-error,
+	&.is-warning,
+	&.is-info {
+		color: $white;
+
+		a,
+		button.is-link {
+			color: rgba( $white, 0.85 );
+
+			&:hover {
+				color: $white;
+			}
+		}
+
+		.notice__dismiss {
+			color: $white;
+		}
+	}
+}
+
+.notice__button {
+	cursor: pointer;
+	margin-left: 0.428em;
+}
+
+// "X" for dismissing a notice
+.notice__dismiss {
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer;
+	color: $gray;
+
+	&:hover,
+	&:focus {
+		color: $gray-dark;
+	}
+	&::before {
+		position: absolute;
+		top: 24px;
+		left: 14px;
+		margin-top: -8px;
+
+		@include breakpoint( ">660px" ) {
+			left: 16px;
+		}
+	}
+	.notice & {
+		color: $gray;
+		opacity: 0.85;
+
+		&:hover,
+		&:focus {
+			opacity: 1;
+		}
+	}
+	.notice.is-compact & {
+		width: 44px;
+
+		&::before {
+			left: 14px;
+			top: 21px;
+		}
+	}
+
+	@include breakpoint( ">660px" ) {
+		width: 48px;
+	}
+
+	@include breakpoint( "<660px" ) {
+		top: -2px;
+		width: 44px;
+	}
+}
+
+// Compact notices
+.notice.is-compact {
+	padding: 11px 24px 11px 16px;
+	margin-bottom: 8px;
+	font-size: 14px;
+
+	&.is-dismissable {
+		padding-right: 68px;
+	}
+
+	&::before {
+		display: none;
+	}
+}
+
+// ArrowLink sub-component
+// specificity for general `a` elements within notice is too great
+.notice a.notice__arrow-link {
+	background: rgba( 255, 255, 255, 0.2 );
+	box-sizing: border-box;
+	color: $white;
+	font-weight: 400;
+	height: 100%;
+	line-height: 1.4285;
+	padding: 13px 10px 13px 16px;
+	position: absolute;
+		right: 0;
+		top: 0;
+	text-decoration: none;
+
+	.noticon {
+		font-size: 24px;
+		margin-left: 8px;
+		margin-top: -2px;
+	}
+
+	&:hover,
+	&:focus {
+		background: rgba( 0, 0, 0, 0.2 );
+	}
+}
