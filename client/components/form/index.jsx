@@ -1,6 +1,7 @@
 var React = require( 'react' ),
 	Formsy = require( 'formsy-react' ),
-	Button = require( '../button' );
+	Button = require( '../button' ),
+	FormInputValidation = require( '../form-input-validation' );
 
 require( './style.scss' );
 
@@ -183,7 +184,7 @@ let TextInput = React.createClass( {
 
 				{this.props.children}
 				<div className="clear"></div>
-				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
+				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
 			</div>
 		);
 	}
