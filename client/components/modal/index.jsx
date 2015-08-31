@@ -22,7 +22,6 @@ let Modal = React.createClass( {
 	},
 
 	handleEscapeKey: function( e ) {
-		console.log( "hit escape" );
 		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
 			if ( this.props.onRequestClose ) {
 				this.props.onRequestClose();
@@ -33,7 +32,6 @@ let Modal = React.createClass( {
 	handleClickOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
-		console.log( "clicked overlay" );
 		if ( this.props.onRequestClose ) {
 			this.props.onRequestClose();
 		}
