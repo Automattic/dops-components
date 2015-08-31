@@ -219,7 +219,7 @@ let Label = React.createClass( {
 				{label && <label className={this.props.labelClassName} htmlFor={this.props.htmlFor}>
 					{this.props.inline && this.props.children}{label}
 				</label>}
-				{label && !this.props.inline && this.props.children}
+				{( !this.props.inline || !label ) && this.props.children}
 			</div>
 		);
 	}
@@ -330,6 +330,7 @@ let SelectInput = React.createClass( {
 		name: React.PropTypes.string.isRequired,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
+		floatingLabel: React.PropTypes.bool,
 		inline: React.PropTypes.any,
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
@@ -348,7 +349,7 @@ let SelectInput = React.createClass( {
 	},
 
 	render: function() {
-		var errorMessage;
+		var errorMessage, labelClass;
 
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
@@ -357,22 +358,29 @@ let SelectInput = React.createClass( {
 			}
 		}
 
-		let className = "dops-form-select" + 
+		let className = 'field-' + this.props.name + 
 			( errorMessage ? " dops-form-error" : "" );
 
 		if ( this.props.inline ) {
 			className = className + " dops-form-inline";
 		}
 
+		if ( this.props.floatingLabel ) {
+			className = className + ' dops-floating-label-input';
+			// we fake out the post-floating state because the animation makes
+			// no sense for a select input
+			labelClass = "floating floating--floated floating--floated-active"; 
+		}
+
 		return (
-			<div className={className} style={this.props.style}>
-				<Form.Label inline={this.props.inline} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
+			<Form.Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style}>
+				<div className="dops-form-select">
 					<select ref="select" id={this.state.uniqueId} value={this.getValue()} onChange={this.changeValue}>
 						{this.props.children}
 					</select>
-				</Form.Label>
+				</div>
 				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
-			</div>
+			</Form.Label>
 		);
 	}
 } );
