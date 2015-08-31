@@ -31,10 +31,6 @@ let Form = React.createClass( {
 		return this.refs.form.isValid();
 	},
 
-	// setValidationErrors: function( errors ) {
-	// 	this.setState( { validationErrors: errors } );
-	// },
-
 	submit: function() {
 		this.refs.form.submit();
 	},
@@ -289,7 +285,7 @@ let Checkbox = React.createClass( {
 						checked={this.getValue()} 
 						className="form-checkbox"/>
 				</Form.Label>
-				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
+				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
 			</div>
 		);
 	}
@@ -380,7 +376,7 @@ let SelectInput = React.createClass( {
 						{this.props.children}
 					</select>
 				</div>
-				{errorMessage && ( <span className="dops-form-errormessage">{errorMessage}</span> )}
+				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
 			</Form.Label>
 		);
 	}
