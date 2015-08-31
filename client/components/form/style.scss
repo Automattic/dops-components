@@ -104,6 +104,36 @@
 		margin-bottom: 10px;
 		text-transform: uppercase;
 		width: auto;
+
+		&.floating {
+			display: inline-block;
+			text-transform: none;
+			z-index: 2;
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-weight: normal;
+			height: 32px;
+			padding: 7px 12px;
+			margin: 0;
+		}
+		
+		&.floating--floated {
+			z-index: 0;
+			font-weight: bold;
+			left: auto;
+			height: auto;
+			padding: 0 12px;
+			bottom: auto;
+			font-size: 11px;
+			opacity: 0;
+			transition: top 250ms, opacity 250ms;
+		}
+
+		&.floating--floated-active {
+			top: -16px;
+			opacity: 1;
+		}
 	}
 }
 
@@ -116,3 +146,18 @@
 	color: #aaa;
 	padding: 15px 20px 15px 20px;
 }
+
+// floating label support
+.dops-floating-label-input {
+  position: relative;
+  margin-top: 18px;
+}
+
+.dops-floating-label-input__input {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+

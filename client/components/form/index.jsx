@@ -85,6 +85,7 @@ let TextInput = React.createClass( {
 		name: React.PropTypes.string.isRequired,
 		className: React.PropTypes.string,
 		style: React.PropTypes.any,
+		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
 		type: React.PropTypes.string,
 		labelSuffix: React.PropTypes.any,
@@ -96,7 +97,10 @@ let TextInput = React.createClass( {
 
 	getInitialState: function() {
 		return {
-			uniqueId: getUniqueId()
+			uniqueId: getUniqueId(),
+			// for floating label support
+			floated: this.props.value ? this.props.value.length > 0 : false,
+			animating: this.props.value ? this.props.value.length > 0 : false,
 		};
 	},
 
@@ -105,22 +109,45 @@ let TextInput = React.createClass( {
 	},
 
 	changeValue: function( event ) {
-		this.setValue( event.target.value );
+		var inputValue = event.target.value;
+
+		this.setValue( inputValue );
 		if ( this.props.onChange ) {
 			this.props.onChange( event );
+		}
+
+		// handle floating label animation
+		if ( this.props.floatingLabel ) {
+			if ( !inputValue.length ) {
+				this.setState( {floated: false, animating: false} );
+				return;
+			} 
+			this.setState( {animating: true} );
+			requestAnimationFrame( function() {
+				this.setState( {floated: true} );
+			}.bind( this ) );
 		}
 	},
 
 	render: function() {
-		var { style, labelSuffix, label, className, ...other } = this.props;
+		var labelClass;
+		
+		let { style, labelSuffix, label, className, ...other } = this.props;
 
 		if ( !className ) {
 			className = 'field-' + this.props.name;
 		}
 
+		if ( this.props.floatingLabel ) {
+			className = className + ' dops-floating-label-input';
+			labelClass = "floating";
+			labelClass += this.state.animating ? " floating--floated" : "";
+			labelClass += this.state.floated ? " floating--floated-active" : "";
+		}
+
 		if ( this.props.label ) {
 			return (
-				<Form.Label className={className} style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
+				<Form.Label className={className} labelClassName={labelClass} style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
 					{this._renderInput( this.props.label, null, null, ...other )}
 				</Form.Label>
 			);
@@ -168,28 +195,31 @@ let Label = React.createClass( {
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
 		labelSuffix: React.PropTypes.any,
+		labelClassName: React.PropTypes.string,
 		htmlFor: React.PropTypes.string,
 		required: React.PropTypes.any,
 		inline: React.PropTypes.any
 	},
 
 	render: function() {
+		var className = 'dops-form-label', label;
+		
+		if ( this.props.className ) {
+			className = className + ' ' + this.props.className;
+		}
+
 		if ( this.props.label ) {
-			let label = this.props.label + 
+			label = this.props.label + 
 				( this.props.labelSuffix ? this.props.labelSuffix : '' ) + 
 				( this.props.required ? '*' : '' );
-			return (
-				<div className="dops-form-label" style={this.props.style}>
-					<label htmlFor={this.props.htmlFor} className="dops-form-label">
-						{this.props.inline && this.props.children}{label}
-					</label>
-					{!this.props.inline && this.props.children}
-				</div>
-			);
-		} 
+		}
+
 		return (
-			<div className="dops-form-label" style={this.props.style}>
-				{this.props.children}
+			<div className={className} style={this.props.style}>
+				{label && <label className={this.props.labelClassName} htmlFor={this.props.htmlFor}>
+					{this.props.inline && this.props.children}{label}
+				</label>}
+				{label && !this.props.inline && this.props.children}
 			</div>
 		);
 	}
