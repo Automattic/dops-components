@@ -206,15 +206,13 @@ let Label = React.createClass( {
 		}
 
 		if ( this.props.label ) {
-			label = this.props.label + 
-				( this.props.labelSuffix ? this.props.labelSuffix : '' ) + 
-				( this.props.required ? '*' : '' );
+			label = this.props.label + ( this.props.required ? '*' : '' );
 		}
 
 		return (
 			<div className={className} style={this.props.style}>
 				{label && <label className={this.props.labelClassName} htmlFor={this.props.htmlFor}>
-					{this.props.inline && this.props.children}{label}
+					{this.props.inline && this.props.children}{label}{this.props.labelSuffix}
 				</label>}
 				{( !this.props.inline || !label ) && this.props.children}
 			</div>
