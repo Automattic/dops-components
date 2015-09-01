@@ -29,7 +29,7 @@ let HoverIcon = React.createClass( {
 	},
 
 	render: function( ) {
-		var className = "dops-hovericon dops-hovericon-" + this.props.type;
+		var className = 'dops-hovericon dops-hovericon-' + this.props.type;
 		return (
 			<Icon name={this.props.name} style={{position: 'relative'}} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
 				<span className={className}>

@@ -1,0 +1,37 @@
+var Card = Demo.require('./card');
+
+var DemoCard = React.createClass({
+
+	render: function() {
+		return (
+			<div>
+				<Card title="My Card" icon="wordpress" iconLabel="Hola">
+					<Card.Section title="Section A">
+						Click me: <button>Go!</button>
+					</Card.Section>
+
+					<Card.Section title="Section B">
+						<p>You can put anything you want in here</p>
+					</Card.Section>
+
+					<Card.Section title="Vertical section" vertical>
+						<p>Puts the title above the content</p>
+					</Card.Section>
+
+
+					<Card.Footer>
+						<a href="#">some action</a>
+					</Card.Footer>
+				</Card>
+
+				<Card title="My Card" icon="close" iconLabel="Whoa" iconColor="red">
+					No good can come of this.
+				</Card>
+			</div>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoCard, {}), document.getElementById(Demo.domId)
+);

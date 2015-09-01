@@ -102,7 +102,7 @@ let TextInput = React.createClass( {
 	},
 
 	getDefaultProps: function() {
-		return { type: "text" };
+		return { type: 'text' };
 	},
 
 	changeValue: function( event ) {
@@ -137,9 +137,9 @@ let TextInput = React.createClass( {
 
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
-			labelClass = "floating";
-			labelClass += this.state.animating ? " floating--floated" : "";
-			labelClass += this.state.floated ? " floating--floated-active" : "";
+			labelClass = 'floating';
+			labelClass += this.state.animating ? ' floating--floated' : '';
+			labelClass += this.state.floated ? ' floating--floated-active' : '';
 		}
 
 		if ( this.props.label ) {
@@ -160,13 +160,13 @@ let TextInput = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
 			}							
 		}
 
-		let className = "dops-form-text" + 
-			( errorMessage ? " dops-form-error" : "" ) + 
-			( extraClassName ? ' '+extraClassName : "" );
+		let className = 'dops-form-text' + 
+			( errorMessage ? ' dops-form-error' : '' ) + 
+			( extraClassName ? ' '+extraClassName : '' );
 
 		return (
 			<div className={className} style={style}>
@@ -267,12 +267,12 @@ let Checkbox = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
 			}
 		}
 
-		let className = "dops-form-checkbox" + 
-			( errorMessage ? " dops-form-error" : "" );
+		let className = 'dops-form-checkbox' + 
+			( errorMessage ? ' dops-form-error' : '' );
 
 		return (
 			<div className={className} style={style}>
@@ -351,22 +351,22 @@ let SelectInput = React.createClass( {
 		if ( !this.isPristine() ) {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
-				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || "" ) : null;
+				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
 			}
 		}
 
 		let className = 'field-' + this.props.name + 
-			( errorMessage ? " dops-form-error" : "" );
+			( errorMessage ? ' dops-form-error' : '' );
 
 		if ( this.props.inline ) {
-			className = className + " dops-form-inline";
+			className = className + ' dops-form-inline';
 		}
 
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
 			// we fake out the post-floating state because the animation makes
 			// no sense for a select input
-			labelClass = "floating floating--floated floating--floated-active"; 
+			labelClass = 'floating floating--floated floating--floated-active'; 
 		}
 
 		return (
@@ -443,7 +443,7 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 
 // this can be overridden with a custom function so that you can internationalise the output
 Form.requiredFieldErrorFormatter = function( label ) {
-	return label + " is required";
+	return label + ' is required';
 };
 
 Form.Submit = Submit;

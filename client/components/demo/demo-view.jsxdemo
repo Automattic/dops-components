@@ -1,0 +1,91 @@
+var View = Demo.require('./view'),
+	Card = Demo.require('./card');
+
+var DemoView = React.createClass({
+
+	styles: {
+		view: {
+			border: "1px dashed #bbb"
+		},
+		red: {
+			backgroundColor: '#F00',
+			color: 'white'
+		},
+		green: {
+			backgroundColor: '#0F0',
+			color: 'white'
+		},
+		blue: {
+			backgroundColor: '#00F',
+			color: 'white'
+		},
+		yellow: {
+			backgroundColor: '#FF0',
+			color: 'black'
+		}
+	},
+	
+	render: function() {
+		return (
+			<Card>
+				<Card.Section vertical title="Column">
+					<View column style={this.styles.view}>
+						<View child style={this.styles.red}>Red</View>
+						<View child style={this.styles.green}>Green</View>
+						<View child style={this.styles.blue}>Blue</View>
+					</View>
+				</Card.Section>
+				
+				<Card.Section vertical title="Column with padding">
+					<View column padding={10} style={this.styles.view}>
+						<View child style={this.styles.red}>Red</View>
+						<View child style={this.styles.green}>Green</View>
+						<View child style={this.styles.blue}>Blue</View>
+					</View>
+				</Card.Section>
+
+				<Card.Section vertical title="Row with padding">
+					<View row padding={10} style={this.styles.view}>
+						<View child style={this.styles.red}>Red</View>
+						<View child style={this.styles.green}>Green</View>
+						<View child style={this.styles.blue}>Blue</View>
+					</View>
+				</Card.Section>
+
+				<Card.Section vertical title="Row with padding and size weighting">
+					<View row padding={10} style={this.styles.view}>
+						<View child width={1} style={this.styles.red}>Red</View>
+						<View child width={2} style={this.styles.green}>Green</View>
+						<View child width={1} style={this.styles.blue}>Blue</View>
+					</View>
+				</Card.Section>
+				
+				<Card.Section vertical title="Proper nesting without weirdness requires '&lt;View child&gt;' for interior elements">
+					<View row padding={10} style={this.styles.view}>
+						<View child stretch style={this.styles.red}>Red
+							<div style={this.styles.green}>Green</div>
+						</View>
+						<View child stretch style={this.styles.blue}>Blue
+							<div style={this.styles.yellow}>Yellow</div>
+						</View>
+					</View>
+				</Card.Section>
+
+				<Card.Section vertical title="FYI, that same demo above without using Child looks like this">
+					<View row padding={10} style={this.styles.view}>
+						<View stretch style={this.styles.red}>Red
+							<div style={this.styles.green}>Green</div>
+						</View>
+						<View stretch style={this.styles.blue}>Blue
+							<div style={this.styles.yellow}>Yellow</div>
+						</View>
+					</View>
+				</Card.Section>
+			</Card>
+		);
+	},
+});
+
+React.render(
+  React.createElement(DemoView, {}), document.getElementById(Demo.domId)
+);

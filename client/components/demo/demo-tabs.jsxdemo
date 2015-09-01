@@ -1,0 +1,41 @@
+var Tabs = Demo.require('./tabs'),
+	Card = Demo.require('./card');
+
+var DemoTabs = React.createClass({
+
+	render: function() {
+		return (
+			<Card>
+				<Card.Section vertical title="Horizontal Tabs">
+					{this._renderTabs("horizontal")}
+				</Card.Section>
+
+				<Card.Section vertical title="Vertical Tabs">
+					{this._renderTabs("vertical")}
+				</Card.Section>
+			</Card>
+		);
+	},
+
+	_renderTabs: function(layout) {
+		return (
+			<Tabs layout={layout}>
+				<Tabs.Panel title="Tab A">
+					<p>Tab A</p>
+				</Tabs.Panel>
+
+				<Tabs.Panel title="Tab B">
+					<p>Tab B</p>
+				</Tabs.Panel>
+
+				<Tabs.Panel title="Tab C">
+					<p>Tab C</p>
+				</Tabs.Panel>
+			</Tabs>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoTabs, {}), document.getElementById(Demo.domId)
+);

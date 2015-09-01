@@ -1,0 +1,69 @@
+var AlertBox = Demo.require('./alert-box'),
+	TimeoutTransitionGroup = Demo.require('./timeout-transition-group');
+
+var DemoAlertBox = React.createClass({
+
+	handleToggleAlert: function ( e ) {
+		e.preventDefault();
+		this.setState({showAlert: !this.state.showAlert});
+	},
+
+	handleToggleAnimatedAlert: function ( e ) {
+		e.preventDefault();
+		this.setState({showAnimatedAlert: !this.state.showAnimatedAlert});
+	},
+
+	handleToggleErrorAlert: function ( e ) {
+		e.preventDefault();
+		this.setState({showErrorAlert: !this.state.showErrorAlert});
+	},
+
+	getInitialState: function() {
+		return {
+			showAlert: false,
+			showAnimatedAlert: false,
+			showErrorAlert: false
+		};
+	},
+
+	render: function() {
+		return (
+			<div>
+				<a href="#" onClick={this.handleToggleAlert}>click me default</a>
+				{this.state.showAlert && (
+					<AlertBox title="Are you sure?">
+						Oh no! Please don't go!
+						<button>I'm sure</button>
+					</AlertBox>
+				)}
+				<hr />
+				<a href="#" onClick={this.handleToggleErrorAlert}>click me error</a>
+				{this.state.showErrorAlert && (
+					<AlertBox status="error" title="Are you sure?">
+						Oh no! Please don't go!
+						<button>I'm sure</button>
+					</AlertBox>
+				)}
+				<hr />
+				<a href="#" onClick={this.handleToggleAnimatedAlert}>click me with animation</a>
+				<TimeoutTransitionGroup 
+							enterTimeout={500}
+							leaveTimeout={500} 
+							transitionName="slideDown">
+					{this.state.showAnimatedAlert && (
+						<div key="my-animated-alert">
+							<AlertBox status="error" title="Are you sure?">
+								Oh no! Please don't go!
+								<button>I'm sure</button>
+							</AlertBox>
+						</div>
+					)}
+				</TimeoutTransitionGroup>
+			</div>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoAlertBox, {}), document.getElementById(Demo.domId)
+);

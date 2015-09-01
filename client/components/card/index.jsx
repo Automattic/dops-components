@@ -29,7 +29,7 @@ let CardSection = React.createClass( {
 
 	_renderWithTitle: function() {
 		var orientation = this.props.vertical ? 'vertical' : 'horizontal';
-		var wrapperClassName = "dops-card-section-orient-" + orientation;
+		var wrapperClassName = 'dops-card-section-orient-' + orientation;
 		
 		return (
 			<div className={wrapperClassName}>
@@ -78,7 +78,7 @@ let Card = React.createClass( {
 	render: function() {
 		var { style, title, meta, icon, iconLabel, ...other } = this.props;
 		return (
-			<div {...other} className={"dops-card dops-card-stacked "+this.props.className} style={this.props.style}>
+			<div {...other} className={'dops-card dops-card-stacked '+this.props.className} style={this.props.style}>
 				{this.props.title && (
 					<h2 className="dops-card-title">
 						{title}

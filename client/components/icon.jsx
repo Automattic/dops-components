@@ -17,7 +17,7 @@ var Icon = React.createClass( {
 				style={this.props.style} 
 				onMouseOver={this.props.onMouseOver} 
 				onMouseOut={this.props.onMouseOut} 
-				className={"genericon genericon-"+this.props.name}>
+				className={'genericon genericon-'+this.props.name}>
 
 				{this.props.children}
 				

@@ -1,0 +1,73 @@
+var Form = Demo.require('./form'),
+	styles = Demo.require('../styles');
+
+var DemoForm = React.createClass({
+
+	render: function() {
+		return (
+			<Form device="desktop">
+				<Form.Submit color="blue">Submit to Validate</Form.Submit>
+				<Form.Section title="Text Inputs">
+					<p>Input without label:</p>
+					<Form.TextInput 
+						name="label_input"
+						style={styles.full} />
+
+					<Form.TextInput 
+						name="label_input"
+						label="Input with Label"
+						style={styles.full}
+						required />
+
+					<Form.TextInput 
+						name="email_input"
+						label="Input with Email Validation"
+						required 
+						style={styles.full}
+						validations="isEmail"
+						validationError="This is not a valid email" />
+
+					<Form.TextInput 
+						name="email_input"
+						label="Input with Length Validation"
+						required 
+						style={styles.full}
+						validations="isLength:3"
+						validationError="Input at least 3 characters" />
+				</Form.Section>
+				
+				<Form.Section title="Labels">
+					<Form.Label label="Label with custom control">
+						My Custom Control
+					</Form.Label>
+				</Form.Section>
+
+				<Form.Section title="Checkboxen">
+					<Form.Checkbox name="my_checkbox" label="Checkbox" />
+				</Form.Section>
+
+				<Form.Section title="SelectInput">
+					<p>Label above</p>
+					<Form.SelectInput name="my_select" label="Select one">
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+					</Form.SelectInput>
+
+					<p>Inline label</p>
+					<Form.SelectInput inline name="my_select" label="Select one">
+						<option>A</option>
+						<option>B</option>
+						<option>C</option>
+					</Form.SelectInput>
+				</Form.Section>
+
+				<Form.Submit color="blue">Submit to Validate</Form.Submit>
+			</Form>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoForm, {}), document.getElementById(Demo.domId)
+);

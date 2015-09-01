@@ -51,9 +51,9 @@ let Tabs = React.createClass( {
 
 	render: function() {
 		// var theme = this._isHorizontal() ? this.styles.horizontal : this.styles.vertical;
-		var theme = this._isHorizontal() ? "horizontal" : "vertical";
+		var theme = this._isHorizontal() ? 'horizontal' : 'vertical';
 		return (
-			<div className={"dops-tabs-"+theme}>
+			<div className={'dops-tabs-'+theme}>
 				{this._renderNav()}
 				<div>
 					{React.Children.map( this.props.children, function( child, index ) {
@@ -76,7 +76,7 @@ let Tabs = React.createClass( {
 						active = this.state.activeTab === index,
 						hover = this.state.hoverTab === index;
 
-					var className = this.state.activeTab === index ? "active" : null;
+					var className = this.state.activeTab === index ? 'active' : null;
 
 					return (
 						<li key={index} className={className}>

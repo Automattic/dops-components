@@ -1,0 +1,25 @@
+var Face = Demo.require('./face');
+
+var DemoFace = React.createClass({
+
+	render: function() {
+		return (
+			<div>
+				<h3>Sad</h3>
+				<Face size={50} happiness={0} />
+				<h3>Okay</h3>
+				<Face size={50} happiness={30} />
+				<h3>Happy</h3>
+				<Face size={50} happiness={100} />
+				<h3>Sad and huge</h3>
+				<Face size={200} happiness={0} />
+				<h3>Happy and tiny</h3>
+				<Face size={20} happiness={100} />
+			</div>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoFace, {}), document.getElementById(Demo.domId)
+);

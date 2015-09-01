@@ -1,0 +1,18 @@
+var Icon = Demo.require('./icon');
+
+var DemoIcon = React.createClass({
+	
+	render: function() {
+		return (
+			<div>
+				<p>wordpress: <Icon name="wordpress" /></p>
+				<p>website: <Icon name="website" /></p>
+				<p>key: <Icon name="key" /></p>
+			</div>		
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoIcon, {}), document.getElementById(Demo.domId)
+);

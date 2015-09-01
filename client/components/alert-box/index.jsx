@@ -27,7 +27,7 @@ var AlertBox = React.createClass( {
 	},
 
 	render: function() {
-		var isError = this.props.status === "error";
+		var isError = this.props.status === 'error';
 		return (
 			<div style={m( this.styles.alertBox, isError && this.styles.error, this.props.style )}>
 				{this.props.title && ( <h2 style={this.styles.title}>{this.props.title}</h2> )}

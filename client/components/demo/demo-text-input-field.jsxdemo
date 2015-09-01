@@ -1,0 +1,46 @@
+var TextInputField = Demo.require('./form/text-input-field');
+var Button = Demo.require('./button');
+
+var DemoTextInputField = React.createClass({
+
+	handleSave: function(e) {
+		e.preventDefault();
+
+		if ( this.state.name ) {
+			this.refs.name.clearValidationMessage();
+			this.setState({ saveMessage: "Saved!" });
+		} else {
+			this.refs.name.setValidationMessage("This field is required");
+			this.setState({ saveMessage: null });
+		}
+	},
+
+	handleNameChange: function(e) {
+		var value = jQuery(e.currentTarget).val();
+		this.setState({ name: value });
+	},
+
+	getInitialState: function() {
+		return {};
+	},
+
+	render: function() {
+		return (
+			<div className="form-large">
+				Enter a value:
+				<TextInputField 
+					ref="name" 
+					placeholder="Your name" 
+					value={this.state.name} 
+					onChange={this.handleNameChange} 
+					required={true} />
+				<Button onClick={this.handleSave}>Save</Button>
+				<p>{this.state.saveMessage}</p>
+			</div>
+		);
+	},
+});
+
+React.render(
+  React.createElement(DemoTextInputField, {}), document.getElementById(Demo.domId)
+);

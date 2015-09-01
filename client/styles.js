@@ -23,7 +23,7 @@ var styles = {
 	},
 
 	accountStatusNoticon: {
-		borderRadius: "50%",
+		borderRadius: '50%',
 		width: 16,
 		height: 16,
 		marginRight: 10,
@@ -64,7 +64,7 @@ var styles = {
 
 	//forms
 	input: {
-		width: "100%",
+		width: '100%',
 		boxShadow: 'none',
 		background: '#fff',
 		border: '1px solid #d5d5d5',

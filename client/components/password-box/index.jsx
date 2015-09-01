@@ -13,8 +13,8 @@ let PasswordBox = React.createClass( {
 
 	getDefaultProps: function() {
 		return {
-			hideLabel: "hide",
-			showLabel: "show"
+			hideLabel: 'hide',
+			showLabel: 'show'
 		};
 	},
 
@@ -36,7 +36,7 @@ let PasswordBox = React.createClass( {
 
 	render: function() {
 		return (
-			<div className={"dops-password-box" + ( this.state.showPass ? "" : " dops-password-box-hidden" )}>
+			<div className={'dops-password-box' + ( this.state.showPass ? '' : ' dops-password-box-hidden' )}>
 				{this.state.showPass ? 
 					( <div>
 						<span className="dops-password-field">{this.props.value}</span>

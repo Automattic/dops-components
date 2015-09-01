@@ -1,0 +1,36 @@
+var Modal = Demo.require('./modal');
+
+var DemoModal = React.createClass({
+
+	handleOpenModal: function ( e ) {
+		e.preventDefault();
+		this.setState({showModal: true});
+	},
+
+	handleCloseModal: function() {
+		this.setState({showModal: false});
+	},
+
+	getInitialState: function() {
+		return {
+			showModal: false
+		};
+	},
+
+	render: function() {
+		return (
+			<div>
+				<a href="#" onClick={this.handleOpenModal}>open modal</a>
+				{this.state.showModal && (
+					<Modal title="My title" subtitle="My subtitle" onRequestClose={this.handleCloseModal}>
+						<h1>Hi there!</h1>
+					</Modal>
+				)}
+			</div>
+		);
+	}
+});
+
+React.render(
+  React.createElement(DemoModal, {}), document.getElementById(Demo.domId)
+);

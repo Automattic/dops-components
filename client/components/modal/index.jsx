@@ -39,7 +39,7 @@ let Modal = React.createClass( {
 
 	componentWillUnmount: function() {
 		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
-		jQuery( document ).unbind( "keyup", this.handleEscapeKey );
+		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
 	},
 
 	render: function() {

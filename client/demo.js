@@ -1,5 +1,7 @@
+require( 'babel/polyfill' );
 var Demo,
 	Sidebar = require( './components/sidebar' ),
+	LegacyDemo = require( './components/demo' ),
 	React = require( 'react' );
 
 require( './demo.scss' );
@@ -18,5 +20,8 @@ jQuery( document ).ready( function() {
 	);
 	React.render(
 		React.createElement( Sidebar, {} ), document.getElementById( 'secondary' )
+	);
+	React.render(
+		React.createElement( LegacyDemo, {} ), document.getElementById( 'legacy' )
 	);
 } );

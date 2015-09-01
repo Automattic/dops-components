@@ -46,7 +46,7 @@ var EVENT_NAME_MAP = {
 var endEvents = [];
 
 ( function detectEvents( ) {
-	if ( typeof window === "undefined" ) {
+	if ( typeof window === 'undefined' ) {
 		return;
 	}
 
@@ -135,10 +135,10 @@ let TimeoutTransitionGroupChild = React.createClass( {
 
 		if ( !animationSupported( ) ) {
 			endListener( );
-		} else if ( animationType === "enter" ) {
+		} else if ( animationType === 'enter' ) {
 			this.animationTimeout = setTimeout( endListener,
 											   this.props.enterTimeout );
-		} else if ( animationType === "leave" ) {
+		} else if ( animationType === 'leave' ) {
 			this.animationTimeout = setTimeout( endListener,
 											   this.props.leaveTimeout );
 		}

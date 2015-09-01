@@ -10,14 +10,14 @@ var Wizard = React.createClass( {
 
 	getDefaultProps: function() {
 		return {
-			width: "100%"
+			width: '100%'
 		};
 	},
 
 	getInitialState: function() {
 		return {
 			step: 0,
-			transitionType: "slideRTL"
+			transitionType: 'slideRTL'
 		};
 	},
 
@@ -33,9 +33,9 @@ var Wizard = React.createClass( {
 
 	setStep: function( stepNum ) {
 		if ( stepNum < this.state.step ) {
-			this.setState( { transitionType: "slideLTR", step: stepNum } );	
+			this.setState( { transitionType: 'slideLTR', step: stepNum } );	
 		} else {
-			this.setState( { transitionType: "slideRTL", step: stepNum } );
+			this.setState( { transitionType: 'slideRTL', step: stepNum } );
 		}
 	},
 
@@ -57,7 +57,7 @@ var Wizard = React.createClass( {
 	},
 
 	_renderSlide: function() {
-		var key = "step-"+this.state.step;
+		var key = 'step-'+this.state.step;
 		return (
 			<div key={key} style={{width: this.props.width, height: this.props.height}}>
 				{this.props.children[this.state.step]}

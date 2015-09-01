@@ -1,0 +1,44 @@
+var Wizard = Demo.require('./wizard');
+
+var DemoWizard = React.createClass({
+
+	handleNext: function( e ) {
+		e.preventDefault();
+		this.refs.wizard.next();
+	},
+
+	handlePrev: function( e ) {
+		e.preventDefault();
+		this.refs.wizard.prev();
+	},
+
+	handleStart: function( e ) {
+		e.preventDefault();
+		this.refs.wizard.setStep(0);
+	},
+
+	render: function() {
+		return (
+			<Wizard height={400} ref="wizard">
+				<div>
+					<h2>Step 1</h2>
+					<a href="#" onClick={this.handleNext}>Next &rarr;</a>
+				</div>
+				<div>
+					<h2>Step 2</h2>
+					<a href="#" onClick={this.handlePrev}>&larr; Prev</a>&nbsp;
+					<a href="#" onClick={this.handleNext}>Next &rarr;</a>
+				</div>
+				<div>
+					<h2>Step 3</h2>
+					<a href="#" onClick={this.handlePrev}>&larr; Prev</a>&nbsp;
+					<a href="#" onClick={this.handleStart}>Back to Start</a>
+				</div>
+			</Wizard>
+		);
+	},
+});
+
+React.render(
+  React.createElement(DemoWizard, {}), document.getElementById(Demo.domId)
+);

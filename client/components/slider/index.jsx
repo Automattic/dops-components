@@ -272,7 +272,7 @@ let ReactSlider = React.createClass( {
 			return defaultValue;
 		default:
 			if ( value.length !== count || defaultValue.length !== count ) {
-				console.warn( this.constructor.displayName + ": Number of values does not match number of children." );
+				console.warn( this.constructor.displayName + ': Number of values does not match number of children.' );
 			}
 			return linspace( this.props.min, this.props.max, count );
 		}
