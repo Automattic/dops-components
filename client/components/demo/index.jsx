@@ -7,7 +7,7 @@ var React = require( 'react' ),
 var _demos = [
 	{
 		title: 'Modal',
-		description: 'A simple fixed modal which has a close button, title and subtitle, and can be narrow, medium or wide',
+		description: 'A simple fixed modal which closes on esc/click-background, and can be narrow, medium or wide',
 		id: 'demo-modal',
 		js: require( 'raw!./demo-modal.jsxdemo' ),
 		requires: {
