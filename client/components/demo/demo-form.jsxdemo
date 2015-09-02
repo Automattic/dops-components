@@ -34,12 +34,46 @@ var DemoForm = React.createClass({
 						style={styles.full}
 						validations="isLength:3"
 						validationError="Input at least 3 characters" />
+
+					<Form.TextInput 
+						name="cc_input"
+						label="Input with CC Validation"
+						required 
+						style={styles.full}
+						validations="isCC"
+						validationError="Please input a valid credit card" />
+
 				</Form.Section>
 				
 				<Form.Section title="Labels">
 					<Form.Label label="Label with custom control">
 						My Custom Control
 					</Form.Label>
+				</Form.Section>
+
+				<Form.Section title="Payment field formatting">
+					<Form.TextInput 
+						name="cc_input_formatted"
+						formatter="cardNumber"
+						label="Input with CC Formatting"
+						required 
+						style={styles.full}
+						validations="isCC"
+						validationError="Please input a valid credit card" />
+
+					<Form.TextInput 
+						name="cc_expiry_input_formatted"
+						formatter="cardExpiry"
+						label="Expiry ( MM / YY )"
+						required 
+						style={styles.full} />
+
+					<Form.TextInput 
+						name="cc_cvc_input_formatted"
+						formatter="cardCVC"
+						label="CVV"
+						required 
+						style={styles.full} />
 				</Form.Section>
 
 				<Form.Section title="Checkboxen">

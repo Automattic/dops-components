@@ -1,6 +1,7 @@
 var React = require( 'react' ),
 	Formsy = require( 'formsy-react' ),
 	Button = require( '../button' ),
+	Payment = require( 'payment' ),
 	FormInputValidation = require( '../form-input-validation' );
 
 require( './style.scss' );
@@ -85,6 +86,7 @@ let TextInput = React.createClass( {
 		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
 		type: React.PropTypes.string,
+		formatter: React.PropTypes.oneOf( ['cardNumber', 'cardExpiry', 'cardCVC'] ),
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
 		validations: React.PropTypes.string,
@@ -99,6 +101,21 @@ let TextInput = React.createClass( {
 			floated: this.props.value ? this.props.value.length > 0 : false,
 			animating: this.props.value ? this.props.value.length > 0 : false,
 		};
+	},
+
+	componentDidMount: function() {
+		var el = this.refs.input.getDOMNode();
+		switch ( this.props.formatter ) {
+		case 'cardNumber':
+			Payment.formatCardNumber( el );
+			break;
+		case 'cardExpiry':
+			Payment.formatCardExpiry( el );
+			break;
+		case 'cardCVC': 
+			Payment.formatCardCVC( el );
+			break;
+		}
 	},
 
 	getDefaultProps: function() {
@@ -171,6 +188,7 @@ let TextInput = React.createClass( {
 		return (
 			<div className={className} style={style}>
 				<input 
+					ref="input"
 					type={this.props.type}
 					id={this.state.uniqueId}
 					{ ...other }
@@ -436,6 +454,10 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 	if ( value === undefined || value === null ) {
 		return false;
 	}
+
+	// strip spaces
+	value = value.replace( /\s/g, '' );
+
 	return value.length === 16 && luhnChk( value );
 } );
 
