@@ -50,7 +50,7 @@ let Form = React.createClass( {
 } );
 
 let Section = React.createClass( {
-	
+
 	propTypes: {
 		title: React.PropTypes.any,
 		id: React.PropTypes.string
@@ -59,7 +59,7 @@ let Section = React.createClass( {
 	render: function() {
 		return (
 			<div id={this.props.id}>
-				{this.props.title ? 
+				{this.props.title ?
 					(
 						<div>
 							<div className="dops-form-section-title">{this.props.title}</div>
@@ -67,7 +67,7 @@ let Section = React.createClass( {
 								{this.props.children}
 							</div>
 						</div>
-					) : 
+					) :
 					( this.props.children )
 				}
 			</div>
@@ -116,7 +116,7 @@ let TextInput = React.createClass( {
 		case 'cardExpiry':
 			Payment.formatCardExpiry( el );
 			break;
-		case 'cardCVC': 
+		case 'cardCVC':
 			Payment.formatCardCVC( el );
 			break;
 		}
@@ -139,7 +139,7 @@ let TextInput = React.createClass( {
 			if ( !inputValue.length ) {
 				this.setState( {floated: false, animating: false} );
 				return;
-			} 
+			}
 			this.setState( {animating: true} );
 			requestAnimationFrame( function() {
 				this.setState( {floated: true} );
@@ -149,7 +149,7 @@ let TextInput = React.createClass( {
 
 	render: function() {
 		var labelClass;
-		
+
 		let { style, labelSuffix, label, className, ...other } = this.props;
 
 		className = classNames( 'dops-field', 'dops-field-' + this.props.name, className );
@@ -182,7 +182,7 @@ let TextInput = React.createClass( {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
 				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
-			}							
+			}
 		}
 
 		let className = classNames( {
@@ -192,14 +192,14 @@ let TextInput = React.createClass( {
 
 		return (
 			<div className={className} style={style}>
-				<input 
+				<input
 					ref="input"
 					className='dops-form-input'
 					type={this.props.type}
 					id={this.state.uniqueId}
 					{ ...other }
 					placeholder={this.props.placeholder}
-					onChange={this.changeValue} 
+					onChange={this.changeValue}
 					value={this.getValue()} />
 
 				{this.props.children}
@@ -302,12 +302,12 @@ let Checkbox = React.createClass( {
 		return (
 			<div className={className} style={style}>
 				<Form.Label inline label={label} labelSuffix={labelSuffix} htmlFor={uniqueId} required={this.props.required}>
-					<input 
-						type="checkbox" 
+					<input
+						type="checkbox"
 						id={uniqueId}
 						{ ...other }
-						onChange={this.changeValue} 
-						checked={this.getValue()} 
+						onChange={this.changeValue}
+						checked={this.getValue()}
 						className='dops-form-checkbox' />
 				</Form.Label>
 				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
@@ -442,17 +442,16 @@ let Submit = React.createClass( {
  */
 let luhnChk = ( function( arr ) {
 	return function( ccNum ) {
-		var 
-			len = ccNum.length,
+		var len = ccNum.length,
 			bit = 1,
 			sum = 0,
 			val;
- 
+
 		while ( len ) {
 			val = parseInt( ccNum.charAt( --len ), 10 );
 			sum += ( bit ^= 1 ) ? arr[val] : val;
 		}
- 
+
 		return sum && sum % 10 === 0;
 	};
 }( [0, 2, 4, 6, 8, 1, 3, 5, 7, 9] ) );
