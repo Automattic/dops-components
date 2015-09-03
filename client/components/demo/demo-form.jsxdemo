@@ -77,7 +77,7 @@ var DemoForm = React.createClass({
 				</Form.Section>
 
 				<Form.Section title="Checkboxen">
-					<Form.Checkbox name="my_checkbox" label="Checkbox" />
+					<Form.CheckboxInput name="my_checkbox" label="Checkbox" />
 				</Form.Section>
 
 				<Form.Section title="SelectInput">
