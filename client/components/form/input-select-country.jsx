@@ -1,13 +1,15 @@
-var React = require( 'react' ),
-	Formsy = require( 'formsy-react' ),
-	Form = require( './index' );
+/** External Dependencies **/
+var React = require( 'react' );
+
+/** Internal Dependencies **/
+var SelectInput = require( './input-select' );
 
 module.exports = React.createClass( {
-	displayName: 'CountrySelect',
+	displayName: 'CountrySelectInput',
 
 	render: function() {
 		return (
-			<Form.SelectInput { ...this.props }>
+			<SelectInput { ...this.props }>
 				<option value='AFG'>Afghanistan</option>
 				<option value='ALA'>Åland Islands</option>
 				<option value='ALB'>Albania</option>
@@ -257,7 +259,7 @@ module.exports = React.createClass( {
 				<option value='YEM'>Yemen</option>
 				<option value='ZMB'>Zambia</option>
 				<option value='ZWE'>Zimbabwe</option>
-			</Form.SelectInput>
+			</SelectInput>
 		);
 	}
 } );
