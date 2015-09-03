@@ -3,6 +3,7 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	Payment = require( 'payment' ),
 	Button = require( '../button' ),
+	CountrySelect = require( './country' ),
 	FormInputValidation = require( '../form-input-validation' );
 
 require( './style.scss' );
@@ -485,5 +486,6 @@ Form.TextInput = TextInput;
 Form.Checkbox = Checkbox;
 Form.Label = Label;
 Form.Row = Row;
+Form.CountrySelect = CountrySelect;
 
 module.exports = Form;
