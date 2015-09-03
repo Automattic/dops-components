@@ -1,7 +1,8 @@
 var React = require( 'react' ),
 	Formsy = require( 'formsy-react' ),
-	Button = require( '../button' ),
+	classNames = require( 'classnames' ),
 	Payment = require( 'payment' ),
+	Button = require( '../button' ),
 	FormInputValidation = require( '../form-input-validation' );
 
 require( './style.scss' );
@@ -81,7 +82,7 @@ let TextInput = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
-		className: React.PropTypes.string,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
@@ -148,15 +149,15 @@ let TextInput = React.createClass( {
 		
 		let { style, labelSuffix, label, className, ...other } = this.props;
 
-		if ( !className ) {
-			className = 'field-' + this.props.name;
-		}
+		className = classNames( 'dops-field', 'dops-field-' + this.props.name, className );
 
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
-			labelClass = 'floating';
-			labelClass += this.state.animating ? ' floating--floated' : '';
-			labelClass += this.state.floated ? ' floating--floated-active' : '';
+			labelClass = classNames( {
+				'floating': true,
+				'floating--floated': this.state.animating,
+				'floating--floated-active': this.state.floated,
+			} );
 		}
 
 		if ( this.props.label ) {
@@ -181,14 +182,16 @@ let TextInput = React.createClass( {
 			}							
 		}
 
-		let className = 'dops-form-text' + 
-			( errorMessage ? ' dops-form-error' : '' ) + 
-			( extraClassName ? ' '+extraClassName : '' );
+		let className = classNames( {
+			'dops-form-text': true,
+			'dops-form-error': errorMessage,
+		} );
 
 		return (
 			<div className={className} style={style}>
 				<input 
 					ref="input"
+					className='dops-form-input'
 					type={this.props.type}
 					id={this.state.uniqueId}
 					{ ...other }
@@ -217,11 +220,11 @@ let Label = React.createClass( {
 	},
 
 	render: function() {
-		var className = 'dops-form-label', label;
-		
-		if ( this.props.className ) {
-			className = className + ' ' + this.props.className;
-		}
+		var label,
+			className = classNames( {
+				'dops-form-label': true,
+				'dops-form-inline': this.props.inline,
+			}, this.props.className );
 
 		if ( this.props.label ) {
 			label = this.props.label + ( this.props.required ? '*' : '' );
@@ -253,6 +256,7 @@ let Checkbox = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any.isRequired,
 		labelSuffix: React.PropTypes.any,
@@ -287,8 +291,10 @@ let Checkbox = React.createClass( {
 			}
 		}
 
-		let className = 'dops-form-checkbox' + 
-			( errorMessage ? ' dops-form-error' : '' );
+		let className = classNames( {
+			'dops-form-checkbox': true,
+			'dops-form-error': errorMessage,
+		}, this.props.className );
 
 		return (
 			<div className={className} style={style}>
@@ -299,7 +305,7 @@ let Checkbox = React.createClass( {
 						{ ...other }
 						onChange={this.changeValue} 
 						checked={this.getValue()} 
-						className="form-checkbox"/>
+						className='dops-form-checkbox' />
 				</Form.Label>
 				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
 			</div>
@@ -341,6 +347,7 @@ let SelectInput = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
 		floatingLabel: React.PropTypes.bool,
@@ -371,19 +378,19 @@ let SelectInput = React.createClass( {
 			}
 		}
 
-		let className = 'field-' + this.props.name + 
-			( errorMessage ? ' dops-form-error' : '' );
-
-		if ( this.props.inline ) {
-			className = className + ' dops-form-inline';
-		}
-
 		if ( this.props.floatingLabel ) {
-			className = className + ' dops-floating-label-input';
 			// we fake out the post-floating state because the animation makes
 			// no sense for a select input
-			labelClass = 'floating floating--floated floating--floated-active'; 
+			labelClass = 'floating floating--floated floating--floated-active';
 		}
+
+		let className = classNames( {
+			'dops-form-select': true,
+			'dops-field': true,
+			'dops-form-error': errorMessage,
+			'dops-form-inline': this.props.inline,
+			'dops-floating-label-input': this.props.floatingLabel,
+		}, this.props.className );
 
 		return (
 			<Form.Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style}>
