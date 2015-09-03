@@ -90,7 +90,10 @@ let TextInput = React.createClass( {
 		formatter: React.PropTypes.oneOf( ['cardNumber', 'cardExpiry', 'cardCVC'] ),
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
-		validations: React.PropTypes.string,
+		validations: React.PropTypes.oneOfType( [
+			React.PropTypes.string,
+			React.PropTypes.object
+		] ),
 		validationError: React.PropTypes.string,
 		onChange: React.PropTypes.func
 	},
