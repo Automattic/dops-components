@@ -5,29 +5,31 @@ body.dops-modal-showing {
 	overflow: hidden;
 }
 
-.dops-modal {
+.dops-modal-wrapper {
 	position: fixed;
-	top: 10px;
-	left: 0px;
-	right: 0px;
-	display: block;
-	margin: 0 auto;
-	max-width: 550px;
-	width: 90%;
-	background: #fff;
-	border-radius: 5px;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-	transition: all 0.5s;
-	z-index: 100;
-	clear: both;
-}
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    transition: opacity .15s linear;
+    background-color: rgba(0, 0, 0, 0.5);
 
-.dops-modal-overlay {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 100;
-	height: 100%;
-	width: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	.dops-modal {
+		position: relative;
+		display: block;
+		margin: 30px auto;
+		max-width: 550px;
+		background: #fff;
+		border-radius: 5px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+		transition: all 0.5s;
+		z-index: 100;
+		clear: both;
+	}
 }

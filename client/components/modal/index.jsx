@@ -37,6 +37,11 @@ let Modal = React.createClass( {
 		}
 	},
 
+	// prevent clicks from propagating to background
+	handleClickModal: function( e ) {
+		e.stopPropagation(); 
+	},
+
 	componentWillUnmount: function() {
 		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
 		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
@@ -56,9 +61,8 @@ let Modal = React.createClass( {
 			containerStyle = null;
 		}
 		return (
-			<div>
-				<div className="dops-modal-overlay" onClick={this.handleClickOverlay}></div>
-				<div className="dops-modal" style={containerStyle}>
+			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay}>
+				<div className="dops-modal" style={containerStyle} onClick={this.handleClickModal}>
 					{this.props.children}
 				</div>
 			</div>
