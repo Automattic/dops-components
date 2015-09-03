@@ -15,12 +15,7 @@ input[type=radio] + span {
 	line-height: 2;
 }
 
-.dops-form {
-	font-family: $sans;
-}
-
 .dops-form-section-title {
-	font-size: 11px;
 	font-weight: bold;
 	color: #333;
 	border-bottom: 1px solid #DDD;
@@ -49,9 +44,8 @@ input[type=radio] + span {
 		box-shadow: none;
 		background: #fff;
 		border: 1px solid #d5d5d5;
-		font-size: 12px;
 		padding: 8px 10px;
-	}	
+	}
 }
 
 .dops-form-select {
@@ -67,10 +61,14 @@ input[type=radio] + span {
 	}
 
 	select {
-		background-color: #f5f5f5;
-		font-size: 12px;
+		padding: 3px 5px;
 		width: 100%;
+		height: 35px;
 		min-width: 0;
+		border: 1px solid #d5d5d5;
+		border-radius: 3px;
+		background-color: #fff;
+		font-size: 12px;
 	}
 }
 
@@ -88,7 +86,6 @@ input[type=radio] + span {
 	border: 1px solid #dd3d36;
 	color: #a00;
 	display: block;
-	font-size: 12px;
 	margin: 5px 0 0 0;
 	padding: 5px;
 }
@@ -102,7 +99,6 @@ input[type=radio] + span {
 		display: block;
 		margin-top: 10px;
 		float: none;
-		font-size: 12px;
 		margin-bottom: 10px;
 		width: auto;
 
