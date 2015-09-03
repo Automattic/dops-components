@@ -17,15 +17,16 @@
 				color: #999;
 				margin: 0 10px 10px 0;
 				padding: 4px 6px;
+				text-decoration: none;
 			}
 
-			&.active, &:hover {
-				& > a {
-					border-color: black;
-					color: black;
-					background-color: #f9f9f9;
-					text-decoration: none
-				}
+			&.active a, &:hover a {
+				color: black;
+				background-color: #f9f9f9;
+			}
+
+			&.active a {
+				border-color: black;
 			}
 		}
 	}
@@ -57,11 +58,11 @@
 				padding: 15px 0;
 				text-align: center;
 				text-transform: uppercase;
+				text-decoration: none;
 			}
 
 			&.active a, &:hover a {
 				color: black;
-				text-decoration: none;
 			}
 
 			&.active {
