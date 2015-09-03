@@ -158,7 +158,7 @@ let TextInput = React.createClass( {
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
 			labelClass = classNames( {
-				'floating': true,
+				floating: true,
 				'floating--floated': this.state.animating,
 				'floating--floated-active': this.state.floated,
 			} );
