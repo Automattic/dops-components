@@ -1,7 +1,9 @@
 var React = require( 'react' ),
 	Formsy = require( 'formsy-react' ),
-	Button = require( '../button' ),
+	classNames = require( 'classnames' ),
 	Payment = require( 'payment' ),
+	Button = require( '../button' ),
+	CountrySelect = require( './country' ),
 	FormInputValidation = require( '../form-input-validation' );
 
 require( './style.scss' );
@@ -49,7 +51,7 @@ let Form = React.createClass( {
 } );
 
 let Section = React.createClass( {
-	
+
 	propTypes: {
 		title: React.PropTypes.any,
 		id: React.PropTypes.string
@@ -58,7 +60,7 @@ let Section = React.createClass( {
 	render: function() {
 		return (
 			<div id={this.props.id}>
-				{this.props.title ? 
+				{this.props.title ?
 					(
 						<div>
 							<div className="dops-form-section-title">{this.props.title}</div>
@@ -66,7 +68,7 @@ let Section = React.createClass( {
 								{this.props.children}
 							</div>
 						</div>
-					) : 
+					) :
 					( this.props.children )
 				}
 			</div>
@@ -81,7 +83,7 @@ let TextInput = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
-		className: React.PropTypes.string,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
@@ -89,7 +91,10 @@ let TextInput = React.createClass( {
 		formatter: React.PropTypes.oneOf( ['cardNumber', 'cardExpiry', 'cardCVC'] ),
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
-		validations: React.PropTypes.string,
+		validations: React.PropTypes.oneOfType( [
+			React.PropTypes.string,
+			React.PropTypes.object
+		] ),
 		validationError: React.PropTypes.string,
 		onChange: React.PropTypes.func
 	},
@@ -112,7 +117,7 @@ let TextInput = React.createClass( {
 		case 'cardExpiry':
 			Payment.formatCardExpiry( el );
 			break;
-		case 'cardCVC': 
+		case 'cardCVC':
 			Payment.formatCardCVC( el );
 			break;
 		}
@@ -135,7 +140,7 @@ let TextInput = React.createClass( {
 			if ( !inputValue.length ) {
 				this.setState( {floated: false, animating: false} );
 				return;
-			} 
+			}
 			this.setState( {animating: true} );
 			requestAnimationFrame( function() {
 				this.setState( {floated: true} );
@@ -145,18 +150,18 @@ let TextInput = React.createClass( {
 
 	render: function() {
 		var labelClass;
-		
+
 		let { style, labelSuffix, label, className, ...other } = this.props;
 
-		if ( !className ) {
-			className = 'field-' + this.props.name;
-		}
+		className = classNames( 'dops-field', 'dops-field-' + this.props.name, className );
 
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
-			labelClass = 'floating';
-			labelClass += this.state.animating ? ' floating--floated' : '';
-			labelClass += this.state.floated ? ' floating--floated-active' : '';
+			labelClass = classNames( {
+				'floating': true,
+				'floating--floated': this.state.animating,
+				'floating--floated-active': this.state.floated,
+			} );
 		}
 
 		if ( this.props.label ) {
@@ -178,22 +183,24 @@ let TextInput = React.createClass( {
 			errorMessage = this.showError() ? this.getErrorMessage() : null;
 			if ( !errorMessage ) {
 				errorMessage = this.showRequired() ? Form.requiredFieldErrorFormatter( this.props.label || this.props.placeholder || '' ) : null;
-			}							
+			}
 		}
 
-		let className = 'dops-form-text' + 
-			( errorMessage ? ' dops-form-error' : '' ) + 
-			( extraClassName ? ' '+extraClassName : '' );
+		let className = classNames( {
+			'dops-form-text': true,
+			'dops-form-error': errorMessage,
+		} );
 
 		return (
 			<div className={className} style={style}>
-				<input 
+				<input
 					ref="input"
+					className='dops-form-input'
 					type={this.props.type}
 					id={this.state.uniqueId}
 					{ ...other }
 					placeholder={this.props.placeholder}
-					onChange={this.changeValue} 
+					onChange={this.changeValue}
 					value={this.getValue()} />
 
 				{this.props.children}
@@ -217,11 +224,11 @@ let Label = React.createClass( {
 	},
 
 	render: function() {
-		var className = 'dops-form-label', label;
-		
-		if ( this.props.className ) {
-			className = className + ' ' + this.props.className;
-		}
+		var label,
+			className = classNames( {
+				'dops-form-label': true,
+				'dops-form-inline': this.props.inline,
+			}, this.props.className );
 
 		if ( this.props.label ) {
 			label = this.props.label + ( this.props.required ? '*' : '' );
@@ -253,6 +260,7 @@ let Checkbox = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any.isRequired,
 		labelSuffix: React.PropTypes.any,
@@ -287,19 +295,21 @@ let Checkbox = React.createClass( {
 			}
 		}
 
-		let className = 'dops-form-checkbox' + 
-			( errorMessage ? ' dops-form-error' : '' );
+		let className = classNames( {
+			'dops-form-checkbox': true,
+			'dops-form-error': errorMessage,
+		}, this.props.className );
 
 		return (
 			<div className={className} style={style}>
 				<Form.Label inline label={label} labelSuffix={labelSuffix} htmlFor={uniqueId} required={this.props.required}>
-					<input 
-						type="checkbox" 
+					<input
+						type="checkbox"
 						id={uniqueId}
 						{ ...other }
-						onChange={this.changeValue} 
-						checked={this.getValue()} 
-						className="form-checkbox"/>
+						onChange={this.changeValue}
+						checked={this.getValue()}
+						className='dops-form-checkbox' />
 				</Form.Label>
 				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
 			</div>
@@ -341,6 +351,7 @@ let SelectInput = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
 		floatingLabel: React.PropTypes.bool,
@@ -371,19 +382,19 @@ let SelectInput = React.createClass( {
 			}
 		}
 
-		let className = 'field-' + this.props.name + 
-			( errorMessage ? ' dops-form-error' : '' );
-
-		if ( this.props.inline ) {
-			className = className + ' dops-form-inline';
-		}
-
 		if ( this.props.floatingLabel ) {
-			className = className + ' dops-floating-label-input';
 			// we fake out the post-floating state because the animation makes
 			// no sense for a select input
-			labelClass = 'floating floating--floated floating--floated-active'; 
+			labelClass = 'floating floating--floated floating--floated-active';
 		}
+
+		let className = classNames( {
+			'dops-form-select': true,
+			'dops-field': true,
+			'dops-form-error': errorMessage,
+			'dops-form-inline': this.props.inline,
+			'dops-floating-label-input': this.props.floatingLabel,
+		}, this.props.className );
 
 		return (
 			<Form.Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style}>
@@ -432,17 +443,16 @@ let Submit = React.createClass( {
  */
 let luhnChk = ( function( arr ) {
 	return function( ccNum ) {
-		var 
-			len = ccNum.length,
+		var len = ccNum.length,
 			bit = 1,
 			sum = 0,
 			val;
- 
+
 		while ( len ) {
 			val = parseInt( ccNum.charAt( --len ), 10 );
 			sum += ( bit ^= 1 ) ? arr[val] : val;
 		}
- 
+
 		return sum && sum % 10 === 0;
 	};
 }( [0, 2, 4, 6, 8, 1, 3, 5, 7, 9] ) );
@@ -476,5 +486,6 @@ Form.TextInput = TextInput;
 Form.Checkbox = Checkbox;
 Form.Label = Label;
 Form.Row = Row;
+Form.CountrySelect = CountrySelect;
 
 module.exports = Form;
