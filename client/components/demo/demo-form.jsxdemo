@@ -1,5 +1,4 @@
-var Form = Demo.require('./form'),
-	styles = Demo.require('../styles');
+var Form = Demo.require('./form');
 
 var DemoForm = React.createClass({
 
@@ -10,20 +9,17 @@ var DemoForm = React.createClass({
 				<Form.Section title="Text Inputs">
 					<p>Input without label:</p>
 					<Form.TextInput 
-						name="label_input"
-						style={styles.full} />
+						name="label_input" />
 
 					<Form.TextInput 
 						name="label_input"
 						label="Input with Label"
-						style={styles.full}
 						required />
 
 					<Form.TextInput 
 						name="email_input"
 						label="Input with Email Validation"
 						required 
-						style={styles.full}
 						validations="isEmail"
 						validationError="This is not a valid email" />
 
@@ -31,7 +27,6 @@ var DemoForm = React.createClass({
 						name="email_input"
 						label="Input with Length Validation"
 						required 
-						style={styles.full}
 						validations="isLength:3"
 						validationError="Input at least 3 characters" />
 
@@ -39,7 +34,6 @@ var DemoForm = React.createClass({
 						name="cc_input"
 						label="Input with CC Validation"
 						required 
-						style={styles.full}
 						validations="isCC"
 						validationError="Please input a valid credit card" />
 
@@ -57,7 +51,6 @@ var DemoForm = React.createClass({
 						formatter="cardNumber"
 						label="Input with CC Formatting"
 						required 
-						style={styles.full}
 						validations="isCC"
 						validationError="Please input a valid credit card" />
 
@@ -65,15 +58,13 @@ var DemoForm = React.createClass({
 						name="cc_expiry_input_formatted"
 						formatter="cardExpiry"
 						label="Expiry ( MM / YY )"
-						required 
-						style={styles.full} />
+						required  />
 
 					<Form.TextInput 
 						name="cc_cvc_input_formatted"
 						formatter="cardCVC"
 						label="CVV"
-						required 
-						style={styles.full} />
+						required  />
 				</Form.Section>
 
 				<Form.Section title="Checkboxen">

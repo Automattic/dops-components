@@ -1,7 +1,9 @@
 require( 'babel/polyfill' );
 var Demo,
+	Tabs = require( './components/tabs' ),
 	Sidebar = require( './components/sidebar' ),
 	LegacyDemo = require( './components/demo' ),
+	Styleguide = require( './components/styleguide' ),
 	React = require( 'react' );
 
 require( './demo.scss' );
@@ -9,7 +11,17 @@ require( './demo.scss' );
 Demo = React.createClass( {
 	render: function() {
 		return (
-			<h1>It works!</h1>
+			<Tabs>
+				<Tabs.Panel title="sidebar">
+					<Sidebar />
+				</Tabs.Panel>
+				<Tabs.Panel title="styleguide">
+					<Styleguide />
+				</Tabs.Panel>
+				<Tabs.Panel title="legacy">
+					<LegacyDemo />
+				</Tabs.Panel>
+			</Tabs>
 		);
 	}
 } );
@@ -17,11 +29,5 @@ Demo = React.createClass( {
 jQuery( document ).ready( function() {
 	React.render(
 		React.createElement( Demo, {} ), document.getElementById( 'demo' )
-	);
-	React.render(
-		React.createElement( Sidebar, {} ), document.getElementById( 'secondary' )
-	);
-	React.render(
-		React.createElement( LegacyDemo, {} ), document.getElementById( 'legacy' )
 	);
 } );

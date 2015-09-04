@@ -47,7 +47,7 @@ module.exports = React.createClass( {
 			siteClass;
 
 		siteClass = classNames( {
-			site: true,
+			'site': true,
 			'is-jetpack': site.jetpack,
 			'is-primary': site.primary,
 			'is-private': site.is_private,

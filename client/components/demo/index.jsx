@@ -1,8 +1,7 @@
 /*jshint unused: false*/
 var React = require( 'react' ),
 	Codemirror = require( '../codemirror' ),
-	Col = require( '../col' ),
-	styles = require( '../../styles' );
+	Col = require( '../col' );
 
 var _demos = [
 	{
@@ -94,8 +93,7 @@ var _demos = [
 		id: 'demo-form',
 		js: require( 'raw!./demo-form.jsxdemo' ),
 		requires: {
-			'./form': require( '../form' ),
-			'../styles': require( '../../styles' )
+			'./form': require( '../form' )
 		}
 	},
 	{
@@ -105,8 +103,7 @@ var _demos = [
 		js: require( 'raw!./demo-view.jsxdemo' ),
 		requires: {
 			'./view': require( '../view' ),
-			'./card': require( '../card' ),
-			'../styles': require( '../../styles' )
+			'./card': require( '../card' )
 		}
 	},
 	{
