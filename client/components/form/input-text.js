@@ -22,7 +22,7 @@ module.exports = React.createClass( {
 		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
 		type: React.PropTypes.string,
-		formatter: React.PropTypes.oneOf( ['cardNumber', 'cardExpiry', 'cardCVC'] ),
+		formatter: React.PropTypes.oneOf( ['cardNumber', 'cardExpiry', 'cardCVV', 'cardCVC'] ),
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
 		validations: React.PropTypes.oneOfType( [
@@ -51,6 +51,7 @@ module.exports = React.createClass( {
 		case 'cardExpiry':
 			Payment.formatCardExpiry( el );
 			break;
+		case 'cardCVV':
 		case 'cardCVC':
 			Payment.formatCardCVC( el );
 			break;

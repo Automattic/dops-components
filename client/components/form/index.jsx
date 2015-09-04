@@ -1,5 +1,6 @@
 /** External Dependencies **/
 var React = require( 'react' ),
+	isArray = require( 'lodash/lang/isArray' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
@@ -10,6 +11,7 @@ var ActionBar = require( './action-bar' ),
 	TextInput = require( './input-text' ),
 	RadioInput = require( './input-radio' ),
 	CheckboxInput = require( './input-checkbox' ),
+	MultiCheckboxInput = require( './input-checkbox-multiple' ),
 	SelectInput = require( './input-select' ),
 	CountrySelect = require( './input-select-country' ),
 	HiddenInput = require( './input-hidden' ),
@@ -89,6 +91,10 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 	return value.length === 16 && luhnChk( value );
 } );
 
+Formsy.addValidationRule( 'isArray', function( values, value ) {
+	return isArray( value );
+} );
+
 Form.ActionBar = ActionBar;
 Form.Section = Section;
 Form.Row = Row;
@@ -96,6 +102,7 @@ Form.Label = Label;
 Form.TextInput = TextInput;
 Form.RadioInput = RadioInput;
 Form.CheckboxInput = CheckboxInput;
+Form.MultiCheckboxInput = MultiCheckboxInput;
 Form.SelectInput = SelectInput;
 Form.CountrySelect = CountrySelect;
 Form.HiddenInput = HiddenInput;
