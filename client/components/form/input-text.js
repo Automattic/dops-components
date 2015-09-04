@@ -17,6 +17,7 @@ module.exports = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		description: React.PropTypes.string,
 		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		floatingLabel: React.PropTypes.any,
@@ -101,7 +102,7 @@ module.exports = React.createClass( {
 
 		if ( this.props.label ) {
 			return (
-				<Label className={className} labelClassName={labelClass} style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required}>
+				<Label className={className} labelClassName={labelClass} style={style} label={label} labelSuffix={labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} description={ this.props.description }>
 					{this._renderInput( this.props.label, null, null, ...other )}
 				</Label>
 			);

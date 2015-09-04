@@ -24,6 +24,15 @@ input[type=radio] + span {
 	margin-top: 15px;
 }
 
+.dops-field-description {
+	font-size: 0.8em;
+	font-style: italic;
+
+	label + & {
+		margin-top: -5px;
+	}
+}
+
 .dops-form-section-body {
 	@include clear-fix;
 }
