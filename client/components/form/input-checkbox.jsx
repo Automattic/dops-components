@@ -53,6 +53,7 @@ module.exports = React.createClass( {
 		}
 
 		let className = classNames( {
+			'dops-field': true,
 			'dops-form-checkbox': true,
 			'dops-form-error': errorMessage,
 		}, this.props.className );
