@@ -9,6 +9,46 @@ var Label = require( './label' ),
 	FormInputValidation = require( '../form-input-validation' ),
 	requiredFieldErrorFormatter = require( './required-error-label' );
 
+var Radios = React.createClass( {
+
+	propTypes: {
+		name: React.PropTypes.string,
+		choices: React.PropTypes.array,
+		uniqueId: React.PropTypes.string,
+		changeValue: React.PropTypes.func,
+	},
+
+	getDefaultProps: function() {
+		return {
+			choices: [],
+		};
+	},
+
+	onChange: function( event ) {
+		this.props.changeValue( event );
+	},
+
+	render: function() {
+		var uniqueId = this.props.uniqueId,
+			choices = this.props.choices.map( function( choice, i ) {
+				var checked = this.props.selected === choice.value;
+				return (
+					<div className='dops-form-checkbox' key={ i }>
+						<Label inline label={ choice.label } htmlFor={ uniqueId + i }>
+							<input type='radio' id={ uniqueId + i } value={ choice.value } name={ this.props.name + '[]' } checked={ checked } onChange={ this.onChange } />
+						</Label>
+					</div>
+				);
+			}.bind( this ) );
+
+		return (
+			<fieldset>
+				{ choices }
+			</fieldset>
+		);
+	}
+});
+
 module.exports = React.createClass( {
 	displayName: 'RadioInput',
 
@@ -17,10 +57,8 @@ module.exports = React.createClass( {
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
 		description: React.PropTypes.string,
-		className: React.PropTypes.any,
-		style: React.PropTypes.any,
-		label: React.PropTypes.any.isRequired,
-		labelSuffix: React.PropTypes.any,
+		choices: React.PropTypes.any,
+		selected: React.PropTypes.any,
 		required: React.PropTypes.any,
 		validations: React.PropTypes.string,
 		validationError: React.PropTypes.string
@@ -28,7 +66,8 @@ module.exports = React.createClass( {
 
 	getInitialState: function() {
 		return {
-			uniqueId: getUniqueId()
+			uniqueId: getUniqueId(),
+			selectedItem: this.props.selected,
 		};
 	},
 
@@ -37,12 +76,11 @@ module.exports = React.createClass( {
 	},
 
 	changeValue: function( event ) {
-		this.setValue( event.target.checked );
+		this.setState( { selectedItem: event.target.value } );
+		this.setValue( event.target.value );
 	},
 
 	render: function() {
-		var { style, labelSuffix, label, ...other } = this.props;
-		var uniqueId = this.state.uniqueId;
 		var errorMessage;
 
 		if ( ! this.isPristine() ) {
@@ -59,16 +97,10 @@ module.exports = React.createClass( {
 		}, this.props.className );
 
 		return (
-			<div className={ className } style={ style }>
-				<Label inline label={ label } labelSuffix={ labelSuffix } htmlFor={ uniqueId } required={ this.props.required } description={ this.props.description }>
-					<input
-						type='radio'
-						id={ uniqueId }
-						{ ...other }
-						onChange={ this.changeValue }
-						checked={ this.getValue() }
-						className='dops-form-radio' />
-				</Label>
+			<div className={ className }>
+
+				<Radios name={ this.props.name } uniqueId={ this.state.uniqueId } choices={ this.props.choices } changeValue={ this.changeValue } selected={ this.state.selectedItem } />
+
 				{ errorMessage && ( <FormInputValidation text={ errorMessage } isError={ true } /> ) }
 			</div>
 		);
