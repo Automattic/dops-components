@@ -10,6 +10,7 @@ module.exports = React.createClass( {
 		label: React.PropTypes.any,
 		labelSuffix: React.PropTypes.any,
 		labelClassName: React.PropTypes.string,
+		description: React.PropTypes.string,
 		htmlFor: React.PropTypes.string,
 		required: React.PropTypes.any,
 		inline: React.PropTypes.any
@@ -32,6 +33,8 @@ module.exports = React.createClass( {
 					{this.props.inline && this.props.children}{label}{this.props.labelSuffix}
 				</label>}
 				{( !this.props.inline || !label ) && this.props.children}
+
+				{ this.props.description && <p className='dops-field-description'>{ this.props.description }</p> }
 			</div>
 		);
 	}

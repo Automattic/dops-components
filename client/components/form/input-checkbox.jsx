@@ -16,6 +16,7 @@ module.exports = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		description: React.PropTypes.string,
 		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any.isRequired,
@@ -58,7 +59,7 @@ module.exports = React.createClass( {
 
 		return (
 			<div className={className} style={style}>
-				<Label inline label={label} labelSuffix={labelSuffix} htmlFor={uniqueId} required={this.props.required}>
+				<Label inline label={label} labelSuffix={labelSuffix} htmlFor={uniqueId} required={this.props.required} description={ this.props.description }>
 					<input
 						type="checkbox"
 						id={uniqueId}

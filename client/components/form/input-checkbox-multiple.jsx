@@ -19,6 +19,7 @@ module.exports = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		description: React.PropTypes.string,
 		className: React.PropTypes.any,
 		choices: React.PropTypes.any,
 		defaultValue: React.PropTypes.array,
@@ -114,6 +115,8 @@ module.exports = React.createClass( {
 				{ selectAll && <hr /> }
 				{ checkboxes }
 				{ errorMessage && ( <FormInputValidation text={ errorMessage } isError={ true } /> ) }
+
+				{ this.props.description && <p className='dops-field-description'>{ this.props.description }</p> }
 			</div>
 		);
 	}

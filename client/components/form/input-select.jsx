@@ -16,6 +16,7 @@ module.exports = React.createClass( {
 
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
+		description: React.PropTypes.string,
 		className: React.PropTypes.any,
 		style: React.PropTypes.any,
 		label: React.PropTypes.any,
@@ -62,7 +63,7 @@ module.exports = React.createClass( {
 		}, this.props.className );
 
 		return (
-			<Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style}>
+			<Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style} description={ this.props.description }>
 				<div className="dops-form-select">
 					<select ref="select" id={this.state.uniqueId} value={this.getValue()} onChange={this.changeValue}>
 						{this.props.children}
