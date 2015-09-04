@@ -1,5 +1,6 @@
 /** External Dependencies **/
 var React = require( 'react' ),
+	isArray = require( 'lodash/lang/isArray' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
@@ -87,6 +88,10 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 	value = value.replace( /\s/g, '' );
 
 	return value.length === 16 && luhnChk( value );
+} );
+
+Formsy.addValidationRule( 'isArray', function( values, value ) {
+	return isArray( value );
 } );
 
 Form.ActionBar = ActionBar;
