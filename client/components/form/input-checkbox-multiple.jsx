@@ -33,7 +33,7 @@ module.exports = React.createClass( {
 		return {
 			showSelectAll: false,
 			defaultValue: [],
-		}
+		};
 	},
 
 	getInitialState: function() {
