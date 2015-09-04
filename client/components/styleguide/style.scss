@@ -1,0 +1,45 @@
+@mixin clear-fix {
+	&:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+.styleguide {
+	padding: 20px;
+	background-color: #FFF;
+
+	.clear {
+		@include clear-fix;
+	}
+
+	.styleguide-section {
+		@include clear-fix;
+		& > h2 {
+			font-size: 14px;
+			margin: 20px 0;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #CCC;
+		}
+		.styleguide-subsection {
+			& > h3 {
+				font-size: 12px;
+			}
+			float: left; 
+			clear: left;
+			width: 200px;
+			padding-right: 20px;
+			margin-bottom: 20px;
+			font-size: 10px;
+		}
+		.styleguide-section-demo {
+			float: right;
+			padding: 20px;
+			border: 1px solid #CCC;
+			width: calc(100% - 200px);
+		}
+	}
+}
