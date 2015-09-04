@@ -3,6 +3,7 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	forEach = require( 'lodash/collection/forEach' ),
 	isArray = require( 'lodash/lang/isArray' ),
+	pluck = require( 'lodash/collection/pluck' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
@@ -22,6 +23,16 @@ module.exports = React.createClass( {
 		choices: React.PropTypes.any,
 		defaultValue: React.PropTypes.array,
 		validations: React.PropTypes.string,
+		onChange: React.PropTypes.func,
+		showSelectAll: React.PropTypes.bool,
+		selectAllLabel: React.PropTypes.string,
+	},
+
+	getDefaultProps: function() {
+		return {
+			showSelectAll: false,
+			defaultValue: [],
+		}
 	},
 
 	getInitialState: function() {
@@ -43,19 +54,38 @@ module.exports = React.createClass( {
 			currentSelected.push( value );
 		}
 		this.setValue( currentSelected );
+
+		if ( this.props.showSelectAll ) {
+			this.unHighlightAllSites( event );
+		}
+	},
+
+	highlightAllSites: function( event ) {
+		if ( event.target.checked ) {
+			this.setValue( pluck( this.props.choices, 'value' ) );
+		} else {
+			this.setValue( [] );
+		}
+	},
+
+	unHighlightAllSites: function( event ) {
+		var checked = $( React.findDOMNode( this.refs.allItems ) ).prop( 'checked' );
+		if ( checked && ! event.target.checked ) {
+			$( React.findDOMNode( this.refs.allItems ) ).prop( 'checked', false );
+		}
 	},
 
 	render: function() {
 		var uniqueId = this.state.uniqueId;
 		var currentSelected = this.getValue();
-		var errorMessage;
+		var errorMessage, selectAll;
 
 		var checkboxes = this.props.choices.map( function( choice, i ) {
 			var checked = _.contains( currentSelected, choice.value );
 			return (
 				<div className='dops-form-checkbox' key={ i }>
 					<Label inline label={ choice.label } htmlFor={ uniqueId + i }>
-						<input type='checkbox' id={ uniqueId + i } ref={ 'check' + i } name={ this.props.name + '[]' } defaultValue={ choice.value } checked={ checked } onChange={ this.changeValue } />
+						<input type='checkbox' id={ uniqueId + i } name={ this.props.name + '[]' } defaultValue={ choice.value } checked={ checked } onChange={ this.changeValue } />
 					</Label>
 				</div>
 			);
@@ -68,8 +98,20 @@ module.exports = React.createClass( {
 			}
 		}
 
+		if ( this.props.showSelectAll ) {
+			selectAll = (
+				<div className='dops-form-checkbox'>
+					<Label inline label={ this.props.selectAllLabel } htmlFor={ uniqueId + 'all' }>
+						<input type='checkbox' ref='allItems' id={ uniqueId + 'all' } name={ this.props.name + '-all' } defaultChecked={ false } onChange={ this.highlightAllSites } />
+					</Label>
+				</div>
+			);
+		}
+
 		return (
 			<div>
+				{ selectAll }
+				{ selectAll && <hr /> }
 				{ checkboxes }
 				{ errorMessage && ( <FormInputValidation text={ errorMessage } isError={ true } /> ) }
 			</div>
