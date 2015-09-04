@@ -125,10 +125,12 @@ var Styleguide = React.createClass( {
 
 				<Section title="Dropdowns"> 
 					<Subsection title="Default">
-						<Form.SelectInput name="foo">
-							<option>Foo</option>
-							<option>Bar</option>
-						</Form.SelectInput>
+						<Form>
+							<Form.SelectInput name="foo">
+								<option>Foo</option>
+								<option>Bar</option>
+							</Form.SelectInput>
+						</Form>
 					</Subsection>
 				</Section>
 			</div>
