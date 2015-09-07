@@ -35,7 +35,7 @@ var Radios = React.createClass( {
 				return (
 					<div className='dops-form-checkbox' key={ i }>
 						<Label inline label={ choice.label } htmlFor={ uniqueId + i }>
-							<input type='radio' id={ uniqueId + i } value={ choice.value } name={ this.props.name + '[]' } checked={ checked } onChange={ this.onChange } />
+							<input type='radio' id={ uniqueId + i } value={ choice.value } name={ this.props.name } checked={ checked } onChange={ this.onChange } />
 						</Label>
 					</div>
 				);
