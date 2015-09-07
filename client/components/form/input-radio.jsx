@@ -47,7 +47,7 @@ var Radios = React.createClass( {
 			</fieldset>
 		);
 	}
-});
+} );
 
 module.exports = React.createClass( {
 	displayName: 'RadioInput',
