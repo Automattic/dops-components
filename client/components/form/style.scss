@@ -2,7 +2,7 @@
 @import '../../scss/layout';
 
 @mixin form-wrapper {
-	width: 100%;
+	max-width: 100%;
 }
 
 @mixin form-error {
