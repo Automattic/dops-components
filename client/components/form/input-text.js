@@ -137,6 +137,7 @@ module.exports = React.createClass( {
 					{ ...other }
 					placeholder={this.props.placeholder}
 					onChange={this.changeValue}
+					onClick={ this.props.onClick }
 					value={this.getValue()} />
 
 				{this.props.children}
