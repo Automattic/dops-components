@@ -12,12 +12,23 @@ var Picker = require( './picker' ),
 
 var SITE_HEIGHT = 66,
 	EXTRA_SITE_ITEMS_HEIGHT = 200,
-	MAX_SIDEBAR_HEIGHT = 1200;
+	MAX_SIDEBAR_HEIGHT = 600;
 
 require( './style.scss' );
 
 module.exports = React.createClass( {
 	displayName: 'MySitesNavigation',
+
+	/**
+	 * Calculate the height of the sites list based on how many sites
+	 * the user has to be displayed
+	 *
+	 * @return {number}
+	 */
+	getSitesHeight: function() {
+		var count = this.props.sites.get().length;
+		return ( count * SITE_HEIGHT ) + EXTRA_SITE_ITEMS_HEIGHT;
+	},
 
 	getInitialState: function() {
 		return {
@@ -59,6 +70,12 @@ module.exports = React.createClass( {
 				'sites-navigation': true,
 				'focus-sites': this.state.showSites
 			} );
+
+		// When layout focus is on sites list
+		// Calculate the height of the navigation block
+		if ( this.state.showSites ) {
+			containerHeight = this.getSitesHeight();
+		}
 
 		return (
 			<div className={ sidebarClass } style={ { height: containerHeight } } >
