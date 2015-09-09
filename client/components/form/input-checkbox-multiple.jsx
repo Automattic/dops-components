@@ -82,7 +82,7 @@ module.exports = React.createClass( {
 		var errorMessage, selectAll;
 
 		var checkboxes = this.props.choices.map( function( choice, i ) {
-			var checked = _.contains( currentSelected, choice.value );
+			var checked = ( -1 !== currentSelected.indexOf( choice.value ) );
 			return (
 				<div className='dops-form-checkbox' key={ i }>
 					<Label inline label={ choice.label } htmlFor={ uniqueId + i }>
