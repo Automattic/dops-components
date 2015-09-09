@@ -5,7 +5,7 @@ var React = require( 'react' );
 
 require( './style.scss' );
 
-var Gridicon = React.createClass( {
+let Gridicon = React.createClass( {
 	getDefaultProps: function() {
 		return {
 			size: 24
