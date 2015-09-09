@@ -1,3 +1,4 @@
+@import '../../scss/layout';
 @import '../../scss/calypso-colors';
 
 /* This hack is used to prevent the body from scrolling when the modal is showing */
@@ -23,7 +24,8 @@ body.dops-modal-showing {
 	.dops-modal {
 		position: relative;
 		display: block;
-		margin: 30px auto;
+		margin: 0 0;
+		height: 100%;
 		max-width: 550px;
 		background: #fff;
 		border-radius: 5px;
@@ -31,5 +33,10 @@ body.dops-modal-showing {
 		transition: all 0.5s;
 		z-index: 100;
 		clear: both;
+
+		@include breakpoint( ">480px" ) {
+			margin: 30px auto;
+			height: auto;
+		}
 	}
 }
