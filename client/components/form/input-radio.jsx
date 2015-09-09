@@ -14,6 +14,7 @@ var Radios = React.createClass( {
 	propTypes: {
 		name: React.PropTypes.string,
 		choices: React.PropTypes.array,
+		selected: React.PropTypes.any,
 		uniqueId: React.PropTypes.string,
 		changeValue: React.PropTypes.func,
 	},
