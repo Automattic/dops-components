@@ -13,6 +13,7 @@
 		display: inline-block;
 		width: calc(100% - 120px);
 		border: 1px solid #DDD;
+		overflow: scroll;
 		@extend %form-field;
 	}
 

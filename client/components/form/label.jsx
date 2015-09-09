@@ -27,9 +27,11 @@ module.exports = React.createClass( {
 			<div className={ className } style={ this.props.style }>
 				{ label && <label className={ this.props.labelClassName } htmlFor={ this.props.htmlFor }>
 					{ this.props.inline && this.props.children }
-					{ label }
-					{ this.props.required ? '*' : '' }
-					{ this.props.labelSuffix }
+					<span>
+						{ label }
+						{ this.props.required ? '*' : '' }
+						{ this.props.labelSuffix }
+					</span>
 				</label> }
 
 				{ ( ! this.props.inline || ! label ) && this.props.children }

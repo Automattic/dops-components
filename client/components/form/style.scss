@@ -112,6 +112,7 @@ input[type=radio] + span {
 		width: auto;
 
 		&.floating {
+			color: #999;
 			display: inline-block;
 			z-index: 2;
 			position: absolute;
@@ -119,11 +120,12 @@ input[type=radio] + span {
 			left: 0;
 			font-weight: normal;
 			height: 32px;
-			padding: 7px 12px;
+			padding: 10px 12px;
 			margin: 0;
 		}
 		
 		&.floating--floated {
+			color: #333;
 			z-index: 0;
 			font-weight: bold;
 			left: auto;
