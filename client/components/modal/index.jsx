@@ -1,5 +1,6 @@
 var React = require( 'react' ),
-	Icon = require( '../icon' );
+	Icon = require( '../icon' ),
+	classNames = require( 'classnames' );
 
 require( './style.scss' );
 
@@ -7,6 +8,7 @@ let Modal = React.createClass( {
 	
 	propTypes: {
 		style: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
+		className: React.PropTypes.string,
 		onRequestClose: React.PropTypes.func
 	},
 
@@ -61,7 +63,7 @@ let Modal = React.createClass( {
 			containerStyle = null;
 		}
 		return (
-			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay}>
+			<div className={classNames( "dops-modal-wrapper", this.props.className )} onClick={this.handleClickOverlay}>
 				<div className="dops-modal" style={containerStyle} onClick={this.handleClickModal}>
 					{this.props.children}
 				</div>
