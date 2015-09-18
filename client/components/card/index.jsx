@@ -1,5 +1,6 @@
 var React = require( 'react' ),
-	Icon = require( '../icon' );
+	Icon = require( '../icon' ),
+	classnames = require( 'classnames' );
 
 require( './style.scss' );
 
@@ -9,6 +10,7 @@ let CardSection = React.createClass( {
 		title: React.PropTypes.any,
 		vertical: React.PropTypes.any,
 		style: React.PropTypes.object,
+		className: React.PropTypes.string,
 		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'phone'] )
 	},
 
@@ -18,7 +20,7 @@ let CardSection = React.createClass( {
 
 	render: function() {
 		return (
-			<div className="dops-card-section" style={this.props.style}>
+			<div className={classnames( 'dops-card-section', this.props.className )} style={this.props.style}>
 				{this.props.title ? 
 					this._renderWithTitle() : 
 					this.props.children
