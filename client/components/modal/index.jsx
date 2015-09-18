@@ -63,7 +63,7 @@ let Modal = React.createClass( {
 			containerStyle = null;
 		}
 		return (
-			<div className={classNames( "dops-modal-wrapper", this.props.className )} onClick={this.handleClickOverlay}>
+			<div className={classNames( 'dops-modal-wrapper', this.props.className )} onClick={this.handleClickOverlay}>
 				<div className="dops-modal" style={containerStyle} onClick={this.handleClickModal}>
 					{this.props.children}
 				</div>
