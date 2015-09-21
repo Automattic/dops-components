@@ -40,8 +40,8 @@ module.exports = React.createClass( {
 	},
 
 	removeNotice: function( event ) {
-		if ( this.props.raw.onRemoveCallback ) {
-			this.props.raw.onRemoveCallback( event );
+		if ( this.props.onRemoveCallback ) {
+			this.props.onRemoveCallback( event );
 		}
 	},
 
