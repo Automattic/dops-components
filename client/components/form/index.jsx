@@ -25,9 +25,9 @@ let Form = React.createClass( {
 	propTypes: {
 		style: React.PropTypes.object,
 		onValidSubmit: React.PropTypes.func,
-		onInvalidValidSubmit: React.PropTypes.func,
+		onInvalidSubmit: React.PropTypes.func,
 		onValid: React.PropTypes.func,
-		onInvalidValid: React.PropTypes.func,
+		onInvalid: React.PropTypes.func,
 		validationErrors: React.PropTypes.object
 	},
 
