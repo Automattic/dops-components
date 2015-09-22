@@ -1,5 +1,5 @@
 var React = require( 'react' ),
-	AbTest = require( "./ab-test" );
+	AbTest = require( './ab-test' );
 
 // Simple AbTest wrapper which sends events to Tracks
 var Experiment = React.createClass( {

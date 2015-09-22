@@ -13,12 +13,12 @@ var random = function() {
 
 var cookie = {
 	get: function( name ) {
-		var eq = name + "=",
-			ca = document.cookie.split( ";" ),
+		var eq = name + '=',
+			ca = document.cookie.split( ';' ),
 			c = null;
 		for ( let i = 0; i < ca.length; i += 1 ) {
 			c = ca[i];
-			while ( c.charAt( 0 ) === " " ) {
+			while ( c.charAt( 0 ) === ' ' ) {
 				c = c.substring( 1, c.length );
 			}
 			if ( c.indexOf( eq ) === 0 ) {
@@ -29,22 +29,22 @@ var cookie = {
 	},
 
 	set: function( name, value, seconds ) {
-		var key = name + "=" + encodeURIComponent( value ),
-			expires = "",
-			path = "path=/",
+		var key = name + '=' + encodeURIComponent( value ),
+			expires = '',
+			path = 'path=/',
 			date = null;
 
-		if ( typeof seconds !== "undefined" ) {
+		if ( typeof seconds !== 'undefined' ) {
 			date = new Date();
 			date.setTime( date.getTime() + ( seconds * 1000 ) );
-			expires = "expires=" + date.toGMTString();
+			expires = 'expires=' + date.toGMTString();
 		}
 
-		document.cookie = [key, expires, path].join( ";" );
+		document.cookie = [key, expires, path].join( ';' );
 	},
 
 	del: function( name ) {
-		this.set( name, "", -1 );
+		this.set( name, '', -1 );
 	}
 };
 
@@ -59,7 +59,7 @@ var Variant = React.createClass( {
 			return this.props.children;
 		}
 
-		return React.createElement( "span", null, this.props.children );
+		return React.createElement( 'span', null, this.props.children );
 	}
 } );
 
@@ -123,7 +123,7 @@ var Experiment = React.createClass( {
 	},
 
 	cookieName: function() {
-		return "react_ab_" + this.props.name;
+		return 'react_ab_' + this.props.name;
 	},
 
 	clearCookie: function() {
