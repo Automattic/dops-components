@@ -12,7 +12,7 @@ let Button = React.createClass( {
 		dangerous: React.PropTypes.any,
 		destructive: React.PropTypes.any,
 		onClick: React.PropTypes.func,
-		disabled: React.PropTypes.bool,
+		disabled: React.PropTypes.any,
 		href: React.PropTypes.string,
 		style: React.PropTypes.object
 	},
@@ -27,7 +27,7 @@ let Button = React.createClass( {
 	},
 
 	render: function() {
-		var { size, color, onClick, href, primary, dangerous, destructive, disabled, ...other } = this.props;
+		var { size, color, onClick, href, primary, dangerous, destructive, ...other } = this.props;
 
 		var callback;
 
@@ -39,10 +39,6 @@ let Button = React.createClass( {
 
 		if ( primary ) {
 			className += ' is-primary';
-		}
-
-		if ( disabled ) {
-			className += ' button-disabled';
 		}
 
 		if ( href && !onClick ) {
