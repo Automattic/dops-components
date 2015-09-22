@@ -2,7 +2,7 @@ var ProgressBar = Demo.require( './progress-bar' );
 
 var DemoProgressBar = React.createClass( {
 	
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<p>10%: <ProgressBar progressPercent={10} /></p>

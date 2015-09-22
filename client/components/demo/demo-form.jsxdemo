@@ -2,7 +2,7 @@ var Form = Demo.require( './form' );
 
 var DemoForm = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		return (
 			<Form device="desktop">
 				<Form.Submit color="blue">Submit to Validate</Form.Submit>

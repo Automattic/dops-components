@@ -13,7 +13,7 @@ var DemoSlider = React.createClass( {
 		}
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
         return { 
         	value: 50
         };
@@ -23,7 +23,7 @@ var DemoSlider = React.createClass( {
 		this.setState( {value: value} );
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				Slider value is: <strong>{this.state.value}</strong>

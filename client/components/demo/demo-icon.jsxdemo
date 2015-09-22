@@ -2,7 +2,7 @@ var Icon = Demo.require( './icon' );
 
 var DemoIcon = React.createClass( {
 	
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<p>wordpress: <Icon name="wordpress" /></p>

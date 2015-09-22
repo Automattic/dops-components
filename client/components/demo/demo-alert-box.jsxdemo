@@ -4,21 +4,21 @@ var AlertBox = Demo.require( './alert-box' ),
 var DemoAlertBox = React.createClass( {
 
 	handleToggleAlert: function ( e ) {
-		e.preventDefault( );
+		e.preventDefault();
 		this.setState( {showAlert: !this.state.showAlert} );
 	},
 
 	handleToggleAnimatedAlert: function ( e ) {
-		e.preventDefault( );
+		e.preventDefault();
 		this.setState( {showAnimatedAlert: !this.state.showAnimatedAlert} );
 	},
 
 	handleToggleErrorAlert: function ( e ) {
-		e.preventDefault( );
+		e.preventDefault();
 		this.setState( {showErrorAlert: !this.state.showErrorAlert} );
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
 			showAlert: false,
 			showAnimatedAlert: false,
@@ -26,7 +26,7 @@ var DemoAlertBox = React.createClass( {
 		};
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<a href="#" onClick={this.handleToggleAlert}>click me default</a>

@@ -2,7 +2,7 @@ var Card = Demo.require( './card' );
 
 var DemoCard = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<Card title="My Card" icon="wordpress" iconLabel="Hola">

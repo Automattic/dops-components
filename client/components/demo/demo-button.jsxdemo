@@ -3,15 +3,15 @@ var Button = Demo.require( './button' );
 var DemoButton = React.createClass( {
 
 	handleClickButton: function( name, e ) {
-		e.preventDefault( );
+		e.preventDefault();
 		this.setState( { message: "Clicked "+name } );
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {};
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<div>{this.state.message}</div>

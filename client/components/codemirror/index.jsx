@@ -24,7 +24,7 @@ if ( !IS_MOBILE ) {
 }
 
 let CodeMirrorEditor = React.createClass( {
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
 			isControlled: this.props.value !== null
 		};
@@ -39,27 +39,27 @@ let CodeMirrorEditor = React.createClass( {
 		theme: React.PropTypes.string
 	},
 
-	componentDidMount: function( ) {
+	componentDidMount: function() {
 		var isTextArea = this.props.forceTextArea || IS_MOBILE;
 		if ( !isTextArea ) {
-			this.editor = CodeMirror.fromTextArea( this.refs.editor.getDOMNode( ), this.props );
+			this.editor = CodeMirror.fromTextArea( this.refs.editor.getDOMNode(), this.props );
 			this.editor.on( 'change', this.handleChange );
 		}
 	},
 
-	componentDidUpdate: function( ) {
+	componentDidUpdate: function() {
 		if ( this.editor ) {
 			if ( this.props.value !== null ) {
-				if ( this.editor.getValue( ) !== this.props.value ) {
+				if ( this.editor.getValue() !== this.props.value ) {
 					this.editor.setValue( this.props.value || this.props.defaultValue );
 				}
 			}
 		}
 	},
 
-	handleChange: function( ) {
+	handleChange: function() {
 		if ( this.editor ) {
-			let value = this.editor.getValue( );
+			let value = this.editor.getValue();
 			if ( value !== this.props.value ) {
 				if ( this.props.onChange ) {
 					this.props.onChange( {
@@ -68,7 +68,7 @@ let CodeMirrorEditor = React.createClass( {
 						}
 					} );
 				}
-				if ( this.editor.getValue( ) !== this.props.value ) {
+				if ( this.editor.getValue() !== this.props.value ) {
 					if ( this.state.isControlled ) {
 						this.editor.setValue( this.props.value );
 					} else {
@@ -79,7 +79,7 @@ let CodeMirrorEditor = React.createClass( {
 		}
 	},
 
-	render: function( ) {
+	render: function() {
 		var editor = React.createElement( 'textarea', {
 			ref: 'editor',
 			value: this.props.value,

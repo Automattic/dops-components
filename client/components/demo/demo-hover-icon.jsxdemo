@@ -2,7 +2,7 @@ var HoverIcon = Demo.require( './hover-icon' );
 
 var DemoHoverIcon = React.createClass( {
 	
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<p>hover over me: <HoverIcon name="wordpress">This is a tooltip</HoverIcon></p>

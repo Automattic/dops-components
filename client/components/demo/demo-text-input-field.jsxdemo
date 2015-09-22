@@ -4,10 +4,10 @@ var Button = Demo.require( './button' );
 var DemoTextInputField = React.createClass( {
 
 	handleSave: function( e ) {
-		e.preventDefault( );
+		e.preventDefault();
 
 		if ( this.state.name ) {
-			this.refs.name.clearValidationMessage( );
+			this.refs.name.clearValidationMessage();
 			this.setState( { saveMessage: "Saved!" } );
 		} else {
 			this.refs.name.setValidationMessage( "This field is required" );
@@ -16,15 +16,15 @@ var DemoTextInputField = React.createClass( {
 	},
 
 	handleNameChange: function( e ) {
-		var value = jQuery( e.currentTarget ).val( );
+		var value = jQuery( e.currentTarget ).val();
 		this.setState( { name: value } );
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {};
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div className="form-large">
 				Enter a value:

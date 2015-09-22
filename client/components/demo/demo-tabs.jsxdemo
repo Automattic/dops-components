@@ -3,7 +3,7 @@ var Tabs = Demo.require( './tabs' ),
 
 var DemoTabs = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		return (
 			<Card>
 				<Card.Section vertical title="Horizontal Tabs">

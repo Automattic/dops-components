@@ -25,7 +25,7 @@ var DemoView = React.createClass( {
 		}
 	},
 	
-	render: function( ) {
+	render: function() {
 		return (
 			<Card>
 				<Card.Section vertical title="Column">

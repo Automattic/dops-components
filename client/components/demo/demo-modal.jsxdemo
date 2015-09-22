@@ -3,21 +3,21 @@ var Modal = Demo.require( './modal' );
 var DemoModal = React.createClass( {
 
 	handleOpenModal: function ( e ) {
-		e.preventDefault( );
+		e.preventDefault();
 		this.setState( {showModal: true} );
 	},
 
-	handleCloseModal: function( ) {
+	handleCloseModal: function() {
 		this.setState( {showModal: false} );
 	},
 
-	getInitialState: function( ) {
+	getInitialState: function() {
 		return {
 			showModal: false
 		};
 	},
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<a href="#" onClick={this.handleOpenModal}>open modal</a>

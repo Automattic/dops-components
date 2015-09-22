@@ -2,7 +2,7 @@ var Face = Demo.require( './face' );
 
 var DemoFace = React.createClass( {
 
-	render: function( ) {
+	render: function() {
 		return (
 			<div>
 				<h3>Sad</h3>
