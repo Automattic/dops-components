@@ -72,6 +72,10 @@ module.exports = React.createClass( {
 		};
 	},
 
+	componentWillMount: function() {
+		this.setValue( this.props.selected );
+	},
+
 	getDefaultProps: function() {
 		return { required: false };
 	},
