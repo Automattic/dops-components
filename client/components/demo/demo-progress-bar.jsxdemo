@@ -1,8 +1,8 @@
-var ProgressBar = Demo.require('./progress-bar');
+var ProgressBar = Demo.require( './progress-bar' );
 
-var DemoProgressBar = React.createClass({
+var DemoProgressBar = React.createClass( {
 	
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<p>10%: <ProgressBar progressPercent={10} /></p>
@@ -11,8 +11,8 @@ var DemoProgressBar = React.createClass({
 			</div>		
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoProgressBar, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoProgressBar, {} ), document.getElementById( Demo.domId )
 );

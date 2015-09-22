@@ -1,8 +1,8 @@
-var Icon = Demo.require('./icon');
+var Icon = Demo.require( './icon' );
 
-var DemoIcon = React.createClass({
+var DemoIcon = React.createClass( {
 	
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<p>wordpress: <Icon name="wordpress" /></p>
@@ -11,8 +11,8 @@ var DemoIcon = React.createClass({
 			</div>		
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoIcon, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoIcon, {} ), document.getElementById( Demo.domId )
 );

@@ -1,24 +1,24 @@
-var AlertBox = Demo.require('./alert-box'),
-	TimeoutTransitionGroup = Demo.require('./timeout-transition-group');
+var AlertBox = Demo.require( './alert-box' ),
+	TimeoutTransitionGroup = Demo.require( './timeout-transition-group' );
 
-var DemoAlertBox = React.createClass({
+var DemoAlertBox = React.createClass( {
 
 	handleToggleAlert: function ( e ) {
-		e.preventDefault();
-		this.setState({showAlert: !this.state.showAlert});
+		e.preventDefault( );
+		this.setState( {showAlert: !this.state.showAlert} );
 	},
 
 	handleToggleAnimatedAlert: function ( e ) {
-		e.preventDefault();
-		this.setState({showAnimatedAlert: !this.state.showAnimatedAlert});
+		e.preventDefault( );
+		this.setState( {showAnimatedAlert: !this.state.showAnimatedAlert} );
 	},
 
 	handleToggleErrorAlert: function ( e ) {
-		e.preventDefault();
-		this.setState({showErrorAlert: !this.state.showErrorAlert});
+		e.preventDefault( );
+		this.setState( {showErrorAlert: !this.state.showErrorAlert} );
 	},
 
-	getInitialState: function() {
+	getInitialState: function( ) {
 		return {
 			showAlert: false,
 			showAnimatedAlert: false,
@@ -26,7 +26,7 @@ var DemoAlertBox = React.createClass({
 		};
 	},
 
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<a href="#" onClick={this.handleToggleAlert}>click me default</a>
@@ -62,8 +62,8 @@ var DemoAlertBox = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoAlertBox, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoAlertBox, {} ), document.getElementById( Demo.domId )
 );

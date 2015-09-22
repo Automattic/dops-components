@@ -1,23 +1,23 @@
-var Wizard = Demo.require('./wizard');
+var Wizard = Demo.require( './wizard' );
 
-var DemoWizard = React.createClass({
+var DemoWizard = React.createClass( {
 
 	handleNext: function( e ) {
-		e.preventDefault();
-		this.refs.wizard.next();
+		e.preventDefault( );
+		this.refs.wizard.next( );
 	},
 
 	handlePrev: function( e ) {
-		e.preventDefault();
-		this.refs.wizard.prev();
+		e.preventDefault( );
+		this.refs.wizard.prev( );
 	},
 
 	handleStart: function( e ) {
-		e.preventDefault();
-		this.refs.wizard.setStep(0);
+		e.preventDefault( );
+		this.refs.wizard.setStep( 0 );
 	},
 
-	render: function() {
+	render: function( ) {
 		return (
 			<Wizard height={400} ref="wizard">
 				<div>
@@ -37,8 +37,8 @@ var DemoWizard = React.createClass({
 			</Wizard>
 		);
 	},
-});
+} );
 
 React.render(
-  React.createElement(DemoWizard, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoWizard, {} ), document.getElementById( Demo.domId )
 );

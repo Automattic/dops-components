@@ -1,23 +1,23 @@
-var Modal = Demo.require('./modal');
+var Modal = Demo.require( './modal' );
 
-var DemoModal = React.createClass({
+var DemoModal = React.createClass( {
 
 	handleOpenModal: function ( e ) {
-		e.preventDefault();
-		this.setState({showModal: true});
+		e.preventDefault( );
+		this.setState( {showModal: true} );
 	},
 
-	handleCloseModal: function() {
-		this.setState({showModal: false});
+	handleCloseModal: function( ) {
+		this.setState( {showModal: false} );
 	},
 
-	getInitialState: function() {
+	getInitialState: function( ) {
 		return {
 			showModal: false
 		};
 	},
 
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<a href="#" onClick={this.handleOpenModal}>open modal</a>
@@ -29,8 +29,8 @@ var DemoModal = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoModal, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoModal, {} ), document.getElementById( Demo.domId )
 );

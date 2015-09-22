@@ -1,32 +1,32 @@
-var Button = Demo.require('./button');
+var Button = Demo.require( './button' );
 
-var DemoButton = React.createClass({
+var DemoButton = React.createClass( {
 
 	handleClickButton: function( name, e ) {
-		e.preventDefault();
-		this.setState({ message: "Clicked "+name });
+		e.preventDefault( );
+		this.setState( { message: "Clicked "+name } );
 	},
 
-	getInitialState: function() {
+	getInitialState: function( ) {
 		return {};
 	},
 
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<div>{this.state.message}</div>
-				<Button size="big" onClick={this.handleClickButton.bind(this, "big")}>Big Button</Button>
-				<Button onClick={this.handleClickButton.bind(this, "default")}>Default Button</Button>
-				<Button color="blue" onClick={this.handleClickButton.bind(this, "blue")}>Blue Button</Button>
-				<Button size="tiny" onClick={this.handleClickButton.bind(this, "tiny")}>Tiny Button</Button>
-				<Button size="tiny" inline={false} onClick={this.handleClickButton.bind(this, "tiny-block")}>Tiny Block Button</Button>
-				<Button size="tiny" color="blue" inline={false} onClick={this.handleClickButton.bind(this, "tiny-blue-block")}>Tiny Blue Block Button</Button>
+				<Button size="big" onClick={this.handleClickButton.bind( this, "big" )}>Big Button</Button>
+				<Button onClick={this.handleClickButton.bind( this, "default" )}>Default Button</Button>
+				<Button color="blue" onClick={this.handleClickButton.bind( this, "blue" )}>Blue Button</Button>
+				<Button size="tiny" onClick={this.handleClickButton.bind( this, "tiny" )}>Tiny Button</Button>
+				<Button size="tiny" inline={false} onClick={this.handleClickButton.bind( this, "tiny-block" )}>Tiny Block Button</Button>
+				<Button size="tiny" color="blue" inline={false} onClick={this.handleClickButton.bind( this, "tiny-blue-block" )}>Tiny Blue Block Button</Button>
 				<Button href="http://google.com">Button with href</Button>
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoButton, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoButton, {} ), document.getElementById( Demo.domId )
 );

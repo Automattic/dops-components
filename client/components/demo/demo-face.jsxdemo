@@ -1,8 +1,8 @@
-var Face = Demo.require('./face');
+var Face = Demo.require( './face' );
 
-var DemoFace = React.createClass({
+var DemoFace = React.createClass( {
 
-	render: function() {
+	render: function( ) {
 		return (
 			<div>
 				<h3>Sad</h3>
@@ -18,8 +18,8 @@ var DemoFace = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoFace, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoFace, {} ), document.getElementById( Demo.domId )
 );
