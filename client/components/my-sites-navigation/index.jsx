@@ -79,16 +79,18 @@ module.exports = React.createClass( {
 
 		return (
 			<div className={ sidebarClass } style={ { height: containerHeight } } >
-				<Picker
-					addNewPath={ this.props.addNewPath }
-					addNewString={ this.props.addNewString }
-					allSitesPath={ this.props.allSitesPath }
-					onClose={ this.closeSites }
-					onOutsideClose={ this.closeSites }
-					siteBasePath={ this.props.siteBasePath }
-					sites={ this.props.sites }
-					showingSites={ this.state.showSites }
-				/>
+				{ this.props.enableSiteSwitcher &&
+					<Picker
+						addNewPath={ this.props.addNewPath }
+						addNewString={ this.props.addNewString }
+						allSitesPath={ this.props.allSitesPath }
+						onClose={ this.closeSites }
+						onOutsideClose={ this.closeSites }
+						siteBasePath={ this.props.siteBasePath }
+						sites={ this.props.sites }
+						showingSites={ this.state.showSites }
+					/>
+				}
 				<Sidebar
 					addNewPath={ this.props.addNewPath }
 					addNewString={ this.props.addNewString }
@@ -98,6 +100,7 @@ module.exports = React.createClass( {
 					siteBasePath={ this.props.siteBasePath }
 					sites={ this.props.sites }
 					onSwitchClick={ this.showSites }
+					enableSiteSwitcher={ this.props.enableSiteSwitcher }
 				/>
 			</div>
 		);

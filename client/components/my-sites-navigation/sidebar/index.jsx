@@ -43,13 +43,15 @@ module.exports = React.createClass( {
 	render: function() {
 		return (
 			<ul className="navigation-sidebar sidebar">
-				<CurrentSite
-					addNewString={ this.props.addNewString }
-					addNewPath={ this.props.addNewPath }
-					sites={ this.props.sites }
-					siteCount={ this.props.sites.get().length }
-					onSwitchClick={ this.props.onSwitchClick }
-				/>
+				{ this.props.enableSiteSwitcher &&
+					<CurrentSite
+						addNewString={ this.props.addNewString }
+						addNewPath={ this.props.addNewPath }
+						sites={ this.props.sites }
+						siteCount={ this.props.sites.get().length }
+						onSwitchClick={ this.props.onSwitchClick }
+					/>
+				}
 				<Navigation path={ this.props.path } navigation={ this.props.navigation } />
 			</ul>
 		);
