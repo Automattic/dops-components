@@ -1,6 +1,6 @@
-var HoverIcon = Demo.require('./hover-icon');
+var HoverIcon = Demo.require( './hover-icon' );
 
-var DemoHoverIcon = React.createClass({
+var DemoHoverIcon = React.createClass( {
 	
 	render: function() {
 		return (
@@ -9,8 +9,8 @@ var DemoHoverIcon = React.createClass({
 			</div>		
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoHoverIcon, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoHoverIcon, {} ), document.getElementById( Demo.domId )
 );

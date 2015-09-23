@@ -1,6 +1,6 @@
-var Wizard = Demo.require('./wizard');
+var Wizard = Demo.require( './wizard' );
 
-var DemoWizard = React.createClass({
+var DemoWizard = React.createClass( {
 
 	handleNext: function( e ) {
 		e.preventDefault();
@@ -14,7 +14,7 @@ var DemoWizard = React.createClass({
 
 	handleStart: function( e ) {
 		e.preventDefault();
-		this.refs.wizard.setStep(0);
+		this.refs.wizard.setStep( 0 );
 	},
 
 	render: function() {
@@ -37,8 +37,8 @@ var DemoWizard = React.createClass({
 			</Wizard>
 		);
 	},
-});
+} );
 
 React.render(
-  React.createElement(DemoWizard, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoWizard, {} ), document.getElementById( Demo.domId )
 );

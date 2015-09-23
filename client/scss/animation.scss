@@ -1,0 +1,67 @@
+.slideDown-enter {
+	overflow-y: hidden;
+	max-height: 0px;
+	transition: all .5s ease-out;
+}
+
+.slideDown-enter-active {
+	overflow-y: hidden;
+	max-height: 400px;
+}
+
+.slideDown-leave {
+	overflow-y: hidden;
+	max-height: 400px;
+	transition: all .5s ease-out;	
+}
+
+.slideDown-leave-active {
+	overflow-y: hidden;
+	max-height: 0px;
+}
+
+/**
+ * Slide across right-to-left
+ */
+
+.slideRTL-enter {
+	transform: translateX(100%);
+	transition: all .2s linear;
+}
+
+.slideRTL-enter-active {
+	transform: translateX(0%);
+}
+
+.slideRTL-leave {
+	position: absolute;
+	opacity: 1;
+	transition: all .2s linear;
+}
+
+.slideRTL-leave-active {
+	opacity: 0;
+}
+
+/**
+ * Slide across left-to-right
+ */
+
+.slideLTR-enter {
+	transform: translateX(-100%);
+	transition: all .2s linear;
+}
+
+.slideLTR-enter-active {
+	transform: translateX(0%);
+}
+
+.slideLTR-leave {
+	position: absolute;
+	opacity: 1;
+	transition: all .2s linear;
+}
+
+.slideLTR-leave-active {
+	opacity: 0;
+}

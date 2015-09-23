@@ -1,6 +1,6 @@
-var Slider = Demo.require('./slider');
+var Slider = Demo.require( './slider' );
 
-var DemoSlider = React.createClass({
+var DemoSlider = React.createClass( {
 
 	style: {
 		handle: {
@@ -19,8 +19,8 @@ var DemoSlider = React.createClass({
         };
 	},
 
-	handleChangeSlider: function(value) {
-		this.setState({value: value});
+	handleChangeSlider: function( value ) {
+		this.setState( {value: value} );
 	},
 
 	render: function() {
@@ -41,8 +41,8 @@ var DemoSlider = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoSlider, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoSlider, {} ), document.getElementById( Demo.domId )
 );

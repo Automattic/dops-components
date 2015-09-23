@@ -1,6 +1,6 @@
-var Form = Demo.require('./form');
+var Form = Demo.require( './form' );
 
-var DemoForm = React.createClass({
+var DemoForm = React.createClass( {
 
 	render: function() {
 		return (
@@ -91,8 +91,8 @@ var DemoForm = React.createClass({
 			</Form>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoForm, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoForm, {} ), document.getElementById( Demo.domId )
 );

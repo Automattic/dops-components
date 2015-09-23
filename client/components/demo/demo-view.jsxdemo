@@ -1,7 +1,7 @@
-var View = Demo.require('./view'),
-	Card = Demo.require('./card');
+var View = Demo.require( './view' ),
+	Card = Demo.require( './card' );
 
-var DemoView = React.createClass({
+var DemoView = React.createClass( {
 
 	styles: {
 		view: {
@@ -84,8 +84,8 @@ var DemoView = React.createClass({
 			</Card>
 		);
 	},
-});
+} );
 
 React.render(
-  React.createElement(DemoView, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoView, {} ), document.getElementById( Demo.domId )
 );

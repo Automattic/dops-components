@@ -1,18 +1,9 @@
 var React = require( 'react' ),
 	TimeoutTransitionGroup = require( '../timeout-transition-group' );
 
+require( './style.scss' );
+
 var Wizard = React.createClass( {
-
-	propTypes: {
-		width: React.PropTypes.any,
-		height: React.PropTypes.any.isRequired
-	},
-
-	getDefaultProps: function() {
-		return {
-			width: '100%'
-		};
-	},
 
 	getInitialState: function() {
 		return {
@@ -45,10 +36,10 @@ var Wizard = React.createClass( {
 
 	render: function() {
 		return (
-			<div style={{width: this.props.width, height: this.props.height, overflow: 'hidden', position: 'relative'}}>
+			<div style={{width: '100%', overflow: 'hidden', position: 'relative'}}>
 				<TimeoutTransitionGroup 
-							enterTimeout={500}
-							leaveTimeout={500} 
+							enterTimeout={800}
+							leaveTimeout={800} 
 							transitionName={this.state.transitionType}>
 					{this._renderSlide()}
 				</TimeoutTransitionGroup>
@@ -59,7 +50,7 @@ var Wizard = React.createClass( {
 	_renderSlide: function() {
 		var key = 'step-'+this.state.step;
 		return (
-			<div key={key} style={{width: this.props.width, height: this.props.height}}>
+			<div ref="slide" key={key} style={{width: '100%', float: 'left'}}>
 				{this.props.children[this.state.step]}
 			</div>
 		);

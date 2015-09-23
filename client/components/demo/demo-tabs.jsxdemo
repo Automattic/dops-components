@@ -1,23 +1,23 @@
-var Tabs = Demo.require('./tabs'),
-	Card = Demo.require('./card');
+var Tabs = Demo.require( './tabs' ),
+	Card = Demo.require( './card' );
 
-var DemoTabs = React.createClass({
+var DemoTabs = React.createClass( {
 
 	render: function() {
 		return (
 			<Card>
 				<Card.Section vertical title="Horizontal Tabs">
-					{this._renderTabs("horizontal")}
+					{this._renderTabs( "horizontal" )}
 				</Card.Section>
 
 				<Card.Section vertical title="Vertical Tabs">
-					{this._renderTabs("vertical")}
+					{this._renderTabs( "vertical" )}
 				</Card.Section>
 			</Card>
 		);
 	},
 
-	_renderTabs: function(layout) {
+	_renderTabs: function( layout ) {
 		return (
 			<Tabs layout={layout}>
 				<Tabs.Panel title="Tab A">
@@ -34,8 +34,8 @@ var DemoTabs = React.createClass({
 			</Tabs>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoTabs, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoTabs, {} ), document.getElementById( Demo.domId )
 );

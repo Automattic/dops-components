@@ -1,6 +1,6 @@
-var Card = Demo.require('./card');
+var Card = Demo.require( './card' );
 
-var DemoCard = React.createClass({
+var DemoCard = React.createClass( {
 
 	render: function() {
 		return (
@@ -30,8 +30,8 @@ var DemoCard = React.createClass({
 			</div>
 		);
 	}
-});
+} );
 
 React.render(
-  React.createElement(DemoCard, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoCard, {} ), document.getElementById( Demo.domId )
 );

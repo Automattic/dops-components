@@ -1,23 +1,23 @@
-var TextInputField = Demo.require('./form/text-input-field');
-var Button = Demo.require('./button');
+var TextInputField = Demo.require( './form/text-input-field' );
+var Button = Demo.require( './button' );
 
-var DemoTextInputField = React.createClass({
+var DemoTextInputField = React.createClass( {
 
-	handleSave: function(e) {
+	handleSave: function( e ) {
 		e.preventDefault();
 
 		if ( this.state.name ) {
 			this.refs.name.clearValidationMessage();
-			this.setState({ saveMessage: "Saved!" });
+			this.setState( { saveMessage: "Saved!" } );
 		} else {
-			this.refs.name.setValidationMessage("This field is required");
-			this.setState({ saveMessage: null });
+			this.refs.name.setValidationMessage( "This field is required" );
+			this.setState( { saveMessage: null } );
 		}
 	},
 
-	handleNameChange: function(e) {
-		var value = jQuery(e.currentTarget).val();
-		this.setState({ name: value });
+	handleNameChange: function( e ) {
+		var value = jQuery( e.currentTarget ).val();
+		this.setState( { name: value } );
 	},
 
 	getInitialState: function() {
@@ -39,8 +39,8 @@ var DemoTextInputField = React.createClass({
 			</div>
 		);
 	},
-});
+} );
 
 React.render(
-  React.createElement(DemoTextInputField, {}), document.getElementById(Demo.domId)
+  React.createElement( DemoTextInputField, {} ), document.getElementById( Demo.domId )
 );
