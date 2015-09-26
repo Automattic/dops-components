@@ -2,14 +2,11 @@
  * External dependencies
  */
 var React = require( 'react/addons' ),
-	i18n = require( 'lib/mixins/i18n' ),
 	joinClasses = require( 'react/lib/joinClasses' );
 
 require( './style.scss' );
 
 module.exports = React.createClass( {
-	mixins: [i18n.mixin],
-	
 	displayName: 'Notice',
 
 	propTypes: {
