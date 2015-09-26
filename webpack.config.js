@@ -56,11 +56,15 @@ module.exports = {
 		chunkFilename: '[id].js'
 	},
 	resolve: {
-		extensions: [ '', '.js', '.jsx' ]
+		extensions: [ '', '.js', '.jsx' ],
+		root: path.resolve( __dirname, 'client' )
 	},
 	stats: {
 		colors: true,
 		reasons: true
+	},
+	node: {
+		fs: "empty"
 	},
 	module: {
 		loaders: [
