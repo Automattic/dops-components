@@ -1,3 +1,5 @@
+require( './credit-card-selector.scss' );
+
 /**
  * External dependencies
  */
