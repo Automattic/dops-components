@@ -3,6 +3,8 @@
  */
 var React = require( 'react/addons' );
 
+require( './stored-card.scss' );
+
 module.exports = React.createClass( {
 	displayName: 'StoredCard',
 

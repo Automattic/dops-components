@@ -82,6 +82,10 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				loader: scssLoader
+			},
+			{
+				test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+				loader: require.resolve('url-loader')+"?limit=10000&mimetype=image/svg+xml"
 			}
 		]
 	},
