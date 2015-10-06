@@ -63,10 +63,7 @@ module.exports = React.createClass( {
 					<Form.TextInput
 						name="name"
 						floatingLabel
-						label={this.translate( 'Name on Card', {
-							context: 'Upgrades: Card holder name label on credit card form',
-							textOnly: true
-						} )}/>
+						label={this.translate( 'Name on Card' )}/>
 
 					<Form.TextInput
 						name="number"
@@ -74,20 +71,14 @@ module.exports = React.createClass( {
 						validations="isCC"
 						validationError="Not a valid Credit Card number"
 						floatingLabel
-						label={this.translate( 'Card Number', {
-							context: 'Upgrades: Card number label on credit card form',
-							textOnly: true
-						} )}/>
+						label={this.translate( 'Card Number' )}/>
 
 					<div className="new-card-extras">
 						<Form.TextInput 
 							name="expiration-date"
 							className="expiration-date"
 							formatter="cardExpiry"
-							label={this.translate( 'MM/YY', {
-								context: 'Upgrades: Expiry label on credit card form',
-								textOnly: true
-							} )} 
+							label={this.translate( 'MM/YY' )} 
 							floatingLabel
 							required />
 
@@ -95,10 +86,7 @@ module.exports = React.createClass( {
 							name="cvv"
 							className="cvv"
 							formatter="cardCVV"
-							label={this.translate( 'CVV', {
-								context: 'Upgrades: 3 digit security number on credit card form',
-								textOnly: true
-							} )}
+							label={this.translate( 'CVV' )}
 							floatingLabel
 							required />
 
@@ -108,10 +96,7 @@ module.exports = React.createClass( {
 
 						<Form.TextInput 
 							name="postal-code"
-							label={this.translate( 'Postal Code', {
-								context: 'Upgrades: Postal code on credit card form',
-								textOnly: true
-							} )}
+							label={this.translate( 'Postal Code' )}
 							floatingLabel
 							required />
 						{this.props.children}
