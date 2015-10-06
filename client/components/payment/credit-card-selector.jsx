@@ -48,7 +48,9 @@ var CreditCardSelector = React.createClass( {
 			<NewCardForm
 				countriesList={ this.props.countriesList }
 				transaction={ this.props.transaction }
-				hasStoredCards={ this.props.cards.get().length > 0 } />
+				hasStoredCards={ this.props.cards.get().length > 0 }>
+				{this.props.children}
+			</NewCardForm>
 		);
 
 		return this.section( 'new-card', cardForm );

@@ -112,7 +112,9 @@ module.exports = React.createClass( {
 								context: 'Upgrades: Postal code on credit card form',
 								textOnly: true
 							} )}
+							floatingLabel
 							required />
+						{this.props.children}
 					</div>
 				</Form>
 			</div>
