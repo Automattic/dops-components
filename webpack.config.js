@@ -90,7 +90,8 @@ module.exports = {
 		]
 	},
 	eslint: {
-		configFile: path.join( __dirname, '.eslintrc' )
+		configFile: path.join( __dirname, '.eslintrc' ),
+		quiet: true
 	},
 	plugins: plugins
 };
