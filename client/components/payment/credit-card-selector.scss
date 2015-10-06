@@ -381,6 +381,7 @@
 		.new-card-header {
 			color: $blue-medium;
 			font-weight: 400;
+			font-size: 15px;
 		}
 
 		.new-card-fields {
@@ -436,7 +437,8 @@
 			margin-left: -15px;
 
 			.checkout-field,
-			.floating-label-field {
+			.floating-label-field,
+			.dops-field {
 				margin-left: 15px;
 			}
 

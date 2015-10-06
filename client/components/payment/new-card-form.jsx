@@ -81,8 +81,9 @@ module.exports = React.createClass( {
 
 					<div className="new-card-extras">
 						<Form.TextInput 
-							formatter="cardExpiry"
 							name="expiration-date"
+							className="expiration-date"
+							formatter="cardExpiry"
 							label={this.translate( 'MM/YY', {
 								context: 'Upgrades: Expiry label on credit card form',
 								textOnly: true
@@ -92,6 +93,7 @@ module.exports = React.createClass( {
 
 						<Form.TextInput 
 							name="cvv"
+							className="cvv"
 							formatter="cardCVV"
 							label={this.translate( 'CVV', {
 								context: 'Upgrades: 3 digit security number on credit card form',
@@ -102,7 +104,7 @@ module.exports = React.createClass( {
 
 						<Form.CountrySelect
 							name="country"
-							label={this.translate( 'Country', { textOnly: true } )}/>
+							className="country"/>
 
 						<Form.TextInput 
 							name="postal-code"
