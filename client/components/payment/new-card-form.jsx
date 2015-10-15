@@ -9,51 +9,37 @@ var React = require( 'react/addons' ),
 /**
  * Internal dependencies
  */
-var Form = require('../form'),
-	
-	// CountrySelect = require( 'my-sites/upgrades/components/form/country-select' ),
-	// CreditCardNumberInput = require( 'my-sites/upgrades/components/form/credit-card-number-input' ),
-	// Input = require( 'my-sites/upgrades/components/form/input' ),
-	creditCardDetails = require( 'lib/credit-card-details' );
-	// upgradesActions = require( 'lib/upgrades/actions' );
+var Form = require('../form');
 
 module.exports = React.createClass( {
 	displayName: 'NewCardForm',
 
 	propTypes: {
-		onCreditCardDetailsChange: React.PropTypes.func.isRequired
+		hasStoredCards: React.PropTypes.bool
 	},
 
-	isFieldInvalid: function( fieldName ) {
-		return ! isEmpty( this.props.transaction.errors[ fieldName ] );
-	},
+	getValidFormFields: function() {
+		var form = this.refs.form;
+		form.submit();
 
-	getFieldValue: function( fieldName ) {
-		return this.props.transaction.newCardFormFields[ fieldName ];
+		if ( form.isValid() ) {
+			return form.getCurrentValues();
+		} else {
+			console.log("error!");
+			return false;
+		}
 	},
-
-	// field: function( fieldName, componentClass, props ) {
-	// 	return React.createElement( componentClass, extend( {}, props, {
-	// 		additionalClasses: 'checkout-field',
-	// 		name: fieldName,
-	// 		onBlur: this.handleInputChange,
-	// 		onChange: this.handleInputChange,
-	// 		value: this.getFieldValue( fieldName ),
-	// 		invalid: this.isFieldInvalid( fieldName ),
-	// 		eventFormName: 'Checkout Form'
-	// 	} ) );
-	// },
 
 	render: function() {
 		let classes = classNames( 'all-fields-required', { 'has-saved-cards': this.props.hasStoredCards } );
 
 		return (
 			<div className="new-card">
-				<button type="button" className="new-card-toggle" onClick={ this.props.onSelect }>
+				<button type="button" className="new-card-toggle">
 					{ this.translate( '+ Use a New Credit/Debit Card' ) }
 				</button>
 
-				<Form className="new-card-fields">
+				<Form ref="form" className="new-card-fields">
 					{ this.props.hasStoredCards ?
 						<h6 className="new-card-header">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
 					}
@@ -104,32 +90,5 @@ module.exports = React.createClass( {
 				</Form>
 			</div>
 		);
-	},
-
-	handleInputChange: function( event ) {
-		var previousTransaction, previousValue, fieldName, nextValue, rawDetails,
-			maskedDetails;
-
-		fieldName = event.target.name;
-		nextValue = event.target.value;
-
-		previousTransaction = this.props.transaction;
-		previousValue = previousTransaction.newCardFormFields[ fieldName ];
-
-		rawDetails = {};
-		rawDetails[ fieldName ] = creditCardDetails.unmaskField( fieldName, previousValue, nextValue );
-
-		maskedDetails = {};
-		maskedDetails[ fieldName ] = creditCardDetails.maskField( fieldName, previousValue, nextValue );
-
-		// upgradesActions.setNewCreditCardDetails( {
-		// 	rawDetails: rawDetails,
-		// 	maskedDetails: maskedDetails
-		// } );
-
-		this.props.onCreditCardDetailsChange( {
-			rawDetails: rawDetails,
-			maskedDetails: maskedDetails
-		} );
 	}
 } );

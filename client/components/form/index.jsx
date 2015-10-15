@@ -36,7 +36,11 @@ let Form = React.createClass( {
 	},
 
 	isValid: function() {
-		return this.refs.form.isValid();
+		return this.refs.form.state.isValid;
+	},
+
+	getCurrentValues: function() {
+		return this.refs.form.getCurrentValues();	
 	},
 
 	submit: function() {

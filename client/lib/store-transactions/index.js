@@ -225,5 +225,6 @@ module.exports = {
 	submit: submit,
 	newCardPayment: newCardPayment,
 	storedCardPayment: storedCardPayment,
-	fullCreditsPayment: fullCreditsPayment
+	fullCreditsPayment: fullCreditsPayment,
+	createPaygateToken: createPaygateToken // added so we can independently create paygate ref
 };

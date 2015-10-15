@@ -17,7 +17,10 @@ var StoredCard = require( './stored-card' ),
 
 var CreditCardSelector = React.createClass( {
 	propTypes: {
-		onSelectPayment: React.PropTypes.func.isRequired
+		onSelectPayment: React.PropTypes.func.isRequired,
+		account: React.PropTypes.object,
+		cards: React.PropTypes.any,
+		subscription: React.PropTypes.object
 	},
 
 	getInitialState: function() {
@@ -46,8 +49,7 @@ var CreditCardSelector = React.createClass( {
 	newCardForm: function() {
 		var cardForm = (
 			<NewCardForm
-				countriesList={ this.props.countriesList }
-				transaction={ this.props.transaction }
+				ref="newCardForm"
 				hasStoredCards={ this.props.cards.get().length > 0 }>
 				{this.props.children}
 			</NewCardForm>
@@ -73,22 +75,30 @@ var CreditCardSelector = React.createClass( {
 		);
 	},
 
-	handleClickedSection: function( section ) {
-		var newPayment;
+	// Public API
+	// returns false if no valid card selected
+	getCardRef: function() {
+		var cardRef;
+		
+		if ( 'new-card' === this.state.section ) {
+			// get the form field values and check they're valid
+			var newCardValues = this.refs.newCardForm.getValidFormFields();
+			if ( newCardValues === false ) {
+				return false;
+			}
 
+			cardRef = newCardValues;
+		} else {
+			cardRef = this.getStoredCardDetails( this.state.section );
+		}
+
+		return cardRef;
+	},
+
+	handleClickedSection: function( section ) {
 		if ( section === this.state.section ) {
 			return;
 		}
-
-		if ( 'new-card' === section ) {
-			newPayment = storeTransactions.newCardPayment( this.props.transaction.newCardFormFields );
-		} else {
-			newPayment = storeTransactions.storedCardPayment( this.getStoredCardDetails( section ) );
-		}
-
-		// upgradesActions.setPayment( newPayment );
-
-		this.props.onSelectPayment( newPayment );
 
 		this.setState( { section: section } );
 	},
