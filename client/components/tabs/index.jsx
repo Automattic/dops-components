@@ -30,9 +30,13 @@ let Tabs = React.createClass( {
 		};
 	},
 
+	selectTab: function( index ) {
+		this.setState( { activeTab: index } );
+	},
+
 	handleSelectTab: function( index, e ) {
 		e.preventDefault();
-		this.setState( { activeTab: index } );
+		this.selectTab(index);
 	},
 
 	handleMouseOverTab: function( index ) {
