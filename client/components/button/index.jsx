@@ -1,6 +1,11 @@
-var React = require( 'react' );
+var React = require( 'react' ),
+	classnames = require( 'classnames' );
 
-require( './style.scss' );
+var style = require( './style.scss' );
+
+function getClass(name) {
+	return style[name];
+}
 
 let Button = React.createClass( {
 
@@ -31,15 +36,15 @@ let Button = React.createClass( {
 
 		var callback;
 
-		var className = 'button button-'+size;
+		var buttonClasses = {};
 
-		if ( href ) {
-			className += ' is-link';
-		}
+		buttonClasses[getClass('button')] = true;
+		// buttonClasses[getClass('is-link')] = !!href;
+		buttonClasses[getClass('is-primary')] = primary;
+		buttonClasses[getClass(`button-${color}`)] = (color !== 'gray');
+		buttonClasses[getClass(`button-${size}`)] = (size !== 'normal');
 
-		if ( primary ) {
-			className += ' is-primary';
-		}
+		var className = classnames(buttonClasses);
 
 		if ( href && !onClick ) {
 			callback = this.handleCallbackHref;

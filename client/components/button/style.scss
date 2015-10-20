@@ -3,13 +3,14 @@
 // TODO: factor out these colors
 $green: #518d2a;
 $lighter-green: #57972d;
+$darker-green: #2B4B16;
 $blue: #029DD6;
 
 /**
  * New Calypso-style button, from _buttons.scss
  */
 
-button {
+:local button {
 	background: transparent;
 	border: none;
 	outline: 0;
@@ -20,7 +21,7 @@ button {
 	vertical-align: baseline;
 }
 
-.button {
+:local .button {
 	background: $gray-light;
 	border-color: lighten( $gray, 20% );
 	border-style: solid;
@@ -74,7 +75,35 @@ button {
 	}
 }
 
-.button.is-link {
+:local .button.button-green {
+	background: $lighter-green;
+	border-color: lighten( $gray, 20% );
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	color: $gray-dark;
+
+
+	background: $lighter-green;
+	border-color: $green;
+	color: $white;
+
+	&:hover {
+		border-color: $darker-green;
+		color: $white;
+	}
+
+	&:focus {
+		border-color: $darker-green;
+	}
+
+	&[disabled] {
+		background: tint( $lighter-green, 50% );
+		border-color: tint( $green, 55% );
+		color: $white;
+	}
+}
+
+:local .button.is-link {
 	background: transparent;
 	border: none;
 	border-radius: 0;
@@ -92,12 +121,12 @@ button {
 	}
 }
 
-.button.hidden {
+:local .button.hidden {
 	display: none;
 }
 
 // Positions and resets font styles of noticons applied to buttons
-.button.noticon {
+:local .button.noticon {
 	line-height: inherit;
 
 	&:before {
@@ -111,7 +140,7 @@ button {
 }
 
 /* Primary buttons */
-.button.is-primary {
+:local .button.is-primary, :local .button.button-blue {
 	background: $blue-medium;
 	border-color: $blue-wordpress;
 	color: $white;
@@ -133,7 +162,7 @@ button {
 }
 
 /* Danger buttons */
-.button.is-dangerous {
+:local .button.is-dangerous {
 	color: $alert-red;
 
 	&[disabled] {
@@ -141,7 +170,7 @@ button {
 	}
 }
 
-.button.is-destructive {
+:local .button.is-destructive {
 	background: $alert-red;
 	border-color: darken( $alert-red, 20% );
 	color: $white;
@@ -153,23 +182,27 @@ button {
 }
 
 /* Custom-sized buttons */
-.button.button-large,
-.button-group.button-large .button {
+:local .button.button-normal {
+
+}
+
+:local .button.button-large,
+:local .button-group.button-large .button {
 	height: 30px;
 	line-height: 28px;
 	padding: 0 12px 2px
 }
 
-.button.button-small,
-.button-group.button-small .button {
+:local .button.button-small,
+:local .button-group.button-small .button {
 	height: 24px;
 	line-height: 22px;
 	padding: 0 8px 1px;
 	font-size: 11px
 }
 
-.button.button-hero,
-.button-group.button-hero .button {
+:local .button.button-hero,
+:local .button-group.button-hero .button {
 	font-size: 14px;
 	height: 46px;
 	line-height: 44px;
