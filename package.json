@@ -46,8 +46,16 @@
   },
   "private": true,
   "browserify": {
+    "extensions": [
+      ".jsx"
+    ],
     "transform": [
-      "reactify"
+      "reactify",
+      "browserify-shim"
     ]
+  },
+  "browserify-shim": {
+    "underscore": "global:_",
+    "react": "global:React"
   }
 }
