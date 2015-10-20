@@ -1,0 +1,22 @@
+.dops-progress-bar {
+	font-weight: 400;
+	font-size: 80%;
+}
+
+.dops-progress-bar__progress {
+	background: #4ab866;
+	width: 0%;
+	transition: width 0.5s;
+	display: block;
+	height: 100%;
+}
+
+.dops-progress-bar__bar {
+	display: inline-block;
+	width: 80px;
+	height: 12px;
+	margin: 0 8px -2px 0;
+	padding: 2px;
+	border-radius: 2px;
+	background: #f5f5f5;
+}
