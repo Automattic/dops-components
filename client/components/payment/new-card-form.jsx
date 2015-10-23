@@ -4,18 +4,28 @@
 var React = require( 'react/addons' ),
 	extend = require( 'lodash/object/assign' ),
 	isEmpty = require( 'lodash/lang/isEmpty' ),
-	classNames = require( 'classnames' );
+	classNames = require( 'classnames' ),
+	assign = require( 'lodash/object/assign' );
 
 /**
  * Internal dependencies
  */
-var Form = require('../form');
+var Form = require('../form'),
+	// XXX temporary hack because default country select has 3-char countries
+	CountrySelect = require('../form/input-select-country-2'); 
 
 module.exports = React.createClass( {
 	displayName: 'NewCardForm',
 
 	propTypes: {
-		hasStoredCards: React.PropTypes.bool
+		hasStoredCards: React.PropTypes.bool,
+		defaultCCInfo: React.PropTypes.object.isRequired
+	},
+
+	getInitialState: function() {
+		return {
+			formValue: assign({}, this.props.defaultCCInfo)
+		};
 	},
 
 	getValidFormFields: function() {
@@ -31,6 +41,7 @@ module.exports = React.createClass( {
 	},
 
 	render: function() {
+		console.log(this.state.formValue);
 		let classes = classNames( 'all-fields-required', { 'has-saved-cards': this.props.hasStoredCards } );
 
 		return (
@@ -39,7 +50,7 @@ module.exports = React.createClass( {
 					{ this.translate( '+ Use a New Credit/Debit Card' ) }
 				</button>
 
-				<Form ref="form" className="new-card-fields">
+				<Form ref="form" value={this.state.formValue} className="new-card-fields">
 					{ this.props.hasStoredCards ?
 						<h6 className="new-card-header">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
 					}
@@ -48,6 +59,7 @@ module.exports = React.createClass( {
 
 					<Form.TextInput
 						name="name"
+						value={this.state.formValue.name}
 						floatingLabel
 						label={this.translate( 'Name on Card' )}/>
 
@@ -76,12 +88,14 @@ module.exports = React.createClass( {
 							floatingLabel
 							required />
 
-						<Form.CountrySelect
+						<CountrySelect
 							name="country"
+							value={this.state.formValue.country}
 							className="country"/>
 
 						<Form.TextInput 
 							name="postal-code"
+							value={this.state.formValue['postal-code']}
 							label={this.translate( 'Postal Code' )}
 							floatingLabel
 							required />
