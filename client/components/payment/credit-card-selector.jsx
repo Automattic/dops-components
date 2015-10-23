@@ -18,9 +18,8 @@ var StoredCard = require( './stored-card' ),
 var CreditCardSelector = React.createClass( {
 	propTypes: {
 		onSelectPayment: React.PropTypes.func.isRequired,
-		account: React.PropTypes.object,
-		cards: React.PropTypes.any,
-		subscription: React.PropTypes.object
+		defaultCCInfo: React.PropTypes.object.isRequired,
+		cards: React.PropTypes.any
 	},
 
 	getInitialState: function() {
@@ -50,7 +49,8 @@ var CreditCardSelector = React.createClass( {
 		var cardForm = (
 			<NewCardForm
 				ref="newCardForm"
-				hasStoredCards={ this.props.cards.get().length > 0 }>
+				hasStoredCards={ this.props.cards.get().length > 0 }
+				defaultCCInfo={ this.props.defaultCCInfo }>
 				{this.props.children}
 			</NewCardForm>
 		);
