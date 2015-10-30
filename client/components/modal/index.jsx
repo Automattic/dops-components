@@ -1,20 +1,22 @@
 var React = require( 'react' ),
 	Icon = require( '../icon' ),
-	classNames = require( 'classnames' );
+	classNames = require( 'classnames' ),
+	assign = require( 'lodash/object/assign' );
 
 require( './style.scss' );
 
 let Modal = React.createClass( {
 	
 	propTypes: {
-		style: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
+		style: React.PropTypes.object,
+		width: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
 		className: React.PropTypes.string,
 		onRequestClose: React.PropTypes.func
 	},
 
 	getDefaultProps: function() {
 		return {
-			style: 'narrow'
+			style: {}
 		};
 	},
 
@@ -50,9 +52,9 @@ let Modal = React.createClass( {
 	},
 
 	render: function() {
-		var containerStyle;
+		var containerStyle, style;
 
-		switch ( this.props.style ) {
+		switch ( this.props.width ) {
 		case 'wide':
 			containerStyle = { maxWidth: 'inherit' };
 			break;
@@ -60,11 +62,14 @@ let Modal = React.createClass( {
 			containerStyle = { maxWidth: 1050 };
 			break;
 		default:
-			containerStyle = null;
+			containerStyle = {};
 		}
+
+		style = assign(this.props.style, containerStyle);
+
 		return (
 			<div className={classNames( 'dops-modal-wrapper', this.props.className )} onClick={this.handleClickOverlay}>
-				<div className="dops-modal" style={containerStyle} onClick={this.handleClickModal}>
+				<div className="dops-modal" style={style} onClick={this.handleClickModal}>
 					{this.props.children}
 				</div>
 			</div>
