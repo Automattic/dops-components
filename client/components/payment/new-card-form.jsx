@@ -41,7 +41,6 @@ module.exports = React.createClass( {
 	},
 
 	render: function() {
-		console.log(this.state.formValue);
 		let classes = classNames( 'all-fields-required', { 'has-saved-cards': this.props.hasStoredCards } );
 
 		return (
