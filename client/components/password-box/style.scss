@@ -11,17 +11,14 @@
 
 	.dops-password-field {
 		display: inline-block;
-		width: calc(100% - 120px);
+		width: 100%;
 		border: 1px solid #DDD;
 		overflow: scroll;
 		@extend %form-field;
 	}
 
-	.dops-password-button {
-		margin-left: 20px;
-		width: calc(100px);
-		button {
-			width: 100px;
-		}
+	svg {
+		float: right;
+		fill: #a8bece;
 	}
 }
