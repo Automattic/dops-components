@@ -25,7 +25,8 @@ module.exports = React.createClass( {
 		labelSuffix: React.PropTypes.any,
 		required: React.PropTypes.any,
 		validations: React.PropTypes.string,
-		validationError: React.PropTypes.string
+		validationError: React.PropTypes.string,
+		onChange: React.PropTypes.func
 	},
 
 	getInitialState: function() {
@@ -34,8 +35,12 @@ module.exports = React.createClass( {
 		};
 	},
 
-	changeValue: function( event ) {
+	handleChange: function( event ) {
 		this.setValue( event.target.value );
+
+		if ( this.props.onChange ) {
+			this.props.onChange( event );
+		}
 	},
 
 	render: function() {
@@ -65,7 +70,7 @@ module.exports = React.createClass( {
 		return (
 			<Label className={className} inline={this.props.inline} labelClassName={labelClass} label={this.props.label} labelSuffix={this.props.labelSuffix} htmlFor={this.state.uniqueId} required={this.props.required} style={this.props.style} description={ this.props.description }>
 				<div className="dops-form-select">
-					<select ref="select" id={this.state.uniqueId} value={this.getValue()} onChange={this.changeValue}>
+					<select ref="select" id={this.state.uniqueId} value={this.getValue()} onChange={this.handleChange}>
 						{this.props.children}
 					</select>
 				</div>
