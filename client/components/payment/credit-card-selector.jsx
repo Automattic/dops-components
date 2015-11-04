@@ -87,9 +87,9 @@ var CreditCardSelector = React.createClass( {
 				return false;
 			}
 
-			cardRef = newCardValues;
+			cardRef = storeTransactions.newCardPayment( newCardValues );
 		} else {
-			cardRef = this.getStoredCardDetails( this.state.section );
+			cardRef = storeTransactions.storedCardPayment( this.getStoredCardDetails( this.state.section ) );
 		}
 
 		return cardRef;
