@@ -21,6 +21,7 @@ body.dops-modal-showing {
 	outline: 0;
 	transition: opacity .15s linear;
 	background-color: rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 
 	&:before {
 		content: '';
@@ -41,6 +42,7 @@ body.dops-modal-showing {
 		transition: all 0.5s;
 		z-index: 100;
 		clear: both;
+		cursor: default;
 
 		@include breakpoint( ">480px" ) {
 			margin: 0 auto;
