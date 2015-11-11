@@ -6,7 +6,7 @@ var React = require( 'react' ),
 require( './style.scss' );
 
 let Modal = React.createClass( {
-	
+
 	propTypes: {
 		style: React.PropTypes.object,
 		width: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
@@ -65,7 +65,7 @@ let Modal = React.createClass( {
 			containerStyle = {};
 		}
 
-		style = assign(this.props.style, containerStyle);
+		style = assign({}, this.props.style, containerStyle);
 
 		return (
 			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay}>
