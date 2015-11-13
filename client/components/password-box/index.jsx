@@ -1,6 +1,7 @@
 var React = require( 'react' ),
 	classNames = require( 'classnames' ),
-	Gridicon = require( '../gridicon' );
+	Gridicon = require( '../gridicon' ),
+	ScreenReaderText = require( '../screen-reader-text' );
 
 require( './style.scss' );
 
@@ -45,6 +46,7 @@ let PasswordBox = React.createClass( {
 					<span className='dops-text-input'>************</span>
 					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
 						<Gridicon icon="visible" />
+						<ScreenReaderText>{ this.props.showLabel }</ScreenReaderText>
 					</button>
 				</div>
 			);
@@ -54,6 +56,7 @@ let PasswordBox = React.createClass( {
 					<input className='dops-text-input' type="text" value={ this.props.value } />
 					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
 						<Gridicon icon="not-visible" />
+						<ScreenReaderText>{ this.props.hideLabel }</ScreenReaderText>
 					</button>
 				</div>
 			);
