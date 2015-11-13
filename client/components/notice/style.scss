@@ -4,9 +4,10 @@
 
 .notice {
 	flex: 1 100%;
+	display: flex;
+		flex-wrap: wrap;
 	position: relative;
 	margin-bottom: 24px;
-	padding: 11px 24px;
 	border-radius: 1px;
 	background: $gray-light;
 	box-sizing: border-box;
@@ -14,32 +15,30 @@
 	line-height: 1.4285;
 	animation: appear .3s ease-in-out;
 
-	&.is-dismissable {
-		padding-right: 68px;
+	.notice__text {
+		flex-grow: 1;
+		flex-basis: 100px;
+
+		padding: 11px 24px;
+
+		@include breakpoint( ">660px" ) {
+			padding: 13px 48px;
+		}
 	}
 
 	@include breakpoint( ">660px" ) {
-		padding: 13px 48px;
 		font-size: inherit;
-
-		&.is-dismissable {
-			padding-right: 60px;
-		}
 
 		&::before {
 			@extend %noticon;
 			content: '\f456';
 			position: absolute;
-			top: 23px;
-			left: 20px;
+				top: 26px;
+				left: 20px;
 			margin: -12px 0px 0 -8px;
 			font-size: 24px;
 			line-height: 1;
 		}
-	}
-
-	span {
-		color: inherit !important;
 	}
 
 	// Success!
@@ -87,6 +86,7 @@
 
 	a,
 	button.is-link {
+		margin-left: 8px;
 		line-height: 1.4285;
 		font-weight: 600;
 
@@ -127,11 +127,16 @@
 	&.is-info {
 		color: $white;
 
+		span {
+			color: inherit;
+		}
+
 		a,
 		button.is-link {
 			color: rgba( $white, 0.85 );
 
-			&:hover {
+			&:hover,
+			&:focus {
 				color: $white;
 			}
 		}
@@ -149,26 +154,20 @@
 
 // "X" for dismissing a notice
 .notice__dismiss {
-	position: absolute;
-	right: 0;
-	top: 0;
+	display: flex;
+	padding: 9px 16px;
 	cursor: pointer;
 	color: $gray;
+
+	@include breakpoint( ">660px" ) {
+		padding: 13px 16px;
+	}
 
 	&:hover,
 	&:focus {
 		color: $gray-dark;
 	}
-	&::before {
-		position: absolute;
-		top: 24px;
-		left: 14px;
-		margin-top: -8px;
 
-		@include breakpoint( ">660px" ) {
-			left: 16px;
-		}
-	}
 	.notice & {
 		color: $gray;
 		opacity: 0.85;
@@ -178,63 +177,53 @@
 			opacity: 1;
 		}
 	}
-	.notice.is-compact & {
-		width: 44px;
-
-		&::before {
-			left: 14px;
-			top: 21px;
-		}
-	}
-
-	@include breakpoint( ">660px" ) {
-		width: 48px;
-	}
-
-	@include breakpoint( "<660px" ) {
-		top: -2px;
-		width: 44px;
-	}
 }
 
 // Compact notices
 .notice.is-compact {
-	padding: 11px 24px 11px 16px;
 	margin-bottom: 8px;
 	font-size: 14px;
 
-	&.is-dismissable {
-		padding-right: 68px;
+	.notice__text {
+		padding: 11px 24px 11px 16px;
 	}
 
 	&::before {
 		display: none;
+	}
+
+	.notice__dismiss {
+		padding: 9px 16px;
+	}
+
+	a.notice__arrow-link .gridicon {
+		width: 18px;
+		height: 18px;
 	}
 }
 
 // ArrowLink sub-component
 // specificity for general `a` elements within notice is too great
 .notice a.notice__arrow-link {
-	background: rgba( 255, 255, 255, 0.2 );
+	background: rgba( 0, 0, 0, 0.2 );
 	box-sizing: border-box;
 	color: $white;
+	cursor: pointer;
+	display: flex;
+		align-items: center;
 	font-weight: 400;
-	height: 100%;
-	line-height: 1.4285;
+	line-height: 1.2;
+	margin-left: auto; // forces the element to the right;
 	padding: 13px 10px 13px 16px;
-	position: absolute;
-		right: 0;
-		top: 0;
 	text-decoration: none;
+	white-space: nowrap;
 
-	.noticon {
-		font-size: 24px;
+	.gridicon {
 		margin-left: 8px;
-		margin-top: -2px;
 	}
 
 	&:hover,
 	&:focus {
-		background: rgba( 0, 0, 0, 0.2 );
+		background: rgba( 255, 255, 255, 0.2 );
 	}
 }
