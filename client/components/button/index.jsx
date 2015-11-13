@@ -32,7 +32,7 @@ let Button = React.createClass( {
 
 		if ( this.props.href && !this.props.onClick ) {
 			window.location = this.props.href;
-		} else {
+		} else if ( this.props.onClick ) {
 			this.props.onClick( e );
 		}
 	},
