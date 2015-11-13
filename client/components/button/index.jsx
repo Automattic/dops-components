@@ -1,6 +1,10 @@
-var React = require( 'react' ),
-	classnames = require( 'classnames' ),
-	A11yMixin = require( '../../lib/a11y-mixin' );
+/**
+ * External dependencies
+ */
+import React from 'react';
+import assign from 'lodash/object/assign';
+import classNames from 'classnames';
+import noop from 'lodash/utility/noop';
 
 var style = require( './style.scss' );
 
@@ -8,54 +12,41 @@ function getClass(name) {
 	return style[name];
 }
 
-let Button = React.createClass( {
-	mixins: [A11yMixin],
+export default React.createClass( {
+
+	displayName: 'Button',
+
 	propTypes: {
-		size: React.PropTypes.oneOf( ['small', 'normal', 'large', 'hero'] ),
-		color: React.PropTypes.oneOf( ['gray', 'blue', 'green'] ),
-		// theme: React.PropTypes.oneOf( ['wp', 'jetpack'] ),
-		primary: React.PropTypes.any,
-		dangerous: React.PropTypes.any,
-		destructive: React.PropTypes.any,
-		onClick: React.PropTypes.func,
-		disabled: React.PropTypes.any,
+		disabled: React.PropTypes.bool,
+		compact: React.PropTypes.bool,
+		primary: React.PropTypes.bool,
+		scary: React.PropTypes.bool,
+		type: React.PropTypes.string,
 		href: React.PropTypes.string,
-		style: React.PropTypes.object
+		onClick: React.PropTypes.func
 	},
 
-	getDefaultProps: function() {
-		return { size: 'normal', inline: true, color: 'gray', theme: 'wp', disabled: false };
+	getDefaultProps() {
+		return {
+			disabled: false,
+			type: 'button',
+			onClick: noop
+		};
 	},
 
-	handleClick: function( e ) {
-		e.preventDefault();
+	render() {
+		const element = this.props.href ? 'a' : 'button';
 
-		if ( this.props.href && !this.props.onClick ) {
-			window.location = this.props.href;
-		} else {
-			this.props.onClick( e );
-		}
-	},
+		let buttonClasses = {};
+		buttonClasses[ getClass( 'button' ) ] = true;
+		buttonClasses[ getClass( 'is-compact' ) ] = this.props.compact;
+		buttonClasses[ getClass( 'is-primary' ) ] = this.props.primary;
+		buttonClasses[ getClass( 'is-scary' ) ] = this.props.scary;
 
-	render: function() {
-		var { size, color, onClick, href, primary, dangerous, destructive, ...other } = this.props;
+		const props = assign( {}, this.props, {
+			className: classNames( this.props.className, buttonClasses )
+		} );
 
-		var buttonClasses = {};
-
-		buttonClasses[getClass('button')] = true;
-		// buttonClasses[getClass('is-link')] = !!href;
-		buttonClasses[getClass('is-primary')] = primary;
-		buttonClasses[getClass(`button-${color}`)] = (color !== 'gray');
-		buttonClasses[getClass(`button-${size}`)] = (size !== 'normal');
-
-		var className = classnames(buttonClasses);
-
-		return (
-			<button {...other} role="button" onKeyDown={this.handleKeyDown.bind(this, this.handleClick)} className={className} style={this.props.style} onClick={this.handleClick}>
-				{this.props.children}
-			</button>
-		);
+		return React.createElement( element, props, this.props.children );
 	}
 } );
-
-module.exports = Button;

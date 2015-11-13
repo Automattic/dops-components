@@ -6,10 +6,11 @@ $lighter-green: #57972d;
 $darker-green: #2B4B16;
 $blue: #029DD6;
 
-/**
- * New Calypso-style button, from _buttons.scss
- */
+// ==========================================================================
+// Buttons
+// ==========================================================================
 
+// resets button styles
 :local button {
 	background: transparent;
 	border: none;
@@ -48,15 +49,12 @@ $blue: #029DD6;
 		border-color: lighten( $gray, 10% );
 		color: $gray-dark;
 	}
-
 	&:active {
 		border-width: 2px 1px 1px;
 	}
-
 	&:visited {
 		color: $gray-dark;
 	}
-
 	&[disabled],
 	&:disabled {
 		color: lighten( $gray, 30% );
@@ -68,40 +66,96 @@ $blue: #029DD6;
 			border-width: 1px 1px 2px;
 		}
 	}
-
 	&:focus {
 		border-color: $blue-medium;
 		box-shadow: 0 0 0 2px $blue-light;
 	}
+	&.is-compact {
+		padding: 7px;
+		color: darken( $gray, 10% );
+		font-size: 11px;
+		line-height: 1;
+		text-transform: uppercase;
+
+		&:disabled {
+			color: lighten( $gray, 30% );
+		}
+		.gridicon {
+			top: 4px;
+			margin-top: -8px;
+		}
+	}
+	&.hidden {
+		display: none;
+	}
+	.gridicon {
+		position: relative;
+			top: 4px;
+		margin-top: -2px;
+		width: 18px;
+		height: 18px;
+	}
 }
 
-:local .button.button-green {
-	background: $lighter-green;
-	border-color: lighten( $gray, 20% );
-	border-style: solid;
-	border-width: 1px 1px 2px;
-	color: $gray-dark;
-
-
-	background: $lighter-green;
-	border-color: $green;
+// Primary buttons
+:local .button.is-primary {
+	background: $blue-medium;
+	border-color: $blue-wordpress;
 	color: $white;
 
-	&:hover {
-		border-color: $darker-green;
+	&:hover,
+	&:focus {
+		border-color: $blue-dark;
 		color: $white;
 	}
-
-	&:focus {
-		border-color: $darker-green;
-	}
-
 	&[disabled] {
-		background: tint( $lighter-green, 50% );
-		border-color: tint( $green, 55% );
+		background: tint( $blue-light, 50% );
+		border-color: tint( $blue-wordpress, 55% );
+		color: $white;
+	}
+	&.is-compact {
 		color: $white;
 	}
 }
+
+// Scary buttons
+:local .button.is-scary,
+:local .button.is-dangerous {
+	color: $alert-red;
+
+	&[disabled] {
+		color: lighten( $alert-red, 30% );
+	}
+	&:hover,
+	&:focus {
+		border-color: $alert-red;
+	}
+	&:focus {
+		box-shadow: 0 0 0 2px lighten( $alert-red, 20% );
+	}
+}
+
+:local .button.is-primary.is-scary,
+:local .button.is-destructive {
+	background: $alert-red;
+	border-color: darken( $alert-red, 20% );
+	color: $white;
+
+	&:hover,
+	&:focus {
+		border-color: darken( $alert-red, 30% );
+	}
+	&[disabled] {
+		background: lighten( $alert-red, 20% );
+		border-color: tint( $alert-red, 30% );
+	}
+}
+
+// ==========================================================================
+// Deprecated styles
+//
+// `button.is-destructive` and ``.button.is-dangerous` are also deprecated
+// ==========================================================================
 
 :local .button.is-link {
 	background: transparent;
@@ -121,10 +175,6 @@ $blue: #029DD6;
 	}
 }
 
-:local .button.hidden {
-	display: none;
-}
-
 // Positions and resets font styles of noticons applied to buttons
 :local .button.noticon {
 	line-height: inherit;
@@ -139,79 +189,11 @@ $blue: #029DD6;
 	}
 }
 
-/* Primary buttons */
-:local .button.is-primary, :local .button.button-blue {
-	background: $blue-medium;
-	border-color: $blue-wordpress;
-	color: $white;
+// ==========================================================================
+// Resets
+// ==========================================================================
 
-	&:hover {
-		border-color: $blue-dark;
-		color: $white;
-	}
-
-	&:focus {
-		border-color: $blue-dark;
-	}
-
-	&[disabled] {
-		background: tint( $blue-light, 50% );
-		border-color: tint( $blue-wordpress, 55% );
-		color: $white;
-	}
-}
-
-/* Danger buttons */
-:local .button.is-dangerous {
-	color: $alert-red;
-
-	&[disabled] {
-		color: lighten( $alert-red, 30% );
-	}
-}
-
-:local .button.is-destructive {
-	background: $alert-red;
-	border-color: darken( $alert-red, 20% );
-	color: $white;
-
-	&[disabled] {
-		background: lighten( $alert-red, 20% );
-		border-color: tint( $alert-red, 30% );
-	}
-}
-
-/* Custom-sized buttons */
-:local .button.button-normal {
-
-}
-
-:local .button.button-large,
-:local .button-group.button-large .button {
-	height: 30px;
-	line-height: 28px;
-	padding: 0 12px 2px
-}
-
-:local .button.button-small,
-:local .button-group.button-small .button {
-	height: 24px;
-	line-height: 22px;
-	padding: 0 8px 1px;
-	font-size: 11px
-}
-
-:local .button.button-hero,
-:local .button-group.button-hero .button {
-	font-size: 14px;
-	height: 46px;
-	line-height: 44px;
-	padding: 0 36px
-}
-
-/* NOTE: removed .wp-content prefix from all these selectors when copying from Calypso */
-
-/* Turn Reset 'buttons' into regular text links */
+// Turn Reset 'buttons' into regular text links
 input {
 	&[type=reset],
 	&[type=reset]:hover,
@@ -225,12 +207,12 @@ input {
 	}
 }
 
-/* Buttons within sentences sit on the text baseline. */
+// Buttons within sentences sit on the text baseline.
 p .button {
 	vertical-align: baseline
 }
 
-/* Firefox Junk */
+// Firefox Junk
 button::-moz-focus-inner,
 input[type=reset]::-moz-focus-inner,
 input[type=button]::-moz-focus-inner,
