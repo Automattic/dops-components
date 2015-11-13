@@ -1,6 +1,5 @@
 var React = require( 'react' ),
-	Button = require( '../button' ),
-	Link = require( '../link' ),
+	classNames = require( 'classnames' ),
 	Gridicon = require( '../gridicon' );
 
 require( './style.scss' );
@@ -22,33 +21,43 @@ let PasswordBox = React.createClass( {
 
 	getInitialState: function() {
 		return {
-			showPass: false
+			hidePassword: true
 		};
 	},
 
-	handleShowPass: function( e ) {
-		e.preventDefault();
-		this.setState( {showPass: true} );
+	togglePasswordVisibility: function() {
+		this.setState( { hidePassword: ! this.state.hidePassword } );
 	},
 
-	handleHidePass: function( e ) {
-		e.preventDefault();
-		this.setState( {showPass: false} );
+	hidden: function() {
+		return !! this.state.hidePassword;
 	},
 
 	render: function() {
-		return (
-			<div className={'dops-password-box' + ( this.state.showPass ? '' : ' dops-password-box-hidden' )}>
-				{this.state.showPass ? 
-					( <div>
-						<span className="dops-password-field"><span>{this.props.value}</span><Link onClick={this.handleHidePass}><Gridicon size={24} icon="not-visible"/></Link></span>
-					</div> ) : 
-					( <div>
-						<span className="dops-password-field">************<Link onClick={this.handleShowPass}><Gridicon size={24} icon="visible"/></Link></span>
-					</div> )
-				}
-			</div>
-		);
+		var toggleVisibilityClasses = classNames( {
+			'dops-password-box': true,
+			'dops-password-box--hidden': this.hidden(),
+		} );
+
+		if ( this.hidden() ) {
+			return (
+				<div className={ toggleVisibilityClasses }>
+					<span className='dops-text-input'>************</span>
+					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
+						<Gridicon icon="visible" />
+					</button>
+				</div>
+			);
+		} else {
+			return (
+				<div className={ toggleVisibilityClasses }>
+					<input className='dops-text-input' type="text" value={ this.props.value } />
+					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
+						<Gridicon icon="not-visible" />
+					</button>
+				</div>
+			);
+		}
 	}
 } );
 
