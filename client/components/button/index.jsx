@@ -50,8 +50,12 @@ let Button = React.createClass( {
 
 		var className = classnames(buttonClasses);
 
+		// we need to make sure this is null if it is unlikely to take action, 
+		// as in those cases we want the default behaviour - submitting a form!
+		var clickHandler = ( this.props.href || this.props.onClick ) ? this.handleClick : null;
+
 		return (
-			<button {...other} role="button" onKeyDown={this.handleKeyDown.bind(this, this.handleClick)} className={className} style={this.props.style} onClick={this.handleClick}>
+			<button {...other} role="button" onKeyDown={this.handleKeyDown.bind(this, clickHandler)} className={className} style={this.props.style} onClick={clickHandler}>
 				{this.props.children}
 			</button>
 		);
