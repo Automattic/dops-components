@@ -192,7 +192,9 @@ let ReactSlider = React.createClass( {
 		 *  Callback called when the the slider is clicked ( handle or bars ).
 		 *  Receives the value at the clicked position as argument.
 		 */
-		onSliderClick: React.PropTypes.func
+		onSliderClick: React.PropTypes.func,
+
+		tabIndex: React.PropTypes.number
 	},
 
 	getDefaultProps: function() {
@@ -200,6 +202,7 @@ let ReactSlider = React.createClass( {
 			min: 0,
 			max: 100,
 			step: 1,
+			tabIndex: 0,
 			minDistance: 0,
 			defaultValue: 0,
 			orientation: 'horizontal',
@@ -828,9 +831,15 @@ let ReactSlider = React.createClass( {
 		let className = props.className + ( props.disabled ? ' disabled' : '' );
 
 		return (
-			<div ref='slider' 
+			<div ref='slider'
+				id={this.props.id} 
+				aria-valuemin={this.props.min}
+			    aria-valuemax={this.props.max}
+			    aria-valuenow={value[0]}
+			    role="slider"
 				style={this.props.style}
 				className={className}
+				tabIndex={this.props.tabIndex}
 				onMouseDown={this._onSliderMouseDown}
 				onClick={this._onSliderClick}> 
 					{bars} 

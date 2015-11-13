@@ -3,6 +3,8 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/object/assign' );
 
+var focusTrap = require('focus-trap');
+
 require( './style.scss' );
 
 let Modal = React.createClass( {
@@ -11,6 +13,8 @@ let Modal = React.createClass( {
 		style: React.PropTypes.object,
 		width: React.PropTypes.oneOf( ['wide', 'medium', 'narrow'] ),
 		className: React.PropTypes.string,
+		title: React.PropTypes.string,
+		initialFocus: React.PropTypes.string,
 		onRequestClose: React.PropTypes.func
 	},
 
@@ -20,9 +24,17 @@ let Modal = React.createClass( {
 		};
 	},
 
+	activateTrap: function() {
+		focusTrap.activate(this.getDOMNode(), {
+			onDeactivate: this.props.onRequestClose,
+			initialFocus: this.props.initialFocus,
+		});
+	},
+
 	componentDidMount: function() {
 		jQuery( 'body' ).addClass( 'dops-modal-showing' );
 		jQuery( document ).keyup( this.handleEscapeKey );
+		this.activateTrap();
 	},
 
 	handleEscapeKey: function( e ) {
@@ -52,9 +64,11 @@ let Modal = React.createClass( {
 	},
 
 	render: function() {
-		var containerStyle, style;
+		var containerStyle, combinedStyle;
 
-		switch ( this.props.width ) {
+		var { style, className, width, title, ...other } = this.props;
+
+		switch ( width ) {
 		case 'wide':
 			containerStyle = { maxWidth: 'inherit' };
 			break;
@@ -65,11 +79,16 @@ let Modal = React.createClass( {
 			containerStyle = {};
 		}
 
-		style = assign(this.props.style, containerStyle);
+		combinedStyle = assign(style, containerStyle);
 
 		return (
 			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay}>
-				<div className={classNames( 'dops-modal', this.props.className )} style={style} onClick={this.handleClickModal}>
+				<div className={classNames( 'dops-modal', className )} 
+					style={combinedStyle} 
+					onClick={this.handleClickModal} 
+					role="dialog"
+					aria-label={title}
+					{ ...other }>
 					{this.props.children}
 				</div>
 			</div>

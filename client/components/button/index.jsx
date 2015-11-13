@@ -1,5 +1,6 @@
 var React = require( 'react' ),
-	classnames = require( 'classnames' );
+	classnames = require( 'classnames' ),
+	A11yMixin = require( '../../lib/a11y-mixin' );
 
 var style = require( './style.scss' );
 
@@ -8,7 +9,7 @@ function getClass(name) {
 }
 
 let Button = React.createClass( {
-
+	mixins: [A11yMixin],
 	propTypes: {
 		size: React.PropTypes.oneOf( ['small', 'normal', 'large', 'hero'] ),
 		color: React.PropTypes.oneOf( ['gray', 'blue', 'green'] ),
@@ -26,15 +27,18 @@ let Button = React.createClass( {
 		return { size: 'normal', inline: true, color: 'gray', theme: 'wp', disabled: false };
 	},
 
-	handleCallbackHref: function( e ) {
+	handleClick: function( e ) {
 		e.preventDefault();
-		window.location = this.props.href;
+
+		if ( this.props.href && !this.props.onClick ) {
+			window.location = this.props.href;
+		} else {
+			this.props.onClick( e );
+		}
 	},
 
 	render: function() {
 		var { size, color, onClick, href, primary, dangerous, destructive, ...other } = this.props;
-
-		var callback;
 
 		var buttonClasses = {};
 
@@ -46,14 +50,8 @@ let Button = React.createClass( {
 
 		var className = classnames(buttonClasses);
 
-		if ( href && !onClick ) {
-			callback = this.handleCallbackHref;
-		} else {
-			callback = onClick;
-		}
-
 		return (
-			<button {...other} className={className} style={this.props.style} onClick={callback}>
+			<button {...other} role="button" onKeyDown={this.handleKeyDown.bind(this, this.handleClick)} className={className} style={this.props.style} onClick={this.handleClick}>
 				{this.props.children}
 			</button>
 		);

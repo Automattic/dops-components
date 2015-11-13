@@ -1,5 +1,6 @@
 var React = require( 'react' ),
 	Button = require( '../button' ),
+	Link = require( '../link' ),
 	Gridicon = require( '../gridicon' );
 
 require( './style.scss' );
@@ -40,10 +41,10 @@ let PasswordBox = React.createClass( {
 			<div className={'dops-password-box' + ( this.state.showPass ? '' : ' dops-password-box-hidden' )}>
 				{this.state.showPass ? 
 					( <div>
-						<span className="dops-password-field">{this.props.value}<Gridicon onClick={this.handleHidePass} size={24} icon="not-visible"/></span>
+						<span className="dops-password-field"><span>{this.props.value}</span><Link onClick={this.handleHidePass}><Gridicon size={24} icon="not-visible"/></Link></span>
 					</div> ) : 
 					( <div>
-						<span className="dops-password-field">************<Gridicon size={24} icon="visible" onClick={this.handleShowPass}/></span>
+						<span className="dops-password-field">************<Link onClick={this.handleShowPass}><Gridicon size={24} icon="visible"/></Link></span>
 					</div> )
 				}
 			</div>
