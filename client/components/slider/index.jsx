@@ -203,6 +203,7 @@ let ReactSlider = React.createClass( {
 			max: 100,
 			step: 1,
 			tabIndex: 0,
+			'aria-label': 'slider',
 			minDistance: 0,
 			defaultValue: 0,
 			orientation: 'horizontal',
@@ -814,6 +815,14 @@ let ReactSlider = React.createClass( {
 		}
 	},
 
+	handleKeyDown: function( e ) {
+		e.stopPropagation();
+		// TODO: detect up/right arrow to increase value,
+		// down/left arrow to decrease.
+		// @see: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_slider_role
+		console.log( e.which );
+	},
+
 	render: function() {
 		var state = this.state;
 		var props = this.props;
@@ -836,10 +845,12 @@ let ReactSlider = React.createClass( {
 				aria-valuemin={this.props.min}
 			    aria-valuemax={this.props.max}
 			    aria-valuenow={value[0]}
+			    aria-label={this.props['aria-label']}
 			    role="slider"
 				style={this.props.style}
 				className={className}
 				tabIndex={this.props.tabIndex}
+				onKeyDown={this.props.handleKeyDown}
 				onMouseDown={this._onSliderMouseDown}
 				onClick={this._onSliderClick}> 
 					{bars} 
