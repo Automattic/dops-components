@@ -157,24 +157,6 @@ $blue: #029DD6;
 // `button.is-destructive` and ``.button.is-dangerous` are also deprecated
 // ==========================================================================
 
-:local .button.is-link {
-	background: transparent;
-	border: none;
-	border-radius: 0;
-	padding: 0;
-	color: $blue-medium;
-	font-weight: 400;
-	font-size: inherit;
-	line-height: 1.65;
-
-	&:hover,
-	&:focus,
-	&:active {
-		color: $link-highlight;
-		box-shadow: none;
-	}
-}
-
 // Positions and resets font styles of noticons applied to buttons
 :local .button.noticon {
 	line-height: inherit;
