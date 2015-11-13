@@ -37,6 +37,12 @@ let Modal = React.createClass( {
 		this.activateTrap();
 	},
 
+	componentWillUnmount: function() {
+		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
+		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
+		focusTrap.deactivate();
+	},
+
 	handleEscapeKey: function( e ) {
 		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
 			if ( this.props.onRequestClose ) {
@@ -57,12 +63,7 @@ let Modal = React.createClass( {
 	handleClickModal: function( e ) {
 		e.stopPropagation(); 
 	},
-
-	componentWillUnmount: function() {
-		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
-		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
-	},
-
+	
 	render: function() {
 		var containerStyle, combinedStyle;
 
