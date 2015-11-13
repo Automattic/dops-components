@@ -100,6 +100,8 @@ var CreditCardSelector = React.createClass( {
 			return;
 		}
 
+		this.props.onSelectPayment( section );
+
 		this.setState( { section: section } );
 	},
 
