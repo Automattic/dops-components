@@ -41,9 +41,17 @@
 		}
 	}
 
+	.notice__dismiss:focus {
+		box-shadow: 0 0 0 2px darken( $gray-light, 10 );
+	}
+
 	// Success!
 	&.is-success {
 		background: $alert-green;
+
+		.notice__dismiss:focus {
+			box-shadow: 0 0 0 2px darken( $alert-green, 10 );
+		}
 
 		@include breakpoint( ">660px" ) {
 			&:before {
@@ -56,6 +64,10 @@
 	&.is-warning {
 		background: $alert-yellow;
 
+		.notice__dismiss:focus {
+			box-shadow: 0 0 0 2px darken( $alert-yellow, 10 );
+		}
+
 		&:before {
 		}
 	}
@@ -64,6 +76,10 @@
 	&.is-error {
 		background: $alert-red;
 
+		.notice__dismiss:focus {
+			box-shadow: 0 0 0 2px darken( $alert-red, 10 );
+		}
+
 		&:before {
 		}
 	}
@@ -71,6 +87,10 @@
 	// Information
 	&.is-info {
 		background: $blue-wordpress;
+
+		.notice__dismiss:focus {
+			box-shadow: 0 0 0 2px darken( $blue-wordpress, 10 );
+		}
 
 		@include breakpoint( ">660px" ) {
 			&:before {
@@ -86,7 +106,9 @@
 
 	a,
 	button.is-link {
+		display: inline;
 		margin-left: 8px;
+		text-align: left;
 		line-height: 1.4285;
 		font-weight: 600;
 		text-decoration: underline;
@@ -153,6 +175,10 @@
 	padding: 9px 16px;
 	cursor: pointer;
 	color: $gray;
+
+	background: transparent;
+	border: none;
+	border-radius: 0;
 
 	@include breakpoint( ">660px" ) {
 		padding: 13px 16px;

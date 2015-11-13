@@ -8,7 +8,8 @@ var React = require( 'react/addons' ),
 /**
  * Internal dependencies
  */
-var Gridicon = require( '../gridicon' ),
+var Button = require( '../button' ),
+	Gridicon = require( '../gridicon' ),
 	ScreenReaderText = require( '../screen-reader-text' );
 
 require( './style.scss' );
@@ -77,10 +78,10 @@ module.exports = React.createClass( {
 		if ( this.props.showDismiss ) {
 			noticeClass = joinClasses( noticeClass, 'is-dismissable' );
 			dismiss = (
-				<span tabIndex="0" className="notice__dismiss" onClick={ this.props.onClick } >
+				<Button className="notice__dismiss" onClick={ this.props.onClick } >
 					<Gridicon icon="cross" size={ 24 } />
 					<ScreenReaderText>{ this.translate( 'Dismiss' ) }</ScreenReaderText>
-				</span>
+				</Button>
 				);
 		}
 
