@@ -34,10 +34,10 @@ let Tabs = React.createClass( {
 		this.setState( { activeTab: index } );
 	},
 
-	handleKeyDown: function( e ) {
+	handleKeyDown: function( index, e ) {
 		e.stopPropagation();
 		if ( e.which === 32 || e.which === 13 ) {
-			this.handleSelectTab( e );
+			this.handleSelectTab( index, e );
 		}
 	},
 
@@ -91,7 +91,7 @@ let Tabs = React.createClass( {
 
 					return (
 						<li key={index} className={className}>
-							<a href="#" role="button" onKeyDown={this.handleKeyDown} ref={ref} onClick={this.handleSelectTab.bind( this, index )} onMouseOver={this.handleMouseOverTab.bind( this, index )} onMouseOut={this.handleMouseOutTab.bind( this, index )}>{title}</a>
+							<a href="#" role="button" onKeyDown={this.handleKeyDown.bind( this, index )} ref={ref} onClick={this.handleSelectTab.bind( this, index )} onMouseOver={this.handleMouseOverTab.bind( this, index )} onMouseOut={this.handleMouseOutTab.bind( this, index )}>{title}</a>
 						</li>		
 					);
 				}.bind( this ) )}
