@@ -2,6 +2,8 @@
  * External dependencies
  */
 import React from 'react';
+import assign from 'lodash/object/assign';
+import classNames from 'classnames';
 
 var style = require( './style.scss' );
 
@@ -13,8 +15,16 @@ module.exports = React.createClass( {
 	displayName: 'ScreenReaderText',
 
 	render: function() {
-		return (
-			<span className={ getClass('screen-reader-text') }>{ this.props.children }</span>
-		);
+		const element = this.props.href ? 'a' : 'span';
+
+		let classes = {
+			'screen-reader-text': true
+		};
+
+		const props = assign( {}, this.props, {
+			className: classNames( this.props.className, classes )
+		} );
+
+		return React.createElement( element, props, this.props.children );
 	}
 } );
