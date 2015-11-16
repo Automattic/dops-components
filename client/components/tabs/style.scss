@@ -11,7 +11,7 @@
 			list-style: none;
 			margin: 0;
 
-			& > a {
+			& > button {
 				display: block;
 				border-left: 2px solid transparent;
 				color: #999;
@@ -20,12 +20,16 @@
 				text-decoration: none;
 			}
 
-			&.active a, &:hover a {
+			&.active button, button:hover, button:focus {
 				color: black;
 				background-color: #f9f9f9;
 			}
 
-			&.active a {
+			button:focus {
+				box-shadow: 0 0 4px rgba( black, 0.15 );
+			}
+
+			&.active button {
 				border-color: black;
 			}
 		}
@@ -50,19 +54,23 @@
 			list-style: none;
 			display: inline-block;
 
-			& > a {
+			& > button {
 				color: #aaa;
 				display: block;
 				font-size: 14px;
-				margin: 0 20px;
-				padding: 15px 0;
+				margin: 0 0px;
+				padding: 15px 20px;
 				text-align: center;
 				text-transform: uppercase;
 				text-decoration: none;
 			}
 
-			&.active a, &:hover a {
+			&.active button, button:hover, button:focus {
 				color: black;
+			}
+
+			button:focus {
+				box-shadow: 0 0 4px rgba( black, 0.15 );
 			}
 
 			&.active {
