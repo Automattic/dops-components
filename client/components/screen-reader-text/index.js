@@ -17,9 +17,8 @@ module.exports = React.createClass( {
 	render: function() {
 		const element = this.props.href ? 'a' : 'span';
 
-		let classes = {
-			'screen-reader-text': true
-		};
+		let classes = {}
+		classes[ getClass( 'screen-reader-text' ) ] = true;
 
 		const props = assign( {}, this.props, {
 			className: classNames( this.props.className, classes )
