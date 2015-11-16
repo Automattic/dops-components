@@ -722,14 +722,17 @@ let ReactSlider = React.createClass( {
 			( this.state.index === i ? this.props.handleActiveClassName : '' );
 
 		return (
-			<div 
-				key={'handle' + i} 
-				ref={'handle' + i} 
-				className={className} 
-				style={style}
-				onMouseDown={this._createOnMouseDown( i )}
-				onTouchStart={this._createOnTouchStart( i )}>
-				{child}
+			<div
+				tabIndex="0"
+				data-index={ i }
+				key={ 'handle' + i }
+				ref={ 'handle' + i }
+				className={ className }
+				style={ style }
+				onKeyDown={ this._handleKeyDown }
+				onMouseDown={ this._createOnMouseDown( i ) }
+				onTouchStart={ this._createOnTouchStart( i ) }>
+				{ child }
 			</div>
 		);
 	},
@@ -815,12 +818,28 @@ let ReactSlider = React.createClass( {
 		}
 	},
 
-	handleKeyDown: function( e ) {
+	_handleKeyDown: function( e ) {
 		e.stopPropagation();
-		// TODO: detect up/right arrow to increase value,
-		// down/left arrow to decrease.
-		// @see: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_slider_role
-		console.log( e.which );
+
+		let value = this.state.value;
+		let i = e.target.dataset['index'];
+
+		switch ( e.which ) {
+			case 38: // Up
+			case 39: // Right
+				value[i] += this.props.step;
+				break;
+			case 40: // Down
+			case 37: // Left
+				value[i] -= this.props.step;
+				break;
+			default:
+				return;
+		}
+
+		value[i] = this._trimAlignValue( value[i] );
+		// Check max & min
+		this.setState( { value: value }, this._fireChangeEvent.bind( this, 'onChange' ) );
 	},
 
 	render: function() {
@@ -843,14 +862,13 @@ let ReactSlider = React.createClass( {
 			<div ref='slider'
 				id={this.props.id} 
 				aria-valuemin={this.props.min}
-			    aria-valuemax={this.props.max}
-			    aria-valuenow={value[0]}
-			    aria-label={this.props['aria-label']}
-			    role="slider"
+				aria-valuemax={this.props.max}
+				aria-valuenow={value[0]}
+				aria-label={this.props['aria-label']}
+				role="slider"
 				style={this.props.style}
 				className={className}
-				tabIndex={this.props.tabIndex}
-				onKeyDown={this.props.handleKeyDown}
+				tabIndex="-1"
 				onMouseDown={this._onSliderMouseDown}
 				onClick={this._onSliderClick}> 
 					{bars} 
