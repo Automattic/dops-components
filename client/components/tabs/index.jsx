@@ -59,7 +59,7 @@ let Tabs = React.createClass( {
 		return (
 			<div className={'dops-tabs-'+theme}>
 				{this._renderNav()}
-				<div>
+				<div aria-live="polite">
 					{React.Children.map( this.props.children, function( child, index ) {
 						if ( index === this.state.activeTab ) {
 							return child;
