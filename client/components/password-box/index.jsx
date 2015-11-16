@@ -44,7 +44,7 @@ let PasswordBox = React.createClass( {
 			return (
 				<div className={ toggleVisibilityClasses }>
 					<span className='dops-text-input'>************</span>
-					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
+					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility } aria-live='assertive'>
 						<Gridicon icon="visible" />
 						<ScreenReaderText>{ this.props.showLabel }</ScreenReaderText>
 					</button>
@@ -54,7 +54,7 @@ let PasswordBox = React.createClass( {
 			return (
 				<div className={ toggleVisibilityClasses }>
 					<input className='dops-text-input' type="text" value={ this.props.value } />
-					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility }>
+					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility } aria-live='assertive'>
 						<Gridicon icon="not-visible" />
 						<ScreenReaderText>{ this.props.hideLabel }</ScreenReaderText>
 					</button>
