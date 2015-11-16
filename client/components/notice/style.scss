@@ -42,7 +42,7 @@
 	}
 
 	.notice__dismiss:focus {
-		box-shadow: 0 0 0 2px darken( $gray-light, 10 );
+		box-shadow: 0 0 4px darken( $gray-light, 10 );
 	}
 
 	// Success!
@@ -50,7 +50,7 @@
 		background: $alert-green;
 
 		.notice__dismiss:focus {
-			box-shadow: 0 0 0 2px darken( $alert-green, 10 );
+			box-shadow: 0 0 4px darken( $alert-green, 10 );
 		}
 
 		@include breakpoint( ">660px" ) {
@@ -65,7 +65,7 @@
 		background: $alert-yellow;
 
 		.notice__dismiss:focus {
-			box-shadow: 0 0 0 2px darken( $alert-yellow, 10 );
+			box-shadow: 0 0 4px darken( $alert-yellow, 10 );
 		}
 
 		&:before {
@@ -77,7 +77,7 @@
 		background: $alert-red;
 
 		.notice__dismiss:focus {
-			box-shadow: 0 0 0 2px darken( $alert-red, 10 );
+			box-shadow: 0 0 4px darken( $alert-red, 10 );
 		}
 
 		&:before {
@@ -89,7 +89,7 @@
 		background: $blue-wordpress;
 
 		.notice__dismiss:focus {
-			box-shadow: 0 0 0 2px darken( $blue-wordpress, 10 );
+			box-shadow: 0 0 4px darken( $blue-wordpress, 10 );
 		}
 
 		@include breakpoint( ">660px" ) {
