@@ -724,15 +724,12 @@ let ReactSlider = React.createClass( {
 
 		var options = [];
 		for ( var val = this.props.min; val <= this.props.max; val += this.props.step ) {
-			console.log( this.props.skipValues.indexOf( val ), val );
 			if ( -1 === this.props.skipValues.indexOf( val ) ) {
 				options.push(
 					<option value={ val }>{ '$' + val + '.00' }</option>
 				);
 			}
 		};
-
-		console.log( options );
 
 		return (
 			<div>
@@ -897,8 +894,6 @@ let ReactSlider = React.createClass( {
 		} else {
 			value = e.target.value;
 		}
-
-		console.log( "Input changed", e.target.value );
 
 		allValues[ valueIndex ] = this._trimAlignValue( value );
 		this.setState( { value: allValues }, this._fireChangeEvent.bind( this, 'onChange' ) );
