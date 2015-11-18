@@ -48,9 +48,7 @@ module.exports = React.createClass( {
 		if ( ! this.props.showForm ) {
 			return (
 				<div className="new-card">
-					<button type="button" className="new-card-toggle" onClick={ this.props.handleToggleClick }>
-						{ this.translate( '+ Use a New Credit/Debit Card' ) }
-					</button>
+					<p className="new-card-label" id="new-card-label">{ this.translate( '+ Use a New Credit/Debit Card' ) }</p>
 				</div>
 			);
 		}
