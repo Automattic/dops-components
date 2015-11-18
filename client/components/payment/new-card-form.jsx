@@ -30,6 +30,12 @@ module.exports = React.createClass( {
 		};
 	},
 
+	componentWillUpdate: function() {
+		if ( this.props.showForm ) {
+			this.refs.inputName.focus();
+		}
+	},
+
 	getValidFormFields: function() {
 		var form = this.refs.form;
 		form.submit();
@@ -63,6 +69,7 @@ module.exports = React.createClass( {
 					<span className={ classes }>{ this.translate( 'All fields required' ) }</span>
 
 					<Form.TextInput
+						ref='inputName'
 						name="name"
 						value={this.state.formValue.name}
 						floatingLabel

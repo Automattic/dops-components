@@ -59,6 +59,10 @@ module.exports = React.createClass( {
 		}
 	},
 
+	focus: function() {
+		React.findDOMNode( this.refs.input ).focus();
+	},
+
 	getDefaultProps: function() {
 		return { type: 'text' };
 	},
