@@ -732,10 +732,9 @@ let ReactSlider = React.createClass( {
 		};
 
 		return (
-			<div>
+			<div key={ 'handle' + i }>
 				<div
 					data-index={ i }
-					key={ 'handle' + i }
 					ref={ 'handle' + i }
 					className={ className }
 					style={ style }
