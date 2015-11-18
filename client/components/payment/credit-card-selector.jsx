@@ -24,9 +24,13 @@ var CreditCardSelector = React.createClass( {
 
 	getInitialState: function() {
 		if ( this.props.initialCard ) {
-			return { section: this.props.initialCard.stored_details_id };
+			return {
+				section: this.props.initialCard.stored_details_id
+			};
 		}
-		return { section: 'new-card' };
+		return {
+			section: 'new-card',
+		};
 	},
 
 	render: function() {
@@ -45,10 +49,16 @@ var CreditCardSelector = React.createClass( {
 		}, this );
 	},
 
+	handleToggleClick: function( event ) {
+		this.handleClickedSection( 'new-card' );
+	},
+
 	newCardForm: function() {
 		var cardForm = (
 			<NewCardForm
 				ref="newCardForm"
+				showForm={ this.state.section === 'new-card' }
+				handleToggleClick={ this.handleToggleClick }
 				hasStoredCards={ this.props.cards.get().length > 0 }
 				defaultCCInfo={ this.props.defaultCCInfo }>
 				{this.props.children}

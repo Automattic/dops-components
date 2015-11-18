@@ -19,12 +19,14 @@ module.exports = React.createClass( {
 
 	propTypes: {
 		hasStoredCards: React.PropTypes.bool,
-		defaultCCInfo: React.PropTypes.object.isRequired
+		defaultCCInfo: React.PropTypes.object.isRequired,
+		handleToggleClick: React.PropTypes.func,
+		showForm: React.PropTypes.bool
 	},
 
 	getInitialState: function() {
 		return {
-			formValue: assign({}, this.props.defaultCCInfo)
+			formValue: assign( {}, this.props.defaultCCInfo ),
 		};
 	},
 
@@ -43,12 +45,18 @@ module.exports = React.createClass( {
 	render: function() {
 		let classes = classNames( 'all-fields-required', { 'has-saved-cards': this.props.hasStoredCards } );
 
+		if ( ! this.props.showForm ) {
+			return (
+				<div className="new-card">
+					<button type="button" className="new-card-toggle" onClick={ this.props.handleToggleClick }>
+						{ this.translate( '+ Use a New Credit/Debit Card' ) }
+					</button>
+				</div>
+			);
+		}
+
 		return (
 			<div className="new-card">
-				<button type="button" className="new-card-toggle">
-					{ this.translate( '+ Use a New Credit/Debit Card' ) }
-				</button>
-
 				<Form ref="form" value={this.state.formValue} className="new-card-fields">
 					{ this.props.hasStoredCards ?
 						<h6 className="new-card-header">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
@@ -98,6 +106,7 @@ module.exports = React.createClass( {
 							label={this.translate( 'Postal Code' )}
 							floatingLabel
 							required />
+
 						{this.props.children}
 					</div>
 				</Form>

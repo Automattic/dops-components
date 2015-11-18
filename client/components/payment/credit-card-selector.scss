@@ -357,18 +357,10 @@
 
 		.payment-box-section .new-card-fields {
 			background-color: $white;
-			max-height: 0;
 			overflow: hidden;
-			padding: 0 15px 0 12px;
+			padding: 15px 15px 15px 12px;
 			position: relative;
 			transition: all 0.5s ease-in-out;
-		}
-
-		.payment-box-section.selected .new-card-fields {
-			max-height: 500px;
-			margin-bottom: 0;
-			padding-top: 15px;
-			padding-bottom: 15px;
 		}
 
 		.new-card-toggle {
