@@ -63,7 +63,7 @@ module.exports = React.createClass( {
 			<div className="new-card">
 				<Form ref="form" value={this.state.formValue} className="new-card-fields">
 					{ this.props.hasStoredCards ?
-						<h6 className="new-card-header">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
+						<h6 className="new-card-header" id="new-card-label">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
 					}
 
 					<span className={ classes }>{ this.translate( 'All fields required' ) }</span>

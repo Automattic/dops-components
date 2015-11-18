@@ -79,7 +79,7 @@ var CreditCardSelector = React.createClass( {
 		} );
 
 		return (
-			<div className={ classes } onClick={ this.handleClickedSection.bind( this, name ) } key={ name }>
+			<div className={ classes } onClick={ this.handleClickedSection.bind( this, name ) } key={ name } aria-live='polite'>
 				<ScreenReaderText>
 					<input type='radio' aria-labelledby={ 'new-card' === name ? 'new-card-label' : 'card-label-' + name } name='card-selection' onChange={ this.handleClickedSection.bind( this, name ) } onFocus={ this.addParentFocus.bind( this, name ) } onBlur={ this.addParentFocus.bind( this, null ) } />
 				</ScreenReaderText>
