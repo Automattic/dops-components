@@ -448,15 +448,21 @@
 				flex-basis: auto;
 				flex-grow: 3;
 				flex-shrink: 0;
+				padding-bottom: 12px;
 
 				label {
 					display: none;
 				}
+
+				select {
+					width: 100%;
+				}
 			}
 
-			.postal-code {
-				flex-basis: 8em;
-				flex-grow: 2;
+			.postal-code,
+			.postal-code + .dops-field {
+				flex-basis: 6em;
+				flex-grow: 1;
 				flex-shrink: 0;
 			}
 		}

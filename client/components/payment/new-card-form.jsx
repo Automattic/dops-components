@@ -107,6 +107,7 @@ module.exports = React.createClass( {
 
 						<Form.TextInput 
 							name="postal-code"
+							className="postal-code"
 							value={this.state.formValue['postal-code']}
 							label={this.translate( 'Postal Code' )}
 							floatingLabel
