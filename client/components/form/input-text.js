@@ -59,6 +59,10 @@ module.exports = React.createClass( {
 		}
 	},
 
+	focus: function() {
+		React.findDOMNode( this.refs.input ).focus();
+	},
+
 	getDefaultProps: function() {
 		return { type: 'text' };
 	},
@@ -142,7 +146,9 @@ module.exports = React.createClass( {
 
 				{this.props.children}
 				<div className="clear"></div>
-				{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
+				<div role="alert">
+					{errorMessage && ( <FormInputValidation text={errorMessage} isError={ true }/> )}
+				</div>
 			</div>
 		);
 	}

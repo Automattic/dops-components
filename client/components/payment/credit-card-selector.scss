@@ -317,23 +317,29 @@
 			&:first-of-type {
 				border-top: 1px solid lighten( $gray, 30% );
 			}
-
-			&.selected {
-				cursor: default;
-			}
 		}
 
 		.payment-box-section-inner {
-			border-left: 1px solid lighten( $gray, 30% );
-			padding-left: 2px;
 			position: relative;
-			border-right: 1px solid lighten( $gray, 30% );
+			padding-left: 2px;
 			min-height: 50px;
+			border-left: 1px solid lighten( $gray, 30% );
+			border-right: 1px solid lighten( $gray, 30% );
 		}
 
-		.payment-box-section.selected .payment-box-section-inner {
+		.payment-box-section.selected .payment-box-section-inner,
+		.payment-box-section.focused .payment-box-section-inner {
 			background-color: #fafdf6;
 			padding-left: 0;
+		}
+
+		.payment-box-section.focused:not( .no-stored-cards ) {
+			.payment-box-section-inner {
+				border-left: 3px solid $blue-medium;
+			}
+			.new-card-fields {
+				background-color: #fafdf6;
+			}
 		}
 
 		.payment-box-section.selected:not( .no-stored-cards ) {
@@ -344,6 +350,7 @@
 				background-color: #fafdf6;
 			}
 		}
+
 
 		.no-stored-cards .new-card-fields > .checkout-field:first-child {
 			margin-top: 0;
@@ -357,31 +364,19 @@
 
 		.payment-box-section .new-card-fields {
 			background-color: $white;
-			max-height: 0;
 			overflow: hidden;
-			padding: 0 15px 0 12px;
+			padding: 15px 15px 15px 12px;
 			position: relative;
 			transition: all 0.5s ease-in-out;
 		}
 
-		.payment-box-section.selected .new-card-fields {
-			max-height: 500px;
-			margin-bottom: 0;
-			padding-top: 15px;
-			padding-bottom: 15px;
-		}
-
-		.new-card-toggle {
-			color: $blue-wordpress;
+		.new-card-label {
 			padding: 15px 15px 15px 12px;
-			border: 0;
-			background: transparent;
 		}
 
 		.new-card-header {
-			color: $blue-medium;
-			font-weight: 400;
 			font-size: 15px;
+			padding-bottom: 10px;
 		}
 
 		.new-card-fields {
@@ -453,15 +448,21 @@
 				flex-basis: auto;
 				flex-grow: 3;
 				flex-shrink: 0;
+				padding-bottom: 12px;
 
 				label {
 					display: none;
 				}
+
+				select {
+					width: 100%;
+				}
 			}
 
-			.postal-code {
-				flex-basis: 8em;
-				flex-grow: 2;
+			.postal-code,
+			.postal-code + .dops-field {
+				flex-basis: 6em;
+				flex-grow: 1;
 				flex-shrink: 0;
 			}
 		}

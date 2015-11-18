@@ -2,89 +2,92 @@
  * External dependencies
  */
 var React = require( 'react/addons' ),
-	joinClasses = require( 'react/lib/joinClasses' );
+	joinClasses = require( 'react/lib/joinClasses' ),
+	noop = require( 'lodash/utility/noop' );
+
+/**
+ * Internal dependencies
+ */
+var Button = require( '../button' ),
+	Gridicon = require( '../gridicon' ),
+	ScreenReaderText = require( '../screen-reader-text' );
 
 require( './style.scss' );
 
 module.exports = React.createClass( {
-	displayName: 'Notice',
-
-	propTypes: {
-		status: React.PropTypes.oneOf( ['info', 'is-info', 'is-success', 'is-error', 'is-warning'] ),
-		text: React.PropTypes.string,
-		duration: React.PropTypes.number,
-		showDismiss: React.PropTypes.bool,
-		className: React.PropTypes.string,
-		onRemoveCallback: React.PropTypes.func,
-		onClick: React.PropTypes.func,
-		button: React.PropTypes.string
-	},
+	displayName: 'SimpleNotice',
 
 	getDefaultProps: function() {
 		return {
-			status: 'info',
-			text: 'Some text here, please.',
-			duration: 0,
+			status: 'is-info',
 			showDismiss: true,
-			className: ''
+			className: '',
+			onClick: noop
 		};
+	},
+
+	propTypes: {
+		// we should validate the allowed statuses
+		status: React.PropTypes.string,
+		showDismiss: React.PropTypes.bool,
+		duration: React.PropTypes.number,
+		isCompact: React.PropTypes.bool,
+		text: React.PropTypes.oneOfType( [
+			React.PropTypes.string,
+			React.PropTypes.object
+		] ),
+		className: React.PropTypes.string
 	},
 
 	componentDidMount: function() {
 		if ( this.props.duration > 0 ) {
-			setTimeout( this.removeNotice, this.props.duration );
+			setTimeout( this.props.onClick, this.props.duration );
 		}
 	},
 
-	removeNotice: function( event ) {
-		if ( this.props.onRemoveCallback ) {
-			this.props.onRemoveCallback( event );
-		}
-	},
+	renderChildren: function() {
+		let content;
 
-	handleClick: function( event ) {
-		if ( this.props.onClick ) {
-			this.props.onClick( event, this.removeNotice );
+		if ( typeof this.props.children === 'string' ) {
+			return <span className="notice__text">{ this.props.children }</span>;
 		}
+
+		if ( this.props.text ) {
+			content = [ this.props.children ];
+			content.unshift( <span key="notice_text" className="notice__text">{ this.props.text }</span> );
+		} else {
+			content = <span key="notice_text" className="notice__text">{ this.props.children }</span>;
+		}
+
+		return content;
 	},
 
 	render: function() {
-		var alertClass, button, text, dismiss;
+		var noticeClass, dismiss;
 
 		// The class determines the nature of a notice
 		// and its status.
-		alertClass = 'notice ' + this.props.status;
+		noticeClass = joinClasses( 'notice', this.props.status );
+
 		if ( this.props.isCompact ) {
-			alertClass += ' is-compact';
-		}
-
-		// If provided with a link or click handler,
-		// generate a button element.
-		if ( this.props.button ) {
-			button = ( <a className="notice__button" href={ this.props.href } onClick={ this.handleClick }>{ this.props.button }</a> );
-		}
-
-		if ( this.props.textAsHTML ) {
-			text = ( <span dangerouslySetInnerHTML={ { __html: this.props.text } } /> );
-		} else {
-			text = ( <span>{ this.props.text }</span> );
+			noticeClass = joinClasses( noticeClass, 'is-compact' );
 		}
 
 		// By default, a dismiss button is rendered to
 		// allow the user to hide the notice
 		if ( this.props.showDismiss ) {
-			alertClass += ' is-dismissable';
+			noticeClass = joinClasses( noticeClass, 'is-dismissable' );
 			dismiss = (
-				<span tabIndex="0" className="notice__dismiss noticon noticon-close-alt" onClick={ this.removeNotice } >
-					<span className="screen-reader-text">{ this.translate( 'Dismiss' ) }</span>
-				</span>
+				<Button className="notice__dismiss" onClick={ this.props.onClick } >
+					<Gridicon icon="cross" size={ 24 } />
+					<ScreenReaderText>{ this.translate( 'Dismiss' ) }</ScreenReaderText>
+				</Button>
 				);
 		}
 
 		return (
-			<div className={ joinClasses( this.props.className, alertClass ) }>
-				{ text }
-				{ button }
+			<div className={ joinClasses( this.props.className, noticeClass ) }>
+				{ this.renderChildren() }
 				{ dismiss }
 			</div>
 		);

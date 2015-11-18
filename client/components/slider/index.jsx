@@ -2,7 +2,8 @@
  * Credit for this slider must go to https://github.com/mpowaga/react-slider, 
  * which was the basis for this implementation
  */
-var React = require( 'react' );
+var React = require( 'react' ),
+	ScreenReaderText = require( '../screen-reader-text' );
 
 require( './style.scss' );
 
@@ -721,15 +722,34 @@ let ReactSlider = React.createClass( {
 			( this.props.handleClassName + '-' + i ) + ' ' +
 			( this.state.index === i ? this.props.handleActiveClassName : '' );
 
+		var options = [];
+		for ( var val = this.props.min; val <= this.props.max; val += this.props.step ) {
+			if ( -1 === this.props.skipValues.indexOf( val ) ) {
+				options.push(
+					<option value={ val }>{ '$' + val + '.00' }</option>
+				);
+			}
+		};
+
 		return (
-			<div 
-				key={'handle' + i} 
-				ref={'handle' + i} 
-				className={className} 
-				style={style}
-				onMouseDown={this._createOnMouseDown( i )}
-				onTouchStart={this._createOnTouchStart( i )}>
-				{child}
+			<div key={ 'handle' + i }>
+				<div
+					data-index={ i }
+					ref={ 'handle' + i }
+					className={ className }
+					style={ style }
+					aria-hidden={ true }
+					tabIndex='0'
+					onKeyDown={ this._handleKeyDown }
+					onMouseDown={ this._createOnMouseDown( i ) }
+					onTouchStart={ this._createOnTouchStart( i ) }>
+					{ child }
+				</div>
+				<ScreenReaderText>
+					<select data-index={ i } onChange={ this._handleShadowInput }>
+						{ options }
+					</select>
+				</ScreenReaderText>
 			</div>
 		);
 	},
@@ -815,12 +835,67 @@ let ReactSlider = React.createClass( {
 		}
 	},
 
-	handleKeyDown: function( e ) {
+	_stepHandle: function( valueIndex, increment ) {
+		let allValues = this.state.value;
+		let value = allValues[ valueIndex ];
+
+		if ( increment ) {
+			value += this.props.step;
+		} else {
+			value -= this.props.step;
+		}
+
+		allValues[ valueIndex ] = this._trimAlignValue( value );
+		// Check max & min
+		this.setState( { value: allValues }, this._fireChangeEvent.bind( this, 'onChange' ) );
+	},
+
+	_handleKeyDown: function( e ) {
 		e.stopPropagation();
-		// TODO: detect up/right arrow to increase value,
-		// down/left arrow to decrease.
-		// @see: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_slider_role
-		console.log( e.which );
+		let i = 0;
+
+		if ( 'undefined' !== e.target.dataset['index'] ){
+			i = e.target.dataset['index'];
+		}
+
+		switch ( e.which ) {
+			case 38: // Up
+			case 39: // Right
+				this._stepHandle( i, true );
+				break;
+			case 40: // Down
+			case 37: // Left
+				this._stepHandle( i, false );
+				break;
+			default:
+				return;
+		}
+	},
+
+	_handleShadowInput: function( e ) {
+		e.stopPropagation();
+		let valueIndex = 0;
+		let allValues = this.state.value;
+
+		if ( 'undefined' !== e.target.dataset['index'] ){
+			valueIndex = e.target.dataset['index'];
+		}
+
+		let value = allValues[ valueIndex ];
+
+		// @todo Don't hardcode this.props.skipValues
+		if ( 6 === parseInt( e.target.value ) ) {
+			if ( 0 === parseInt( value ) ) {
+				value = 12;
+			} else {
+				value = 0;
+			}
+		} else {
+			value = e.target.value;
+		}
+
+		allValues[ valueIndex ] = this._trimAlignValue( value );
+		this.setState( { value: allValues }, this._fireChangeEvent.bind( this, 'onChange' ) );
 	},
 
 	render: function() {
@@ -841,20 +916,13 @@ let ReactSlider = React.createClass( {
 
 		return (
 			<div ref='slider'
-				id={this.props.id} 
-				aria-valuemin={this.props.min}
-			    aria-valuemax={this.props.max}
-			    aria-valuenow={value[0]}
-			    aria-label={this.props['aria-label']}
-			    role="slider"
-				style={this.props.style}
-				className={className}
-				tabIndex={this.props.tabIndex}
-				onKeyDown={this.props.handleKeyDown}
-				onMouseDown={this._onSliderMouseDown}
-				onClick={this._onSliderClick}> 
-					{bars} 
-					{handles} 
+				id={ this.props.id }
+				style={ this.props.style }
+				className={ className }
+				onMouseDown={ this._onSliderMouseDown }
+				onClick={ this._onSliderClick } >
+					{ bars }
+					{ handles }
 			</div>
 		);
 	}

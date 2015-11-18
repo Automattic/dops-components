@@ -29,7 +29,7 @@ module.exports = React.createClass( {
 					{ this.props.inline && this.props.children }
 					<span>
 						{ label }
-						{ this.props.required ? '*' : '' }
+						{ this.props.required ? <span aria-hidden={ true }>*</span> : null }
 						{ this.props.labelSuffix }
 					</span>
 				</label> }

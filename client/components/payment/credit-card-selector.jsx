@@ -12,7 +12,8 @@ var React = require( 'react' ),
  */
 var StoredCard = require( './stored-card' ),
 	NewCardForm = require( './new-card-form' ),
-	storeTransactions = require( 'lib/store-transactions' );
+	storeTransactions = require( 'lib/store-transactions' ),
+	ScreenReaderText = require( '../screen-reader-text' );
 	// upgradesActions = require( 'lib/upgrades/actions' );
 
 var CreditCardSelector = React.createClass( {
@@ -24,9 +25,15 @@ var CreditCardSelector = React.createClass( {
 
 	getInitialState: function() {
 		if ( this.props.initialCard ) {
-			return { section: this.props.initialCard.stored_details_id };
+			return {
+				section: this.props.initialCard.stored_details_id,
+				focus: null,
+			};
 		}
-		return { section: 'new-card' };
+		return {
+			section: 'new-card',
+			focus: null,
+		};
 	},
 
 	render: function() {
@@ -46,9 +53,15 @@ var CreditCardSelector = React.createClass( {
 	},
 
 	newCardForm: function() {
+		// If there are no other cards, we'll always show the form
+		// Otherwise, only show form if the current selection is new card.
+		var showForm = ( this.props.cards.get().length === 0 ) || ( this.state.section === 'new-card' );
+
 		var cardForm = (
 			<NewCardForm
 				ref="newCardForm"
+				showForm={ showForm }
+				handleToggleClick={ this.handleToggleClick }
 				hasStoredCards={ this.props.cards.get().length > 0 }
 				defaultCCInfo={ this.props.defaultCCInfo }>
 				{this.props.children}
@@ -61,13 +74,15 @@ var CreditCardSelector = React.createClass( {
 	section: function( name, content ) {
 		var classes = classNames( 'payment-box-section', {
 			'selected': this.state.section === name,
+			'focused': this.state.focus === name,
 			'no-stored-cards' : name === 'new-card' && this.props.cards.get().length === 0
 		} );
 
 		return (
-			<div className={ classes }
-					onClick={ this.handleClickedSection.bind( this, name ) }
-					key={ name }>
+			<div className={ classes } onClick={ this.handleClickedSection.bind( this, name ) } key={ name } aria-live='polite'>
+				<ScreenReaderText>
+					<input type='radio' aria-labelledby={ 'new-card' === name ? 'new-card-label' : 'card-label-' + name } name='card-selection' onChange={ this.handleClickedSection.bind( this, name ) } onFocus={ this.addParentFocus.bind( this, name ) } onBlur={ this.addParentFocus.bind( this, null ) } />
+				</ScreenReaderText>
 				<div className="payment-box-section-inner">
 					{ content }
 				</div>
@@ -103,6 +118,10 @@ var CreditCardSelector = React.createClass( {
 		this.props.onSelectPayment( section );
 
 		this.setState( { section: section } );
+	},
+
+	addParentFocus: function( name ){
+		this.setState( { focus: name } );
 	},
 
 	getStoredCardDetails: function( section ) {

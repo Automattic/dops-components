@@ -8,7 +8,7 @@ let Panel = React.createClass( {
 	},
 
 	render: function() {
-		return <div>{this.props.children}</div>;
+		return <div>{ this.props.children }</div>;
 	}
 } );
 
@@ -32,13 +32,6 @@ let Tabs = React.createClass( {
 
 	selectTab: function( index ) {
 		this.setState( { activeTab: index } );
-	},
-
-	handleKeyDown: function( index, e ) {
-		e.stopPropagation();
-		if ( e.which === 32 || e.which === 13 ) {
-			this.handleSelectTab( index, e );
-		}
 	},
 
 	handleSelectTab: function( index, e ) {
@@ -66,11 +59,11 @@ let Tabs = React.createClass( {
 		return (
 			<div className={'dops-tabs-'+theme}>
 				{this._renderNav()}
-				<div>
+				<div aria-live="polite">
 					{React.Children.map( this.props.children, function( child, index ) {
 						if ( index === this.state.activeTab ) {
 							return child;
-						} 
+						}
 						return null;
 					}.bind( this ) )}
 				</div>
@@ -83,18 +76,18 @@ let Tabs = React.createClass( {
 			<ul>
 				{React.Children.map( this.props.children, function( child, index ) {
 					var title = child.props.title,
-						ref = 'tab-'+( index + 1 ),
+						ref = 'tab-' + ( index + 1 ),
 						active = this.state.activeTab === index,
 						hover = this.state.hoverTab === index;
 
 					var className = this.state.activeTab === index ? 'active' : null;
 
 					return (
-						<li key={index} className={className}>
-							<a href="#" role="button" onKeyDown={this.handleKeyDown.bind( this, index )} ref={ref} onClick={this.handleSelectTab.bind( this, index )} onMouseOver={this.handleMouseOverTab.bind( this, index )} onMouseOut={this.handleMouseOutTab.bind( this, index )}>{title}</a>
-						</li>		
+						<li key={ index } className={ className }>
+							<button ref={ ref } onClick={ this.handleSelectTab.bind( this, index ) } onMouseOver={ this.handleMouseOverTab.bind( this, index ) } onMouseOut={ this.handleMouseOutTab.bind( this, index ) }>{ title }</button>
+						</li>
 					);
-				}.bind( this ) )}
+				}.bind( this ) ) }
 			</ul>
 		);
 	}

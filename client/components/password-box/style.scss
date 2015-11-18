@@ -1,24 +1,40 @@
-@import '../../scss/calypso-colors';
+@import "../../scss/calypso-colors";
 @import '../../scss/akismet-colors';
 @import '../../scss/calypso-form';
 
 .dops-password-box {
-	&.dops-password-box-hidden {
-		.dops-password-field {
-			color: #DDDDDD;
-		}		
-	}
+	position: relative;
 
-	.dops-password-field {
-		display: inline-block;
-		width: 100%;
-		border: 1px solid #DDD;
-		overflow: scroll;
+	.dops-text-input {
 		@extend %form-field;
+
+		display: block;
+		width: 100%;
+		padding-right: 32px;
 	}
 
-	svg {
-		float: right;
-		fill: #a8bece;
+	&.dops-password-box--hidden .dops-text-input {
+		color: darken( $gray, 5% );
+	}
+
+	.dops-password-box__toggle-visibility {
+		display: block;
+		cursor: pointer;
+		position: absolute;
+		right: 8px #{"/*rtl:ignore*/"};
+		top: 8px;
+		user-select: none;
+
+		.gridicon {
+			fill: darken( $gray, 10% );
+
+			&:hover {
+				fill: darken( $gray, 10% );
+			}
+		}
+
+		&:focus .gridicon {
+			outline: 1px dotted darken( $gray, 10% );
+		}
 	}
 }
