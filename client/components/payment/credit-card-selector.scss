@@ -448,8 +448,10 @@
 				flex-basis: auto;
 				flex-grow: 3;
 				flex-shrink: 0;
+				padding-top: 17px;
 				padding-bottom: 12px;
-
+				max-width: 300px;
+				
 				label {
 					display: none;
 				}
