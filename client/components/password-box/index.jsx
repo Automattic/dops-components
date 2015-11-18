@@ -43,7 +43,7 @@ let PasswordBox = React.createClass( {
 		if ( this.hidden() ) {
 			return (
 				<div className={ toggleVisibilityClasses }>
-					<span className='dops-text-input'>************</span>
+					<span className='dops-text-input' aria-hidden={ true }>************</span>
 					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility } aria-live='assertive'>
 						<Gridicon icon="visible" />
 						<ScreenReaderText>{ this.props.showLabel }</ScreenReaderText>
