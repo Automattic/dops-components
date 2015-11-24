@@ -166,8 +166,6 @@
 	}
 
 	form {
-		margin-top: 5px;
-
 		@include breakpoint( ">660px" ) {
 			@include clear-fix;
 		}
