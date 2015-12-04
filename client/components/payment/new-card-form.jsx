@@ -43,7 +43,6 @@ module.exports = React.createClass( {
 		if ( form.isValid() ) {
 			return form.getCurrentValues();
 		} else {
-			console.log("error!");
 			return false;
 		}
 	},
