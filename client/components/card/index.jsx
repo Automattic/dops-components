@@ -80,7 +80,7 @@ let Card = React.createClass( {
 	render: function() {
 		var { style, title, meta, icon, iconLabel, ...other } = this.props;
 		return (
-			<div {...other} className={'dops-card dops-card-stacked '+this.props.className} style={this.props.style}>
+			<div {...other} className={'dops-card '+this.props.className} style={this.props.style}>
 				{this.props.title && (
 					<h2 className="dops-card-title">
 						{title}
