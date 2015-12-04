@@ -20,6 +20,7 @@
 		flex-basis: 100px;
 
 		padding: 11px 24px;
+		padding-right: 0;
 
 		@include breakpoint( ">660px" ) {
 			padding: 13px 48px;
@@ -206,7 +207,7 @@
 	font-size: 14px;
 
 	.notice__text {
-		padding: 11px 24px 11px 16px;
+		padding: 11px 0px 11px 16px;
 	}
 
 	&::before {
