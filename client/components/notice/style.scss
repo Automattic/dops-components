@@ -114,10 +114,10 @@
 		font-weight: 600;
 		text-decoration: underline;
 
-		@media not all, only screen and (min-resolution: 2dppx), only screen and (-webkit-min-device-pixel-ratio: 2) {
-			background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, #fff 75%);
-			background-repeat: repeat-x;
-		}
+		// @media not all, only screen and (min-resolution: 2dppx), only screen and (-webkit-min-device-pixel-ratio: 2) {
+		// 	background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, #fff 75%);
+		// 	background-repeat: repeat-x;
+		// }
 	}
 
 	ul {
