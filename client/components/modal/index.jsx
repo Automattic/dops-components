@@ -18,6 +18,12 @@ let Modal = React.createClass( {
 		onRequestClose: React.PropTypes.func
 	},
 
+	getInitialState: function() {
+		return {
+			overlayMouseDown: false
+		};
+	},
+
 	getDefaultProps: function() {
 		return {
 			style: {}
@@ -51,16 +57,27 @@ let Modal = React.createClass( {
 		}
 	},
 
+	// this exists so we can differentiate between click events on the background
+	// which initiated there vs. drags that ended there (most notably from the slider in a modal)
+	handleMouseDownOverlay: function( e ) {
+		console.log("mouse down overlay");
+		e.preventDefault();
+		e.stopPropagation();
+		this.setState( {overlayMouseDown: true });
+	},
+
 	handleClickOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
-		if ( this.props.onRequestClose ) {
+		if ( this.state.overlayMouseDown && this.props.onRequestClose ) {
+			this.setState( {overlayMouseDown: false} );
 			this.props.onRequestClose();
 		}
 	},
 
 	// prevent clicks from propagating to background
-	handleClickModal: function( e ) {
+	handleMouseEventModal: function( e ) {
+		e.preventDefault();
 		e.stopPropagation(); 
 	},
 	
@@ -81,12 +98,14 @@ let Modal = React.createClass( {
 		}
 
 		combinedStyle = assign({}, style, containerStyle);
-
+		//onClick={this.handleClickOverlay} 
 		return (
-			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay}>
+			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay} onMouseDown={this.handleMouseDownOverlay}>
 				<div className={classNames( 'dops-modal', className )} 
 					style={combinedStyle} 
-					onClick={this.handleClickModal} 
+					onClick={this.handleMouseEventModal} 
+					onMouseDown={this.handleMouseEventModal}
+					onMouseUp={this.handleMouseEventModal}
 					role="dialog"
 					aria-label={title}
 					{ ...other }>
