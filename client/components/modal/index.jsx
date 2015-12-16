@@ -60,7 +60,6 @@ let Modal = React.createClass( {
 	// this exists so we can differentiate between click events on the background
 	// which initiated there vs. drags that ended there (most notably from the slider in a modal)
 	handleMouseDownOverlay: function( e ) {
-		console.log("mouse down overlay");
 		e.preventDefault();
 		e.stopPropagation();
 		this.setState( {overlayMouseDown: true });
@@ -77,7 +76,6 @@ let Modal = React.createClass( {
 
 	// prevent clicks from propagating to background
 	handleMouseEventModal: function( e ) {
-		e.preventDefault();
 		e.stopPropagation(); 
 	},
 	
