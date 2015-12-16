@@ -71,10 +71,10 @@ let Modal = React.createClass( {
 
 		switch ( width ) {
 		case 'wide':
-			containerStyle = { maxWidth: 'inherit' };
+			containerStyle = { maxWidth: 'inherit', width: 'inherit' };
 			break;
 		case 'medium':
-			containerStyle = { maxWidth: 1050 };
+			containerStyle = { maxWidth: 1050, width: 'inherit' };
 			break;
 		default:
 			containerStyle = {};
