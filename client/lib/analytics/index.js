@@ -55,14 +55,14 @@ function buildQuerystringNoPrefix( group, name ) {
 
 var analytics = {
 
-	initialize: function( user, superProps ) {
-		analytics.setUser( user );
+	initialize: function( userId, username, superProps ) {
+		analytics.setUser( userId, username );
 		analytics.setSuperProps( superProps );
 		analytics.identifyUser();
 	},
 
-	setUser: function( user ) {
-		_user = user;
+	setUser: function( userId, username ) {
+		_user = { ID: userId, username: username };
 	},
 
 	setSuperProps: function( superProps ) {
@@ -131,9 +131,9 @@ var analytics = {
 		initialize: function() {
 			var parameters = {};
 			if ( ! analytics.ga.initialized ) {
-				if ( _user && _user.get() ) {
+				if ( _user ) {
 					parameters = {
-						'userId': 'u-' + _user.get().ID
+						'userId': 'u-' + _user.ID
 					};
 				}
 				window.ga( 'create', config( 'google_analytics_key' ), 'auto', parameters );
@@ -181,8 +181,8 @@ var analytics = {
 
 	identifyUser: function() {
 		// Don't identify the user if we don't have one
-		if ( _user && _user.initialized ) {
-			window._tkq.push( [ 'identifyUser', _user.get().ID, _user.get().username ] );
+		if ( _user ) {
+			window._tkq.push( [ 'identifyUser', _user.ID, _user.username ] );
 		}
 	},
 
