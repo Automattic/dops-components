@@ -5,7 +5,22 @@ var React = require( 'react' ),
 
 var focusTrap = require('focus-trap');
 
+// this flag will prevent ANY modals from closing.
+// use with caution!
+// e.g. Modal.preventClose();
+//      Modal.allowClose();
+// this is for important processes that must not be interrupted, e.g. payments
+var preventCloseFlag = false;
+
 require( './style.scss' );
+
+function preventClose() {
+	preventCloseFlag = true;
+}
+
+function allowClose() {
+	preventCloseFlag = false;
+}
 
 let Modal = React.createClass( {
 
@@ -51,7 +66,7 @@ let Modal = React.createClass( {
 
 	handleEscapeKey: function( e ) {
 		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
-			if ( this.props.onRequestClose ) {
+			if ( this.props.onRequestClose && !preventCloseFlag) {
 				this.props.onRequestClose();
 			}
 		}
@@ -68,7 +83,7 @@ let Modal = React.createClass( {
 	handleClickOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
-		if ( this.state.overlayMouseDown && this.props.onRequestClose ) {
+		if ( this.state.overlayMouseDown && this.props.onRequestClose && !preventCloseFlag) {
 			this.setState( {overlayMouseDown: false} );
 			this.props.onRequestClose();
 		}
@@ -113,5 +128,8 @@ let Modal = React.createClass( {
 		);
 	}
 } );
+
+Modal.preventClose = preventClose;
+Modal.allowClose = allowClose;
 
 module.exports = Modal;
