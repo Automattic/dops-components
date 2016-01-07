@@ -77,14 +77,14 @@ let Modal = React.createClass( {
 	handleMouseDownOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
-		this.setState( {overlayMouseDown: true });
+		this.setState( { overlayMouseDown: true } );
 	},
 
 	handleClickOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
 		if ( this.state.overlayMouseDown && this.props.onRequestClose && !preventCloseFlag) {
-			this.setState( {overlayMouseDown: false} );
+			this.setState( { overlayMouseDown: false } );
 			this.props.onRequestClose();
 		}
 	},
@@ -110,7 +110,7 @@ let Modal = React.createClass( {
 			containerStyle = {};
 		}
 
-		combinedStyle = assign({}, style, containerStyle);
+		combinedStyle = assign( {}, style, containerStyle );
 		//onClick={this.handleClickOverlay} 
 		return (
 			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay} onMouseDown={this.handleMouseDownOverlay}>
