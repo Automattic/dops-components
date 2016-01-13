@@ -36,6 +36,12 @@ var CreditCardSelector = React.createClass( {
 		};
 	},
 
+	setSelectedCard: function( card ) {
+		if ( card && card.stored_details_id ) {
+			this.setState( { section: card.stored_details_id } );	
+		}
+	},
+
 	render: function() {
 		return (
 			<div className="payment-box-sections">
