@@ -45,16 +45,12 @@ let Modal = React.createClass( {
 		};
 	},
 
-	activateTrap: function() {
+	componentDidMount: function() {
+		jQuery( 'body' ).addClass( 'dops-modal-showing' );
 		focusTrap.activate(this.getDOMNode(), {
 			onDeactivate: this.maybeClose,
 			initialFocus: this.props.initialFocus,
 		});
-	},
-
-	componentDidMount: function() {
-		jQuery( 'body' ).addClass( 'dops-modal-showing' );
-		this.activateTrap();
 	},
 
 	componentWillUnmount: function() {
