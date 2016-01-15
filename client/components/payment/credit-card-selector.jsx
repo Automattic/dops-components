@@ -36,8 +36,9 @@ var CreditCardSelector = React.createClass( {
 		};
 	},
 
+	// note: this ONLY updates the selected card if the section is currently "new-card"
 	setSelectedCard: function( card ) {
-		if ( card && card.stored_details_id ) {
+		if ( this.state.section === 'new-card' && card && card.stored_details_id ) {
 			this.setState( { section: card.stored_details_id } );	
 		}
 	},
