@@ -47,15 +47,23 @@ let Modal = React.createClass( {
 
 	componentDidMount: function() {
 		jQuery( 'body' ).addClass( 'dops-modal-showing' );
+		jQuery( document ).keyup( this.handleEscapeKey );
 		focusTrap.activate(this.getDOMNode(), {
-			onDeactivate: this.maybeClose,
+			// onDeactivate: this.maybeClose,
 			initialFocus: this.props.initialFocus,
 		});
 	},
 
 	componentWillUnmount: function() {
 		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
+		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
 		focusTrap.deactivate();
+	},
+
+	handleEscapeKey: function( e ) {
+ 		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
+ 			this.maybeClose();
+ 		}
 	},
 
 	maybeClose: function() {
