@@ -94,6 +94,12 @@ var analytics = {
 		}
 	},
 
+	purchase: {
+		record: function( transactionId, itemName, itemId, revenue, price, qty, currency ) {
+			analytics.ga.recordPurchase( transactionId, itemName, itemId, revenue, price, qty, currency );
+		}
+	},
+
 	tracks: {
 		recordEvent: function( eventName, eventProperties ) {
 			var superProperties;
@@ -120,7 +126,7 @@ var analytics = {
 			analytics.tracks.recordEvent( 'akismet_page_view', {
 				'path': urlPath
 			} );
-		}
+		},
 	},
 
 	// Google Analytics usage and event stat tracking
@@ -176,6 +182,26 @@ var analytics = {
 			if ( config( 'google_analytics_enabled' ) ) {
 				window.ga( 'send', 'event', category, action, label, value );
 			}
+		},
+
+		recordPurchase: function( transactionId, itemName, itemId, revenue, price, qty, currency ) {
+			window.ga('require', 'ecommerce');
+			ga('ecommerce:addTransaction', {
+				'id': transactionId,                     // Transaction ID. Required.
+				// 'affiliation': 'Acme Clothing',   // Affiliation or store name.
+				'revenue': revenue,               // Grand Total.
+				// 'tax': '1.29',                     // Tax.
+				'currency': currency  // local currency code.
+			});
+			ga('ecommerce:addItem', {
+				'id': transactionId,                     // Transaction ID. Required.
+				'name': itemName,    // Product name. Required.
+				'sku': itemId,                 // SKU/code.
+				// 'category': 'Party Toys',         // Category or variation.
+				'price': price,                 // Unit price.
+				'quantity': qty                   // Quantity.
+			});
+			ga('ecommerce:send');
 		}
 	},
 
