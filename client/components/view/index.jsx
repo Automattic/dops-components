@@ -2,8 +2,7 @@
 /* All credit must go to Thomas Coopman for his original es6 implementation at: https://github.com/tcoopman/react-flexbox */
 
 var React = require( 'react' ),
-	m = require( '../../utils/m' ),
-	Radium = require( 'radium' );
+	m = require( '../../utils/m' );
 
 var flexContainerStyle = {
 	display: 'flex',
@@ -90,4 +89,4 @@ let View = React.createClass( {
 	}
 } );
 
-module.exports = Radium( View );
+module.exports = View;
