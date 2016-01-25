@@ -33,7 +33,7 @@
     "color": "^0.10.1",
     "creditcards": "^2.0.0",
     "debug": "^2.2.0",
-    "focus-trap": "^1.0.0",
+    "focus-trap": "gravityrail/focus-trap",
     "formsy-react": "^0.14.1",
     "inherits": "^2.0.1",
     "jquery": "^2.1.4",
