@@ -299,6 +299,10 @@ let ReactSlider = React.createClass( {
 	_handleResize: function() {
 		// setTimeout of 0 gives element enough time to have assumed its new size if it is being resized
 		window.setTimeout( function() {
+			if ( ! this.refs.slider ) {
+				// perhaps it belongs to a window that's been closed
+				return;
+			}
 			var slider = this.refs.slider.getDOMNode();
 			var handle = this.refs.handle0.getDOMNode();
 			var rect = slider.getBoundingClientRect();
