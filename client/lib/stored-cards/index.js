@@ -59,6 +59,9 @@ StoredCards.prototype.fetch = function() {
 
 		if ( error ) {
 			debug( 'error fetching stored cards from api', error );
+			if ( typeof Raven !== 'undefined' ) {
+				Raven.captureMessage( error, { extra: { action: 'stored-cards:fetch' } } );
+			}
 			return;
 		}
 
