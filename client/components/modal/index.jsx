@@ -48,16 +48,24 @@ let Modal = React.createClass( {
 	componentDidMount: function() {
 		jQuery( 'body' ).addClass( 'dops-modal-showing' );
 		jQuery( document ).keyup( this.handleEscapeKey );
-		focusTrap.activate(this.getDOMNode(), {
-			// onDeactivate: this.maybeClose,
-			initialFocus: this.props.initialFocus,
-		});
+		try {
+			focusTrap.activate(this.getDOMNode(), {
+				// onDeactivate: this.maybeClose,
+				initialFocus: this.props.initialFocus,
+			});
+		} catch( e ) {
+			//noop
+		}
 	},
 
 	componentWillUnmount: function() {
 		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
 		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
-		focusTrap.deactivate();
+		try {
+			focusTrap.deactivate();
+		} catch( e ) {
+			//noop
+		}
 	},
 
 	handleEscapeKey: function( e ) {
