@@ -12,7 +12,7 @@ function getClass(name) {
 	return style[name];
 }
 
-export default React.createClass( {
+const Button = React.createClass( {
 
 	displayName: 'Button',
 
@@ -50,3 +50,5 @@ export default React.createClass( {
 		return React.createElement( element, props, this.props.children );
 	}
 } );
+
+module.exports = Button;
