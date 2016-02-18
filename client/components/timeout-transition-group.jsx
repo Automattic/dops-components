@@ -14,9 +14,9 @@
  * addons and under the Apache 2.0 License.
  */
 
-var React = require( 'react/addons' );
+var React = require( 'react' );
 
-var ReactTransitionGroup = React.addons.TransitionGroup;
+var ReactTransitionGroup = require( 'react-addons-transition-group' );
 
 var TICK = 17;
 

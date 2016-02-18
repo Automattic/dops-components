@@ -46,8 +46,7 @@ var plugins = [
 module.exports = {
 	progress: true,
 	externals: {
-		'react': 'React',
-		'react/addons': 'React'
+		'react': 'React'
 	},
 	output: {
 		publicPath: '/assets/',
