@@ -20,7 +20,8 @@
 	flex-grow: 1;
 	line-height: rem( 28px );
 	position: relative;
-
+	color: $gray;
+	font-size: rem( 14px );
 
 	&:before {
 		@include long-content-fade( $color : $white );
@@ -36,11 +37,6 @@
 	position: relative;
 
 	@include clear-fix;
-}
-
-.dops-section-header__label {
-	color: $gray;
-	font-size: rem( 14px );
 }
 
 .section-header__actions .button {

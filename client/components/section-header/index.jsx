@@ -15,7 +15,7 @@ export default React.createClass( {
 	displayName: 'SectionHeader',
 
 	propTypes: {
-		label: React.PropTypes.string,
+		label: React.PropTypes.string
 	},
 
 	getDefaultProps() {
