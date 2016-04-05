@@ -85,7 +85,7 @@ let Card = React.createClass( {
 				'is-compact': this.props.compact
 			} );
 		return (
-			<div { ...other } className={ this.props.className, cardClasses } style={ this.props.style }>
+			<div { ...other } className={ classnames( this.props.className, cardClasses ) } style={ this.props.style }>
 				{ this.props.title && (
 					<h2 className="dops-card-title">
 						{title}
