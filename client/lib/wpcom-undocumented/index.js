@@ -3,7 +3,7 @@
  */
 var WPCOM = require( 'wpcom-private' ),
 	inherits = require( 'inherits' ),
-	assign = require( 'lodash/object/assign' ),
+	assign = require( 'lodash/assign' ),
 	debug = require( 'debug' )( 'calypso:wpcom-undocumented' );
 
 /**

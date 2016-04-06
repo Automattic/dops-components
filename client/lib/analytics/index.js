@@ -2,7 +2,7 @@
  * External dependencies
  */
 var debug = require( 'debug' )( 'dops:analytics' ),
-	assign = require( 'lodash/object/assign' );
+	assign = require( 'lodash/assign' );
 
 /**
  * Internal dependencies

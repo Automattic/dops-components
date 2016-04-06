@@ -2,17 +2,17 @@
  * External dependencies
  */
 var React = require( 'react/addons' ),
-	extend = require( 'lodash/object/assign' ),
-	isEmpty = require( 'lodash/lang/isEmpty' ),
+	extend = require( 'lodash/assign' ),
+	isEmpty = require( 'lodash/isEmpty' ),
 	classNames = require( 'classnames' ),
-	assign = require( 'lodash/object/assign' );
+	assign = require( 'lodash/assign' );
 
 /**
  * Internal dependencies
  */
 var Form = require('../form'),
 	// XXX temporary hack because default country select has 3-char countries
-	CountrySelect = require('../form/input-select-country-2'); 
+	CountrySelect = require('../form/input-select-country-2');
 
 module.exports = React.createClass( {
 	displayName: 'NewCardForm',
@@ -83,15 +83,15 @@ module.exports = React.createClass( {
 						label={this.translate( 'Card Number' )}/>
 
 					<div className="new-card-extras">
-						<Form.TextInput 
+						<Form.TextInput
 							name="expiration-date"
 							className="expiration-date"
 							formatter="cardExpiry"
-							label={this.translate( 'MM/YY' )} 
+							label={this.translate( 'MM/YY' )}
 							floatingLabel
 							required />
 
-						<Form.TextInput 
+						<Form.TextInput
 							name="cvv"
 							className="cvv"
 							formatter="cardCVV"
@@ -104,7 +104,7 @@ module.exports = React.createClass( {
 							value={this.state.formValue.country}
 							className="country"/>
 
-						<Form.TextInput 
+						<Form.TextInput
 							name="postal-code"
 							className="postal-code"
 							value={this.state.formValue['postal-code']}

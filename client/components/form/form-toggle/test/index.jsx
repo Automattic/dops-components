@@ -4,7 +4,7 @@
 var assert = require( 'assert' ),
 	React = require( 'react/addons' ),
 	TestUtils = React.addons.TestUtils,
-	unique = require( 'lodash/array/uniq' );
+	unique = require( 'lodash/uniq' );
 
 /**
  * Internal dependencies

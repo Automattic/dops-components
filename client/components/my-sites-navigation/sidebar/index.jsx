@@ -3,7 +3,7 @@
  */
 var React = require( 'react' ),
 	classNames = require( 'classnames' ),
-	startsWith = require( 'lodash/string/startsWith' );
+	startsWith = require( 'lodash/startsWith' );
 
 /**
  * Internal dependencies

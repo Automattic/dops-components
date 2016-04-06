@@ -3,7 +3,7 @@
  */
 var React = require( 'react/addons' ),
 	classNames = require( 'classnames' ),
-	find = require( 'lodash/collection/find' );
+	find = require( 'lodash/find' );
 
 require( './style.scss' );
 
