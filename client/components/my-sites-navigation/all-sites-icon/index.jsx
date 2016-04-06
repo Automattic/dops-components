@@ -2,7 +2,7 @@
  * External dependencies
  */
 var React = require( 'react/addons' ),
-	union = require( 'lodash/array/union' );
+	union = require( 'lodash/union' );
 
 /**
  * Internal dependencies

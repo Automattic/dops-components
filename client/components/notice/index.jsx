@@ -3,7 +3,7 @@
  */
 var React = require( 'react/addons' ),
 	joinClasses = require( 'react/lib/joinClasses' ),
-	noop = require( 'lodash/utility/noop' );
+	noop = require( 'lodash/noop' );
 
 /**
  * Internal dependencies

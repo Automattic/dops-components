@@ -4,7 +4,7 @@ require( './credit-card-selector.scss' );
  * External dependencies
  */
 var React = require( 'react' ),
-	where = require( 'lodash/collection/where' ),
+	filter = require( 'lodash/filter' ),
 	classNames = require( 'classnames' );
 
 /**
@@ -39,7 +39,7 @@ var CreditCardSelector = React.createClass( {
 	// note: this ONLY updates the selected card if the section is currently "new-card"
 	setSelectedCard: function( card ) {
 		if ( this.state.section === 'new-card' && card && card.stored_details_id ) {
-			this.setState( { section: card.stored_details_id } );	
+			this.setState( { section: card.stored_details_id } );
 		}
 	},
 
@@ -101,7 +101,7 @@ var CreditCardSelector = React.createClass( {
 	// returns false if no valid card selected
 	getCardRef: function() {
 		var cardRef;
-		
+
 		if ( 'new-card' === this.state.section ) {
 			// get the form field values and check they're valid
 			var newCardValues = this.refs.newCardForm.getValidFormFields();
@@ -133,7 +133,7 @@ var CreditCardSelector = React.createClass( {
 
 	getStoredCardDetails: function( section ) {
 		var cards = this.props.cards.get();
-		return where( cards, { stored_details_id: section } )[ 0 ];
+		return filter( cards, { stored_details_id: section } )[ 0 ];
 	}
 
 } );

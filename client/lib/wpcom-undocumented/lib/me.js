@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 var debug = require( 'debug' )( 'calypso:wpcom-undocumented:me' ),
-	assign = require( 'lodash/object/assign' );
+	assign = require( 'lodash/assign' );
 
 /**
  * Create an UndocumentedMe instance
