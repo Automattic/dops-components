@@ -15,6 +15,8 @@ let Panel = React.createClass( {
 let Tabs = React.createClass( {
 
 	propTypes: {
+		onClick: React.PropTypes.func,
+		activeTab: React.PropTypes.number,
 		layout: React.PropTypes.oneOf( ['horizontal', 'vertical'] )
 	},
 
@@ -37,6 +39,9 @@ let Tabs = React.createClass( {
 
 	handleSelectTab: function( index, e ) {
 		e.preventDefault();
+		if ( this.props.onClick ) {
+			this.props.onClick( index );
+		}
 		this.selectTab(index);
 	},
 
