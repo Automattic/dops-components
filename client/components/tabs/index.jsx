@@ -20,13 +20,14 @@ let Tabs = React.createClass( {
 
 	getDefaultProps: function() {
 		return {
+			activeTab: 0,
 			layout: 'horizontal'
 		};
 	},
 
 	getInitialState: function() {
 		return {
-			activeTab: 0
+			activeTab: this.props.activeTab
 		};
 	},
 
