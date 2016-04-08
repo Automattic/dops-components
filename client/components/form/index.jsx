@@ -92,7 +92,7 @@ Formsy.addValidationRule( 'isCC', function( values, value ) {
 	// strip spaces
 	value = value.replace( /\s/g, '' );
 
-	return value.length === 16 && luhnChk( value );
+	return value.length > 12 && luhnChk( value );
 } );
 
 Formsy.addValidationRule( 'isArray', function( values, value ) {
