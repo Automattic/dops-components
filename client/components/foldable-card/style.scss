@@ -140,7 +140,7 @@ button.dops-foldable-card__action {
 	margin-top: rem( 2px );
 	margin-bottom: rem( 2px );
 	font-size: rem( 14px );
-	color: #666;
+	color: darken( $gray, 20% );
 }
 
 .dops-foldable-card__content {
