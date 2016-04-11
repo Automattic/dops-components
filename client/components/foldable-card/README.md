@@ -40,5 +40,6 @@ render: function() {
 * `onClick`: function to be executed in addition to the expand action when the header is clicked
 * `onClose`: function to be executed in addition to the expand action when the card is closed
 * `onOpen`: function to be executed in addition to the expand action when the card is opened
+* `subheader`: string or component to show a subheader below the header
 * `summary`: string or component to show next to the action button when closed
 * `clickableHeader`: boolean indicating if the whole header can be clicked to open the card
