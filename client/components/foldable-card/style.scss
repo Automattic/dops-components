@@ -132,6 +132,17 @@ button.dops-foldable-card__action {
 	}
 }
 
+.dops-foldable-card__header-text {
+	font-size: rem( 18px );
+}
+
+.dops-foldable-card__subheader {
+	margin-top: rem( 2px );
+	margin-bottom: rem( 2px );
+	font-size: rem( 14px );
+	color: #666;
+}
+
 .dops-foldable-card__content {
 	display: none;
 

@@ -108,6 +108,8 @@ var FoldableCard = React.createClass( {
 	renderHeader: function() {
 		var summary = this.props.summary ? <span className="dops-foldable-card__summary">{ this.props.summary } </span> : null,
 			expandedSummary = this.props.expandedSummary ? <span className="dops-foldable-card__summary_expanded">{ this.props.expandedSummary } </span> : null,
+			header = this.props.header ? <div className="dops-foldable-card__header-text">{ this.props.header }</div> : null,
+			subheader = this.props.subheader ? <div className="dops-foldable-card__subheader">{ this.props.subheader }</div> : null,
 			headerClickAction = this.props.clickableHeader ? this.getClickAction() : null,
 			headerClasses = classNames( 'dops-foldable-card__header', {
 				'is-clickable': !! this.props.clickableHeader,
@@ -115,7 +117,12 @@ var FoldableCard = React.createClass( {
 			} );
 		return (
 			<div className={ headerClasses } onClick={ headerClickAction }>
-				<span className="dops-foldable-card__main">{ this.props.header } </span>
+				<span className="dops-foldable-card__main">
+					<div>
+						{ header }
+						{ subheader }
+					</div>
+				</span>
 				<span className="dops-foldable-card__secondary">
 					{ summary }
 					{ expandedSummary }
