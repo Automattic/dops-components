@@ -9,13 +9,10 @@ var React = require( 'react' ),
  * Internal dependencies
  */
 var BarContainer = require( './bar-container' ),
-	observe = require( 'mixins/data-observe' ),
 	touchDetect = require( 'lib/touch-detect' );
 
 module.exports = React.createClass( {
 	displayName: 'ModuleChart',
-
-	mixins: [ observe( 'dataList' ) ],
 
 	propTypes: {
 		loading: React.PropTypes.bool,
