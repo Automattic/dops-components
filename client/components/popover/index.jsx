@@ -7,13 +7,11 @@ import ReactDom from 'react-dom';
 import React from 'react';
 import omit from 'lodash/omit';
 import Tip from 'component-tip';
-import { Provider as ReduxProvider } from 'react-redux';
 
 /**
  * Internal dependencies
  */
-import closeOnEsc from 'lib/mixins/close-on-esc';
-import warn from 'lib/warn';
+import closeOnEsc from 'mixins/close-on-esc';
 
 var Content = React.createClass( {
 	mixins: [ closeOnEsc( '_close' ) ],
@@ -81,16 +79,6 @@ var Popover = React.createClass( {
 		if ( this.props.isVisible && this.props.context ) {
 			let content = <Content { ...omit( this.props, 'className' ) } onClose={ this._close } />;
 
-			// Context is lost when creating a new render hierarchy, so ensure
-			// that we preserve the context that we care about
-			if ( this.context.store ) {
-				content = (
-					<ReduxProvider store={ this.context.store }>
-						{ content }
-					</ReduxProvider>
-				);
-			}
-
 			// this schedules a render, but does not actually render the content
 			ReactDom.render( content, this._container );
 
@@ -98,14 +86,6 @@ var Popover = React.createClass( {
 				// defer showing the content to give it a chance to render
 				defer( () => {
 					const contextNode = ReactDom.findDOMNode( this.props.context );
-					if ( contextNode.nodeType !== Node.ELEMENT_NODE || contextNode.nodeName.toLowerCase() === 'svg' ) {
-						warn(
-							'Popover is attached to a %s element (nodeType %d).  ' +
-							'This causes problems in IE11 - see 12168-gh-calypso-pre-oss.',
-							contextNode.nodeName,
-							contextNode.nodeType
-						);
-					}
 
 					this._tip.position( this.props.position, { auto: true } );
 					this._tip.show( contextNode );

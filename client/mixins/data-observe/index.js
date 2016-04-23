@@ -1,4 +1,7 @@
-var debug = require( 'debug' )( 'calypso:data-observe' );
+/**
+ * External dependencies
+ */
+import forEach from 'lodash/forEach';
 
 module.exports = function() {
 	var propNames = Array.prototype.slice.call( arguments );
@@ -10,7 +13,7 @@ module.exports = function() {
 				if ( this.props[ propName ] ) {
 					this.props[ propName ].on( 'change', this.update );
 				} else {
-					debug( propName + ' is not set.' );
+					console.log( propName + ' is not set.' );
 				}
 			}, this );
 		},
@@ -42,7 +45,6 @@ module.exports = function() {
 
 		update: function() {
 			if ( this.isMounted() ) {
-				debug( 'Re-rendering ' + this.constructor.displayName + ' component.' );
 				this.forceUpdate();
 			}
 		}
