@@ -12,6 +12,8 @@ var BarContainer = require( './bar-container' ),
 	touchDetect = require( 'lib/touch-detect' ),
 	i18n = require( 'mixins/translate' );
 
+require( './style.scss' );
+
 module.exports = React.createClass( {
 	displayName: 'ModuleChart',
 
