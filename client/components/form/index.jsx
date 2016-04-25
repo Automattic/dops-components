@@ -1,6 +1,6 @@
 /** External Dependencies **/
 var React = require( 'react' ),
-	isArray = require( 'lodash/lang/isArray' ),
+	isArray = require( 'lodash/isArray' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
@@ -40,7 +40,7 @@ let Form = React.createClass( {
 	},
 
 	getCurrentValues: function() {
-		return this.refs.form.getCurrentValues();	
+		return this.refs.form.getCurrentValues();
 	},
 
 	submit: function() {

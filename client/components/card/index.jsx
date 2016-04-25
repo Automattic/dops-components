@@ -21,8 +21,8 @@ let CardSection = React.createClass( {
 	render: function() {
 		return (
 			<div className={classnames( 'dops-card-section', this.props.className )} style={this.props.style}>
-				{this.props.title ? 
-					this._renderWithTitle() : 
+				{this.props.title ?
+					this._renderWithTitle() :
 					this.props.children
 				}
 			</div>
@@ -32,7 +32,7 @@ let CardSection = React.createClass( {
 	_renderWithTitle: function() {
 		var orientation = this.props.vertical ? 'vertical' : 'horizontal';
 		var wrapperClassName = 'dops-card-section-orient-' + orientation;
-		
+
 		return (
 			<div className={wrapperClassName}>
 				<h4 ref="label" className="dops-card-section-label">
@@ -67,6 +67,7 @@ let Card = React.createClass( {
 		iconColor: React.PropTypes.string,
 		style: React.PropTypes.object,
 		className: React.PropTypes.string,
+		compact: React.PropTypes.bool,
 		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'mobile'] )
 	},
 
@@ -78,10 +79,14 @@ let Card = React.createClass( {
 	},
 
 	render: function() {
-		var { style, title, meta, icon, iconLabel, ...other } = this.props;
+		var { style, title, meta, icon, iconLabel, ...other } = this.props,
+			cardClasses = classnames( {
+				'dops-card': true,
+				'is-compact': this.props.compact
+			} );
 		return (
-			<div {...other} className={'dops-card '+this.props.className} style={this.props.style}>
-				{this.props.title && (
+			<div { ...other } className={ classnames( this.props.className, cardClasses ) } style={ this.props.style }>
+				{ this.props.title && (
 					<h2 className="dops-card-title">
 						{title}
 						{meta && <span className="dops-card-meta">{meta}</span>}
@@ -90,7 +95,7 @@ let Card = React.createClass( {
 						)}
 					</h2>
 				)}
-				
+
 				{this.props.children}
 			</div>
 		);

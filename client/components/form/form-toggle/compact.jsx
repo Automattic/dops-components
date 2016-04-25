@@ -3,12 +3,12 @@
  */
 var React = require( 'react' ),
 	classNames = require( 'classnames' ),
-	omit = require( 'lodash/object/omit' );
+	omit = require( 'lodash/omit' );
 
 /**
  * Internal dependencies
  */
-var Toggle = require( 'components/forms/form-toggle' );
+var Toggle = require( 'components/form/form-toggle' );
 
 module.exports = React.createClass( {
 

@@ -1,6 +1,7 @@
 @import '../../scss/layout';
 @import '../../scss/typography';
 @import '../../scss/calypso-colors';
+@import '../../scss/rem';
 
 $title: #f9f9f9;
 $meta: #AAAAAA;
@@ -11,7 +12,8 @@ $section-border: #DDDDDD;
 
 .dops-card {
 	position: relative;
-	margin: 0 auto 10px auto;
+	margin: 0 auto rem( 10px ) auto;
+	padding: rem( 16px );
 	box-sizing: border-box;
 	background: $white;
 	box-shadow: 0 0 0 1px transparentize( lighten( $gray, 20% ), .5 ),
@@ -20,10 +22,22 @@ $section-border: #DDDDDD;
 	@include clear-fix;
 
 	@include breakpoint( ">480px" ) {
-		margin-bottom: 16px;
+		margin-bottom: rem( 16px );
+		padding: rem( 24px );
+	}
+
+	// Compact Card
+	&.is-compact {
+		margin-bottom: 1px;
+
+		@include breakpoint( ">480px" ) {
+			margin-bottom: 1px;
+			padding: rem( 16px ) rem( 24px );
+		}
 	}
 }
 
+// TODO: remove this from Card
 .dops-card-title {
 	background-color: $title;
 	color: black;
@@ -45,8 +59,7 @@ $section-border: #DDDDDD;
 	}
 }
 
-/* Section */
-
+// Section
 .dops-card-section {
 	@include clear-fix;
 	font-size: 14px;
@@ -83,9 +96,9 @@ $section-border: #DDDDDD;
 				margin-bottom: 10px;
 				float: none;
 				width: 100%;
-			}	
+			}
 		}
-		
+
 		.dops-card-section-content {
 			float: right;
 			width: 70%;
@@ -96,18 +109,16 @@ $section-border: #DDDDDD;
 		}
 	}
 }
-		
-/* Footer */
 
+
+// Footer
 .dops-card-footer {
 	background: #f9f9f9;
 	padding: 15px 20px;
 }
 
 
-
-/* Icon */
-
+// Icon
 .dops-card-icon {
 	float: right;
 	text-transform: capitalize;

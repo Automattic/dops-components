@@ -1,9 +1,9 @@
 /** External Dependencies **/
 var React = require( 'react' ),
 	classNames = require( 'classnames' ),
-	forEach = require( 'lodash/collection/forEach' ),
-	isArray = require( 'lodash/lang/isArray' ),
-	pluck = require( 'lodash/collection/pluck' ),
+	forEach = require( 'lodash/forEach' ),
+	isArray = require( 'lodash/isArray' ),
+	map = require( 'lodash/map' ),
 	Formsy = require( 'formsy-react' );
 
 /** Internal Dependencies **/
@@ -63,7 +63,7 @@ module.exports = React.createClass( {
 
 	highlightAllSites: function( event ) {
 		if ( event.target.checked ) {
-			this.setValue( pluck( this.props.choices, 'value' ) );
+			this.setValue( map( this.props.choices, 'value' ) );
 		} else {
 			this.setValue( [] );
 		}

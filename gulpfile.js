@@ -3,7 +3,7 @@ var path = require('path');
 var gutil = require('gulp-util');
 var merge = require('merge-stream');
 var webpack = require("webpack");
-var assign = require('lodash/object/assign');
+var assign = require('lodash/assign');
 var WebpackDevServer = require("webpack-dev-server");
 
 // By default run a server for development

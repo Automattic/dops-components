@@ -1,7 +1,7 @@
 var React = require( 'react' ),
 	Icon = require( '../icon' ),
 	classNames = require( 'classnames' ),
-	assign = require( 'lodash/object/assign' );
+	assign = require( 'lodash/assign' );
 
 var focusTrap = require('focus-trap');
 
