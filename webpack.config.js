@@ -69,6 +69,10 @@ module.exports = {
 	module: {
 		loaders: [
 			{
+				test: /\.html$/,
+				loader: 'html-loader'
+			},
+			{
 				test: /\.jsx?$/,
 				loaders: jsLoader,
 				include: [
