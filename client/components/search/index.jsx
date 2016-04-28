@@ -249,7 +249,7 @@ const Search = React.createClass( {
 			'is-pinned': this.props.pinned,
 			'is-open': isOpenUnpinnedOrQueried,
 			'is-searching': this.props.searching,
-			search: true
+			'dops-search': true
 		} );
 
 		return (
@@ -265,12 +265,12 @@ const Search = React.createClass( {
 					}
 					aria-controls={ 'search-component-' + this.state.instanceId }
 					aria-label={ 'Open Search' }>
-				<Gridicon icon="search" className="search-open__icon"/>
+				<Gridicon icon="search" className="dops-search-open__icon"/>
 				</div>
 				<input
 					type="search"
 					id={ 'search-component-' + this.state.instanceId }
-					className="search__input"
+					className="dops-search__input"
 					placeholder={ placeholder }
 					role="search"
 					value={ searchValue }
@@ -297,7 +297,7 @@ const Search = React.createClass( {
 				onKeyDown={ this._keyListener.bind( this, 'closeSearch' ) }
 				aria-controls={ 'search-component-' + this.state.instanceId }
 				aria-label={ 'Close Search' }>
-			<Gridicon icon="cross" className="search-close__icon"/>
+			<Gridicon icon="cross" className="dops-search-close__icon"/>
 			</span>
 		);
 	},

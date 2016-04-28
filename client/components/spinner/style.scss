@@ -37,7 +37,7 @@
 	}
 }
 
-.spinner.is-fallback {
+.dops-spinner.is-fallback {
 	position: relative;
 	border-radius: 100%;
 	background-color: lighten( $gray, 20% );
@@ -65,21 +65,21 @@
 	}
 }
 
-.spinner__image {
+.dops-spinner__image {
 	display: block;
 }
 
-.spinner__border {
+.dops-spinner__border {
 	fill: lighten( $gray, 20% );
 }
 
-.spinner__progress {
+.dops-spinner__progress {
 	animation: 3s linear infinite;
 	transform-origin: 50px 50px;
 	fill: $blue-medium;
 }
 
-.spinner.is-fallback .spinner__progress {
+.dops-spinner.is-fallback .dops-spinner__progress {
 	position: absolute;
 	overflow: hidden;
 	width: 50%;
@@ -120,12 +120,12 @@
 	}
 }
 
-.spinner__progress.is-left,
-.spinner.is-fallback .spinner__progress.is-left::before {
+.dops-spinner__progress.is-left,
+.dops-spinner.is-fallback .dops-spinner__progress.is-left::before {
 	animation-name: rotate-spinner__left;
 }
 
-.spinner__progress.is-right,
-.spinner.is-fallback .spinner__progress.is-right::before {
+.dops-spinner__progress.is-right,
+.dops-spinner.is-fallback .dops-spinner__progress.is-right::before {
 	animation-name: rotate-spinner__right;
 }

@@ -52,7 +52,7 @@ Spinner = React.createClass( {
 	},
 
 	getClassName: function() {
-		return classNames( 'spinner', this.props.className, {
+		return classNames( 'dops-spinner', this.props.className, {
 			'is-fallback': ! this.isSVGCSSAnimationSupported()
 		} );
 	},
@@ -65,8 +65,8 @@ Spinner = React.createClass( {
 
 		return (
 			<div className={ this.getClassName() } style={ style }>
-				<span className="spinner__progress is-left"></span>
-				<span className="spinner__progress is-right"></span>
+				<span className="dops-spinner__progress is-left"></span>
+				<span className="dops-spinner__progress is-right"></span>
 			</div>
 		);
 	},
@@ -85,7 +85,7 @@ Spinner = React.createClass( {
 		/*eslint-disable react/no-danger*/
 		return (
 			<div className={ this.getClassName() }>
-				<svg className="spinner__image"
+				<svg className="dops-spinner__image"
 					width={ this.props.size }
 					height={ this.props.size }
 					viewBox="0 0 100 100"
@@ -107,13 +107,13 @@ Spinner = React.createClass( {
 							<rect x="50%" y="0" width="50%" height="100%" fill="white" />
 						</mask>
 					</defs>
-					<circle class="spinner__border" r="50%" cx="50%" cy="50%" mask="url( #maskBorder${ instanceId } )" />
+					<circle class="dops-spinner__border" r="50%" cx="50%" cy="50%" mask="url( #maskBorder${ instanceId } )" />
 					<g mask="url( #maskDonut${ instanceId } )">
 						<g mask="url( #maskLeft${ instanceId } )">
-							<rect class="spinner__progress is-left" x="0" y="0" width="50%" height="100%" />
+							<rect class="dops-spinner__progress is-left" x="0" y="0" width="50%" height="100%" />
 						</g>
 						<g mask="url( #maskRight${ instanceId } )">
-							<rect class="spinner__progress is-right" x="50%" y="0" width="50%" height="100%" />
+							<rect class="dops-spinner__progress is-right" x="50%" y="0" width="50%" height="100%" />
 						</g>
 					</g>
 				` } } />

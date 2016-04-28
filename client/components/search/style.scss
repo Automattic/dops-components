@@ -6,7 +6,7 @@
 /**
  * @component Search
  */
-.search {
+.dops-search {
 	margin-bottom: 24px;
 	width: 60px;
 	height: 51px;
@@ -18,7 +18,7 @@
 		width: 50px;
 	}
 
-	.search-open__icon {
+	.dops-search-open__icon {
 		position: absolute;
 			top: 50%;
 		margin-top: -12px;
@@ -27,7 +27,7 @@
 		color: $blue-wordpress;
 		cursor: pointer;
 
-		.accessible-focus &:focus {
+		.dops-accessible-focus &:focus {
 			outline: dotted 1px $blue-wordpress;
 		}
 
@@ -37,11 +37,11 @@
 
 	}
 
-	.search-open__icon:hover {
+	.dops-search-open__icon:hover {
 		color: darken( $gray, 30% );
 	}
 
-	.search-close__icon {
+	.dops-search-close__icon {
 		position: absolute;
 			bottom: 0;
 			top: 50%;
@@ -55,7 +55,7 @@
 		opacity: 0;
 		transition: opacity .2s ease-in;
 
-		.accessible-focus &:focus {
+		.dops-accessible-focus &:focus {
 			outline: dotted 1px $blue-wordpress;
 		}
 
@@ -82,7 +82,7 @@
 
 // Position collapsed search-button to the right
 // of the container element
-.search.is-pinned {
+.dops-search.is-pinned {
 	margin-bottom: 0;
 	height: auto;
 	position: absolute;
@@ -92,16 +92,16 @@
 	// matching dropdown-selector
 	z-index: z-index( 'root', '.search.is-pinned' );
 
-	.search-open__icon {
+	.dops-search-open__icon {
 		right: 0;
 	}
 
-	.search__input[type="search"] {
+	.dops-search__input[type="search"] {
 		height: 100%;
 	}
 }
 
-.search__input[type="search"] {
+.dops-search__input[type="search"] {
 	display: none;
 	position: absolute;
 	z-index: z-index( '.search', '.search__input' );
@@ -131,30 +131,30 @@
 }
 
 // When search input is opened
-.search.is-open {
+.dops-search.is-open {
 	margin-right: 0 !important;
 	width: 100%;
 
-	.search-open__icon {
+	.dops-search-open__icon {
 		color: darken( $gray, 30% );
 		left: 0;
 	}
 
-	.search-close__icon {
+	.dops-search-close__icon {
 		display: inline-block;
 	}
 
-	.search__input,
-	.search-close__icon{
+	.dops-search__input,
+	.dops-search-close__icon{
 		opacity: 1;
 	}
 
-	.search__input {
+	.dops-search__input {
 		display: block;
 	}
 }
 
-.search .spinner {
+.dops-search .dops-spinner {
 	display: none;
 	position: absolute;
 		top: 50%;
@@ -166,17 +166,17 @@
 	}
 }
 
-.search.is-searching .search-open__icon {
+.dops-search.is-searching .dops-search-open__icon {
 	display: none;
 }
 
-.search.is-searching .spinner {
+.dops-search.is-searching .dops-spinner {
 	display: block;
 	z-index: z-index( '.search', '.search.is-searching .spinner' );
 }
 
 @include breakpoint( "<660px" ) {
-	.animating.search-opening .search input {
+	.animating.dops-search-opening .dops-search input {
 		opacity: 1;
 	}
 }
