@@ -12,10 +12,11 @@ import noop from 'lodash/noop';
 /**
  * Internal dependencies
  */
-import analytics from 'analytics';
 import Spinner from 'components/spinner';
 import Gridicon from 'components/gridicon';
 import { isMobile } from 'lib/viewport';
+
+require( './style.scss' );
 
 /**
  * Internal variables
@@ -167,8 +168,6 @@ const Search = React.createClass( {
 			keyword: '',
 			isOpen: true
 		} );
-
-		analytics.ga.recordEvent( this.props.analyticsGroup, 'Clicked Open Search' );
 	},
 
 	closeSearch: function( event ) {
@@ -195,8 +194,6 @@ const Search = React.createClass( {
 		}
 
 		this.props.onSearchClose();
-
-		analytics.ga.recordEvent( this.props.analyticsGroup, 'Clicked Close Search' );
 	},
 
 	keyUp: function( event ) {

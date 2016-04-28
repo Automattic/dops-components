@@ -14,6 +14,8 @@ var NavTabs = require( './tabs' ),
 	NavItem = require( './item' ),
 	Search = require( 'components/search' );
 
+require( './style.scss' );
+
 /**
  * Main
  */

@@ -36,12 +36,12 @@ module.exports = React.createClass( {
 					<NavItem path="/posts/scheduled" selected={ false }>Scheduled</NavItem>
 					<NavItem path="/posts/trashed" selected={ false }>Trashed</NavItem>
 				</NavTabs>
-				
+
 				<NavSegmented label="Author">
 					<NavItem path="/posts/my" selected={ false }>Only Me</NavItem>
 					<NavItem path="/posts" selected={ true }>Everyone</NavItem>
 				</NavSegmented>
-				
+
 				<Search
 					pinned={ true }
 					onSearch={ this.doSearch }

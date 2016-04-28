@@ -1,3 +1,8 @@
+@import '../../scss/calypso-colors';
+@import '../../scss/z-index';
+@import '../../scss/mixin_breakpoint';
+@import '../../scss/rem';
+
 /**
  * Section Nav
  */
@@ -52,7 +57,7 @@
 	cursor: pointer;
 
 	&:after {
-		@include noticon( '\f431', 20px );
+		// @include noticon( '\f431', 20px );
 		line-height: 16px;
 		color: rgba( $gray, 0.5 );
 	}
@@ -281,7 +286,7 @@
 
 	.is-external & {
 		&:after {
-			@include noticon('\f442');
+			// @include noticon('\f442');
 			font-size: 18px;
 			padding-left: 2px;
 		}
