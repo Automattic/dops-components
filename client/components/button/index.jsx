@@ -6,11 +6,7 @@ import assign from 'lodash/assign';
 import classNames from 'classnames';
 import noop from 'lodash/noop';
 
-var style = require( './style.scss' );
-
-function getClass(name) {
-	return style[name];
-}
+require( './style.scss' );
 
 export default React.createClass( {
 
@@ -23,25 +19,28 @@ export default React.createClass( {
 		scary: React.PropTypes.bool,
 		type: React.PropTypes.string,
 		href: React.PropTypes.string,
-		onClick: React.PropTypes.func
+		onClick: React.PropTypes.func,
+		borderless: React.PropTypes.bool
 	},
 
 	getDefaultProps() {
 		return {
 			disabled: false,
 			type: 'button',
-			onClick: noop
+			onClick: noop,
+			borderless: false
 		};
 	},
 
 	render() {
 		const element = this.props.href ? 'a' : 'button';
-
-		let buttonClasses = {};
-		buttonClasses[ getClass( 'button' ) ] = true;
-		buttonClasses[ getClass( 'is-compact' ) ] = this.props.compact;
-		buttonClasses[ getClass( 'is-primary' ) ] = this.props.primary;
-		buttonClasses[ getClass( 'is-scary' ) ] = this.props.scary;
+		const buttonClasses = classNames( {
+			'dops-button': true,
+			'is-compact': this.props.compact,
+			'is-primary': this.props.primary,
+			'is-scary': this.props.scary,
+			'is-borderless': this.props.borderless
+		} );
 
 		const props = assign( {}, this.props, {
 			className: classNames( this.props.className, buttonClasses )

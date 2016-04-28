@@ -1,30 +1,12 @@
 @import "../../scss/calypso-colors";
 @import "../../scss/color-functions";
 
-// TODO: factor out these colors
-$green: #518d2a;
-$lighter-green: #57972d;
-$darker-green: #2B4B16;
-$blue: #029DD6;
-
 // ==========================================================================
 // Buttons
 // ==========================================================================
 
-// resets button styles
-:local button {
-	background: transparent;
-	border: none;
-	outline: 0;
-	padding: 0;
-	font-size: 14px;
-	-webkit-appearance: none;
-	appearance: none;
-	vertical-align: baseline;
-}
-
-:local .button {
-	background: $gray-light;
+.dops-button {
+	background: $white;
 	border-color: lighten( $gray, 20% );
 	border-style: solid;
 	border-width: 1px 1px 2px;
@@ -34,7 +16,8 @@ $blue: #029DD6;
 	margin: 0;
 	outline: 0;
 	overflow: hidden;
-	font-weight: 600;
+	font-size: 14px;
+	font-weight: 500;
 	text-overflow: ellipsis;
 	text-decoration: none;
 	vertical-align: top;
@@ -85,6 +68,18 @@ $blue: #029DD6;
 			top: 4px;
 			margin-top: -8px;
 		}
+		// Make the left margin of the small plus icon visually less huge
+		.gridicons-plus-small {
+			margin-left: -4px;
+		}
+		// Reset the left margin if the button contains only the plus icon
+		.gridicons-plus-small:last-of-type {
+			margin-left: 0;
+		}
+		// Make plus icon nudged closer to adjacent icons for add-people and add-plugin type buttons
+		.gridicons-plus-small + .gridicon {
+			margin-left: -4px;
+		}
 	}
 	&.hidden {
 		display: none;
@@ -99,7 +94,7 @@ $blue: #029DD6;
 }
 
 // Primary buttons
-:local .button.is-primary {
+.dops-button.is-primary {
 	background: $blue-medium;
 	border-color: $blue-wordpress;
 	color: $white;
@@ -109,7 +104,8 @@ $blue: #029DD6;
 		border-color: $blue-dark;
 		color: $white;
 	}
-	&[disabled] {
+	&[disabled],
+	&:disabled {
 		background: tint( $blue-light, 50% );
 		border-color: tint( $blue-wordpress, 55% );
 		color: $white;
@@ -120,13 +116,9 @@ $blue: #029DD6;
 }
 
 // Scary buttons
-:local .button.is-scary,
-:local .button.is-dangerous {
+.dops-button.is-scary {
 	color: $alert-red;
 
-	&[disabled] {
-		color: lighten( $alert-red, 30% );
-	}
 	&:hover,
 	&:focus {
 		border-color: $alert-red;
@@ -134,74 +126,79 @@ $blue: #029DD6;
 	&:focus {
 		box-shadow: 0 0 0 2px lighten( $alert-red, 20% );
 	}
+	&[disabled],
+	&:disabled {
+		color: lighten( $alert-red, 30% );
+		border-color: lighten( $gray, 30% );
+	}
 }
 
-:local .button.is-primary.is-scary,
-:local .button.is-destructive {
+.dops-button.is-primary.is-scary {
 	background: $alert-red;
 	border-color: darken( $alert-red, 20% );
 	color: $white;
 
 	&:hover,
 	&:focus {
-		border-color: darken( $alert-red, 30% );
+		border-color: darken( $alert-red, 40% );
 	}
-	&[disabled] {
+	&[disabled],
+	&:disabled {
 		background: lighten( $alert-red, 20% );
 		border-color: tint( $alert-red, 30% );
 	}
 }
 
-// ==========================================================================
-// Deprecated styles
-//
-// `button.is-destructive` and ``.button.is-dangerous` are also deprecated
-// ==========================================================================
+.dops-button.is-borderless {
+	border: none;
+	color: darken( $gray, 10% );
+	padding-left: 0;
+	padding-right: 0;
 
-// Positions and resets font styles of noticons applied to buttons
-:local .button.noticon {
-	line-height: inherit;
-
-	&:before {
-		display: inline-block;
-		vertical-align: middle;
-		margin-top: -2px;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: normal;
+	&:hover {
+		color: $gray-dark;
 	}
-}
 
-// ==========================================================================
-// Resets
-// ==========================================================================
-
-// Turn Reset 'buttons' into regular text links
-input {
-	&[type=reset],
-	&[type=reset]:hover,
-	&[type=reset]:active,
-	&[type=reset]:focus {
-		background: 0 0;
-		border: 0;
-		padding: 0 2px 1px;
-		width: auto;
+	&:focus {
 		box-shadow: none;
 	}
-}
 
-// Buttons within sentences sit on the text baseline.
-p .button {
-	vertical-align: baseline
-}
+	.gridicon {
+		width: 24px;
+		height: 24px;
+		top: 6px;
+	}
 
-// Firefox Junk
-button::-moz-focus-inner,
-input[type=reset]::-moz-focus-inner,
-input[type=button]::-moz-focus-inner,
-input[type=submit]::-moz-focus-inner {
-	border-width: 1px 0;
-	border-style: solid none;
-	border-color: transparent;
-	padding: 0
+	&[disabled],
+	&:disabled {
+		color: lighten( $gray, 30% );
+		background: $white;
+		cursor: default;
+
+		&:active {
+			border-width: 0;
+		}
+	}
+	&.is-scary {
+		color: $alert-red;
+
+		&:hover,
+		&:focus {
+			color: darken( $alert-red, 20% );
+		}
+
+		&[disabled] {
+			color: lighten( $alert-red, 30% );
+		}
+	}
+
+	&.is-compact {
+		background: transparent;
+		border-radius: 0;
+		.gridicon {
+			width: 18px;
+			height: 18px;
+			top: 5px;
+		}
+	}
 }
