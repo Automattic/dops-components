@@ -93,7 +93,7 @@ module.exports = React.createClass( {
 			count = this.props.count || 1,
 			tooltip;
 
-		barClass = { chart__bar: true };
+		barClass = { 'dops-chart__bar': true };
 
 		if ( this.props.className ){
 			barClass[ this.props.className ] = true;
