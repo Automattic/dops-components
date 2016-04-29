@@ -195,7 +195,7 @@ class SelectDropdown extends Component {
 			<div style={ this.props.style } className={ dropdownClassName }>
 				<div
 					ref="dropdownContainer"
-					className="select-dropdown__container"
+					className="dops-select-dropdown__container"
 					valueLink={ this.props.valueLink }
 					onKeyDown={ this.navigateItem }
 					tabIndex={ this.props.tabIndex || 0 }
@@ -207,9 +207,9 @@ class SelectDropdown extends Component {
 				>
 					<div
 						id={ 'select-dropdown-' + this.state.instanceId }
-						className="select-dropdown__header"
+						className="dops-select-dropdown__header"
 					>
-						<span className="select-dropdown__header-text">
+						<span className="dops-select-dropdown__header-text">
 							{ selectedText }
 							{
 								'number' === typeof this.props.selectedCount &&
@@ -220,7 +220,7 @@ class SelectDropdown extends Component {
 
 					<ul
 						id={ 'select-submenu-' + this.state.instanceId }
-						className="select-dropdown__options"
+						className="dops-select-dropdown__options"
 						role="menu"
 						aria-labelledby={ 'select-dropdown-' + this.state.instanceId }
 						aria-expanded={ this.state.isOpen }

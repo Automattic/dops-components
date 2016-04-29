@@ -38,8 +38,8 @@ var NavSegmented = React.createClass( {
 
 	render: function() {
 		var segmentedClassName = classNames( {
-			'section-nav-group': true,
-			'section-nav__segmented': true,
+			'dops-section-nav-group': true,
+			'dops-section-nav__segmented': true,
 			'has-siblings': this.props.hasSiblingControls
 		} );
 
@@ -47,7 +47,7 @@ var NavSegmented = React.createClass( {
 			<div className={ segmentedClassName }>
 				{
 					this.props.label &&
-					<h6 className="section-nav-group__label">{ this.props.label }</h6>
+					<h6 className="dops-section-nav-group__label">{ this.props.label }</h6>
 				}
 
 				<SegmentedControl>

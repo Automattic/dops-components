@@ -22,6 +22,6 @@ module.exports = React.createClass( {
 
 		labelStyle[ dir ] = this.props.x + 'px';
 
-		return <div className="chart__x-axis-label" style={ labelStyle }>{ this.props.label }</div>;
+		return <div className="dops-chart__x-axis-label" style={ labelStyle }>{ this.props.label }</div>;
 	}
 } );

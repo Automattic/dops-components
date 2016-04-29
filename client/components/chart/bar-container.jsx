@@ -30,8 +30,8 @@ module.exports = React.createClass( {
 		bars = this.props.data.map( function ( item, index ) {
 			var barOffset = barWidth * ( index + 1 );
 
-			if ( 
-				 ( ( barOffset + 230 ) > width ) && 
+			if (
+				 ( ( barOffset + 230 ) > width ) &&
 				 ( ( ( barOffset + barWidth ) - 230 ) > 0 )
 				) {
 				tooltipPosition = 'bottom left';
@@ -44,7 +44,7 @@ module.exports = React.createClass( {
 						className={ item.className }
 						clickHandler={ this.props.barClick }
 						data={ item }
-						max={ max } 
+						max={ max }
 						count={ numberBars } />;
 		}, this );
 
@@ -52,9 +52,9 @@ module.exports = React.createClass( {
 	},
 
 	render: function() {
-		return ( 
+		return (
 			<div>
-				<div className="chart__bars">
+				<div className="dops-chart__bars">
 					{ this.buildBars( this.props.yAxisMax ) }
 				</div>
 				<XAxis data={ this.props.data } labelWidth={ 42 } />

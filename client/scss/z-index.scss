@@ -36,7 +36,7 @@ $z-layers: (
 		'.infinite-scroll-end:before': -1,
 		'.is-group-editor::before': -1,
 		'.site-icon.is-blank .gridicon': 0,
-		'.chart__bar-section.is-spacer': 0,
+		'.dops-chart__bar-section.is-spacer': 0,
 		'.gear-dropdown:after': 0,
 		'.plan-compare-card__ribbon': 1,
 		'.reader__featured-post-title': 1,
@@ -48,9 +48,9 @@ $z-layers: (
 		'.plan-discount-message': 1,
 		'.editor__switch-mode': 1,
 		'.auth__form .form-fieldset input': 1,
-		'.chart__empty': 1,
-		'.chart__bar-marker': 1,
-		'.chart__bar-section.is-ghost::after': 1,
+		'.dops-chart__empty': 1,
+		'.dops-chart__bar-marker': 1,
+		'.dops-chart__bar-section.is-ghost::after': 1,
 		'.billing-history-page .filter-popover-content': 1,
 		'.module-content-table::after': 1,
 		'.stats-popular__empty': 1,
@@ -67,7 +67,7 @@ $z-layers: (
 		'.toolbar-bulk': 2,
 		'.menus__menu-item': 2,
 		'.menus__menu-item-open:before': 2,
-		'.chart__bar-section': 2,
+		'.dops-chart__bar-section': 2,
 		'.module-content-table tbody th:first-child': 2,
 		'ul.module-header-actions .module-header-action-link': 2,
 		'.stats-module.is-loading .module-header-title::after': 2,
@@ -86,12 +86,12 @@ $z-layers: (
 		'.editor-featured-image .editor-drawer-well__remove': 20,
 		'.main': 20, //TODO: this doesn't always have a stacking context
 		//'tinymce-toolbar': 20, client/components/tinymce/index.jsx
-		'.search': 22,
+		'.dops-search': 22,
 		'#translator-launcher': 99,
 		'.author-selector__popover.popover': 100,
-		'.search.is-pinned': 170,
-		'.select-dropdown.is-open .select-dropdown__container': 170,
-		'.accessible-focus .select-dropdown.is-open .select-dropdown__container': 170,
+		'.dops-search.is-pinned': 170,
+		'.dops-select-dropdown.is-open .dops-select-dropdown__container': 170,
+		'.dops-accessible-focus .dops-select-dropdown.is-open .dops-select-dropdown__container': 170,
 		'.sites-dropdown.is-open .sites-dropdown__wrapper' : 170,
 		'.popover.editor-visibility__popover': 179,
 		'.feature-example__gradient': 179,
@@ -111,7 +111,7 @@ $z-layers: (
 		'.popover': 1000,
 		'.sharing-buttons-preview-buttons__more': 1000,
 		'.sortable-list__item.is-draggable.is-active': 1000,
-		'.chart__tooltip': 1000,
+		'.dops-chart__tooltip': 1000,
 		'.drop-zone__content': 1010,
 		'.wp-overlay': 9999,
 		'.dropdown-menu': 9999,
@@ -163,11 +163,11 @@ $z-layers: (
 		'.popover .tip-arrow': 1,
 		'.post-schedule__header': 1
 	),
-	'.search': (
-		'.search__input': 10,
-		'.search.is-searching .spinner': 20,
-		'.search .search-open__icon': 20,
-		'.search .search-close__icon': 20
+	'.dops-search': (
+		'.dops-search__input': 10,
+		'.dops-search.is-searching .dops-spinner': 20,
+		'.dops-search .dops-search-open__icon': 20,
+		'.dops-search .dops-search-close__icon': 20
 	),
 	'.profile-gravatar__edit-label-wrap': (
 		'.profile-gravatar__edit-label-wrap:after': 0,
@@ -207,9 +207,9 @@ $z-layers: (
 		'.progress-indicator__cancel.noticon:before': 1,
 		'.progress-indicator .is-success': 2
 	),
-	'section-nav-tabs__dropdown-parent': (
-		'.section-nav-tabs__dropdown': 3,
-		'.section-nav-tabs__dropdown.is-open': 4
+	'dops-section-nav-tabs__dropdown-parent': (
+		'.dops-section-nav-tabs__dropdown': 3,
+		'.dops-section-nav-tabs__dropdown.is-open': 4
 	),
 	'reader-card-follow-button-parent': (
 		'.reader__card.card .follow-button': 1

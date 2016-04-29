@@ -28,13 +28,13 @@ var SelectDropdownItem = React.createClass( {
 
 	render: function() {
 		var optionClassName = classNames( this.props.className, {
-			'select-dropdown__item': true,
+			'dops-select-dropdown__item': true,
 			'is-selected': this.props.selected,
 			'is-disabled': this.props.disabled
 		} );
 
 		return (
-			<li className="select-dropdown__option">
+			<li className="dops-select-dropdown__option">
 				<a
 					ref="itemLink"
 					href={ this.props.path }
@@ -44,7 +44,7 @@ var SelectDropdownItem = React.createClass( {
 					role="menuitem"
 					tabIndex={ 0 }
 					aria-selected={ this.props.selected } >
-					<span className="select-dropdown__item-text">
+					<span className="dops-select-dropdown__item-text">
 						{ this.props.children }
 						{
 							'number' === typeof this.props.count &&

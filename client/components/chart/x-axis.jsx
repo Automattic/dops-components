@@ -97,8 +97,7 @@ module.exports = React.createClass( {
 		}, this );
 
 		return (
-			<div ref="axis" className="chart__x-axis">{ labels }</div>
+			<div ref="axis" className="dops-chart__x-axis">{ labels }</div>
 		);
 	}
 } );
-

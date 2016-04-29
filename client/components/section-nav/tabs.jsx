@@ -65,7 +65,7 @@ var NavTabs = React.createClass( {
 		} );
 
 		var tabsClassName = classNames( {
-			'section-nav-tabs': true,
+			'dops-section-nav-tabs': true,
 			'is-dropdown': this.state.isDropdown,
 			'is-open': this.state.isDropdownOpen,
 			'has-siblings': this.props.hasSiblingControls
@@ -74,15 +74,15 @@ var NavTabs = React.createClass( {
 		var innerWidth = viewport.getWindowInnerWidth();
 
 		return (
-			<div className="section-nav-group" ref="navGroup">
+			<div className="dops-section-nav-group" ref="navGroup">
 				<div className={ tabsClassName }>
 					{ this.props.label &&
-						<h6 className="section-nav-group__label">
+						<h6 className="dops-section-nav-group__label">
 							{ this.props.label }
 						</h6>
 					}
 					<ul
-						className="section-nav-tabs__list"
+						className="dops-section-nav-tabs__list"
 						role="menu"
 						onKeyDown={ this.keyHandler }
 					>
@@ -128,7 +128,7 @@ var NavTabs = React.createClass( {
 
 		return (
 			<SelectDropdown
-				className="section-nav-tabs__dropdown"
+				className="dops-section-nav-tabs__dropdown"
 				selectedText={ this.props.selectedText }
 				selectedCount={ this.props.selectedCount }
 			>

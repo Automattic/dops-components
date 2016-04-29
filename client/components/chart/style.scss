@@ -6,8 +6,9 @@
 @import '../../scss/rem';
 @import '../../scss/mixin_clear-fix';
 @import '../../scss/mixin_long-content-fade';
+@import '../../scss/z-index';
 
-.chart {
+.dops-chart {
 	position: relative;
 	box-sizing: border-box;
 	background-color: $white;
@@ -19,7 +20,7 @@
 // Y-axis markers (lines)
 // 1: Corresponds to padding of chart
 
-.chart .chart__y-axis-markers {
+.dops-chart .dops-chart__y-axis-markers {
 	position: absolute;
 		top: 8px; // 1
 		left: 0;
@@ -27,7 +28,7 @@
 	height: 200px;
 }
 
-.chart .chart__y-axis-marker {
+.dops-chart .dops-chart__y-axis-marker {
 	position: absolute;
 		top: 0;
 	width: 100%;
@@ -37,8 +38,8 @@
 
 // Y-axis marker lines inside each chart__bar
 // (This is needed so that bars overlap correctly)
-.chart__bar-marker {
-	z-index: z-index( 'root', '.chart__bar-marker' );
+.dops-chart__bar-marker {
+	z-index: z-index( 'root', '.dops-chart__bar-marker' );
 	position: absolute;
 		top: 0;
 	width: 100%;
@@ -46,9 +47,9 @@
 	border-top: 1px solid rgba( lighten( $gray, 30% ), .1 );
 }
 
-.chart__bar-marker,
-.chart__y-axis-label,
-.chart .chart__y-axis-marker {
+.dops-chart__bar-marker,
+.dops-chart__y-axis-label,
+.dops-chart .dops-chart__y-axis-marker {
 	&.is-fifty {
 		top: 50%;
 	}
@@ -61,7 +62,7 @@
 // Y-axis labels
 // 1: matches Y-axis padding
 
-.chart__y-axis {
+.dops-chart__y-axis {
 	position: relative;
 	float: right;
 	height: 200px;
@@ -71,7 +72,7 @@
 	margin-bottom: 30px;
 }
 
-.chart__y-axis-label {
+.dops-chart__y-axis-label {
 	position: absolute;
 		top: 0;
 		right: 20px; // 1
@@ -79,14 +80,14 @@
 }
 
 // For forcing the width of y-axis to the width of the label
-.chart__y-axis-width-fix {
+.dops-chart__y-axis-width-fix {
 	color: $transparent;
 }
 
 // X-axis
 // 1: hides spaces between elements
 
-.chart__x-axis {
+.dops-chart__x-axis {
 	position: relative;
 	font-size: 0; // 1
 	padding: 5px 0;
@@ -94,7 +95,7 @@
 	color: darken( $gray, 30% );
 }
 
-.chart__x-axis-label {
+.dops-chart__x-axis-label {
 	position: absolute;
 	display: inline-block;
 	vertical-align: top;
@@ -105,7 +106,7 @@
 // X-axis label indicator
 // (vertical thin grey bar)
 
-.chart__x-axis-label::before {
+.dops-chart__x-axis-label::before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -121,7 +122,7 @@
 // Bar wrapper
 // 1: hides spaces between elements
 
-.chart__bars {
+.dops-chart__bars {
 	position: relative;
 	font-size: 0; // 1
 	height: 200px;
@@ -134,7 +135,7 @@
 // Individual bar
 // 1: Needs to be relative so that the contained graphic bar has boundaries
 
-.chart__bar {
+.dops-chart__bar {
 	text-align: center;
 	display: inline-block;
 	position: relative; // 1
@@ -166,7 +167,7 @@
 //    (doesn't function correctly for period switching right now, not sure why)
 //    (also doesn't work because updating the DOM is so heavy it stalls all animations)
 
-.chart__bar-section {
+.dops-chart__bar-section {
 	display: inline-block;
 	background-color: $blue-wordpress;
 	position: absolute;
@@ -174,18 +175,18 @@
 		right: 16%; // 1
 		bottom: 0; // 1
 		left: 16%; // 1
-	z-index: z-index( 'root', '.chart__bar-section' );
+	z-index: z-index( 'root', '.dops-chart__bar-section' );
 
-	.chart__bar:hover &.is-bar {
+	.dops-chart__bar:hover &.is-bar {
 		background-color: $blue-medium;
 	}
 
-	.chart__bar.is-selected &.is-bar {
+	.dops-chart__bar.is-selected &.is-bar {
 		background-color: $orange-jazzy;
 	}
 
 	&.is-spacer {
-		z-index: z-index( 'root', '.chart__bar-section.is-spacer' );
+		z-index: z-index( 'root', '.dops-chart__bar-section.is-spacer' );
 		background-color: $transparent;
 	}
 
@@ -196,25 +197,25 @@
 			top: 160px;
 			bottom: 0;
 			left: 0;
-		z-index: z-index( 'root', '.chart__bar-section.is-ghost::after' );
+		z-index: z-index( 'root', '.dops-chart__bar-section.is-ghost::after' );
 		width: 100%;
 		height: 40px;
 		background-image: linear-gradient(to bottom, $transparent, rgba( lighten( $gray, 30% ), .5 ) ); // TODO: needs to use default color for gradient
 
-		.chart__bar:hover & {
+		.dops-chart__bar:hover & {
 			display: none;
 		}
 	}
 }
 
-.chart__bar-section-inner {
+.dops-chart__bar-section-inner {
 	background: darken( $blue-dark, 5% );
 	position: absolute;
 		right: 23.33%;
 		bottom: 0;
 		left: 23.33%;
 
-	.chart__bar.is-selected & {
+	.dops-chart__bar.is-selected & {
 		background-color: $orange-fire;
 	}
 }
@@ -222,14 +223,14 @@
 // Chart legend (wrapper)
 // 1: L/R matches padding of y-axis labels in chart
 
-.chart__legend {
+.dops-chart__legend {
 	@include clear-fix;
 	margin-bottom: -8px;
 }
 
 // Chart legend options (list)
 
-.chart__legend .chart__legend-options {
+.dops-chart__legend .dops-chart__legend-options {
 	float: right;
 	color: lighten( $gray-dark, 20% );
 	list-style-type: none;
@@ -246,7 +247,7 @@
 
 // Chart legend option (list item)
 
-.chart__legend-option {
+.dops-chart__legend-option {
 	display: inline;
 	text-align: left;
 
@@ -260,7 +261,7 @@
 // Chart legend label
 // 1: 19/10px instead of 20/12px because it aligns better optically
 
-.chart__legend-label {
+.dops-chart__legend-label {
 	display: inline-block;
 	padding: 12px 19px 10px 20px; // 1
 
@@ -282,7 +283,7 @@
 // 1: Needed to overvwrite form styles in main stylesheets
 // 2: Make leftmost legend fit snugly up against the leftmost bars
 
-.chart__legend-option .chart__legend-color {
+.dops-chart__legend-option .dops-chart__legend-color {
 	width: 10px;
 	height: 10px;
 	background: $blue-wordpress;
@@ -293,18 +294,18 @@
 }
 
 @include breakpoint( "<480px" ) {
-	.chart__legend-option:first-child .chart__legend-color {
+	.dops-chart__legend-option:first-child .dops-chart__legend-color {
 		margin-left: 2px; // 2
 	}
 }
 
-.chart__legend-color.is-dark-blue {
+.dops-chart__legend-color.is-dark-blue {
 	background: darken( $blue-dark, 5% );
 }
 
 // Chart legend checkbox
 
-.chart__legend-option .chart__legend-checkbox {
+.dops-chart__legend-option .dops-chart__legend-checkbox {
 	margin: 0;
 	float: none;
 	vertical-align: top;
@@ -313,7 +314,7 @@
 // Chart empty (message)
 // A message displayed when there's absolutely no data to chart
 
-.chart__empty {
+.dops-chart__empty {
 	position: absolute;
 		top: 0;
 		right: 0;
@@ -323,10 +324,10 @@
 	font-size: 14px;
 	line-height: 24px;
 	clear: both;
-	z-index: z-index( 'root', '.chart__empty' );
+	z-index: z-index( 'root', '.dops-chart__empty' );
 }
 
-.chart__empty_notice {
+.dops-chart__empty_notice {
 	position: relative;
 		top: 97px;
 	padding: 11px 24px;
@@ -359,8 +360,8 @@
 
 // Chart tooltip
 
-.chart__tooltip {
-	z-index: z-index( 'root', '.chart__tooltip' );
+.dops-chart__tooltip {
+	z-index: z-index( 'root', '.dops-chart__tooltip' );
 	position: absolute;
 	/* default offset for edge-cases: https://github.com/component/tip/pull/12 */
 	top: 0;
@@ -533,7 +534,7 @@
 	}
 }
 
-.chart__tooltip .module-content-list-item {
+.dops-chart__tooltip .dops-module-content-list-item {
 
 	&.is-date-label {
 		font-size: 11px;

@@ -1,12 +1,13 @@
 @import '../../scss/calypso-colors';
 @import '../../scss/z-index';
 @import '../../scss/rem';
+@import '../../scss/z-index';
 
 /**
  * Select Dropdown
  */
 
-.select-dropdown {
+.dops-select-dropdown {
 	height: 43px;
 
 	&.is-compact {
@@ -14,27 +15,27 @@
 	}
 }
 
-.select-dropdown__container {
+.dops-select-dropdown__container {
 	position: relative;
 	overflow: hidden;
 	display: inline-block;
 	width: auto;
 	max-width: 100%;
 
-	.select-dropdown.is-open & {
-		z-index: z-index( 'root', '.select-dropdown.is-open .select-dropdown__container' );
+	.dops-select-dropdown.is-open & {
+		z-index: z-index( 'root', '.dops-select-dropdown.is-open .dops-select-dropdown__container' );
 	}
 
-	.accessible-focus &:focus,
-	.accessible-focus .select-dropdown.is-open & {
-		z-index: z-index( 'root', '.accessible-focus .select-dropdown.is-open .select-dropdown__container' );
+	.dops-accessible-focus &:focus,
+	.dops-accessible-focus .dops-select-dropdown.is-open & {
+		z-index: z-index( 'root', '.dops-accessible-focus .dops-select-dropdown.is-open .dops-select-dropdown__container' );
 		box-shadow: 0 0 0 2px $blue-light;
 		.select-dropdown__header {
 			border-color: $blue-wordpress;
 		}
 	}
 
-	.accessible-focus &:focus {
+	.dops-accessible-focus &:focus {
 		border-color: #00aadc;
 		box-shadow: 0 0 0 2px #78dcfa;
 		outline: 0;
@@ -42,7 +43,7 @@
 	}
 }
 
-.select-dropdown__header {
+.dops-select-dropdown__header {
 	padding: 11px 44px 11px 16px; // 44 = padding (16) + arrow width (20) + arrow margin (8)
 	border-style: solid;
 	border-color: lighten( $gray, 20% );
@@ -81,14 +82,14 @@
 		line-height: 1;
 		text-transform: uppercase;
 
-		.count {
+		.dops-count {
 			border-width: 0;
 			margin-left: 0;
 			line-height: 1;
 		}
 	}
 
-	.select-dropdown.is-open & {
+	.dops-select-dropdown.is-open & {
 		border-radius: 4px 4px 0 0;
 		box-shadow: none;
 		background-color: $gray-light;
@@ -98,19 +99,19 @@
 		}
 	}
 
-	.count {
+	.dops-count {
 		margin-left: 8px;
 	}
 }
 
-.select-dropdown__header-text {
+.dops-select-dropdown__header-text {
 	display: block;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
 
-.select-dropdown__options {
+.dops-select-dropdown__options {
 	visibility: hidden;
 	height: 0;
 	box-sizing: border-box;
@@ -122,29 +123,29 @@
 	// $blue-wordpress for outer (with focus shadow), $gray for border with header
 	border-radius: 0 0 4px 4px;
 
-	.accessible-focus & {
+	.dops-accessible-focus & {
 		border: solid 1px $blue-wordpress;
 		border-top-color: lighten( $gray, 20% );
 	}
 
-	.select-dropdown.is-open & {
+	.dops-select-dropdown.is-open & {
 		visibility: visible;
 		height: auto;
 	}
 }
 
-.select-dropdown__option {
-	&:last-child .select-dropdown__item {
+.dops-select-dropdown__option {
+	&:last-child .dops-select-dropdown__item {
 		border-radius: 0 0 4px 4px;
 	}
 }
 
-.select-dropdown__item,
-.select-dropdown__item-text {
+.dops-select-dropdown__item,
+.dops-select-dropdown__item-text {
 	padding: 11px 44px 11px 16px;
 }
 
-.select-dropdown__item {
+.dops-select-dropdown__item {
 	display: block;
 	position: relative;
 	font-size: 14px;
@@ -190,7 +191,7 @@
 	}
 }
 
-.select-dropdown__item-text {
+.dops-select-dropdown__item-text {
 	padding-right: 16px;
 	box-sizing: border-box;
 	position: absolute;
@@ -205,19 +206,19 @@
 	flex-flow: row wrap;
 	justify-content: space-between;
 
-	.count {
+	.dops-count {
 		color: inherit;
 		border-color: inherit;
 	}
 }
 
-.select-dropdown__separator {
+.dops-select-dropdown__separator {
 	border-top: 1px solid lighten( $gray, 20% );
 	display: block;
 	margin: 8px 0;
 }
 
-.select-dropdown__label {
+.dops-select-dropdown__label {
 	display: block;
 	color: lighten( $gray, 10% );
 	margin-top: 5px;

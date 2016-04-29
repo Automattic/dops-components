@@ -42,7 +42,7 @@ var NavItem = React.createClass( {
 				'is-external': this.props.isExternalLink
 			};
 
-		itemClasses[ 'section-nav-' + itemClassPrefix ] = true;
+		itemClasses[ 'dops-section-nav-' + itemClassPrefix ] = true;
 		itemClassName = classNames( itemClasses );
 
 		if ( this.props.isExternalLink ) {
@@ -58,14 +58,14 @@ var NavItem = React.createClass( {
 				<a
 					href={ this.props.path }
 					target={ target }
-					className={ 'section-nav-' + itemClassPrefix + '__link' }
+					className={ 'dops-section-nav-' + itemClassPrefix + '__link' }
 					onTouchTap={ onClick }
 					tabIndex={ this.props.tabIndex || 0 }
 					aria-selected={ this.props.selected }
 					disabled={ this.props.disabled }
 					role="menuitem"
 					rel={ this.props.isExternalLink ? 'external' : null }>
-					<span className={ 'section-nav-' + itemClassPrefix + '__text' }>
+					<span className={ 'dops-section-nav-' + itemClassPrefix + '__text' }>
 						{ this.props.children }
 						{
 							'number' === typeof this.props.count &&

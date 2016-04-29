@@ -63,13 +63,13 @@ var SectionNav = React.createClass( {
 
 		if ( ! children ) {
 			className = classNames( {
-				'section-nav': true,
+				'dops-section-nav': true,
 				'is-empty': true
 			} );
 
 			return (
 				<div className={ className }>
-					<div className="section-nav__panel">
+					<div className="dops-section-nav__panel">
 						<NavItem></NavItem>
 					</div>
 				</div>
@@ -77,7 +77,7 @@ var SectionNav = React.createClass( {
 		}
 
 		className = classNames( {
-			'section-nav': true,
+			'dops-section-nav': true,
 			'is-open': this.state.mobileOpen,
 			'has-pinned-items': this.hasPinnedSearch || this.props.hasPinnedItems
 		} );
@@ -85,15 +85,15 @@ var SectionNav = React.createClass( {
 		return (
 			<div className={ className }>
 				<div
-					className="section-nav__mobile-header"
+					className="dops-section-nav__mobile-header"
 					onTouchTap={ this.toggleMobileOpenState }
 				>
-					<span className="section-nav__mobile-header-text">
+					<span className="dops-section-nav__mobile-header-text">
 						{ this.props.selectedText }
 					</span>
 				</div>
 
-				<div className="section-nav__panel">
+				<div className="dops-section-nav__panel">
 					{ children }
 				</div>
 			</div>

@@ -9,7 +9,7 @@ var SelectDropdownSeparator = React.createClass( {
 
 	render: function() {
 		return (
-			<li className="select-dropdown__separator" />
+			<li className="dops-select-dropdown__separator" />
 		);
 	}
 } );

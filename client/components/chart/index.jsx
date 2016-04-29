@@ -126,8 +126,8 @@ module.exports = React.createClass( {
 		// @todo this message needs to either use a <Notice> or make a custom "chart__notice" class
 		if ( values.length && this.isEmptyChart( values ) ) {
 			emptyChart = (
-				<div className="chart__empty">
-					<span className="chart__empty_notice">
+				<div className="dops-chart__empty">
+					<span className="dops-chart__empty_notice">
 						{ i18n.translate( 'No activity this period', {
 							context: 'Message on empty bar chart in Stats',
 							comment: 'Should be limited to 32 characters to prevent wrapping'
@@ -138,17 +138,17 @@ module.exports = React.createClass( {
 		}
 
 		return (
-			<div ref="chart" className='chart'>
-				<div className="chart__y-axis-markers">
-					<div className="chart__y-axis-marker is-hundred"></div>
-					<div className="chart__y-axis-marker is-fifty"></div>
-					<div className="chart__y-axis-marker is-zero"></div>
+			<div ref="chart" className='dops-chart'>
+				<div className="dops-chart__y-axis-markers">
+					<div className="dops-chart__y-axis-marker is-hundred"></div>
+					<div className="dops-chart__y-axis-marker is-fifty"></div>
+					<div className="dops-chart__y-axis-marker is-zero"></div>
 				</div>
-				<div className="chart__y-axis">
-					<div className="chart__y-axis-width-fix">{ i18n.translate( 100000 ) }</div>
-					<div className="chart__y-axis-label is-hundred">{ i18n.translate( yAxisMax ) }</div>
-					<div className="chart__y-axis-label is-fifty">{ i18n.translate( yAxisMax / 2 ) }</div>
-					<div className="chart__y-axis-label is-zero">{ i18n.translate( 0 ) }</div>
+				<div className="dops-chart__y-axis">
+					<div className="dops-chart__y-axis-width-fix">{ i18n.translate( 100000 ) }</div>
+					<div className="dops-chart__y-axis-label is-hundred">{ i18n.translate( yAxisMax ) }</div>
+					<div className="dops-chart__y-axis-label is-fifty">{ i18n.translate( yAxisMax / 2 ) }</div>
+					<div className="dops-chart__y-axis-label is-zero">{ i18n.translate( 0 ) }</div>
 				</div>
 				<BarContainer barClick={ this.props.barClick } data={ data } yAxisMax={ yAxisMax } chartWidth={ this.state.width } isTouch={ touchDetect.hasTouch() } />
 				{ emptyChart }
