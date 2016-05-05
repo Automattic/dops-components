@@ -42,7 +42,7 @@ module.exports = React.createClass( {
 			nestedPercentage,
 			nestedStyle,
 			spacerClassOptions = {
-				'chart__bar-section': true,
+				'dops-chart__bar-section': true,
 				'is-spacer': true,
 				'is-ghost': ( 100 === remain ) && ! this.props.active
 			};
@@ -62,12 +62,12 @@ module.exports = React.createClass( {
 
 			nestedStyle = { height: nestedPercentage + '%' };
 
-			nestedBar = ( <div key="nestedValue" className="chart__bar-section-inner" style={ nestedStyle } /> );
+			nestedBar = ( <div key="nestedValue" className="dops-chart__bar-section-inner" style={ nestedStyle } /> );
 		}
 
-		sections.push( <div ref="valueBar" key="value" className="chart__bar-section is-bar" style={ valueStyle }>{ nestedBar }</div> );
+		sections.push( <div ref="valueBar" key="value" className="dops-chart__bar-section is-bar" style={ valueStyle }>{ nestedBar }</div> );
 
-		sections.push( <div key="label" className="chart__bar-label">{ this.props.label }</div> );
+		sections.push( <div key="label" className="dops-chart__bar-label">{ this.props.label }</div> );
 
 		return sections;
 	},
@@ -93,7 +93,7 @@ module.exports = React.createClass( {
 			count = this.props.count || 1,
 			tooltip;
 
-		barClass = { chart__bar: true };
+		barClass = { 'dops-chart__bar': true };
 
 		if ( this.props.className ){
 			barClass[ this.props.className ] = true;
@@ -108,7 +108,7 @@ module.exports = React.createClass( {
 			                   isVisible={ this.state.showPopover }
 			                   position={ this.props.tooltipPosition }
 			                   onClose={ noop }
-			                   className="chart__tooltip">
+			                   className="dops-chart__tooltip">
 				<Tooltip data={ this.props.data.tooltipData } />
 			</Popover>;
 		}
@@ -120,9 +120,9 @@ module.exports = React.createClass( {
 			     className={ classNames( barClass ) }
 			     style={ barStyle }>
 				{ this.buildSections() }
-				<div className="chart__bar-marker is-hundred"></div>
-				<div className="chart__bar-marker is-fifty"></div>
-				<div className="chart__bar-marker is-zero"></div>
+				<div className="dops-chart__bar-marker is-hundred"></div>
+				<div className="dops-chart__bar-marker is-fifty"></div>
+				<div className="dops-chart__bar-marker is-zero"></div>
 				{ tooltip }
 			</div>
 		);

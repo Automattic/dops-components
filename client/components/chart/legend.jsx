@@ -26,9 +26,9 @@ var LegendItem = React.createClass( {
 
 	render: function() {
 		return (
-			<li className="chart__legend-option">
-				<label htmlFor="checkbox" className="chart__legend-label is-selectable" onClick={ this.clickHandler } >
-					<input type="checkbox" className="chart__legend-checkbox" checked={ this.props.checked } onChange={ function(){} } />
+			<li className="dops-chart__legend-option">
+				<label htmlFor="checkbox" className="dops-chart__legend-label is-selectable" onClick={ this.clickHandler } >
+					<input type="checkbox" className="dops-chart__legend-checkbox" checked={ this.props.checked } onChange={ function(){} } />
 					<span className={ this.props.className }></span>{ this.props.label }
 				</label>
 			</li>
@@ -53,7 +53,7 @@ var Legend = React.createClass( {
 	},
 
 	render: function() {
-		var legendColors = [ 'chart__legend-color is-dark-blue' ],
+		var legendColors = [ 'dops-chart__legend-color is-dark-blue' ],
 			tab = this.props.activeTab,
 			legendItems;
 
@@ -71,9 +71,9 @@ var Legend = React.createClass( {
 
 
 		return (
-			<div className="chart__legend">
-				<ul className="chart__legend-options">
-					<li className="chart__legend-option" key='default-tab'><span className="chart__legend-label"><span className="chart__legend-color is-wordpress-blue"></span>{ tab.label }</span></li>
+			<div className="dops-chart__legend">
+				<ul className="dops-chart__legend-options">
+					<li className="dops-chart__legend-option" key='default-tab'><span className="dops-chart__legend-label"><span className="dops-chart__legend-color is-wordpress-blue"></span>{ tab.label }</span></li>
 					{ legendItems }
 				</ul>
 			</div>
