@@ -231,6 +231,8 @@
 
 // -------- Nav Tabs - individual tab --------
 .dops-section-nav-tab {
+	margin-bottom: 0;
+
 	@include breakpoint( ">480px" ) {
 		width: auto;
 		flex: none;
