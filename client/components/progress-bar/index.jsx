@@ -15,7 +15,6 @@ var ProgressBar = React.createClass({
 	},
 
 	render: function() {
-		// var classes = 'getting-started__progress progress_'+this.props.progressPercent;
 		return (
 			<div className="dops-progress-bar" style={this.props.style}>
 				<div className="dops-progress-bar__bar">
