@@ -9,8 +9,7 @@ var React = require( 'react' ),
  * Internal dependencies
  */
 var BarContainer = require( './bar-container' ),
-	touchDetect = require( 'lib/touch-detect' ),
-	i18n = require( 'mixins/translate' );
+	touchDetect = require( 'lib/touch-detect' );
 
 require( './style.scss' );
 
@@ -145,10 +144,10 @@ module.exports = React.createClass( {
 					<div className="dops-chart__y-axis-marker is-zero"></div>
 				</div>
 				<div className="dops-chart__y-axis">
-					<div className="dops-chart__y-axis-width-fix">{ i18n.translate( 100000 ) }</div>
-					<div className="dops-chart__y-axis-label is-hundred">{ i18n.translate( yAxisMax ) }</div>
-					<div className="dops-chart__y-axis-label is-fifty">{ i18n.translate( yAxisMax / 2 ) }</div>
-					<div className="dops-chart__y-axis-label is-zero">{ i18n.translate( 0 ) }</div>
+					<div className="dops-chart__y-axis-width-fix">{ new Number( 100000 ).toLocaleString() }</div>
+					<div className="dops-chart__y-axis-label is-hundred">{ yAxisMax.toLocaleString() }</div>
+					<div className="dops-chart__y-axis-label is-fifty">{ ( yAxisMax / 2 ).toLocaleString() }</div>
+					<div className="dops-chart__y-axis-label is-zero">{ 0 }</div>
 				</div>
 				<BarContainer barClick={ this.props.barClick } data={ data } yAxisMax={ yAxisMax } chartWidth={ this.state.width } isTouch={ touchDetect.hasTouch() } />
 				{ emptyChart }
