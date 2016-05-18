@@ -127,10 +127,8 @@ module.exports = React.createClass( {
 			emptyChart = (
 				<div className="dops-chart__empty">
 					<span className="dops-chart__empty_notice">
-						{ i18n.translate( 'No activity this period', {
-							context: 'Message on empty bar chart in Stats',
-							comment: 'Should be limited to 32 characters to prevent wrapping'
-						} ) }
+						{ /* Translate this. */ }
+						No activity this period
 					</span>
 				</div>
 			);
