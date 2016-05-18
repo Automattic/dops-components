@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-var React = require( 'react/addons' ),
-	joinClasses = require( 'react/lib/joinClasses' ),
+var React = require( 'react' ),
+	classNames = require( 'classnames' ),
 	noop = require( 'lodash/noop' );
 
 /**
@@ -10,6 +10,7 @@ var React = require( 'react/addons' ),
  */
 var Button = require( '../button' ),
 	Gridicon = require( '../gridicon' ),
+	i18n = require( 'mixins/translate'),
 	ScreenReaderText = require( '../screen-reader-text' );
 
 require( './style.scss' );
@@ -67,26 +68,26 @@ module.exports = React.createClass( {
 
 		// The class determines the nature of a notice
 		// and its status.
-		noticeClass = joinClasses( 'notice', this.props.status );
+		noticeClass = classNames( 'notice', this.props.status );
 
 		if ( this.props.isCompact ) {
-			noticeClass = joinClasses( noticeClass, 'is-compact' );
+			noticeClass = classNames( noticeClass, 'is-compact' );
 		}
 
 		// By default, a dismiss button is rendered to
 		// allow the user to hide the notice
 		if ( this.props.showDismiss ) {
-			noticeClass = joinClasses( noticeClass, 'is-dismissable' );
+			noticeClass = classNames( noticeClass, 'is-dismissable' );
 			dismiss = (
 				<Button className="notice__dismiss" onClick={ this.props.onClick } >
 					<Gridicon icon="cross" size={ 24 } />
-					<ScreenReaderText>{ this.translate( 'Dismiss' ) }</ScreenReaderText>
+					<ScreenReaderText>{ i18n.translate( 'Dismiss' ) }</ScreenReaderText>
 				</Button>
 				);
 		}
 
 		return (
-			<div className={ joinClasses( this.props.className, noticeClass ) }>
+			<div className={ classNames( this.props.className, noticeClass ) }>
 				{ this.renderChildren() }
 				{ dismiss }
 			</div>
