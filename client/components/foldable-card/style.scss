@@ -155,6 +155,14 @@ button.dops-foldable-card__action {
 		.dops-foldable-card.is-compact & {
 			padding: 8px;
 		}
+
+		p:first-child {
+			margin-top: 0;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 
