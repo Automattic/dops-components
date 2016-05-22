@@ -107,9 +107,8 @@ var analytics = {
 			eventProperties = eventProperties || {};
 
 			debug( 'Record event "%s" called with props %s', eventName, JSON.stringify( eventProperties ) );
-
-			if ( eventName.indexOf( 'akismet_' ) !== 0 ) {
-				debug( '- Event name must be prefixed by "akismet_"' );
+			if ( eventName.indexOf( 'akismet_' ) !== 0 && eventName.indexOf( 'jetpack_' ) !== 0 ) {
+				debug( '- Event name must be prefixed by "akismet_" or "jetpack_"' );
 				return;
 			}
 
