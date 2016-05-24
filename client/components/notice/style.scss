@@ -2,7 +2,7 @@
 @import '../../scss/layout';
 @import '../../scss/extends';
 
-.notice {
+.dops-notice {
 	flex: 1 100%;
 	display: flex;
 		flex-wrap: wrap;
@@ -15,7 +15,7 @@
 	line-height: 1.4285;
 	animation: appear .3s ease-in-out;
 
-	.notice__text {
+	.dops-notice__text {
 		flex-grow: 1;
 		flex-basis: 100px;
 
@@ -42,7 +42,7 @@
 		}
 	}
 
-	.notice__dismiss:focus {
+	.dops-notice__dismiss:focus {
 		box-shadow: 0 0 4px darken( $gray-light, 10 );
 	}
 
@@ -50,7 +50,7 @@
 	&.is-success {
 		background: $alert-green;
 
-		.notice__dismiss:focus {
+		.dops-notice__dismiss:focus {
 			box-shadow: 0 0 4px darken( $alert-green, 10 );
 		}
 
@@ -65,7 +65,7 @@
 	&.is-warning {
 		background: $alert-yellow;
 
-		.notice__dismiss:focus {
+		.dops-notice__dismiss:focus {
 			box-shadow: 0 0 4px darken( $alert-yellow, 10 );
 		}
 
@@ -77,7 +77,7 @@
 	&.is-error {
 		background: $alert-red;
 
-		.notice__dismiss:focus {
+		.dops-notice__dismiss:focus {
 			box-shadow: 0 0 4px darken( $alert-red, 10 );
 		}
 
@@ -89,7 +89,7 @@
 	&.is-info {
 		background: $blue-wordpress;
 
-		.notice__dismiss:focus {
+		.dops-notice__dismiss:focus {
 			box-shadow: 0 0 4px darken( $blue-wordpress, 10 );
 		}
 
@@ -103,7 +103,7 @@
 
 // General styles for html elements
 // rendered inside a notice
-.notice {
+.dops-notice {
 
 	a,
 	button.is-link {
@@ -159,19 +159,19 @@
 			}
 		}
 
-		.notice__dismiss {
+		.dops-notice__dismiss {
 			color: $white;
 		}
 	}
 }
 
-.notice__button {
+.dops-notice__button {
 	cursor: pointer;
 	margin-left: 0.428em;
 }
 
 // "X" for dismissing a notice
-.notice__dismiss {
+.dops-notice__dismiss {
 	display: flex;
 	padding: 9px 16px;
 	cursor: pointer;
@@ -190,7 +190,7 @@
 		color: $gray-dark;
 	}
 
-	.notice & {
+	.dops-notice & {
 		color: $gray;
 		opacity: 0.85;
 
@@ -202,11 +202,11 @@
 }
 
 // Compact notices
-.notice.is-compact {
+.dops-notice.is-compact {
 	margin-bottom: 8px;
 	font-size: 14px;
 
-	.notice__text {
+	.dops-notice__text {
 		padding: 11px 0px 11px 16px;
 	}
 
@@ -214,11 +214,11 @@
 		display: none;
 	}
 
-	.notice__dismiss {
+	.dops-notice__dismiss {
 		padding: 9px 16px;
 	}
 
-	a.notice__arrow-link .gridicon {
+	a.dops-notice__arrow-link .gridicon {
 		width: 18px;
 		height: 18px;
 	}
@@ -226,7 +226,7 @@
 
 // ArrowLink sub-component
 // specificity for general `a` elements within notice is too great
-.notice a.notice__arrow-link {
+.dops-notice a.dops-notice__arrow-link {
 	background: rgba( 0, 0, 0, 0.2 );
 	box-sizing: border-box;
 	color: $white;

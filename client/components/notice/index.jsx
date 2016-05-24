@@ -50,14 +50,14 @@ module.exports = React.createClass( {
 		let content;
 
 		if ( typeof this.props.children === 'string' ) {
-			return <span className="notice__text">{ this.props.children }</span>;
+			return <span className="dops-notice__text">{ this.props.children }</span>;
 		}
 
 		if ( this.props.text ) {
 			content = [ this.props.children ];
-			content.unshift( <span key="notice_text" className="notice__text">{ this.props.text }</span> );
+			content.unshift( <span key="dops-notice_text" className="dops-notice__text">{ this.props.text }</span> );
 		} else {
-			content = <span key="notice_text" className="notice__text">{ this.props.children }</span>;
+			content = <span key="dops-notice_text" className="dops-notice__text">{ this.props.children }</span>;
 		}
 
 		return content;
@@ -68,7 +68,7 @@ module.exports = React.createClass( {
 
 		// The class determines the nature of a notice
 		// and its status.
-		noticeClass = classNames( 'notice', this.props.status );
+		noticeClass = classNames( 'dops-notice', this.props.status );
 
 		if ( this.props.isCompact ) {
 			noticeClass = classNames( noticeClass, 'is-compact' );
@@ -79,7 +79,7 @@ module.exports = React.createClass( {
 		if ( this.props.showDismiss ) {
 			noticeClass = classNames( noticeClass, 'is-dismissable' );
 			dismiss = (
-				<Button className="notice__dismiss" onClick={ this.props.onClick } >
+				<Button className="dops-notice__dismiss" onClick={ this.props.onClick } >
 					<Gridicon icon="cross" size={ 24 } />
 					<ScreenReaderText>{ i18n.translate( 'Dismiss' ) }</ScreenReaderText>
 				</Button>
