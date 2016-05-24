@@ -34,7 +34,7 @@
 			@extend %noticon;
 			content: '\f456';
 			position: absolute;
-				top: 26px;
+				top: 23px;
 				left: 20px;
 			margin: -12px 0px 0 -8px;
 			font-size: 24px;
@@ -42,8 +42,15 @@
 		}
 	}
 
-	.dops-notice__dismiss:focus {
-		box-shadow: 0 0 4px darken( $gray-light, 10 );
+	.dops-notice__dismiss {
+
+		&.dops-button .gridicon {
+			top: 0;
+		}
+
+		&:focus {
+			box-shadow: 0 0 4px darken( $gray-light, 10 );
+		}
 	}
 
 	// Success!
