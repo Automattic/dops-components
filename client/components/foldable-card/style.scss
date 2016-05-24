@@ -15,6 +15,9 @@
 		margin-bottom: 8px;
 	}
 
+	.is-clickable {
+		cursor: pointer;
+	}
 }
 
 .dops-foldable-card__header {
@@ -26,10 +29,6 @@
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
-
-	&.is-clickable {
-		cursor: pointer;
-	}
 
 	&.has-border{
 		.dops-foldable-card__summary,
@@ -134,10 +133,7 @@ button.dops-foldable-card__action {
 
 .dops-foldable-card__header-text {
 	font-size: rem( 18px );
-
-	&.is-clickable {
-		cursor: pointer;
-	}
+	width: 100%;
 }
 
 .dops-foldable-card__subheader {
