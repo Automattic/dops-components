@@ -88,9 +88,9 @@ button.dops-foldable-card__action {
 
 .dops-foldable-card__main {
 	max-width: calc( 100% - 36px );
-	display: flex;
+	display: block;
 	align-items: center;
-	flex: 2 1;
+	width: 100%;
 	margin-right: 5px;
 
 	@include breakpoint( '<480px' ) {
