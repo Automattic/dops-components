@@ -15,6 +15,9 @@
 		margin-bottom: 8px;
 	}
 
+	.is-clickable {
+		cursor: pointer;
+	}
 }
 
 .dops-foldable-card__header {
@@ -26,10 +29,6 @@
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
-
-	&.is-clickable {
-		cursor: pointer;
-	}
 
 	&.has-border{
 		.dops-foldable-card__summary,
@@ -89,9 +88,9 @@ button.dops-foldable-card__action {
 
 .dops-foldable-card__main {
 	max-width: calc( 100% - 36px );
-	display: flex;
+	display: block;
 	align-items: center;
-	flex: 2 1;
+	width: 100%;
 	margin-right: 5px;
 
 	@include breakpoint( '<480px' ) {
@@ -134,6 +133,7 @@ button.dops-foldable-card__action {
 
 .dops-foldable-card__header-text {
 	font-size: rem( 18px );
+	width: 100%;
 }
 
 .dops-foldable-card__subheader {

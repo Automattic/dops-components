@@ -28,7 +28,9 @@ var FoldableCard = React.createClass( {
 		onClick: React.PropTypes.func,
 		onClose: React.PropTypes.func,
 		onOpen: React.PropTypes.func,
-		summary: React.PropTypes.oneOfType( [ React.PropTypes.string, React.PropTypes.element ] )
+		summary: React.PropTypes.oneOfType( [ React.PropTypes.string, React.PropTypes.element ] ),
+		clickableHeader: React.PropTypes.bool,
+		clickableHeaderText: React.PropTypes.bool
 	},
 
 	getInitialState: function() {
@@ -43,7 +45,9 @@ var FoldableCard = React.createClass( {
 			onClose: noop,
 			cardKey: '',
 			icon: 'chevron-down',
-			isExpanded: false
+			isExpanded: false,
+			clickableHeader: false,
+			clickableHeaderText: false
 		};
 	},
 
@@ -111,14 +115,18 @@ var FoldableCard = React.createClass( {
 			header = this.props.header ? <div className="dops-foldable-card__header-text">{ this.props.header }</div> : null,
 			subheader = this.props.subheader ? <div className="dops-foldable-card__subheader">{ this.props.subheader }</div> : null,
 			headerClickAction = this.props.clickableHeader ? this.getClickAction() : null,
+			headerTextClickAction = this.props.clickableHeaderText ? this.getClickAction() : null,
 			headerClasses = classNames( 'dops-foldable-card__header', {
 				'is-clickable': !! this.props.clickableHeader,
 				'has-border': !! this.props.summary
+			} ),
+			headerTextClasses = classNames( 'dops-foldable-card__header-text', {
+				'is-clickable': !! this.props.clickableHeaderText
 			} );
 		return (
 			<div className={ headerClasses } onClick={ headerClickAction }>
 				<span className="dops-foldable-card__main">
-					<div>
+					<div className={ headerTextClasses } onClick={ headerTextClickAction } >
 						{ header }
 						{ subheader }
 					</div>
