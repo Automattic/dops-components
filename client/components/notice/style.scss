@@ -106,6 +106,31 @@
 			}
 		}
 	}
+
+	// Basic - Unobtrusive, no icon
+	&.is-basic {
+		background: $white;
+		color: $gray;
+
+		.dops-notice__dismiss:focus {
+			box-shadow: 0 0 0 1px transparentize( lighten( $gray, 20% ), .5 ),
+				0 1px 2px lighten( $gray, 30% );
+		}
+
+		@include breakpoint( ">660px" ) {
+			&:before {
+				display: none;
+			}
+		}
+
+		.dops-notice__text {
+			padding: 11px 24px;
+
+			@include breakpoint( ">660px" ) {
+				padding: 13px;
+			}
+		}
+	}
 }
 
 // General styles for html elements
