@@ -1,9 +1,7 @@
-@import "../../scss/calypso-colors";
-@import '../../scss/layout';
-@import '../../scss/extends';
-@import "../../scss/calypso-mixins";
+@import "../../../scss/calypso-colors";
+@import "../../../scss/calypso-mixins";
 
-.dops-notice {
+.dops-global-notice {
 	display: flex;
 	position: relative;
 	margin-bottom: 24px;
@@ -43,44 +41,17 @@
 	&.is-info {
 		color: $white;
 
-		.dops-notice__text a {
+		.dops-global-notice__text a {
 			color: $white;
 		}
 
-		.dops-notice__dismiss {
+		.dops-global-notice__dismiss {
 			color: $white;
-		}
-	}
-
-	// Basic - Unobtrusive, no icon
-	&.is-basic {
-		background: $white;
-		color: $gray;
-		box-shadow: 0 0 0 1px transparentize( lighten( $gray, 20% ), .5 ),
-		0 1px 2px lighten( $gray, 30% );
-
-		.dops-notice__dismiss:focus {
-			box-shadow: 0 0 0 1px transparentize( lighten( $gray, 20% ), .5 ),
-			0 1px 2px lighten( $gray, 30% );
-		}
-
-		@include breakpoint( ">660px" ) {
-			&:before {
-				display: none;
-			}
-		}
-
-		.dops-notice__text {
-			padding: 11px 24px;
-
-			@include breakpoint( ">660px" ) {
-				padding: 13px;
-			}
 		}
 	}
 }
 
-.dops-notice__icon {
+.dops-global-notice__icon {
 	flex-shrink: 0;
 	padding: 13px 0 13px 16px;
 
@@ -89,7 +60,7 @@
 	}
 }
 
-.dops-notice__content {
+.dops-global-notice__content {
 	display: flex;
 	flex-grow: 1;
 
@@ -98,7 +69,7 @@
 	}
 }
 
-.dops-notice__text {
+.dops-global-notice__text {
 	font-size: 15px;
 	padding: 11px 24px;
 
@@ -135,15 +106,15 @@
 	}
 }
 
-.dops-notice__button {
+.dops-global-notice__button {
 	cursor: pointer;
 	margin-left: 0.428em;
 }
 
 // "X" for dismissing a notice
-.dops-notice__dismiss {
+.dops-global-notice__dismiss {
 	display: flex;
-	flex-shrink: 0;
+		flex-shrink: 0;
 	padding: 11px 16px;
 	cursor: pointer;
 	color: $gray;
@@ -157,7 +128,7 @@
 		color: $gray-dark;
 	}
 
-	.dops-notice & {
+	.dops-global-notice & {
 		color: $gray;
 		opacity: 0.85;
 
@@ -169,10 +140,10 @@
 }
 
 // specificity for general `a` elements within notice is too great
-a.dops-notice__action {
+a.dops-global-notice__action {
 	display: flex;
-	align-items: center;
-	flex-shrink: 0;
+		align-items: center;
+		flex-shrink: 0;
 	box-sizing: border-box;
 	cursor: pointer;
 	font-size: 15px;
@@ -211,7 +182,7 @@ a.dops-notice__action {
 }
 
 // Compact notices
-.dops-notice.is-compact {
+.dops-global-notice.is-compact {
 	border-radius: 2px;
 	display: inline-flex;
 	flex-wrap: nowrap;
@@ -229,13 +200,13 @@ a.dops-notice__action {
 		color: $white;
 	}
 
-	.dops-notice__text {
+	.dops-global-notice__text {
 		font-size: 12px;
 		padding: 6px 8px;
 		line-height: 1;
 	}
 
-	.dops-notice__icon {
+	.dops-global-notice__icon {
 		align-self: center;
 		flex-shrink: 0;
 		margin: 0 0 0 8px;
@@ -245,11 +216,11 @@ a.dops-notice__action {
 		vertical-align: middle;
 	}
 
-	.dops-notice__dismiss {
+	.dops-global-notice__dismiss {
 		display: none;
 	}
 
-	a.dops-notice__action {
+	a.dops-global-notice__action {
 		background: transparent;
 		display: inline-block;
 		font-size: 11px;
@@ -276,4 +247,3 @@ a.dops-notice__action {
 		}
 	}
 }
-
