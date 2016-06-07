@@ -12,6 +12,13 @@
 	vertical-align: middle;
 }
 
+%dashicon {
+	@extend %clear-text;
+	display: inline-block;
+	font: normal 16px/1 'Dashicons';
+	vertical-align: middle;
+}
+
 %container {
 	position: relative;
 	margin-bottom: 6%;
