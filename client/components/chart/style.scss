@@ -7,6 +7,7 @@
 @import '../../scss/mixin_clear-fix';
 @import '../../scss/mixin_long-content-fade';
 @import '../../scss/z-index';
+@import '../../scss/mixin_icons';
 
 .dops-chart {
 	position: relative;
@@ -346,7 +347,7 @@
 		font-size: inherit;
 
 		&::before {
-			@extend %noticon;
+			@include noticons;
 			content: '\f456';
 			position: absolute;
 				top: 23px;
