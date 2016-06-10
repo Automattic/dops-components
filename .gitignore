@@ -1,3 +1,9 @@
+## FOLDERS
 node_modules
 .sass-cache
+.idea
+
+## FILES
+.DS_Store
+npm-debug.log*
 *.iml
