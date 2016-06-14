@@ -41,7 +41,8 @@
 	&:hover {
 		background: lighten( $gray, 20% );
 	}
-	.accessible-focus &:focus{
+	.accessible-focus &:focus,
+	&:focus {
 		box-shadow: 0 0 0 2px $blue-medium;
 	}
 }

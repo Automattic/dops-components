@@ -282,6 +282,8 @@
 
 	&:focus {
 		outline: none;
+		box-shadow: none;
+
 		.accessible-focus & {
 			outline: solid $gray 1px;
 		}
