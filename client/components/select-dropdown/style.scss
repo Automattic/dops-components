@@ -2,6 +2,7 @@
 @import '../../scss/z-index';
 @import '../../scss/rem';
 @import '../../scss/z-index';
+@import '../../scss/extends';
 
 /**
  * Select Dropdown
@@ -59,7 +60,8 @@
 	cursor: pointer;
 
 	&::after {
-		// @include noticon('\f431', 22px);
+		@extend %dashicon;
+		content: '\f347';
 		position: absolute;
 			right: 13px;
 			top: 12px;
@@ -95,7 +97,8 @@
 		background-color: $gray-light;
 
 		&::after {
-			content: '\f432';
+			@extend %dashicon;
+			content: '\f343';
 		}
 	}
 
