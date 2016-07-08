@@ -3,6 +3,7 @@
 @import '../../scss/mixin_breakpoint';
 @import '../../scss/rem';
 @import '../../scss/z-index';
+@import '../../scss/extends';
 
 /**
  * Section Nav
@@ -58,14 +59,16 @@
 	cursor: pointer;
 
 	&:after {
-		// @include noticon( '\f431', 20px );
+		@extend %dashicon;
+		content: '\f347';
 		line-height: 16px;
 		color: rgba( $gray, 0.5 );
 	}
 
 	.dops-section-nav.is-open & {
 		&:after {
-			content: '\f432';
+			@extend %dashicon;
+			content: '\f343';
 		}
 	}
 
@@ -140,7 +143,7 @@
 	@include breakpoint( "<480px" ) {
 		display: none;
 
-		.section-nav.is-open & {
+		.dops-section-nav.is-open & {
 			display: block;
 		}
 	}

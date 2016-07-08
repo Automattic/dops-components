@@ -173,7 +173,7 @@ class SelectDropdown extends Component {
 
 	render() {
 		const dropdownClasses = {
-			'select-dropdown': true,
+			'dops-select-dropdown': true,
 			'is-compact': this.props.compact,
 			'is-open': this.state.isOpen
 		};
