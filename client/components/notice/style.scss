@@ -14,7 +14,10 @@
 	font-size: 14px;
 	line-height: 1.4285;
 	animation: appear .3s ease-in-out;
-	@extend %dashicon;
+
+	&::before{
+		@extend %dashicon;
+	}
 
 	.dops-notice__text {
 		flex-grow: 1;
