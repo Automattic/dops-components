@@ -2,6 +2,7 @@
  * External dependencies
  */
 var React = require( 'react' ),
+	ReactDom = require( 'react-dom' ),
 	page = require( 'page' ),
 	noop = require( 'lodash/noop' ),
 	classNames = require( 'classnames' );
@@ -48,7 +49,7 @@ module.exports = React.createClass( {
 	},
 
 	doSearch: function() {
-		this.setState( { search: React.findDOMNode( this.refs.searchInput ).value } );
+		this.setState( { search: ReactDom.findDOMNode( this.refs.searchInput ).value } );
 	},
 
 	onSiteSelect: function( event ) {
