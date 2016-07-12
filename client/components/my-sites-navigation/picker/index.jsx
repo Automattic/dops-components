@@ -2,6 +2,7 @@
  * External dependencies
  */
 var React = require( 'react' ),
+	ReactDom = require( 'react-dom' ),
 	noop = require( 'lodash/noop' );
 
 /**
@@ -36,7 +37,7 @@ module.exports = React.createClass( {
 	},
 
 	closePickerOnOutsideClick: function( event ) {
-		var pickerNode = React.findDOMNode( this.refs.siteSelector );
+		var pickerNode = ReactDom.findDOMNode( this.refs.siteSelector );
 
 		// If the picker is open & the user clicks outside of it, let's close it
 		if ( this.props.showingSites &&

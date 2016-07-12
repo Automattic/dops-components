@@ -1,5 +1,6 @@
 /** External Dependencies **/
 var React = require( 'react' ),
+	ReactDom = require( 'react-dom' ),
 	classNames = require( 'classnames' ),
 	forEach = require( 'lodash/forEach' ),
 	isArray = require( 'lodash/isArray' ),
@@ -70,9 +71,9 @@ module.exports = React.createClass( {
 	},
 
 	unHighlightAllSites: function( event ) {
-		var checked = $( React.findDOMNode( this.refs.allItems ) ).prop( 'checked' );
+		var checked = $( ReactDom.findDOMNode( this.refs.allItems ) ).prop( 'checked' );
 		if ( checked && ! event.target.checked ) {
-			$( React.findDOMNode( this.refs.allItems ) ).prop( 'checked', false );
+			$( ReactDom.findDOMNode( this.refs.allItems ) ).prop( 'checked', false );
 		}
 	},
 

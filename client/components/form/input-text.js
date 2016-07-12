@@ -1,5 +1,6 @@
 /** External Dependencies **/
 var React = require( 'react' ),
+	ReactDom = require( 'react-dom' ),
 	Formsy = require( 'formsy-react' ),
 	classNames = require( 'classnames' ),
 	Payment = require( 'payment' );
@@ -19,6 +20,7 @@ module.exports = React.createClass( {
 		name: React.PropTypes.string.isRequired,
 		description: React.PropTypes.string,
 		className: React.PropTypes.any,
+		style: React.PropTypes.any,
 		style: React.PropTypes.any,
 		floatingLabel: React.PropTypes.any,
 		label: React.PropTypes.any,
@@ -60,7 +62,7 @@ module.exports = React.createClass( {
 	},
 
 	focus: function() {
-		React.findDOMNode( this.refs.input ).focus();
+		ReactDom.findDOMNode( this.refs.input ).focus();
 	},
 
 	getDefaultProps: function() {
