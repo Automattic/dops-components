@@ -37,7 +37,7 @@ export default React.createClass( {
 		);
 
 		const maybeShowCardBadge = this.props.cardBadge !== ''
-			? <div className="dops-section-header__card-badge">{ this.props.cardBadge }</div>
+			? <span className="dops-section-header__card-badge">{ this.props.cardBadge }</span>
 			: '';
 
 		return (
