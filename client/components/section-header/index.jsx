@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 /**
@@ -15,12 +15,18 @@ export default React.createClass( {
 	displayName: 'SectionHeader',
 
 	propTypes: {
-		label: React.PropTypes.string
+		label: React.PropTypes.string,
+		cardBadge: React.PropTypes.oneOfType( [
+			React.PropTypes.string,
+			React.PropTypes.element,
+			React.PropTypes.object
+		] )
 	},
 
 	getDefaultProps() {
 		return {
-			label: ''
+			label: '',
+			cardBadge: ''
 		};
 	},
 
@@ -30,11 +36,16 @@ export default React.createClass( {
 			'dops-section-header'
 		);
 
+		const maybeShowCardBadge = this.props.cardBadge !== ''
+			? <span className="dops-section-header__card-badge">{ this.props.cardBadge }</span>
+			: '';
+
 		return (
 			<Card compact className={ classes }>
 				<div className="dops-section-header__label">
 					{ this.props.label }
 				</div>
+				{ maybeShowCardBadge }
 				<div className="dops-section-header__actions">
 					{ this.props.children }
 				</div>
