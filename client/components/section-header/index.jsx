@@ -44,8 +44,8 @@ export default React.createClass( {
 			<Card compact className={ classes }>
 				<div className="dops-section-header__label">
 					{ this.props.label }
+					{ maybeShowCardBadge }
 				</div>
-				{ maybeShowCardBadge }
 				<div className="dops-section-header__actions">
 					{ this.props.children }
 				</div>
