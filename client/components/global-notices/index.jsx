@@ -7,7 +7,7 @@ import debugModule from 'debug';
 /**
  * Internal Dependencies
  */
-import Notice from './notice/index.jsx';
+import SimpleNotice from 'components/notice/index.jsx';
 import NoticeAction from 'components/notice/notice-action';
 import notices from 'notices';
 import { connect } from 'react-redux';
@@ -51,7 +51,7 @@ const NoticesList = React.createClass( {
 		const noticesRaw = this.props.notices[ this.props.id ] || [];
 		let noticesList = noticesRaw.map( function( notice, index ) {
 			return (
-				<Notice
+				<SimpleNotice
 					key={ 'notice-old-' + index }
 					status={ notice.status }
 					duration={ notice.duration || null }
@@ -67,7 +67,7 @@ const NoticesList = React.createClass( {
 						>
 							{ notice.button }
 						</NoticeAction> }
-					</Notice>
+					</SimpleNotice>
 			);
 		}, this );
 
@@ -76,14 +76,14 @@ const NoticesList = React.createClass( {
 		//needs to be updated.
 		noticesList = noticesList.concat( this.props.storeNotices.map( function( notice, index ) {
 			return (
-				<Notice
+				<SimpleNotice
 					key={ 'notice-' + index }
 					status={ notice.status }
 					duration = { notice.duration || null }
 					showDismiss={ notice.showDismiss }
 					onDismissClick={ this.props.removeNotice.bind( this, notice.noticeId ) }
 					text={ notice.text }>
-				</Notice>
+				</SimpleNotice>
 			);
 		}, this ) );
 
