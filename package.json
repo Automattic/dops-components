@@ -45,7 +45,6 @@
     "page": "^1.6.3",
     "payment": "0.0.9",
     "react": "^0.14.8",
-    "react-redux": "^4.4.1",
     "react-dom": "0.14.3",
     "react-pure-render": "1.0.2",
     "redux": "3.0.4",
