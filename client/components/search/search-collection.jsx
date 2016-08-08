@@ -10,10 +10,6 @@ const Hider = React.createClass( {
 		hide: React.PropTypes.bool,
 	},
 
-	shouldComponentUpdate( nextProps ) {
-		return this.props.hide !== nextProps.hide;
-	},
-
 	render() {
 		return (
 			<div
