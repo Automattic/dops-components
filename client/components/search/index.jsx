@@ -41,6 +41,7 @@ const Search = React.createClass( {
 		onSearch: React.PropTypes.func.isRequired,
 		onSearchChange: React.PropTypes.func,
 		onSearchClose: React.PropTypes.func,
+		onSearchOpen: React.PropTypes.func,
 		analyticsGroup: React.PropTypes.string,
 		autoFocus: React.PropTypes.bool,
 		disabled: React.PropTypes.bool,
@@ -67,6 +68,7 @@ const Search = React.createClass( {
 			disabled: false,
 			onSearchChange: noop,
 			onSearchClose: noop,
+			onSearchOpen: noop,
 			onKeyDown: noop,
 			disableAutocorrect: false,
 			searching: false,
@@ -168,6 +170,8 @@ const Search = React.createClass( {
 			keyword: '',
 			isOpen: true
 		} );
+
+		this.props.onSearchOpen();
 	},
 
 	closeSearch: function( event ) {
