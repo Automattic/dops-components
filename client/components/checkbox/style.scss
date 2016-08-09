@@ -29,13 +29,13 @@
 	cursor: pointer;
 
 	&:checked:before {
-		content: '\f418';
-		margin: -4px 0 0 -5px;
+		content: '\f147'; // Dashicons
+		margin: -3px 0 0 -4px;
 		float: left;
 		display: inline-block;
 		vertical-align: middle;
 		width: 16px;
-		font: 400 23px/1 Noticons;
+		font-size: 20px;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		speak: none;
