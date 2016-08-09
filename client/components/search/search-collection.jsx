@@ -23,9 +23,19 @@ const Hider = React.createClass( {
 } );
 
 const FilterSummary = React.createClass( {
+	getDefaultProps: function() {
+		return {
+			noResultsText: 'No Results Found'
+		};
+	},
+
+	propTypes: {
+		noResultsText: React.PropTypes.string
+	},
+
 	render() {
 		if ( this.props.items.length === 0 ) {
-			return ( <p>No results found.</p> );
+			return ( <p>{ this.props.noResultsText }</p> );
 		} else {
 			return null;
 		}
@@ -74,7 +84,9 @@ export default React.createClass( {
 			summary = (
 				<FilterSummary
 					items={ this.visibleExamples( examples ) }
-					total={ this.props.children.length } />
+					total={ this.props.children.length }
+					noResultsText={ this.props.noResultsText }
+				/>
 			);
 		}
 
