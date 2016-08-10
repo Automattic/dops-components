@@ -90,7 +90,7 @@ const Search = React.createClass( {
 				: this.props.onSearch;
 		}
 
-		if ( nextProps.isOpen ) {
+		if ( nextProps.isOpen !== this.props.isOpen ) {
 			this.setState( { isOpen: nextProps.isOpen } );
 		}
 	},
