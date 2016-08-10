@@ -1,0 +1,93 @@
+@import '../../scss/calypso-colors';
+@import '../../scss/rem';
+
+// ==========================================================================
+// Text Inputs
+// ==========================================================================
+
+// This needs the extra specificity to override the default styles.
+.input-text.input-text {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 7px 14px;
+	width: 100%;
+	color: $gray-dark;
+	font-size: 16px;
+	line-height: 1.5;
+	border: 1px solid lighten( $gray, 20% );
+	background-color: $white;
+	transition: all .15s ease-in-out;
+	box-sizing: border-box;
+
+	&::placeholder {
+		color: $gray;
+	}
+
+	&:hover {
+		border-color: lighten( $gray, 10% );
+	}
+
+	&:focus {
+		border-color: $blue-wordpress;
+		outline: none;
+		box-shadow: 0 0 0 2px $blue-light;
+
+		&::-ms-clear {
+			display: none;
+		}
+	}
+
+	&:disabled {
+		background: $gray-light;
+		border-color: lighten( $gray, 30% );
+		color: lighten( $gray, 10% );
+		-webkit-text-fill-color: lighten( $gray, 10% );
+
+		&:hover {
+			cursor: default;
+		}
+
+		&::placeholder {
+			color: lighten( $gray, 10% );
+		}
+	}
+}
+
+.input-text.input-text { // input[type="text"] is needed to override the default styles
+	-webkit-appearance: none;
+
+	&.is-valid {
+		border-color: $alert-green;
+	}
+
+	&.is-valid:hover {
+		border-color: darken( $alert-green, 10 );
+	}
+
+	&.is-error {
+		border-color: $alert-red;
+	}
+
+	&.is-error:hover {
+		border-color: darken( $alert-red, 10 );
+	}
+
+	&:focus {
+		&.is-valid {
+			box-shadow: 0 0 0 2px lighten( $alert-green, 35 );
+		}
+
+		&.is-valid:hover {
+			box-shadow: 0 0 0 2px lighten( $alert-green, 25 );
+		}
+
+		&.is-error {
+			box-shadow: 0 0 0 2px lighten( $alert-red, 35 );
+
+		}
+
+		&.is-error:hover {
+			box-shadow: 0 0 0 2px lighten( $alert-red, 25 );
+		}
+	}
+}
