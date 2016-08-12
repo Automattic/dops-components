@@ -8,7 +8,7 @@ require( './style.scss' );
 
 export default React.createClass( {
 
-	displayName: 'InputText',
+	displayName: 'TextInput',
 
 	getDefaultProps() {
 		return {
@@ -26,7 +26,7 @@ export default React.createClass( {
 	render() {
 		const { className, selectOnFocus } = this.props;
 		const classes = classNames( className, {
-			'input-text': true,
+			'text-input': true,
 			'is-error': this.props.isError,
 			'is-valid': this.props.isValid
 		} );

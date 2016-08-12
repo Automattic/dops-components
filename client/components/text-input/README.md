@@ -1,4 +1,4 @@
-InputText
+TextInput
 =========
 
 This component is used to implement some good ol' text inputs.
@@ -6,11 +6,11 @@ This component is used to implement some good ol' text inputs.
 #### How to use:
 
 ```js
-var InputText = require( 'components/checkbox' );
+var TextInput = require( 'components/checkbox' );
 
 render: function() {
 	return (
-		<InputText disabled={ this.props.disabled } />
+		<TextInput disabled={ this.props.disabled } />
 	);
 }
 ```
