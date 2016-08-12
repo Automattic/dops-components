@@ -17,8 +17,9 @@ var Content = React.createClass( {
 	mixins: [ closeOnEsc( '_close' ) ],
 
 	render: function() {
+		const filteredProps = omit( this.props, 'onClose' );
 		return (
-			<div { ...this.props } tabIndex="-1" />
+			<div { ...filteredProps } tabIndex="-1" />
 		);
 	},
 
@@ -77,7 +78,8 @@ var Popover = React.createClass( {
 		}
 
 		if ( this.props.isVisible && this.props.context ) {
-			let content = <Content { ...omit( this.props, 'className' ) } onClose={ this._close } />;
+			const filteredProps = omit( this.props, [ 'className', 'context', 'isVisible', 'position' ] );
+			let content = <Content { ...filteredProps } onClose={ this._close } />;
 
 			// this schedules a render, but does not actually render the content
 			ReactDom.render( content, this._container );
