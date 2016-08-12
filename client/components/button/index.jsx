@@ -41,8 +41,10 @@ export default React.createClass( {
 			'is-scary': this.props.scary,
 			'is-borderless': this.props.borderless
 		} );
+		// Extract properties that don't apply to the HTML element
+		const { isSubmitting, isPrimary, primary, borderless, compact, ...other } = this.props;
 
-		const props = assign( {}, this.props, {
+		const props = assign( {}, other, {
 			className: classNames( this.props.className, buttonClasses )
 		} );
 
