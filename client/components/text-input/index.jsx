@@ -26,7 +26,7 @@ export default React.createClass( {
 	render() {
 		const { className, selectOnFocus } = this.props;
 		const classes = classNames( className, {
-			'text-input': true,
+			'dops-text-input': true,
 			'is-error': this.props.isError,
 			'is-valid': this.props.isValid
 		} );

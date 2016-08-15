@@ -6,7 +6,7 @@
 // ==========================================================================
 
 // This needs the extra specificity to override the default styles.
-.text-input.text-input {
+.dops-text-input.dops-text-input {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 7px 14px;
@@ -53,7 +53,7 @@
 	}
 }
 
-.text-input.text-input { // input[type="text"] is needed to override the default styles
+.dops-text-input.dops-text-input { // input is needed to override the default styles
 	-webkit-appearance: none;
 
 	&.is-valid {
