@@ -8,6 +8,8 @@ import React from 'react';
  */
 import Gridicon from 'components/gridicon';
 
+require( './style.scss' );
+
 export default React.createClass( {
 	displayName: 'NoticeAction',
 
@@ -26,7 +28,7 @@ export default React.createClass( {
 
 	render() {
 		const attributes = {
-			className: 'notice__action',
+			className: 'dops-notice__action',
 			href: this.props.href,
 			onClick: this.props.onClick
 		};
