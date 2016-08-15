@@ -33,6 +33,7 @@
     "classnames": "^2.1.3",
     "click-outside": "1.0.4",
     "color": "^0.10.1",
+    "clipboard": "1.5.3",
     "component-tip": "3.0.3",
     "creditcards": "^2.0.0",
     "debug": "^2.2.0",
