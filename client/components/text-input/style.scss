@@ -17,7 +17,7 @@
 	border: 1px solid lighten( $gray, 20% );
 	background-color: $white;
 	transition: all .15s ease-in-out;
-	box-sizing: border-box;
+	box-shadow: none;
 
 	&::placeholder {
 		color: $gray;
