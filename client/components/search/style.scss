@@ -107,6 +107,7 @@
 	position: absolute;
 	z-index: z-index( '.dops-search', '.dops-search__input' );
 	top: 0;
+	margin: 0;
 	padding: 0 50px 0 60px;
 	border: none;
 	background: $white;
@@ -114,6 +115,7 @@
 	appearance: none;
 	box-sizing: border-box;
 	-webkit-appearance: none;
+	box-shadow: none;
 
 	@include breakpoint( "<660px" ) {
 		opacity: 0;
