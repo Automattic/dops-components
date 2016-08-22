@@ -84,6 +84,7 @@
 
 button.dops-foldable-card__action {
 	cursor: pointer;
+	outline: 0;
 }
 
 .dops-foldable-card__main {
@@ -126,8 +127,11 @@ button.dops-foldable-card__action {
 		fill: $gray;
 	}
 
-	&:hover .gridicon {
-		fill: $blue-medium;
+	&:focus,
+	&:hover {
+		.gridicon {
+			fill: $blue-medium;
+		}
 	}
 }
 
