@@ -13,6 +13,8 @@ import Tip from 'component-tip';
  */
 import closeOnEsc from 'mixins/close-on-esc';
 
+require( './style.scss' );
+
 var Content = React.createClass( {
 	mixins: [ closeOnEsc( '_close' ) ],
 
