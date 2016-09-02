@@ -1,0 +1,166 @@
+.tooltip.popover {
+	.popover__arrow {
+		border-width: 6px;
+	}
+
+	&.is-bottom-right,
+	&.is-bottom-left,
+	&.is-bottom {
+		.popover__arrow {
+			border-bottom-color: darken( $gray, 30% );
+			top: 4px;
+			right: 10px;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		&.is-error {
+			.popover__arrow {
+				border-bottom-color: $alert-red;
+			}
+		}
+
+		&.is-warning {
+			.popover__arrow {
+				border-bottom-color: $alert-yellow;
+			}
+		}
+
+		&.is-success {
+			.popover__arrow {
+				border-bottom-color: $alert-green;
+			}
+		}
+	}
+
+	&.is-top,
+	&.is-top-left,
+	&.is-top-right {
+		.popover__arrow {
+			border-top-color: darken( $gray, 30% );
+			bottom: 4px;
+			right: 10px;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		&.is-error {
+			.popover__arrow {
+				border-top-color: $alert-red;
+			}
+		}
+
+		&.is-warning {
+			.popover__arrow {
+				border-top-color: $alert-yellow;
+			}
+		}
+
+		&.is-success {
+			.popover__arrow {
+				border-top-color: $alert-green;
+			}
+		}
+	}
+
+	&.is-top,
+	&.is-bottom {
+		.popover__arrow {
+			margin-left: -6px;
+		}
+	}
+
+	&.is-left,
+	&.is-right {
+		padding-top: 0;
+		.popover__arrow {
+			margin-top: -6px;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		&.is-error {
+			.popover__arrow {
+				border-right-color: $alert-red;
+			}
+		}
+
+		&.is-warning {
+			.popover__arrow {
+				border-right-color: $alert-yellow;
+			}
+		}
+
+		&.is-success {
+			.popover__arrow {
+				border-right-color: $alert-green;
+			}
+		}
+	}
+
+	&.is-left {
+		.popover__arrow {
+			margin-right: 4px;
+			border-left-color: darken( $gray, 30% );
+		}
+	}
+
+	&.is-right {
+		.popover__arrow {
+			margin-left: 4px;
+			border-right-color: darken( $gray, 30% );
+		}
+	}
+
+	.popover__inner {
+		border: 0px;
+		box-shadow: none;
+		border-radius: 2px;
+		color: $white;
+		background: darken( $gray, 30% );
+		font-size: 12px;
+		padding: 6px 10px;
+		text-align: left;
+	}
+
+	&.is-error {
+		.popover__inner {
+			background: $alert-red;
+		}
+	}
+
+	&.is-warning {
+		.popover__inner {
+			background: $alert-yellow;
+		}
+	}
+
+	&.is-success {
+		.popover__inner {
+			background: $alert-green;
+		}
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			font-size: 11px;
+			font-weight: 100;
+			border: 0;
+		}
+	}
+}
+
+.tooltip__hr {
+	margin: 8px 0;
+	background: $gray;
+}
