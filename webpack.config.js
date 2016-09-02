@@ -25,8 +25,8 @@ var scssLoader = IS_HOT_UPDATE ?
 // if we're doing hot update, we need the react hot loader in here,
 // if not, skip it as it adds extra JS which is not necessary in production
 var jsLoader = IS_HOT_UPDATE ?
-				[require.resolve('react-hot-loader'), require.resolve('babel-loader')+'?stage=1', require.resolve('eslint-loader')] :
-				[require.resolve('babel-loader')+'?stage=1', require.resolve('eslint-loader')];
+				[require.resolve('react-hot-loader'), require.resolve('babel-loader'), require.resolve('eslint-loader')] :
+				[require.resolve('babel-loader'), require.resolve('eslint-loader')];
 
 // create a list of plugins filtered based on whether we're developing locally (i.e. using Hot Update)
 var plugins = [
