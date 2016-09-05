@@ -47,7 +47,7 @@ class Popover extends Component {
 
 	static defaultProps = {
 		autoPosition: true,
-		className: 'popover',
+		className: 'dops-popover',
 		closeOnEsc: true,
 		isVisible: false,
 		position: 'top',
@@ -380,7 +380,7 @@ class Popover extends Component {
 		}
 
 		const classes = classNames(
-			'popover',
+			'dops-popover',
 			this.props.className,
 			this.state.positionClass
 		);
@@ -394,9 +394,9 @@ class Popover extends Component {
 					className={ classes }
 					ref={ this.setDOMBehavior }
 				>
-					<div className="popover__arrow" />
+					<div className="dops-popover__arrow" />
 
-					<div className="popover__inner">
+					<div className="dops-popover__inner">
 						{ this.props.children }
 					</div>
 				</div>

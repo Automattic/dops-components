@@ -108,7 +108,7 @@ $z-layers: (
 		'.customizer-loading-panel__placeholder-change-theme': 999,
 		'.module-overlay': 1000,
 		'.drop-zone': 1000,
-		'.popover': 1000,
+		'.dops-popover': 1000,
 		'.sharing-buttons-preview-buttons__more': 1000,
 		'.sortable-list__item.is-draggable.is-active': 1000,
 		'.dops-chart__tooltip': 1000,
@@ -129,7 +129,7 @@ $z-layers: (
 		'.wplink__dialog.dialog.card': 100200,
 		'.web-preview': 100200,
 		'.category-selector__add-category-info': 100201,
-		'popover.is-dialog-visible': 100300,
+		'.dops-popover.is-dialog-visible': 100300,
 		'body .webui-popover': 100300,
 		'.fullscreen-fader': 200000,
 		'.guided-tours__overlay': 200050,
@@ -157,10 +157,10 @@ $z-layers: (
 		'.plugins .toolbar-bulk__toggle': 21,
 		'.toolbar-bulk__toggle': 30
 	),
-	'.popover': (
+	'.dops-popover': (
 		'.input-chrono__container .gridicons-calendar': 0,
 		'input.input-chrono': 1,
-		'.popover .popover__arrow': 1,
+		'.dops-popover .dops-popover__arrow': 1,
 		'.post-schedule__header': 1
 	),
 	'.dops-search': (

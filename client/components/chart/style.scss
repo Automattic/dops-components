@@ -363,8 +363,7 @@
 
 .dops-chart__tooltip {
 
-
-	.popover__inner {
+	.dops-popover__inner {
 		width: 230px;
 		text-align: left;
 
@@ -381,8 +380,9 @@
 				height: 24px;
 				letter-spacing: 0.1em;
 				border: 0;
+				margin-bottom: 0;
 
-				.wrapper {
+				.dops-wrapper {
 					display: block;
 					line-height: inherit;
 					line-height: 24px;
@@ -416,12 +416,12 @@
 		margin-top: -5px;
 		height: 35px;
 
-		.popover__arrow::before {
+		.dops-popover__arrow::before {
 			left: 85px;
 			top: 30px;
 		}
 
-		.popover__inner {
+		.dops-popover__inner {
 			width: 160px;
 			position: relative;
 			top: -10px;

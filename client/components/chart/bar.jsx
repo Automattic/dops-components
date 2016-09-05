@@ -113,7 +113,7 @@ module.exports = React.createClass( {
 
 			return (
 				<li key={ i } className={ wrapperClasses.join( ' ' ) } >
-					<span className='wrapper'>
+					<span className='dops-wrapper'>
 						<span className='value'>{ options.value }</span>
 						<span className='label'>{ gridiconSpan }{ options.label }</span>
 					</span>
@@ -123,7 +123,7 @@ module.exports = React.createClass( {
 
 		return (
 			<Tooltip
-				className="chart__tooltip"
+				className="dops-chart__tooltip"
 				id="popover__chart-bar"
 				showDelay={ 200 }
 				context={ this.refs && this.refs.valueBar }

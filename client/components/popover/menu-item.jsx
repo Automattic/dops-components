@@ -16,7 +16,7 @@ var MenuItem = React.createClass( {
 	render: function() {
 		var onMouseOver = this.props.focusOnHover ? this._onMouseOver : null;
 		return (
-			<button className={ classnames( 'popover__menu-item', this.props.className ) }
+			<button className={ classnames( 'dops-popover__menu-item', this.props.className ) }
 					role="menuitem"
 					disabled={ this.props.disabled }
 					onClick={ this.props.onClick }

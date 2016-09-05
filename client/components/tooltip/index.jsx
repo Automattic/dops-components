@@ -10,6 +10,8 @@ import classnames from 'classnames';
 import Popover from 'components/popover';
 import viewport from 'lib/viewport';
 
+require( './style.scss' );
+
 /**
  * Module variables
  */
@@ -40,8 +42,8 @@ class Tooltip extends Component {
 		}
 
 		const classes = classnames(
-			'popover',
-			'tooltip',
+			'dops-popover',
+			'dops-tooltip',
 			`is-${ this.props.position }`,
 			this.props.className
 		);
