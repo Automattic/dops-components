@@ -11,7 +11,7 @@ var ReactDom = require( 'react-dom' ),
 /**
  * Internal dependencies
  */
-var Button = require( 'components/button' );
+import Button from 'components/button';
 
 module.exports = React.createClass( {
 	displayName: 'ClipboardButton',
@@ -49,7 +49,6 @@ module.exports = React.createClass( {
 
 	render: function() {
 		var classes = classNames( 'dops-clipboard-button', this.props.className );
-
 		return (
 			<Button
 				ref="button"
