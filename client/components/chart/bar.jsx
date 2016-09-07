@@ -81,12 +81,10 @@ module.exports = React.createClass( {
 
 
 	mouseEnter: function(){
-		console.log( 'Mouse in' );
 		this.setState( { showPopover: true } );
 	},
 
 	mouseLeave: function() {
-		console.log( 'Mouse out' );
 		this.setState( { showPopover: false } );
 	},
 
