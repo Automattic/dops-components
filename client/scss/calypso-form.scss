@@ -1,15 +1,29 @@
 // Below, you can choose from either using global form styles or class-driven
 // form styles. By default, the global styles are on.
 
-%form {
+
+// ==========================================================================
+// Global form elements
+// ==========================================================================
+
+form {
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 }
-
-%form-field {
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type=checkbox],
+input[type=radio],
+input[type="tel"],
+input[type="url"],
+textarea,
+.checkbox-tristate {
 	margin: 0;
 	padding: 7px 14px;
 	width: 100%;
@@ -53,33 +67,8 @@
 		}
 	}
 }
-
-%textarea {
+textarea {
 	min-height: 92px;
-}
-
-
-// ==========================================================================
-// Global form elements
-// ==========================================================================
-
-form {
-	@extend %form;
-}
-input[type="text"],
-input[type="search"],
-input[type="email"],
-input[type="number"],
-input[type="password"],
-input[type=checkbox],
-input[type=radio],
-input[type="tel"],
-input[type="url"],
-textarea {
-	@extend %form-field;
-}
-textarea {
-	@extend %textarea;
 }
 
 fieldset,
@@ -99,7 +88,8 @@ label {
 /*Checkbooms*/
 
 input[type=checkbox],
-input[type=radio] {
+input[type=radio],
+.checkbox-tristate {
 	clear: none;
 	cursor: pointer;
 	display: inline-block;
@@ -117,15 +107,17 @@ input[type=radio] {
 }
 
 input[type=checkbox] + span,
-input[type=radio] + span {
+input[type=radio] + span,
+.checkbox-tristate + span {
 	display: block;
 	margin-left: 24px;
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+.checkbox-tristate {
 	&:checked:before {
-		@extend %clear-text;
-
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 		content: '\f418';
 		margin: -4px 0 0 -5px;
 		float: left;
@@ -209,9 +201,26 @@ input[type=radio] {
 // </a>
 
 .checkbox-tristate {
-	@extend input[type=checkbox];
 	position: relative;
 	margin: 20px 0 19px 20px;
+
+	&:checked:before {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		content: '\f418';
+		margin: -4px 0 0 -5px;
+		float: left;
+		display: inline-block;
+		vertical-align: middle;
+		width: 16px;
+		font: 400 23px/1 Noticons;
+		speak: none;
+		color: $blue-medium;
+		// animation: grow .2s ease-in-out;
+	}
+	&:disabled:checked:before {
+		color: lighten( $gray, 30% );
+	}
 
 	&:before {
 		position: absolute;

@@ -48,7 +48,10 @@
 			}
 
 			.payment-box__title {
-				@extend .placeholder;
+				animation: pulse-light 0.8s ease-in-out infinite;
+				background: lighten( $gray, 20% );
+				width: 100%;
+				height: 100%;
 				height: 22px;
 				width: 130px;
 

@@ -3,7 +3,7 @@
 @import '../../scss/mixin_breakpoint';
 @import '../../scss/rem';
 @import '../../scss/z-index';
-@import '../../scss/extends';
+@import '../../scss/mixin_icons';
 
 /**
  * Section Nav
@@ -59,7 +59,7 @@
 	cursor: pointer;
 
 	&:after {
-		@extend %dashicon;
+		@include dashicons;
 		content: '\f347';
 		line-height: 16px;
 		color: rgba( $gray, 0.5 );
@@ -67,7 +67,7 @@
 
 	.dops-section-nav.is-open & {
 		&:after {
-			@extend %dashicon;
+			@include dashicons;
 			content: '\f343';
 		}
 	}
