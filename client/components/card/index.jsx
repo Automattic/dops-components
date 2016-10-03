@@ -1,6 +1,7 @@
 var React = require( 'react' ),
 	Icon = require( '../icon' ),
-	classnames = require( 'classnames' );
+	classnames = require( 'classnames' ),
+	omit = require( 'lodash/omit' );
 
 require( './style.scss' );
 
@@ -79,13 +80,14 @@ let Card = React.createClass( {
 	},
 
 	render: function() {
+		const filteredProps = omit( this.props, [ 'iconLabel', 'iconColor', 'compact' ] );
 		var { style, title, meta, icon, iconLabel, ...other } = this.props,
 			cardClasses = classnames( {
 				'dops-card': true,
 				'is-compact': this.props.compact
 			} );
 		return (
-			<div { ...other } className={ classnames( this.props.className, cardClasses ) } style={ this.props.style }>
+			<div { ...filteredProps } className={ classnames( this.props.className, cardClasses ) } style={ this.props.style }>
 				{ this.props.title && (
 					<h2 className="dops-card-title">
 						{title}
