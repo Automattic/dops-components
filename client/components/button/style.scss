@@ -151,6 +151,7 @@
 }
 
 .dops-button.is-borderless {
+	background-color: transparent;
 	border: none;
 	color: darken( $gray, 10% );
 	padding-left: 0;
