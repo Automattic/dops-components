@@ -53,6 +53,10 @@
 			$opposite-side: "left";
 			$cross-side: "top";
 			$cross-opposite-side: "bottom";
+		} @else {
+			$opposite-side: "";
+			$cross-side: "";
+			$cross-opposite-side: "";
 		}
 
 		&.is-#{$side} .dops-popover__arrow,
