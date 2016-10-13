@@ -1,7 +1,7 @@
 @import "../../scss/calypso-colors";
 @import '../../scss/layout';
+@import '../../scss/extends';
 @import "../../scss/calypso-mixins";
-@import '../../scss/mixin_icons';
 
 .dops-notice {
 	display: flex;
@@ -15,28 +15,6 @@
 
 	@include breakpoint( ">660px" ) {
 		font-size: inherit;
-
-		&::before {
-			@include dashicons;
-			content: '\f534';
-			position: absolute;
-				top: 23px;
-				left: 20px;
-			margin: -12px 0px 0 -8px;
-			font-size: 24px;
-			line-height: 1;
-		}
-	}
-
-	.dops-notice__dismiss {
-
-		&.dops-button .gridicon {
-			top: 0;
-		}
-
-		&:focus {
-			box-shadow: 0 0 4px darken( $gray-light, 10 );
-		}
 	}
 
 	// Success!
@@ -298,3 +276,4 @@ a.dops-notice__action {
 		}
 	}
 }
+
