@@ -15,17 +15,6 @@
 
 	@include breakpoint( ">660px" ) {
 		font-size: inherit;
-
-		&::before {
-			@include dashicons;
-			content: '\f534';
-			position: absolute;
-				top: 23px;
-				left: 20px;
-			margin: -12px 0px 0 -8px;
-			font-size: 24px;
-			line-height: 1;
-		}
 	}
 
 	.dops-notice__dismiss {
