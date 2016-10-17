@@ -37,6 +37,10 @@
 	}
 
 	@mixin popover__arrow( $side ) {
+		$opposite-side: "";
+		$cross-side: "";
+		$cross-opposite-side: "";
+
 		@if $side == "top" {
 			$opposite-side: "bottom";
 			$cross-side: "left";
