@@ -51,9 +51,6 @@ export default React.createClass( {
 			case 'green':
 				color = 'is-green';
 				break;
-			case 'yellow':
-				color = 'is-yellow';
-				break;
 			case 'blue':
 				color = 'is-blue';
 				break;
