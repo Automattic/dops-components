@@ -124,7 +124,7 @@ let Card = React.createClass( {
 	_renderIcon: function() {
 		return (
 			<span className="dops-card-icon" style={{ color: this.props.iconColor }}>
-				{ this.props.icon && <Icon name={ this.props.icon } style={{ backgroundColor: this.props.iconColor }}/>}
+				{ this.props.icon && <Gridicon icon={ this.props.icon } style={{ backgroundColor: this.props.iconColor }}/>}
 				{ this.props.iconLabel }
 			</span>
 		);
