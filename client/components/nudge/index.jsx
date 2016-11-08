@@ -40,13 +40,39 @@ export default React.createClass( {
 		this.props.onClick();
 	},
 
+
+	getColor() {
+		let color;
+
+		switch ( this.props.color ) {
+			case 'red':
+				color = 'is-red';
+				break;
+			case 'green':
+				color = 'is-green';
+				break;
+			case 'yellow':
+				color = 'is-yellow';
+				break;
+			case 'blue':
+				color = 'is-blue';
+				break;
+			default:
+				color = '';
+				break;
+		}
+
+		return color;
+	},
+
 	render() {
-		const classes = classNames( this.props.className, 'dops-nudge' );
 		let href = this.props.href;
+
+		const classes = classNames( this.props.className, ['dops-nudge', this.getColor() ] );
 
 		return (
 			<Card compact className={ classes } onClick={ this.handleClick } href={ href }>
-				<Gridicon className="dops-nudge__icon" icon={ this.props.icon } size={ 18 } />
+				<Gridicon className="dops-nudge__icon" icon={ this.props.icon } size={ 18 }/>
 				<div className="dops-nudge__info">
 					<span className="dops-nudge__title">
 						{ this.props.headline }
