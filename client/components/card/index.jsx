@@ -1,6 +1,8 @@
 var React = require( 'react' ),
-	Icon = require( '../icon' ),
+	Gridicon = require( '../gridicon' ),
 	classnames = require( 'classnames' );
+
+import { assign, omit } from 'lodash';
 
 require( './style.scss' );
 
@@ -60,56 +62,44 @@ let CardFooter = React.createClass( {
 let Card = React.createClass( {
 
 	propTypes: {
-		title: React.PropTypes.any,
-		meta: React.PropTypes.any,
-		icon: React.PropTypes.string,
-		iconLabel: React.PropTypes.any,
-		iconColor: React.PropTypes.string,
-		style: React.PropTypes.object,
 		className: React.PropTypes.string,
+		href: React.PropTypes.string,
+		tagName: React.PropTypes.string,
+		target: React.PropTypes.string,
 		compact: React.PropTypes.bool,
-		device: React.PropTypes.oneOf( ['desktop', 'tablet', 'mobile'] )
+		children: React.PropTypes.node
 	},
 
-	getDefaultProps: function() {
+	getDefaultProps() {
 		return {
-			iconColor: '#787878',
-			className: ''
+			tagName: 'div'
 		};
 	},
 
 	render: function() {
-		var { style, title, meta, icon, iconLabel, ...other } = this.props,
-			cardClasses = classnames( {
-				'dops-card': true,
-				'is-compact': this.props.compact
-			} );
-		return (
-			<div { ...other } className={ classnames( this.props.className, cardClasses ) } style={ this.props.style }>
-				{ this.props.title && (
-					<h2 className="dops-card-title">
-						{title}
-						{meta && <span className="dops-card-meta">{meta}</span>}
-						{( icon || iconLabel ) && (
-							this._renderIcon()
-						)}
-					</h2>
-				)}
+		const className = classnames( 'dops-card', this.props.className, {
+			'is-card-link': !! this.props.href,
+			'is-compact': this.props.compact
+		} );
 
-				{this.props.children}
-			</div>
-		);
-	},
+		const omitProps = [ 'compact', 'tagName' ];
 
-	_renderIcon: function() {
-		return (
-			<span className="dops-card-icon" style={{color: this.props.iconColor}}>
-				{this.props.icon && <Icon name={this.props.icon} style={{backgroundColor: this.props.iconColor}}/>}
-				{this.props.iconLabel}
-			</span>
+		let linkIndicator;
+		if ( this.props.href ) {
+			linkIndicator = <Gridicon
+				className="dops-card__link-indicator"
+				icon={ this.props.target ? 'external' : 'chevron-right' } />;
+		} else {
+			omitProps.push( 'href', 'target' );
+		}
+
+		return React.createElement(
+			this.props.href ? 'a' : this.props.tagName,
+			assign( omit( this.props, omitProps ), { className } ),
+			linkIndicator,
+			this.props.children
 		);
 	}
-
 } );
 
 Card.Section = CardSection;
