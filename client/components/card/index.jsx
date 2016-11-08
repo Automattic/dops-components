@@ -62,8 +62,14 @@ let CardFooter = React.createClass( {
 let Card = React.createClass( {
 
 	propTypes: {
+		meta: React.PropTypes.any,
+		icon: React.PropTypes.string,
+		iconLabel: React.PropTypes.any,
+		iconColor: React.PropTypes.string,
+		style: React.PropTypes.object,
 		className: React.PropTypes.string,
 		href: React.PropTypes.string,
+		title: React.PropTypes.string,
 		tagName: React.PropTypes.string,
 		target: React.PropTypes.string,
 		compact: React.PropTypes.bool,
@@ -72,6 +78,8 @@ let Card = React.createClass( {
 
 	getDefaultProps() {
 		return {
+			iconColor: '#787878',
+ 			className: '',
 			tagName: 'div'
 		};
 	},
@@ -93,11 +101,32 @@ let Card = React.createClass( {
 			omitProps.push( 'href', 'target' );
 		}
 
+		let fancyTitle;
+		if ( this.props.title ) {
+			fancyTitle = <h2 className="dops-card-title">
+					{ this.props.title }
+					{ this.props.meta && <span className="dops-card-meta">{ this.props.meta }</span>}
+					{( this.props.icon || this.props.iconLabel ) && (
+						this._renderIcon()
+					)}
+				</h2>;
+		}
+
 		return React.createElement(
 			this.props.href ? 'a' : this.props.tagName,
 			assign( omit( this.props, omitProps ), { className } ),
 			linkIndicator,
+			fancyTitle,
 			this.props.children
+		);
+	},
+
+	_renderIcon: function() {
+		return (
+			<span className="dops-card-icon" style={{ color: this.props.iconColor }}>
+				{ this.props.icon && <Icon name={ this.props.icon } style={{ backgroundColor: this.props.iconColor }}/>}
+				{ this.props.iconLabel }
+			</span>
 		);
 	}
 } );

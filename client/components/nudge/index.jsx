@@ -22,6 +22,7 @@ export default React.createClass( {
 		onClick: React.PropTypes.func,
 		className: React.PropTypes.string,
 		href: React.PropTypes.string,
+		headline: React.PropTypes.string,
 		message: React.PropTypes.string,
 		icon: React.PropTypes.string
 	},
@@ -29,7 +30,7 @@ export default React.createClass( {
 	getDefaultProps() {
 		return {
 			onClick: noop,
-			href: false,
+			href: '',
 			message: 'And get your own domain address.',
 			icon: 'star',
 		};
@@ -48,7 +49,7 @@ export default React.createClass( {
 				<Gridicon className="dops-nudge__icon" icon={ this.props.icon } size={ 18 } />
 				<div className="dops-nudge__info">
 					<span className="dops-nudge__title">
-						{ this.props.title }
+						{ this.props.headline }
 					</span>
 					<span className="dops-nudge__message" >
 						{ this.props.message }
