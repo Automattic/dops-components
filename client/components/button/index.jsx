@@ -33,16 +33,17 @@ export default React.createClass( {
 	},
 
 	render() {
+		const { compact, primary, scary, borderless, ...htmlProps } = this.props;
 		const element = this.props.href ? 'a' : 'button';
 		const buttonClasses = classNames( {
 			'dops-button': true,
-			'is-compact': this.props.compact,
-			'is-primary': this.props.primary,
-			'is-scary': this.props.scary,
-			'is-borderless': this.props.borderless
+			'is-compact': compact,
+			'is-primary': primary,
+			'is-scary': scary,
+			'is-borderless': borderless
 		} );
 
-		const props = assign( {}, this.props, {
+		const props = assign( {}, htmlProps, {
 			className: classNames( this.props.className, buttonClasses )
 		} );
 
