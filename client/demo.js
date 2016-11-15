@@ -1,4 +1,4 @@
-require( 'babel/polyfill' );
+require( 'babel-polyfill' );
 var Demo,
 	Tabs = require( './components/tabs' ),
 	Sidebar = require( './components/sidebar' ),

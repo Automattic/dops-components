@@ -6,7 +6,7 @@ var creditcards = require( 'creditcards' ),
 	isArray = require( 'lodash/isArray' ),
 	isEmpty = require( 'lodash/isEmpty' ),
 	toArray = require( 'lodash/toArray' ),
-	inRange = require( 'lodash/number/inRange' ),
+	inRange = require( 'lodash/inRange' ),
 	capitalize = require( 'lodash/capitalize' );
 
 /**
