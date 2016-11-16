@@ -57,6 +57,11 @@ module.exports = {
 	},
 	resolve: {
 		extensions: [ '', '.js', '.jsx' ],
+		alias: {
+			components: path.resolve( __dirname, 'client/components' ),
+			lib: path.resolve( __dirname, 'client/lib' ),
+			config: path.resolve( __dirname, '../AkismetReact/calypso/config' )
+		},
 		root: path.resolve( __dirname, 'client' )
 	},
 	stats: {
