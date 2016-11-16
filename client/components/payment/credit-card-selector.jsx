@@ -1,5 +1,3 @@
-require( './credit-card-selector.scss' );
-
 /**
  * External dependencies
  */
@@ -15,6 +13,8 @@ var StoredCard = require( './stored-card' ),
 	storeTransactions = require( 'lib/store-transactions' ),
 	ScreenReaderText = require( '../screen-reader-text' );
 	// upgradesActions = require( 'lib/upgrades/actions' );
+
+require( './credit-card-selector.scss' );
 
 var CreditCardSelector = React.createClass( {
 	propTypes: {
