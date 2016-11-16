@@ -5,7 +5,7 @@ This utility function allows us to use a standardized method of loading remote s
 
 ### Usage
 ```js
-loadScript = require( 'load-script' );
+loadScript = require( '@automattic/dops-components/client/lib/load-script' );
 loadScript.loadScript( REMOTE_SCRIPT_URL, function( error ) {
 	if ( error ) {
 		debug( 'Script ' + error.src + ' failed to load.' );
