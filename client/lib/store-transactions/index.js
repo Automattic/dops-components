@@ -4,7 +4,8 @@
 var debug = require( 'debug' )( 'calypso:store-transactions' ),
 	isEmpty = require( 'lodash/isEmpty' ),
 	Readable = require( 'stream' ).Readable,
-	inherits = require( 'inherits' );
+	inherits = require( 'inherits' ),
+	assign = require( 'lodash/assign' );
 
 /**
  * Internal dependencies
@@ -76,7 +77,7 @@ TransactionFlow.prototype._pushStep = function( options ) {
 		timestamp: Date.now()
 	};
 
-	this.push( Object.assign( defaults, options ) );
+	this.push( assign( defaults, options ) );
 }
 
 TransactionFlow.prototype._paymentHandlers = {

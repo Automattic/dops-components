@@ -7,6 +7,7 @@ import debugFactory from 'debug';
 import classNames from 'classnames';
 import clickOutside from 'click-outside';
 import uid from 'component-uid';
+import assign from 'lodash/assign';
 
 /**
  * Internal dependencies
@@ -288,7 +289,7 @@ class Popover extends Component {
 			this.debug( 'suggested position: %o', suggestedPosition );
 		}
 
-		const reposition = Object.assign(
+		const reposition = assign(
 			{},
 			constrainLeft(
 				offset( suggestedPosition, domContainer, domContext ),
