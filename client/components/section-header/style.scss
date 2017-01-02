@@ -20,6 +20,7 @@
 	display: flex;
 		align-items: center;
 	flex-grow: 1;
+	min-width: 0; // weird fix for overflowing items
 	line-height: rem( 28px );
 	position: relative;
 	color: $gray;
@@ -35,6 +36,7 @@
 	margin-right: rem( 8px );
 	white-space: nowrap;
 	overflow: hidden;
+	min-width: 0; // weird fix for overflowing items
 
 	&:before {
 		@include long-content-fade( $color : $white );
