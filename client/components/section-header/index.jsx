@@ -26,14 +26,16 @@ export default React.createClass( {
 	getDefaultProps() {
 		return {
 			label: '',
-			cardBadge: ''
+			cardBadge: '',
+			pro: ''
 		};
 	},
 
 	render() {
 		const classes = classNames(
 			this.props.className,
-			'dops-section-header'
+			'dops-section-header',
+			'has-card-badge': this.props.cardBadge !== ''
 		);
 
 		const maybeShowCardBadge = this.props.cardBadge !== ''
@@ -43,7 +45,7 @@ export default React.createClass( {
 		return (
 			<Card compact className={ classes }>
 				<div className="dops-section-header__label">
-					{ this.props.label }
+					<span className="dops-section-header__label-text">{ this.props.label }</span>
 					{ maybeShowCardBadge }
 				</div>
 				<div className="dops-section-header__actions">

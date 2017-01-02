@@ -5,6 +5,8 @@
 
 .dops-section-header.dops-card {
 	display: flex;
+	flex-wrap: wrap;
+	max-width: 100%;
 	padding-top: rem( 11px );
 	padding-bottom: rem( 11px );
 	position: relative;
@@ -23,17 +25,20 @@
 	color: $gray;
 	font-size: rem( 14px );
 
-	&:before {
-		@include long-content-fade( $color : $white );
-	}
-
 	.dops-count {
 		margin-left: rem( 8px );
 	}
 }
 
-.dops-section-header__card-badge {
-	margin-left: rem( 8px );
+.dops-section-header__label-text {
+	position: relative;
+	margin-right: rem( 8px );
+	white-space: nowrap;
+	overflow: hidden;
+
+	&:before {
+		@include long-content-fade( $color : $white );
+	}
 }
 
 .dops-section-header__actions {
