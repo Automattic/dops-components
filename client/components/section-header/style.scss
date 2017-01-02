@@ -36,10 +36,15 @@
 	margin-right: rem( 8px );
 	white-space: nowrap;
 	overflow: hidden;
+	width: 100%;
+	padding-right: rem( 8px );
 	min-width: 0; // weird fix for overflowing items
 
 	&:before {
-		@include long-content-fade( $color : $white );
+		@include long-content-fade( $size: 8px, $color : $white );
+	}
+	.has-card-badge & {
+		width: auto;
 	}
 }
 
