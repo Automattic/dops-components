@@ -41,9 +41,9 @@ export default React.createClass( {
 			: '';
 
 		return (
-			<Card compact className={ classes }>
+			<Card compact className={ classNames( classes, { 'has-card-badge': this.props.cardBadge !== '' } ) }>
 				<div className="dops-section-header__label">
-					{ this.props.label }
+					<span className="dops-section-header__label-text">{ this.props.label }</span>
 					{ maybeShowCardBadge }
 				</div>
 				<div className="dops-section-header__actions">
