@@ -1,0 +1,86 @@
+@import "../../scss/calypso-colors";
+@import '../../scss/calypso-mixins';
+
+.dops-nudge.dops-card {
+	display: flex;
+	margin: 16px 0;
+	padding: 12px 16px;
+
+	.dops-nudge__title {
+		font-size: 14px;
+	}
+
+	.dops-button {
+		margin-left: auto;
+	}
+
+	&.is-no-margin {
+		margin: 0;
+	}
+
+	&.is-card-link {
+		border-left: 3px solid $alert-yellow;
+	}
+}
+
+.dops-nudge__icon {
+	background: $alert-yellow;
+	border-radius: 50%;
+	margin-right: 16px;
+	color: $white;
+	padding: 6px;
+	align-self: center;
+}
+
+.dops-nudge.dops-button {
+	margin-bottom: 16px;
+	text-align: left;
+	display: inline-flex;
+
+	.dops-nudge__icon {
+		background: $alert-green;
+	}
+
+	&.is-full-width {
+		width:100%;
+		@include breakpoint( ">660px" ) {
+			max-width: 420px;
+		}
+	}
+}
+
+// Colors
+.dops-nudge.is-card-link.is-blue {
+	border-left-color: $blue-medium;
+}
+
+.is-blue .dops-nudge__icon {
+	background: $blue-medium;
+}
+
+.dops-nudge.is-card-link.is-green {
+	border-left-color: $alert-green;
+}
+
+.is-green .dops-nudge__icon {
+	background: $alert-green;
+}
+
+.dops-nudge.is-card-link.is-red {
+	border-left-color: $alert-red;
+}
+
+.is-red .dops-nudge__icon {
+	background: $alert-red;
+}
+
+.dops-nudge__title {
+	color: $gray-dark;
+	font-weight: 500;
+}
+
+.dops-nudge__message {
+	color: $gray;
+	font-size: 12px;
+	display: block;
+}
