@@ -48,7 +48,7 @@ module.exports = React.createClass( {
 			} );
 
 		return (
-			<span>
+			<span className="dops-form-toggle">
 				<input
 					className={ classNames( this.props.className, toggleClasses ) }
 					type="checkbox"
