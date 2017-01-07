@@ -1,6 +1,6 @@
 @import '../../scss/calypso-colors';
 
-.info-popover .gridicon {
+.dops-info-popover .gridicon {
 	cursor: pointer;
 	color: lighten( $gray, 15% );
 
@@ -9,11 +9,11 @@
 	}
 }
 
-.info-popover.is_active .gridicon {
+.dops-info-popover.is_active .gridicon {
 	color: $gray-dark;
 }
 
-.dops-popover.info-popover__tooltip {
+.dops-popover.dops-info-popover__tooltip {
 	.dops-popover__inner {
 		color: darken( $gray, 20% );
 		font-size: 13px;

@@ -47,7 +47,7 @@ export default React.createClass( {
 				onClick={ this._onClick }
 				ref="infoPopover"
 				className={ classNames(
-					'info-popover',
+					'dops-info-popover',
 					{ is_active: this.state.showPopover },
 					this.props.className )
 					}
@@ -66,8 +66,7 @@ export default React.createClass( {
 					position={ this.props.position }
 					onClose={ this._onClose }
 					className={ classNames(
-							'popover',
-							'info-popover__tooltip',
+							'dops-info-popover__tooltip',
 							this.props.className
 						) }
 					rootClassName={ this.props.rootClassName }
