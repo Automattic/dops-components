@@ -8,7 +8,7 @@ function accessibleFocus() {
 		}
 		if ( keyboardNavigationKeycodes.indexOf( event.keyCode ) !== -1 ) {
 			keyboardNavigation = true;
-			document.documentElement.classList.add( 'accessible-focus' );
+			document.documentElement.classList.add( 'dops-accessible-focus' );
 		}
 	} );
 	document.addEventListener( 'mouseup', function() {
@@ -16,7 +16,7 @@ function accessibleFocus() {
 			return;
 		}
 		keyboardNavigation = false;
-		document.documentElement.classList.remove( 'accessible-focus' );
+		document.documentElement.classList.remove( 'dops-accessible-focus' );
 	} );
 }
 
