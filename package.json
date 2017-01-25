@@ -1,6 +1,11 @@
 {
   "name": "@automattic/dops-components",
   "version": "0.0.1",
+  "license": "GPL-2.0+",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Automattic/dops-components.git"
+  },
   "devDependencies": {
     "@automattic/custom-colors-loader": "automattic/custom-colors-loader",
     "autoprefixer-loader": "^2.0.0",
