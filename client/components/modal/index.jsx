@@ -46,12 +46,12 @@ let Modal = React.createClass( {
 	},
 
 	componentDidMount: function() {
-		jQuery( 'body' ).addClass( 'dops-modal-showing' );
+		jQuery( 'body' ).addClass( 'dops-modal-showing' ).on( 'touchmove.jetpack', false );
 		jQuery( document ).keyup( this.handleEscapeKey );
 		try {
 			focusTrap.activate(this.getDOMNode(), {
 				// onDeactivate: this.maybeClose,
-				initialFocus: this.props.initialFocus,
+				initialFocus: this.props.initialFocus
 			});
 		} catch( e ) {
 			//noop
@@ -59,7 +59,7 @@ let Modal = React.createClass( {
 	},
 
 	componentWillUnmount: function() {
-		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
+		jQuery( 'body' ).removeClass( 'dops-modal-showing' ).off( 'touchmove.jetpack', false );
 		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
 		try {
 			focusTrap.deactivate();

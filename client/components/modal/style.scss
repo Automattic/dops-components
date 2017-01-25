@@ -4,7 +4,6 @@
 /* This hack is used to prevent the body from scrolling when the modal is showing */
 body.dops-modal-showing {
 	overflow: hidden;
-    position: fixed;
 }
 
 .dops-modal-wrapper {
