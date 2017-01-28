@@ -40,6 +40,7 @@ class SelectDropdown extends Component {
 		this.navigateItem = this.navigateItem.bind( this );
 		this.toggleDropdown = this.toggleDropdown.bind( this );
 		this.handleOutsideClick = this.handleOutsideClick.bind( this );
+		this._onClick = this._onClick.bind( this );
 
 		// state
 		let initialState = { isOpen: false };
@@ -175,7 +176,8 @@ class SelectDropdown extends Component {
 		const dropdownClasses = {
 			'dops-select-dropdown': true,
 			'is-compact': this.props.compact,
-			'is-open': this.state.isOpen
+			'is-open': this.state.isOpen,
+			'is-disabled': this.props.disabled
 		};
 
 		if ( this.props.className ) {
@@ -203,7 +205,7 @@ class SelectDropdown extends Component {
 					aria-owns={ 'select-submenu-' + this.state.instanceId }
 					aria-controls={ 'select-submenu-' + this.state.instanceId }
 					aria-expanded={ this.state.isOpen }
-					onClick={ this.toggleDropdown }
+					onClick={ this._onClick }
 				>
 					<div
 						id={ 'select-dropdown-' + this.state.instanceId }
@@ -230,6 +232,12 @@ class SelectDropdown extends Component {
 				</div>
 			</div>
 		);
+	}
+
+	_onClick() {
+		if ( ! this.props.disabled ) {
+			this.toggleDropdown();
+		}
 	}
 
 	toggleDropdown() {
@@ -368,6 +376,7 @@ SelectDropdown.defaultProps = {
 	options: [],
 	onSelect: noop,
 	onToggle: noop,
+	disabled: false,
 	style: {}
 };
 
@@ -381,6 +390,7 @@ SelectDropdown.propTypes = {
 	onToggle: PropTypes.func,
 	focusSibling: PropTypes.func,
 	tabIndex: PropTypes.number,
+	disabled: PropTypes.bool,
 	options: PropTypes.arrayOf(
 		PropTypes.shape( {
 			value: PropTypes.string.isRequired,
