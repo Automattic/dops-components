@@ -33,7 +33,7 @@
 		@include banner-color( $alert-purple );
 	}
 
-	.card__link-indicator {
+	.dops-card__link-indicator {
 		align-items: center;
 		color: $blue-wordpress;
 		display: flex;
@@ -44,7 +44,7 @@
 		&.is-card-link {
 			box-shadow: 0 0 0 1px $gray, 0 2px 4px lighten( $gray, 20% );
 		}
-		.card__link-indicator {
+		.dops-card__link-indicator {
 			color: $blue-dark;
 		}
 	}
@@ -100,7 +100,7 @@
 	display: flex;
 	margin-right: 16px;
 
-	.plan-icon {
+	.dops-plan-icon {
 		height: 32px;
 		width: 32px;
 	}
@@ -177,16 +177,16 @@
 		display: flex;
 		justify-content: flex-start;
 
-		.plan-price {
+		.dops-plan-price {
 			margin-bottom: 0;
 		}
 
-		.plan-price.is-discounted,
-		.plan-price.is-discounted .plan-price__currency-symbol {
+		.dops-plan-price.is-discounted,
+		.dops-plan-price.is-discounted .dops-plan-price__currency-symbol {
 			color: $gray-dark;
 		}
 
-		.has-call-to-action & .plan-price {
+		.has-call-to-action & .dops-plan-price {
 			margin-bottom: 8px;
 		}
 	}

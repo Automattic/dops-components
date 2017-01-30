@@ -39,7 +39,7 @@ export default class DismissibleCard extends Component {
 				<QueryPreferences />
 				<Gridicon
 					icon="cross"
-					className="dismissible-card__close-icon"
+					className="dops-dismissible-card__close-icon"
 					onClick={ this.props.onClick }
 				/>
 				{ this.props.children }

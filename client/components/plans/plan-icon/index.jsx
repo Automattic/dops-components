@@ -28,7 +28,7 @@ export default class PlanIcon extends Component {
 	render() {
 		const { plan, className } = this.props;
 		const planClass = getPlanClass( plan );
-		const classes = classNames( 'plan-icon', planClass, className );
+		const classes = classNames( 'dops-plan-icon', planClass, className );
 
 		return (
 			<div className={ classes } />
