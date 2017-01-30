@@ -39,6 +39,12 @@ module.exports = React.createClass( {
 		}
 	},
 
+	_onChange: function() {
+		if ( ! this.props.disabled ) {
+			this.props.onChange();
+		}
+	},
+
 	render: function() {
 		var id = this.props.id || 'toggle-' + idNum++,
 			toggleClasses = classNames( {
@@ -60,7 +66,7 @@ module.exports = React.createClass( {
 					<span className="form-toggle__switch"
 						disabled={ this.props.disabled }
 						id={ id }
-						onClick={ this.props.onChange }
+						onClick={ this._onChange }
 						onKeyDown={ this._onKeyDown }
 						role="checkbox"
 						aria-checked={ this.props.checked }

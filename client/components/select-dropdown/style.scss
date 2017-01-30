@@ -14,6 +14,13 @@
 	&.is-compact {
 		height: 28px;
 	}
+
+	&.is-disabled .dops-select-dropdown__header {
+		background: $gray-light;
+		border-color: lighten( $gray, 30% );
+		color: lighten( $gray, 10% );
+		-webkit-text-fill-color: lighten( $gray, 10% );
+	}
 }
 
 .dops-select-dropdown__container {
