@@ -2,7 +2,8 @@
  * External dependencies
  */
 import React from 'react';
-import { compact, includes } from 'lodash';
+import compact from 'lodash/compact';
+import includes from 'lodash/includes';
 
 // plans constants
 export const PLAN_BUSINESS = 'business-bundle';
