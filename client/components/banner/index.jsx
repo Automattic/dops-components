@@ -159,7 +159,7 @@ class Banner extends Component {
 		} = this.props;
 
 		const classes = classNames(
-			'banner',
+			'dops-banner',
 			className,
 			{ 'has-call-to-action': callToAction },
 			{ 'is-upgrade-personal': PLAN_PERSONAL === plan },
