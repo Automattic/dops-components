@@ -19,7 +19,6 @@ import {
 } from 'lib/plans/constants';
 import Button from 'components/button';
 import Card from 'components/card';
-import DismissibleCard from 'components/dismissible-card';
 import Gridicon from 'components/gridicon';
 import PlanIcon from 'components/plans/plan-icon';
 
@@ -31,8 +30,6 @@ class Banner extends Component {
 		callToAction: PropTypes.string,
 		className: PropTypes.string,
 		description: PropTypes.string,
-		dismissPreferenceName: PropTypes.string,
-		dismissTemporary: PropTypes.bool,
 		event: PropTypes.string,
 		feature: PropTypes.string, // PropTypes.oneOf( getValidFeatureKeys() ),
 		href: PropTypes.string,
@@ -40,13 +37,11 @@ class Banner extends Component {
 		list: PropTypes.arrayOf( PropTypes.string ),
 		onClick: PropTypes.func,
 		plan: PropTypes.string,
-		price: PropTypes.oneOfType( [ PropTypes.number, PropTypes.arrayOf( PropTypes.number ) ] ),
 		siteSlug: PropTypes.string,
 		title: PropTypes.string.isRequired,
 	};
 
 	static defaultProps = {
-		dismissTemporary: false,
 		onClick: noop,
 	};
 
@@ -103,11 +98,8 @@ class Banner extends Component {
 			event,
 			feature,
 			list,
-			price,
 			title,
 		} = this.props;
-
-		const prices = Array.isArray( price ) ? price : [ price ];
 
 		return (
 			<div className="dops-banner__content">
@@ -153,8 +145,6 @@ class Banner extends Component {
 		const {
 			callToAction,
 			className,
-			dismissPreferenceName,
-			dismissTemporary,
 			plan,
 		} = this.props;
 
@@ -164,22 +154,8 @@ class Banner extends Component {
 			{ 'has-call-to-action': callToAction },
 			{ 'is-upgrade-personal': PLAN_PERSONAL === plan },
 			{ 'is-upgrade-premium': PLAN_PREMIUM === plan },
-			{ 'is-upgrade-business': PLAN_BUSINESS === plan },
-			{ 'is-dismissible': dismissPreferenceName }
+			{ 'is-upgrade-business': PLAN_BUSINESS === plan }
 		);
-
-		if ( dismissPreferenceName ) {
-			return (
-				<DismissibleCard
-					className={ classes }
-					preferenceName={ dismissPreferenceName }
-					temporary={ dismissTemporary }
-				>
-					{ this.getIcon() }
-					{ this.getContent() }
-				</DismissibleCard>
-			);
-		}
 
 		return (
 			<Card
