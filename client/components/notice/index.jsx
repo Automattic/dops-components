@@ -52,23 +52,6 @@ export default React.createClass( {
 		}
 	},
 
-	renderChildren() {
-		let content;
-
-		if ( typeof this.props.children === 'string' ) {
-			return <span className="dops-notice__text">{ this.props.children }</span>;
-		}
-
-		if ( this.props.text ) {
-			content = [ this.props.children ];
-			content.unshift( <span key="dops-notice_text" className="dops-notice__text">{ this.props.text }</span> );
-		} else {
-			content = <span key="dops-notice_text" className="dops-notice__text">{ this.props.children }</span>;
-		}
-
-		return content;
-	},
-
 	getIcon() {
 		let icon;
 
@@ -94,34 +77,29 @@ export default React.createClass( {
 	},
 
 	render() {
-		let dismiss;
+		const { status, className, isCompact, showDismiss } = this.props;
+		const classes = classnames( 'dops-notice', status, className, {
+			'is-compact': isCompact,
+			'is-dismissable': showDismiss
+		} );
 
-		// The class determines the nature of a notice
-		// and its status.
-		let noticeClass = classnames( 'dops-notice', this.props.status );
-
-		if ( this.props.isCompact ) {
-			noticeClass = classnames( noticeClass, 'is-compact' );
-		}
-
-		// By default, a dismiss button is rendered to
-		// allow the user to hide the notice
-		if ( this.props.showDismiss ) {
-			noticeClass = classnames( noticeClass, 'is-dismissable' );
-			dismiss = (
-				<span tabIndex="0" className="dops-notice__dismiss" onClick={ this.props.onDismissClick } >
-					<Gridicon icon="cross" size={ 24 } />
-				</span>
-			);
-		}
+		const { icon, text, children, onDismissClick, dismissText } = this.props;
 
 		return (
-			<div className={ classnames( this.props.className, noticeClass ) }>
-				<Gridicon className="dops-notice__icon" icon={ this.props.icon || this.getIcon() } size={ 24 } />
-				<div className="dops-notice__content">
-					{ this.renderChildren() }
-				</div>
-				{ dismiss }
+			<div className={ classes }>
+				<Gridicon className="dops-notice__icon" icon={ icon || this.getIcon() } size={ 24 } />
+				<span className="dops-notice__content">
+					<span className="dops-notice__text">
+						{ text ? text : children }
+					</span>
+				</span>
+				{ text ? children : null }
+				{ showDismiss && (
+					<span tabIndex="0" className="dops-notice__dismiss" onClick={ onDismissClick } >
+						<Gridicon icon="cross" size={ 24 } />
+						<span className="screen-reader-text">{ dismissText }</span>
+					</span>
+				) }
 			</div>
 		);
 	}
