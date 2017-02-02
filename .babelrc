@@ -6,5 +6,15 @@
 	],
 	"plugins": [
 		"add-module-exports"
-	]
+	],
+	"env": {
+		"test": {
+			"plugins": [
+				[ "babel-plugin-webpack-alias", {
+					"config": "webpack.config.js",
+					"findConfig": true
+				} ]
+			]
+		}
+	}
 }

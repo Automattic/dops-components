@@ -4,7 +4,7 @@
 var debug = require( 'debug' )( 'calypso:wpcom-undocumented:undocumented' ),
 	isPlainObject = require( 'lodash/isPlainObject' ),
 	clone = require( 'lodash/clone' ),
-	omit = require( 'lodash/object/omit' ),
+	omit = require( 'lodash/omit' ),
 	camelCase = require( 'lodash/camelCase' ),
 	snakeCase = require( 'lodash/snakeCase' );
 

@@ -6,7 +6,7 @@ var debug = require( 'debug' )( 'calypso:paygate' );
 /**
  * Internal dependencies
  */
-var loadScript = require( 'load-script' ),
+var loadScript = require( '../load-script' ),
 	config = require( 'config' );
 
 var PAYGATE_URL = 'https://pay-js.automattic.com/v1/paygate.js';
