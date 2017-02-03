@@ -116,3 +116,17 @@
 		}
 	}
 }
+
+.form-toggle.is-disabled,
+.form-toggle.is-disabled:hover,
+.form-toggle.is-disabled:checked,
+.form-toggle.is-disabled:checked:hover {
+	+ .form-toggle__label .form-toggle__switch {
+		outline: 0;
+		background: lighten( $gray, 30% );
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+}

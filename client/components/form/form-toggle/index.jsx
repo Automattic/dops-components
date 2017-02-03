@@ -50,7 +50,8 @@ module.exports = React.createClass( {
 			toggleClasses = classNames( {
 				'form-toggle': true,
 				'is-toggling': this.props.toggling,
-				'is-compact': this.props.compact
+				'is-compact': this.props.compact,
+				'is-disabled': this.props.disabled
 			} );
 
 		return (
