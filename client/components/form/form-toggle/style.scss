@@ -41,7 +41,7 @@
 	&:hover {
 		background: lighten( $gray, 20% );
 	}
-	.accessible-focus &:focus,
+	.dops-accessible-focus &:focus,
 	&:focus {
 		box-shadow: 0 0 0 2px $blue-medium;
 	}
@@ -54,7 +54,7 @@
 }
 
 .form-toggle {
-	.accessible-focus &:focus {
+	.dops-accessible-focus &:focus {
 		+ .form-toggle__label .form-toggle__switch {
 			box-shadow: 0 0 0 2px $blue-medium;
 		}

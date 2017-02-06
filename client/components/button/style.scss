@@ -164,6 +164,10 @@
 		box-shadow: none;
 	}
 
+	.dops-accessible-focus &:focus {
+		outline: thin dotted;
+	}
+
 	.gridicon {
 		width: 24px;
 		height: 24px;
