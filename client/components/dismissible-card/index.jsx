@@ -4,7 +4,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { noop, flow } from 'lodash';
+import noop from 'lodash/noop';
+import flow from 'lodash/flow';
 
 /**
  * Internal dependencies

@@ -2,7 +2,8 @@ var React = require( 'react' ),
 	Gridicon = require( '../gridicon' ),
 	classnames = require( 'classnames' );
 
-import { assign, omit } from 'lodash';
+import assign from 'lodash/assign';
+import omit from 'lodash/omit';
 
 require( './style.scss' );
 

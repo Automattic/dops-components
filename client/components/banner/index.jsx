@@ -4,10 +4,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import {
-	noop,
-	size,
-} from 'lodash';
+import noop from 'lodash/noop';
+import size from 'lodash/size';
 
 /**
  * Internal dependencies
