@@ -121,7 +121,7 @@ class Banner extends Component {
 						</ul>
 					}
 				</div>
-				{ ( callToAction || price ) &&
+				{ callToAction &&
 					<div className="dops-banner__action">
 						{ callToAction &&
 							<Button
