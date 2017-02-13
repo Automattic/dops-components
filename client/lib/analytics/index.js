@@ -185,14 +185,14 @@ var analytics = {
 
 		recordPurchase: function( transactionId, itemName, itemId, revenue, price, qty, currency ) {
 			window.ga('require', 'ecommerce');
-			ga('ecommerce:addTransaction', {
+			window.ga('ecommerce:addTransaction', {
 				'id': transactionId,                     // Transaction ID. Required.
 				// 'affiliation': 'Acme Clothing',   // Affiliation or store name.
 				'revenue': revenue,               // Grand Total.
 				// 'tax': '1.29',                     // Tax.
 				'currency': currency  // local currency code.
 			});
-			ga('ecommerce:addItem', {
+			window.ga('ecommerce:addItem', {
 				'id': transactionId,                     // Transaction ID. Required.
 				'name': itemName,    // Product name. Required.
 				'sku': itemId,                 // SKU/code.
@@ -200,7 +200,7 @@ var analytics = {
 				'price': price,                 // Unit price.
 				'quantity': qty                   // Quantity.
 			});
-			ga('ecommerce:send');
+			window.ga('ecommerce:send');
 		}
 	},
 
