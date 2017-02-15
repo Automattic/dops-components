@@ -1,4 +1,5 @@
 var React = require( 'react' ),
+	ReactDOM = require( 'react-dom' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/assign' );
 
@@ -48,7 +49,7 @@ let Modal = React.createClass( {
 		jQuery( 'body' ).addClass( 'dops-modal-showing' ).on( 'touchmove.dopsmodal', false );
 		jQuery( document ).keyup( this.handleEscapeKey );
 		try {
-			focusTrap.activate(this.getDOMNode(), {
+			focusTrap.activate( ReactDOM.findDOMNode( this ), {
 				// onDeactivate: this.maybeClose,
 				initialFocus: this.props.initialFocus
 			});
