@@ -31,8 +31,8 @@ module.exports = React.createClass( {
 			var barOffset = barWidth * ( index + 1 );
 
 			if (
-				 ( ( barOffset + 230 ) > width ) &&
-				 ( ( ( barOffset + barWidth ) - 230 ) > 0 )
+					( ( barOffset + 230 ) > width ) &&
+					( ( ( barOffset + barWidth ) - 230 ) > 0 )
 				) {
 				tooltipPosition = 'bottom left';
 			}

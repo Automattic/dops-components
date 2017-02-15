@@ -1,5 +1,4 @@
 var React = require( 'react' ),
-	Icon = require( '../icon' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/assign' );
 
@@ -69,9 +68,9 @@ let Modal = React.createClass( {
 	},
 
 	handleEscapeKey: function( e ) {
- 		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
- 			this.maybeClose();
- 		}
+		if ( e.keyCode === 27 ) { // escape key maps to keycode `27`
+			this.maybeClose();
+		}
 	},
 
 	maybeClose: function() {

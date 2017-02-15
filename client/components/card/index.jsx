@@ -80,7 +80,7 @@ let Card = React.createClass( {
 	getDefaultProps() {
 		return {
 			iconColor: '#787878',
- 			className: '',
+			className: '',
 			tagName: 'div'
 		};
 	},
