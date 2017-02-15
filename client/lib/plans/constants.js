@@ -1,8 +1,6 @@
 /**
  * External dependencies
  */
-import React from 'react';
-import compact from 'lodash/compact';
 import includes from 'lodash/includes';
 
 // plans constants

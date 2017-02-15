@@ -2,7 +2,6 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
 import noop from 'lodash/noop';
 import size from 'lodash/size';
@@ -22,7 +21,7 @@ import PlanIcon from 'components/plans/plan-icon';
 
 require( './style.scss' );
 
-class Banner extends Component {
+export default class Banner extends Component {
 
 	static propTypes = {
 		callToAction: PropTypes.string,
@@ -93,8 +92,6 @@ class Banner extends Component {
 		const {
 			callToAction,
 			description,
-			event,
-			feature,
 			list,
 			title,
 		} = this.props;
@@ -168,9 +165,3 @@ class Banner extends Component {
 	}
 
 }
-
-const mapStateToProps = state => ( {} );
-
-export default connect(
-	mapStateToProps
-)( Banner );
