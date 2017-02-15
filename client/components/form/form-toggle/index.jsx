@@ -1,80 +1,108 @@
 /**
  * External dependencies
  */
-var React = require( 'react' ),
-	classNames = require( 'classnames' );
-
-var idNum = 0;
+import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 
 require( './style.scss' );
 
-module.exports = React.createClass( {
+export default class FormToggle extends Component {
+	static propTypes = {
+		onChange: PropTypes.func,
+		onKeyDown: PropTypes.func,
+		checked: PropTypes.bool,
+		disabled: PropTypes.bool,
+		id: PropTypes.string,
+		className: PropTypes.string,
+		toggling: PropTypes.bool,
+		'aria-label': PropTypes.string,
+		children: PropTypes.node
+	};
 
-	displayName: 'FormToggle',
+	static defaultProps = {
+		checked: false,
+		disabled: false,
+		onKeyDown: () => {},
+		onChange: () => {}
+	};
 
-	propTypes: {
-		onChange: React.PropTypes.func,
-		checked: React.PropTypes.bool,
-		disabled: React.PropTypes.bool,
-		className: React.PropTypes.string,
-		compact: React.PropTypes.bool,
-		id: React.PropTypes.string
-	},
+	static idNum = 0;
 
-	getDefaultProps: function() {
-		return {
-			checked: false,
-			disabled: false
-		};
-	},
-	_onKeyDown: function( event ) {
-		if ( ! this.props.disabled ) {
-			if ( event.key === 'Enter' || event.key === ' ' ) {
-				event.preventDefault();
-				this.props.onChange();
-			}
+	constructor() {
+		super( ...arguments );
+
+		this.onKeyDown = this.onKeyDown.bind( this );
+		this.onClick = this.onClick.bind( this );
+		this.onLabelClick = this.onLabelClick.bind( this );
+	}
+
+	componentWillMount() {
+		this.id = this.constructor.idNum++;
+	}
+
+	onKeyDown( event ) {
+		if ( this.props.disabled ) {
+			return;
 		}
-		if ( this.props.onKeyDown ) {
-			this.props.onKeyDown( event );
-		}
-	},
 
-	_onChange: function() {
+		if ( event.key === 'Enter' || event.key === ' ' ) {
+			event.preventDefault();
+			this.props.onChange();
+		}
+
+		this.props.onKeyDown( event );
+	}
+
+	onClick() {
 		if ( ! this.props.disabled ) {
 			this.props.onChange();
 		}
-	},
+	}
 
-	render: function() {
-		var id = this.props.id || 'toggle-' + idNum++,
-			toggleClasses = classNames( {
-				'form-toggle': true,
-				'is-toggling': this.props.toggling,
-				'is-compact': this.props.compact
-			} );
+	onLabelClick( event ) {
+		if ( this.props.disabled ) {
+			return;
+		}
+
+		const nodeName = event.target.nodeName.toLowerCase();
+		if ( nodeName !== 'a' && nodeName !== 'input' && nodeName !== 'select' ) {
+			event.preventDefault();
+			this.props.onChange();
+		}
+	}
+
+	render() {
+		const id = this.props.id || 'toggle-' + this.id;
+		const toggleClasses = classNames( 'form-toggle', this.props.className, {
+			'is-toggling': this.props.toggling
+		} );
 
 		return (
 			<span>
 				<input
-					className={ classNames( this.props.className, toggleClasses ) }
+					className={ toggleClasses }
 					type="checkbox"
 					checked={ this.props.checked }
 					readOnly={ true }
 					disabled={ this.props.disabled }
-					/>
+				/>
 				<label className="form-toggle__label" htmlFor={ id } >
-					<span className="form-toggle__switch"
+					<span
+						className="form-toggle__switch"
 						disabled={ this.props.disabled }
 						id={ id }
-						onClick={ this._onChange }
-						onKeyDown={ this._onKeyDown }
+						onClick={ this.onClick }
+						onKeyDown={ this.onKeyDown }
 						role="checkbox"
 						aria-checked={ this.props.checked }
+						aria-label={ this.props[ 'aria-label' ] }
 						tabIndex={ this.props.disabled ? -1 : 0 }
-						></span>
-					{ this.props.children }
+					></span>
+					<span className="form-toggle__label-content" onClick={ this.onLabelClick }>
+						{ this.props.children }
+					</span>
 				</label>
 			</span>
 		);
 	}
-} );
+}
