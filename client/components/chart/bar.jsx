@@ -2,14 +2,12 @@
  * External dependencies
  */
 var React = require( 'react' ),
-	classNames = require( 'classnames' ),
-	noop = require( 'lodash/noop' );
+	classNames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var Popover = require( 'components/popover' ),
-	Tooltip = require( 'components/tooltip' ),
+var Tooltip = require( 'components/tooltip' ),
 	Gridicon = require( 'components/gridicon' );
 
 module.exports = React.createClass( {
@@ -138,8 +136,7 @@ module.exports = React.createClass( {
 	render: function() {
 		var barStyle,
 			barClass,
-			count = this.props.count || 1,
-			tooltip;
+			count = this.props.count || 1;
 
 		barClass = { 'dops-chart__bar': true };
 
@@ -153,10 +150,10 @@ module.exports = React.createClass( {
 
 		return (
 			<div onClick={ this.clickHandler }
-			     onMouseEnter={ this.mouseEnter }
-			     onMouseLeave={ this.mouseLeave }
-			     className={ classNames( barClass ) }
-			     style={ barStyle }>
+				onMouseEnter={ this.mouseEnter }
+				onMouseLeave={ this.mouseLeave }
+				className={ classNames( barClass ) }
+				style={ barStyle }>
 				{ this.buildSections() }
 				<div className="dops-chart__bar-marker is-hundred"></div>
 				<div className="dops-chart__bar-marker is-fifty"></div>
