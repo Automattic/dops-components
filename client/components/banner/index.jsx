@@ -36,11 +36,11 @@ class Banner extends Component {
 		onClick: PropTypes.func,
 		plan: PropTypes.string,
 		siteSlug: PropTypes.string,
-		title: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired
 	};
 
 	static defaultProps = {
-		onClick: noop,
+		onClick: noop
 	};
 
 	getHref() {
@@ -61,7 +61,7 @@ class Banner extends Component {
 
 	handleClick = () => {
 		this.props.onClick();
-	}
+	};
 
 	getIcon() {
 		const {
@@ -93,8 +93,6 @@ class Banner extends Component {
 		const {
 			callToAction,
 			description,
-			event,
-			feature,
 			list,
 			title,
 		} = this.props;
@@ -169,7 +167,7 @@ class Banner extends Component {
 
 }
 
-const mapStateToProps = state => ( {} );
+const mapStateToProps = () => ( {} );
 
 export default connect(
 	mapStateToProps
