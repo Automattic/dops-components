@@ -8,6 +8,7 @@
 }
 
 .form-toggle__switch {
+	flex: none;
 	position: relative;
 	display: inline-block;
 	border-radius: 12px;
@@ -43,6 +44,7 @@
 }
 
 .form-toggle__label {
+	display: flex;
 	cursor: pointer;
 
 	.is-disabled & {
