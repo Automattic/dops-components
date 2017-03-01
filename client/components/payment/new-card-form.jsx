@@ -87,7 +87,7 @@ module.exports = React.createClass( {
 							name="expiration-date"
 							className="expiration-date"
 							formatter="cardExpiry"
-							label={this.translate( 'MM/YY' )} 
+							label={this.translate( 'MM/YYYY' )}
 							floatingLabel
 							required />
 
