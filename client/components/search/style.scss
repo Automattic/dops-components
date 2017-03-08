@@ -77,6 +77,8 @@
 	.dops-search__input[type="search"] {
 		flex: 1 1 auto;
 		display: flex;
+		margin: 0;
+		box-shadow: none;
 	}
 }
 
