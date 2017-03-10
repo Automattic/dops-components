@@ -166,8 +166,8 @@ $z-layers: (
 	'.dops-search': (
 		'.dops-search__input': 10,
 		'.dops-search.is-searching .dops-spinner': 20,
-		'.dops-search .dops-search-open__icon': 20,
-		'.dops-search .dops-search-close__icon': 20
+		'.dops-search .dops-search__open-icon': 20,
+		'.dops-search .dops-search__close-icon': 20
 	),
 	'.profile-gravatar__edit-label-wrap': (
 		'.profile-gravatar__edit-label-wrap:after': 0,
