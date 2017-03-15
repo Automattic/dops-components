@@ -10,11 +10,7 @@ import size from 'lodash/size';
 /**
  * Internal dependencies
  */
-import {
-	PLAN_PERSONAL,
-	PLAN_PREMIUM,
-	PLAN_BUSINESS,
-} from 'lib/plans/constants';
+import { getPlanClass } from 'lib/plans/constants';
 import Button from 'components/button';
 import Card from 'components/card';
 import Gridicon from 'components/gridicon';
@@ -143,14 +139,15 @@ class Banner extends Component {
 			className,
 			plan,
 		} = this.props;
+		const planClass = getPlanClass( plan );
 
 		const classes = classNames(
 			'dops-banner',
 			className,
 			{ 'has-call-to-action': callToAction },
-			{ 'is-upgrade-personal': PLAN_PERSONAL === plan },
-			{ 'is-upgrade-premium': PLAN_PREMIUM === plan },
-			{ 'is-upgrade-business': PLAN_BUSINESS === plan }
+			{ 'is-upgrade-personal': 'is-personal-plan' === planClass },
+			{ 'is-upgrade-premium': 'is-premium-plan' === planClass },
+			{ 'is-upgrade-business': 'is-business-plan' === planClass }
 		);
 
 		return (
