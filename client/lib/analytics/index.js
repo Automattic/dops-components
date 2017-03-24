@@ -118,7 +118,17 @@ var analytics = {
 				eventProperties = assign( eventProperties, superProperties );
 			}
 
+			console.log( eventName, eventProperties );
+
 			window._tkq.push( [ 'recordEvent', eventName, eventProperties ] );
+		},
+
+		recordJetpackClick: function( target ) {
+			const props = 'object' === typeof target
+				? target
+				: { target: target };
+
+			analytics.tracks.recordEvent( 'jetpack_wpa_click', props );
 		},
 
 		recordPageView: function( urlPath ) {
