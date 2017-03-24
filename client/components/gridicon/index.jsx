@@ -599,6 +599,9 @@ var Gridicon = React.createClass( {
 			case 'gridicons-visible':
 				svg = <svg className={ iconClass } height={ this.props.size } width={ this.props.size } onClick={ this.props.onClick } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M12 6C5.188 6 1 12 1 12s4.188 6 11 6 11-6 11-6-4.188-6-11-6zm0 10c-3.943 0-6.926-2.484-8.38-4 1.04-1.085 2.863-2.657 5.255-3.47C8.335 9.214 8 10.064 8 11c0 2.21 1.79 4 4 4s4-1.79 4-4c0-.937-.335-1.787-.875-2.47 2.393.813 4.216 2.386 5.254 3.47-1.456 1.518-4.438 4-8.38 4z"/></g></svg>;
 				break;
+			case 'gridicons-chat':
+				svg = <svg className={ iconClass } height={ this.props.size } width={ this.props.size } onClick={ this.props.onClick } xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M20,4h-8c-1.1,0-2,0.9-2,2v2h2c1.7,0,3,1.3,3,3v2h2v3.5l3.3-2.3c1.1-0.8,1.7-2,1.7-3.3V6C22,4.9,21.1,4,20,4z"/><g><path d="M14,11v5c0,1.1-0.9,2-2,2H7v3.5l-3.3-2.3c-1.1-0.8-1.7-2-1.7-3.3V11c0-1.1,0.9-2,2-2h8C13.1,9,14,9.9,14,11z"/></g></g></svg>;
+				break;
 		}
 
 		return ( svg );
