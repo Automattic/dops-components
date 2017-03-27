@@ -226,6 +226,7 @@ const Search = React.createClass( {
 	},
 
 	openSearch: function( event ) {
+		this.props.onClick();
 		event.preventDefault();
 		this.setState( {
 			keyword: '',

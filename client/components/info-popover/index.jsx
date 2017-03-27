@@ -2,6 +2,7 @@
 * External dependencies
 */
 import React from 'react';
+import noop from 'lodash/noop';
 
 /**
 * Internal dependencies
@@ -24,6 +25,7 @@ export default React.createClass( {
 		rootClassName: React.PropTypes.string,
 		gaEventCategory: React.PropTypes.string,
 		popoverName: React.PropTypes.string,
+		onClick: React.PropTypes.func,
 		ignoreContext: React.PropTypes.shape( {
 			getDOMNode: React.PropTypes.function
 		} ),
@@ -31,7 +33,8 @@ export default React.createClass( {
 
 	getDefaultProps() {
 		return {
-			position: 'bottom'
+			position: 'bottom',
+			onClick: noop
 		};
 	},
 
@@ -78,6 +81,7 @@ export default React.createClass( {
 	},
 
 	_onClick( event ) {
+		this.props.onClick();
 		event.preventDefault();
 		this.setState( {
 			showPopover: ! this.state.showPopover },

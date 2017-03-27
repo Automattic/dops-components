@@ -121,6 +121,14 @@ var analytics = {
 			window._tkq.push( [ 'recordEvent', eventName, eventProperties ] );
 		},
 
+		recordJetpackClick: function( target ) {
+			const props = 'object' === typeof target
+				? target
+				: { target: target };
+
+			analytics.tracks.recordEvent( 'jetpack_wpa_click', props );
+		},
+
 		recordPageView: function( urlPath ) {
 			analytics.tracks.recordEvent( 'akismet_page_view', {
 				'path': urlPath
