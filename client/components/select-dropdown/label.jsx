@@ -1,4 +1,6 @@
 /** @ssr-ready **/
+/* eslint-disable jsx-a11y/onclick-has-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 /**
  * External Dependencies

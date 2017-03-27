@@ -61,7 +61,6 @@ var NavItem = React.createClass( {
 					className={ 'dops-section-nav-' + itemClassPrefix + '__link' }
 					onTouchTap={ onClick }
 					tabIndex={ this.props.tabIndex || 0 }
-					aria-selected={ this.props.selected }
 					disabled={ this.props.disabled }
 					role="menuitem"
 					rel={ this.props.isExternalLink ? 'external' : null }>

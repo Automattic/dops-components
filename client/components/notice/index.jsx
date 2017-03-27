@@ -4,6 +4,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import noop from 'lodash/noop';
+import onKeyDownCallback from 'utils/onkeydown-callback';
 
 /**
  * Internal dependencies
@@ -95,7 +96,12 @@ export default React.createClass( {
 				</span>
 				{ text ? children : null }
 				{ showDismiss && (
-					<span tabIndex="0" className="dops-notice__dismiss" onClick={ onDismissClick } >
+					<span
+						role="button"
+						tabIndex="0"
+						onClick={ onDismissClick }
+						onKeyDown={ onKeyDownCallback( onDismissClick ) }
+						className="dops-notice__dismiss">
 						<Gridicon icon="cross" size={ 24 } />
 						<span className="screen-reader-text">{ dismissText }</span>
 					</span>

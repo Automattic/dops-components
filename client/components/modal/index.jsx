@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/onclick-has-role */
+
 var React = require( 'react' ),
 	ReactDOM = require( 'react-dom' ),
 	classNames = require( 'classnames' ),
@@ -119,7 +122,6 @@ let Modal = React.createClass( {
 		}
 
 		combinedStyle = assign( {}, style, containerStyle );
-		//onClick={this.handleClickOverlay} 
 		return (
 			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay} onMouseDown={this.handleMouseDownOverlay}>
 				<div className={classNames( 'dops-modal', className )} 

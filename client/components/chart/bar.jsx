@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/onclick-has-role */
 /**
  * External dependencies
  */
@@ -76,7 +78,6 @@ module.exports = React.createClass( {
 			this.props.clickHandler( this.props.data );
 		}
 	},
-
 
 	mouseEnter: function(){
 		this.setState( { showPopover: true } );

@@ -10,7 +10,8 @@ var React = require( 'react' ),
  */
 var Card = require( 'components/card' ),
 	CompactCard = require( 'components/card/compact' ),
-	Gridicon = require( 'components/gridicon' );
+	Gridicon = require( 'components/gridicon' ),
+	onKeyDownCallback = require( 'utils/onkeydown-callback' );
 
 require( './style.scss' );
 
@@ -85,9 +86,9 @@ var FoldableCard = React.createClass( {
 		const clickAction = ! this.props.clickableHeader ? this.getClickAction() : null;
 		if ( this.props.actionButton ) {
 			return (
-				<div className="dops-foldable-card__action" onClick={ clickAction }>
+				<button className="dops-foldable-card__action" onClick={ clickAction }>
 				{ this.getActionButton() }
-				</div>
+				</button>
 			);
 		}
 		if ( this.props.children ) {
@@ -114,8 +115,12 @@ var FoldableCard = React.createClass( {
 			expandedSummary = this.props.expandedSummary ? <span className="dops-foldable-card__summary_expanded">{ this.props.expandedSummary } </span> : null,
 			header = this.props.header ? <div className="dops-foldable-card__header-text">{ this.props.header }</div> : null,
 			subheader = this.props.subheader ? <div className="dops-foldable-card__subheader">{ this.props.subheader }</div> : null,
-			headerClickAction = this.props.clickableHeader ? this.getClickAction() : null,
-			headerTextClickAction = this.props.clickableHeaderText ? this.getClickAction() : null,
+			clickableProps = {
+				role: 'button',
+				tabIndex: 0,
+				onClick: this.getClickAction(),
+				onKeyDown: onKeyDownCallback( this.getClickAction() ),
+			},
 			headerClasses = classNames( 'dops-foldable-card__header', {
 				'is-clickable': !! this.props.clickableHeader,
 				'has-border': !! this.props.summary
@@ -124,9 +129,9 @@ var FoldableCard = React.createClass( {
 				'is-clickable': !! this.props.clickableHeaderText
 			} );
 		return (
-			<div className={ headerClasses } onClick={ headerClickAction }>
+			<div className={ headerClasses } { ...( this.props.clickableHeader ? clickableProps : {} ) }>
 				<span className="dops-foldable-card__main">
-					<div className={ headerTextClasses } onClick={ headerTextClickAction } >
+					<div className={ headerTextClasses } { ...( this.props.clickableHeaderText ? clickableProps : {} ) }>
 						{ header }
 						{ subheader }
 					</div>
