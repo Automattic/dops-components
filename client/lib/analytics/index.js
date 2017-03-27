@@ -118,8 +118,6 @@ var analytics = {
 				eventProperties = assign( eventProperties, superProperties );
 			}
 
-			console.log( eventName, eventProperties );
-
 			window._tkq.push( [ 'recordEvent', eventName, eventProperties ] );
 		},
 
