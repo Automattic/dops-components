@@ -45,16 +45,14 @@ export default React.createClass( {
 	},
 
 	render() {
+		const classes = classNames(
+			'dops-info-popover',
+			'dops-info-popover-button',
+			{ is_active: this.state.showPopover },
+			this.props.className
+		);
 		return (
-			<span
-				onClick={ this._onClick }
-				ref="infoPopover"
-				className={ classNames(
-					'dops-info-popover',
-					{ is_active: this.state.showPopover },
-					this.props.className )
-					}
-				>
+			<button ref="infoPopover" className={ classes } onClick={ this._onClick }>
 				<Gridicon icon="info-outline" size={ 18 } />
 				{
 					this.props.screenReaderText
@@ -76,7 +74,7 @@ export default React.createClass( {
 					>
 						{ this.props.children }
 				</Popover>
-			</span>
+			</button>
 		);
 	},
 

@@ -1,9 +1,12 @@
 /** @ssr-ready **/
+/* eslint-disable jsx-a11y/onclick-has-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/label-has-for */
 
 /**
  * External Dependencies
  */
-import React from 'react'
+import React from 'react';
 
 /**
  * Module variables
@@ -11,7 +14,7 @@ import React from 'react'
 const { Component } = React;
 const stopPropagation = event => event.stopPropagation();
 
-export default class SelectDropdownLabel extends Component {
+class SelectDropdownLabel extends Component {
 	render() {
 		return (
 			<li
@@ -22,4 +25,6 @@ export default class SelectDropdownLabel extends Component {
 			</li>
 		);
 	}
-};
+}
+
+export default SelectDropdownLabel;

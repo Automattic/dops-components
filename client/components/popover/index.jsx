@@ -254,6 +254,7 @@ class Popover extends Component {
 			this.domContext = this.props.context;
 		}
 
+		this.domContainer.focus();
 		this.setPosition();
 	}
 
@@ -366,6 +367,7 @@ class Popover extends Component {
 			return null;
 		}
 
+		this.domContext.focus();
 		this.props.onClose( wasCanceled );
 	}
 
@@ -394,6 +396,7 @@ class Popover extends Component {
 					style={ this.getStylePosition() }
 					className={ classes }
 					ref={ this.setDOMBehavior }
+					tabIndex="0"
 				>
 					<div className="dops-popover__arrow" />
 

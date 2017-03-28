@@ -199,13 +199,15 @@ class SelectDropdown extends Component {
 					ref="dropdownContainer"
 					className="dops-select-dropdown__container"
 					valueLink={ this.props.valueLink }
-					onKeyDown={ this.navigateItem }
 					tabIndex={ this.props.tabIndex || 0 }
+					role="listbox"
+					aria-labelledby={ 'select-dropdown-' + this.state.instanceId }
 					aria-haspopup="true"
 					aria-owns={ 'select-submenu-' + this.state.instanceId }
 					aria-controls={ 'select-submenu-' + this.state.instanceId }
 					aria-expanded={ this.state.isOpen }
 					onClick={ this._onClick }
+					onKeyDown={ this.navigateItem }
 				>
 					<div
 						id={ 'select-dropdown-' + this.state.instanceId }
@@ -223,9 +225,6 @@ class SelectDropdown extends Component {
 					<ul
 						id={ 'select-submenu-' + this.state.instanceId }
 						className="dops-select-dropdown__options"
-						role="menu"
-						aria-labelledby={ 'select-dropdown-' + this.state.instanceId }
-						aria-expanded={ this.state.isOpen }
 					>
 						{ this.dropdownOptions() }
 					</ul>
