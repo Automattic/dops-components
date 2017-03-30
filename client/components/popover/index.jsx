@@ -396,7 +396,6 @@ class Popover extends Component {
 					style={ this.getStylePosition() }
 					className={ classes }
 					ref={ this.setDOMBehavior }
-					tabIndex="0"
 				>
 					<div className="dops-popover__arrow" />
 
