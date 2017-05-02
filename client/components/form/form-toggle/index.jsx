@@ -80,7 +80,7 @@ export default class FormToggle extends Component {
 		} );
 
 		return (
-			<span>
+			<span className="dops-form-toggle">
 				<input
 					className={ toggleClasses }
 					type="checkbox"
