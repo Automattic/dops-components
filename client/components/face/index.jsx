@@ -1,6 +1,6 @@
 var React = require( 'react' ),
 	Color = require( 'color' );
-	
+
 var Face = React.createClass( {
 	propTypes: {
 		happiness: React.PropTypes.number, // between 0 ( sad ) and 100 ( happy )
@@ -22,8 +22,8 @@ var Face = React.createClass( {
 		}
 	},
 
-	_wrapperStyle: function() {		
-		var color = Color().rgb( 255, 255, 0 ).lighten( 1-( this.props.happiness/100 ) );
+	_wrapperStyle: function() {
+		var color = Color().rgb( 255, 255, 0 ).lighten( 1 - ( this.props.happiness / 100 ) );
 
 		return {
 			position: 'relative',
@@ -41,20 +41,20 @@ var Face = React.createClass( {
 			top: 0,
 			width: 0,
 			height: 0,
-			border: ( this.props.size*0.07 ) + 'px solid #171717',
-			borderRadius: ( this.props.size*0.07 )
+			border: ( this.props.size * 0.07 ) + 'px solid #171717',
+			borderRadius: ( this.props.size * 0.07 )
 		};
 	},
 
 	_leftEyeStyle: function() {
 		var eyeStyle = this._eyeStyle();
-		eyeStyle.left = this.props.size/-4;
+		eyeStyle.left = this.props.size / -4;
 		return eyeStyle;
 	},
 
 	_rightEyeStyle: function() {
 		var eyeStyle = this._eyeStyle();
-		eyeStyle.right = this.props.size/-4;
+		eyeStyle.right = this.props.size / -4;
 		return eyeStyle;
 	},
 
@@ -63,11 +63,11 @@ var Face = React.createClass( {
 			position: 'absolute',
 			top: '20%',
 			left: '50%',
-			width: ( this.props.size*0.6 ),
-			height: ( this.props.size*0.6 ),
-			marginLeft: ( this.props.size*-0.3 ),
-			border: ( this.props.size*0.05 ) + 'px solid #171717',
-			borderRadius: ( this.props.happiness/100 )*this.props.size*0.4,
+			width: ( this.props.size * 0.6 ),
+			height: ( this.props.size * 0.6 ),
+			marginLeft: ( this.props.size * -0.3 ),
+			border: ( this.props.size * 0.05 ) + 'px solid #171717',
+			borderRadius: ( this.props.happiness / 100 ) * this.props.size * 0.4,
 			borderColor: 'transparent transparent #171717 transparent'
 		};
 	},

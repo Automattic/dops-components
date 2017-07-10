@@ -1,3 +1,5 @@
+/* eslint jsx-a11y/click-events-have-key-events: 0 */
+
 /**
  * External dependencies
  */
@@ -6,7 +8,7 @@ var React = require( 'react/addons' );
 /**
  * Internal dependencies
  */
-var translate = require ( '../../../mixins/translate' ),
+var translate = require( '../../../mixins/translate' ),
 	AllSites = require( '../all-sites' ),
 	Site = require( '../site' );
 
@@ -46,8 +48,8 @@ module.exports = React.createClass( {
 						</a>
 					</div>
 					{ hasOneSite ?
-						<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a>
-					: <span className="current-site__switch-sites" /> }
+						<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a> :
+						<span className="current-site__switch-sites" /> }
 				</div>
 			);
 		}
@@ -60,8 +62,8 @@ module.exports = React.createClass( {
 			<div className="current-site">
 				{ this.props.sites.selected ? <Site site={ site } /> : <AllSites sites={ this.props.sites } /> }
 				{ hasOneSite ?
-					<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a>
-				: <span className="current-site__switch-sites" onClick={ this.props.onSwitchClick }>{ this.translate( 'Switch Site' ) }</span> }
+					<a className="current-site__add-new-wordpress" href={ this.props.addNewPath } target="_blank">{ this.props.addNewString }</a> :
+					<span className="current-site__switch-sites" onClick={ this.props.onSwitchClick }>{ this.translate( 'Switch Site' ) }</span> }
 			</div>
 		);
 	}

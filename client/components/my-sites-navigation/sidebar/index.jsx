@@ -2,7 +2,6 @@
  * External dependencies
  */
 var React = require( 'react' ),
-	classNames = require( 'classnames' ),
 	startsWith = require( 'lodash/startsWith' );
 
 /**

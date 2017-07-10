@@ -61,7 +61,7 @@ gulp.task("webpack-dev-server", function(callback) {
 
 	serverConfig.entry = entry;
 	serverConfig.devtool = "sourcemap"; //"eval" for performance, but no JSX :(
-	serverConfig.debug = true;
+	// serverConfig.debug = true;
 
 	new WebpackDevServer(webpack(serverConfig), {
 		publicPath: serverConfig.output.publicPath,
@@ -69,7 +69,8 @@ gulp.task("webpack-dev-server", function(callback) {
 		historyApiFallback: true,
 		stats: {
 			colors: true
-		}
+		},
+		disableHostCheck: true,
 	}).listen(8085, "localhost", function(err) {
 		if(err) throw new gutil.PluginError("webpack-dev-server", err);
 		// Server listening

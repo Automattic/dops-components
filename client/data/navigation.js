@@ -9,12 +9,12 @@ module.exports = [{
 		icon: 'briefcase',
 		// Regular expressions for paths that should match this item
 		paths: []
-	},{
+	}, {
 		title: 'Link Item 2',
 		url: '#',
 		icon: 'moon',
 		paths: []
-	},{
+	}, {
 		title: 'Link Item 3',
 		url: '#',
 		icon: 'leaf',

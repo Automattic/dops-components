@@ -16,7 +16,7 @@ var React = require( 'react' ),
 
 require( './style.scss' );
 
-var Gridicon = React.createClass( {
+const Gridicon = React.createClass( {
 
 	mixins: [ PureRenderMixin ],
 
@@ -90,9 +90,8 @@ var Gridicon = React.createClass( {
 
 		if ( iconNeedsOffset.indexOf( icon ) >= 0 ) {
 			return ( size % 18 === 0 );
-		} else {
-			return false;
 		}
+		return false;
 	},
 
 	needsOffsetX: function( icon, size ) {
@@ -109,9 +108,8 @@ var Gridicon = React.createClass( {
 
 		if ( iconNeedsOffsetX.indexOf( icon ) >= 0 ) {
 			return ( size % 18 === 0 );
-		} else {
-			return false;
 		}
+		return false;
 	},
 
 	needsOffsetY: function( icon, size ) {
@@ -136,9 +134,8 @@ var Gridicon = React.createClass( {
 
 		if ( iconNeedsOffsetY.indexOf( icon ) >= 0 ) {
 			return ( size % 18 === 0 );
-		} else {
-			return false;
 		}
+		return false;
 	},
 
 	render: function() {

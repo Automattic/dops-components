@@ -3,7 +3,7 @@ var React = require( 'react' ),
 
 require( './style.scss' );
 
-var Wizard = React.createClass( {
+const Wizard = React.createClass( {
 
 	getInitialState: function() {
 		return {
@@ -14,17 +14,17 @@ var Wizard = React.createClass( {
 
 	next: function() {
 		// transition to next slide
-		this.setStep( this.state.step+1 );
+		this.setStep( this.state.step + 1 );
 	},
 
 	prev: function() {
 		// transition to previous slide
-		this.setStep( this.state.step-1 );
+		this.setStep( this.state.step - 1 );
 	},
 
 	setStep: function( stepNum ) {
 		if ( stepNum < this.state.step ) {
-			this.setState( { transitionType: 'slideLTR', step: stepNum } );	
+			this.setState( { transitionType: 'slideLTR', step: stepNum } );
 		} else {
 			this.setState( { transitionType: 'slideRTL', step: stepNum } );
 		}
@@ -37,10 +37,10 @@ var Wizard = React.createClass( {
 	render: function() {
 		return (
 			<div style={{width: '100%', overflow: 'hidden', position: 'relative'}}>
-				<TimeoutTransitionGroup 
-							enterTimeout={800}
-							leaveTimeout={800} 
-							transitionName={this.state.transitionType}>
+				<TimeoutTransitionGroup
+					enterTimeout={800}
+					leaveTimeout={800}
+					transitionName={this.state.transitionType}>
 					{this._renderSlide()}
 				</TimeoutTransitionGroup>
 			</div>
@@ -48,7 +48,7 @@ var Wizard = React.createClass( {
 	},
 
 	_renderSlide: function() {
-		var key = 'step-'+this.state.step;
+		var key = 'step-' + this.state.step;
 		return (
 			<div ref="slide" key={key} style={{width: '100%', float: 'left'}}>
 				{this.props.children[this.state.step]}

@@ -1,3 +1,5 @@
+/* eslint jsx-a11y/mouse-events-have-key-events: 0 */
+
 var React = require( 'react' ),
 	Icon = require( '../icon' );
 

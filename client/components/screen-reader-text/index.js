@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 var style = require( './style.scss' );
 
-function getClass(name) {
+function getClass( name ) {
 	return style[name];
 }
 

@@ -105,12 +105,12 @@ let Card = React.createClass( {
 		let fancyTitle;
 		if ( this.props.title ) {
 			fancyTitle = <h2 className="dops-card-title">
-					{ this.props.title }
-					{ this.props.meta && <span className="dops-card-meta">{ this.props.meta }</span>}
-					{( this.props.icon || this.props.iconLabel ) && (
-						this._renderIcon()
-					)}
-				</h2>;
+				{ this.props.title }
+				{ this.props.meta && <span className="dops-card-meta">{ this.props.meta }</span>}
+				{( this.props.icon || this.props.iconLabel ) && (
+					this._renderIcon()
+				)}
+			</h2>;
 		}
 
 		return React.createElement(

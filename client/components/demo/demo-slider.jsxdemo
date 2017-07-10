@@ -43,6 +43,6 @@ var DemoSlider = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoSlider, {} ), document.getElementById( Demo.domId )
 );

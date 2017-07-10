@@ -36,6 +36,6 @@ var DemoTabs = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoTabs, {} ), document.getElementById( Demo.domId )
 );

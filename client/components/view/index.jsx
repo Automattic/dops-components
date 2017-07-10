@@ -37,21 +37,21 @@ function calcFlexStyle( props ) {
 	divStyle.flexGrow = flexGrow;
 	divStyle.flexShrink = flexShrink;
 	divStyle.flexDirection = flexDirection;
-	
+
 	return divStyle;
 }
 
 let View = React.createClass( {
 	_childrenWithPadding: function() {
 		if ( !this.props.padding ) {
-			return this.props.children;	
+			return this.props.children;
 		}
 
 		let total = React.Children.count( this.props.children ),
 			count = 0,
 			cssProp = this.props.column ? 'marginBottom' : 'marginRight';
-		
-		return React.Children.map( this.props.children, function( child ) {			
+
+		return React.Children.map( this.props.children, function( child ) {
 			var style = {};
 			count = count + 1;
 
@@ -59,7 +59,7 @@ let View = React.createClass( {
 
 			if ( count < total ) {
 				return React.cloneElement( child, { style: m( child.props.style, style ) } );
-			} 
+			}
 			return child;
 		}, this );
 	},

@@ -128,8 +128,8 @@ let TimeoutTransitionGroupChild = React.createClass( {
 
 			// Usually this optional callback is used for informing an owner of
 			// a leave animation and telling it to remove the child.
-			if ( finishCallback ) { 
-				finishCallback( ); 
+			if ( finishCallback ) {
+				finishCallback( );
 			}
 		};
 
@@ -137,10 +137,10 @@ let TimeoutTransitionGroupChild = React.createClass( {
 			endListener( );
 		} else if ( animationType === 'enter' ) {
 			this.animationTimeout = setTimeout( endListener,
-											   this.props.enterTimeout );
+				this.props.enterTimeout );
 		} else if ( animationType === 'leave' ) {
 			this.animationTimeout = setTimeout( endListener,
-											   this.props.leaveTimeout );
+				this.props.leaveTimeout );
 		}
 
 		addClass( node, className );
@@ -220,11 +220,11 @@ let TimeoutTransitionGroup = React.createClass( {
 	_wrapChild: function( child ) {
 		return (
 			<TimeoutTransitionGroupChild
-					enterTimeout={this.props.enterTimeout}
-					leaveTimeout={this.props.leaveTimeout}
-					name={this.props.transitionName}
-					enter={this.props.transitionEnter}
-					leave={this.props.transitionLeave}>
+				enterTimeout={this.props.enterTimeout}
+				leaveTimeout={this.props.leaveTimeout}
+				name={this.props.transitionName}
+				enter={this.props.transitionEnter}
+				leave={this.props.transitionLeave}>
 				{child}
 			</TimeoutTransitionGroupChild>
 		);

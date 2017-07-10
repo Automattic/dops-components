@@ -1,3 +1,5 @@
+/* eslint jsx-a11y/click-events-have-key-events: 0 */
+
 /**
  * External dependencies
  */
@@ -9,7 +11,7 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var translate = require ( '../../../mixins/translate' ),
+var translate = require( '../../../mixins/translate' ),
 	AllSites = require( '../all-sites' ),
 	Site = require( '../site' );
 
