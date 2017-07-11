@@ -14,7 +14,7 @@ var Experiment = React.createClass( {
 
 	handleChoice: function( experiment, variant ) {
 		var _tkq = window._tkq || [];
-		_tkq.push( ['recordEvent', this.props.namespace+'_abtest_start',{abtest_name:experiment,abtest_variation:variant}] );
+		_tkq.push( ['recordEvent', this.props.namespace + '_abtest_start', {abtest_name: experiment, abtest_variation: variant}] );
 	},
 
 	render: function() {

@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-var React = require( 'react/addons' ),
+var React = require( 'react' ),
 	extend = require( 'lodash/assign' ),
 	isEmpty = require( 'lodash/isEmpty' ),
 	classNames = require( 'classnames' ),
@@ -10,9 +10,9 @@ var React = require( 'react/addons' ),
 /**
  * Internal dependencies
  */
-var Form = require('../form'),
+var Form = require( '../form' ),
 	// XXX temporary hack because default country select has 3-char countries
-	CountrySelect = require('../form/input-select-country-2');
+	CountrySelect = require( '../form/input-select-country-2' );
 
 module.exports = React.createClass( {
 	displayName: 'NewCardForm',
@@ -42,9 +42,8 @@ module.exports = React.createClass( {
 
 		if ( form.isValid() ) {
 			return form.getCurrentValues();
-		} else {
-			return false;
 		}
+		return false;
 	},
 
 	render: function() {

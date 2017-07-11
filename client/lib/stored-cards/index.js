@@ -78,10 +78,9 @@ StoredCards.prototype.fetch = function() {
 		this.emit( 'change' );
 		try {
 			store.set( 'StoredCards', storedCards );
-		} catch ( e ) { 
-			console.log("Unable to cache cards - probably in incognito mode");
+		} catch ( e ) {
+			console.log( 'Unable to cache cards - probably in incognito mode' );
 		}
-
 	}.bind( this ) );
 };
 

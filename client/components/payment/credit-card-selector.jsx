@@ -1,3 +1,5 @@
+/* eslint jsx-a11y/click-events-have-key-events: 0 */
+
 require( './credit-card-selector.scss' );
 
 /**
@@ -80,9 +82,9 @@ var CreditCardSelector = React.createClass( {
 
 	section: function( name, content ) {
 		var classes = classNames( 'payment-box-section', {
-			'selected': this.state.section === name,
-			'focused': this.state.focus === name,
-			'no-stored-cards' : name === 'new-card' && this.props.cards.get().length === 0
+			selected: this.state.section === name,
+			focused: this.state.focus === name,
+			'no-stored-cards': name === 'new-card' && this.props.cards.get().length === 0
 		} );
 
 		return (
@@ -127,7 +129,7 @@ var CreditCardSelector = React.createClass( {
 		this.setState( { section: section } );
 	},
 
-	addParentFocus: function( name ){
+	addParentFocus: function( name ) {
 		this.setState( { focus: name } );
 	},
 

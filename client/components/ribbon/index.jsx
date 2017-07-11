@@ -2,7 +2,7 @@ require( './style.scss' );
 
 var React = require( 'react' );
 
-var Ribbon = React.createClass({
+var Ribbon = React.createClass( {
 	render: function() {
 		return <div className="corner-ribbon-wrapper left">
 			<div className="corner-ribbon">
@@ -10,6 +10,6 @@ var Ribbon = React.createClass({
 			</div>
 		</div>;
 	}
-});
+} );
 
 module.exports = Ribbon;

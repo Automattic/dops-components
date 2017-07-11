@@ -1,12 +1,7 @@
 var webpack = require( 'webpack' ),
 	path = require( 'path' ),
+	CleanWebpackPlugin = require( 'clean-webpack-plugin' ),
 	ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
-
-// var dependencies = [
-// 	'react',
-// 	'react/addons',
-// 	'babelify/polyfill'
-// ];
 
 // TODO autoprefixer:
 // browsers: ['> 1%', 'last 2 versions', 'ff 17', 'opera 12.1', 'ie 8', 'ie 9', 'safari 7', 'safari 8'],
@@ -14,39 +9,18 @@ var webpack = require( 'webpack' ),
 
 var IS_HOT_UPDATE = ( process.env.NODE_ENV !== 'production' );
 
-var styleDefaults = [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'sass-loader' ];
+var scssLoader = [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'sass-loader' ];
 
 // if we're doing hot update, we want to render component SCSS inline.
 // if not, we want to extract the text into a separate dist/[name].css file
-var scssLoader = IS_HOT_UPDATE ?
-					styleDefaults :
-					[ ExtractTextPlugin.extract(styleDefaults) ];
 
-// if we're doing hot update, we need the react hot loader in here,
-// if not, skip it as it adds extra JS which is not necessary in production
-var jsLoader = IS_HOT_UPDATE ?
-				[
-					require.resolve('react-hot-loader'), 
-					require.resolve('babel-loader'), 
-					{
-						loader: 'eslint-loader',
-						options: {
-							fix: true,
-						},
-					}
-				] :
-				[
-					require.resolve('babel-loader'), 
-					{
-						loader: 'eslint-loader',
-						options: {
-							fix: true,
-						},
-					}
-				];
+if ( ! IS_HOT_UPDATE ) {
+	scssLoader = ExtractTextPlugin.extract( { fallback: "style-loader", use: scssLoader } );
+}
 
 // create a list of plugins filtered based on whether we're developing locally (i.e. using Hot Update)
 var plugins = [
+	new CleanWebpackPlugin( [ 'dist' ] ),
 	new ExtractTextPlugin( '[name].css' ),
 	IS_HOT_UPDATE ? new webpack.HotModuleReplacementPlugin() : false,
 	IS_HOT_UPDATE ? new webpack.NoEmitOnErrorsPlugin() : false, // don't hot-reload if there's an error in our code
@@ -65,7 +39,7 @@ module.exports = {
 	externals: {
 		'react': 'React',
 		'react-dom': 'ReactDOM',
-		'react/addons': 'React'
+		'react': 'React'
 	},
 	output: {
 		publicPath: '/assets/',
@@ -92,7 +66,8 @@ module.exports = {
 			},
 			{
 				test: /\.jsx?$/,
-				use: jsLoader,
+				exclude: /node_modules/,
+				use: [ 'react-hot-loader', 'babel-loader', 'eslint-loader' ],
 				include: [
 					path.join( __dirname, 'client' )
 				]
@@ -111,9 +86,5 @@ module.exports = {
 			}
 		]
 	},
-	// eslint: {
-	// 	configFile: path.join( __dirname, '.eslintrc' ),
-	// 	quiet: true
-	// },
 	plugins: plugins
 };
