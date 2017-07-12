@@ -1,5 +1,3 @@
-/* eslint jsx-a11y/click-events-have-key-events: 0 */
-
 require( './credit-card-selector.scss' );
 
 /**

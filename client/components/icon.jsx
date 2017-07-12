@@ -1,5 +1,3 @@
-/* eslint jsx-a11y/mouse-events-have-key-events: 0 */
-
 // simple genericon wrapper
 
 var React = require( 'react' ),

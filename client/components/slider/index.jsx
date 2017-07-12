@@ -1,5 +1,3 @@
-/* eslint jsx-a11y/click-events-have-key-events: 0 jsx-a11y/no-onchange: 0 */
-
 /** 
  * Credit for this slider must go to https://github.com/mpowaga/react-slider, 
  * which was the basis for this implementation

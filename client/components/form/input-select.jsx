@@ -1,5 +1,3 @@
-/* eslint jsx-a11y/no-onchange: 0 */
-
 /** External Dependencies **/
 var React = require( 'react' ),
 	classNames = require( 'classnames' ),
