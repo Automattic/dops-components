@@ -57,7 +57,7 @@ function creditCardFieldRules() {
 	};
 }
 
-var validators = {};
+let validators = {};
 
 validators.required = {
 	isValid: function( value ) {

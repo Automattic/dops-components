@@ -15,6 +15,7 @@ var scssLoader = [ 'style-loader', 'css-loader', 'autoprefixer-loader', 'sass-lo
 // if not, we want to extract the text into a separate dist/[name].css file
 
 if ( ! IS_HOT_UPDATE ) {
+	scssLoader.unshift();
 	scssLoader = ExtractTextPlugin.extract( { fallback: "style-loader", use: scssLoader } );
 }
 
@@ -67,7 +68,7 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: [ 'react-hot-loader', 'babel-loader', 'eslint-loader' ],
+				use: [ 'react-hot-loader/webpack', 'babel-loader', 'eslint-loader' ],
 				include: [
 					path.join( __dirname, 'client' )
 				]

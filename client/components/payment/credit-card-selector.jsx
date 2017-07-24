@@ -1,24 +1,24 @@
 /* eslint jsx-a11y/click-events-have-key-events: 0 */
 
-require( './credit-card-selector.scss' );
-
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	filter = require( 'lodash/filter' ),
 	classNames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var StoredCard = require( './stored-card' ),
+let StoredCard = require( './stored-card' ),
 	NewCardForm = require( './new-card-form' ),
 	storeTransactions = require( 'lib/store-transactions' ),
 	ScreenReaderText = require( '../screen-reader-text' );
 	// upgradesActions = require( 'lib/upgrades/actions' );
 
-var CreditCardSelector = React.createClass( {
+require( './credit-card-selector.scss' );
+
+const CreditCardSelector = React.createClass( {
 	propTypes: {
 		onSelectPayment: React.PropTypes.func.isRequired,
 		defaultCCInfo: React.PropTypes.object.isRequired,
@@ -106,7 +106,7 @@ var CreditCardSelector = React.createClass( {
 
 		if ( 'new-card' === this.state.section ) {
 			// get the form field values and check they're valid
-			var newCardValues = this.refs.newCardForm.getValidFormFields();
+			let newCardValues = this.refs.newCardForm.getValidFormFields();
 			if ( newCardValues === false ) {
 				return false;
 			}
