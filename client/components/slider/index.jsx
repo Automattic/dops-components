@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 /** 
  * Credit for this slider must go to https://github.com/mpowaga/react-slider, 
  * which was the basis for this implementation

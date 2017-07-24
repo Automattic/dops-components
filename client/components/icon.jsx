@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 // simple genericon wrapper
 
 var React = require( 'react' ),

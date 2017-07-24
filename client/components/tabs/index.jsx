@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+
 var React = require( 'react' );
 
 require( './style.scss' );

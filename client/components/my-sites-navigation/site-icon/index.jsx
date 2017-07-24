@@ -70,7 +70,7 @@ module.exports = React.createClass( {
 		return (
 			<div className={ iconClasses } style={ style }>
 				{ iconSrc ?
-					<img className="site-icon__img" src={ iconSrc } />				:
+					<img className="site-icon__img" src={ iconSrc } alt="Site"/>				:
 					<span className="noticon noticon-website" style={ noticonStyle } />
 				}
 			</div>

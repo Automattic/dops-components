@@ -23,7 +23,7 @@ var Face = React.createClass( {
 	},
 
 	_wrapperStyle: function() {
-		var color = Color().rgb( 255, 255, 0 ).lighten( 1 - ( this.props.happiness / 100 ) );
+		var color = Color().rgb( 255, 255, 0 ).lighten( 1 - ( this.props.happiness / 100 ) ); // eslint-disable-line new-cap
 
 		return {
 			position: 'relative',
