@@ -1,4 +1,4 @@
-/* eslint jsx-a11y/click-events-have-key-events: 0 */
+require( './credit-card-selector.scss' );
 
 /**
  * External dependencies
@@ -15,8 +15,6 @@ let StoredCard = require( './stored-card' ),
 	storeTransactions = require( 'lib/store-transactions' ),
 	ScreenReaderText = require( '../screen-reader-text' );
 	// upgradesActions = require( 'lib/upgrades/actions' );
-
-require( './credit-card-selector.scss' );
 
 const CreditCardSelector = React.createClass( {
 	propTypes: {
