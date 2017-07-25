@@ -91,7 +91,7 @@ let Card = React.createClass( {
 			'is-compact': this.props.compact
 		} );
 
-		const omitProps = [ 'compact', 'tagName' ];
+		const omitProps = [ 'compact', 'tagName', 'meta', 'iconColor' ];
 
 		let linkIndicator;
 		if ( this.props.href ) {

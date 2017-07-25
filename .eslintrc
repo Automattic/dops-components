@@ -16,7 +16,7 @@
     },
     "plugins": [
         "eslint-plugin-react",
-        "eslint-plugin-jsx-a11y"
+        "jsx-a11y"
     ],
     "extends": [
       "plugin:jsx-a11y/recommended"
@@ -35,10 +35,6 @@
         "eol-last": 1,
         "indent": [ 1, "tab", { "SwitchCase": 1 } ],
         "key-spacing": 1,
-        "jsx-a11y/anchor-is-valid": [ 2, {
-          "components": [ "Button" ],
-          "aspects": [ "invalidHref" ]
-        } ],
         // Most common is "Emitter", should be improved
         "new-cap": 1,
         "no-cond-assign": 2,

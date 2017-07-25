@@ -20,12 +20,14 @@ var ReactTransitionGroup = require( 'react-addons-transition-group' );
 
 var TICK = 17;
 
+import omit from 'lodash/omit';
+
 /**
  * EVENT_NAME_MAP is used to determine which event fired when a
  * transition/animation ends, based on the style property used to
  * define that event.
  */
-var EVENT_NAME_MAP = {
+let EVENT_NAME_MAP = {
 	transitionend: {
 		transition: 'transitionend',
 		WebkitTransition: 'webkitTransitionEnd',
@@ -43,7 +45,7 @@ var EVENT_NAME_MAP = {
 	}
 };
 
-var endEvents = [];
+let endEvents = [];
 
 ( function detectEvents( ) {
 	if ( typeof window === 'undefined' ) {
@@ -231,9 +233,10 @@ let TimeoutTransitionGroup = React.createClass( {
 	},
 
 	render: function( ) {
+		var groupProps = omit( this.props, [ 'enterTimeout', 'leaveTimeout'] );
 		return (
 			<ReactTransitionGroup
-				{...this.props}
+				{...groupProps}
 				childFactory={this._wrapChild} />
 		);
 	}

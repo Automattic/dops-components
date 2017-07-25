@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/onclick-has-role */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /**
  * External dependencies
  */

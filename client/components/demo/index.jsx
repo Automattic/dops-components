@@ -193,7 +193,7 @@ var DemoModule = React.createClass( {
 		var liveJs = js.replace( /Demo\.domId/g, "'" + id + "'" );
 		return (
 			<div style={this.styles.live}>
-				<script type="text/jsx" dangerouslySetInnerHTML={{__html: liveJs}} />
+				<script type="text/babel" dangerouslySetInnerHTML={{__html: liveJs}} />
 				<div id={id}>demo container</div>
 			</div>
 		);

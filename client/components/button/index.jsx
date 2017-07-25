@@ -2,7 +2,6 @@
  * External dependencies
  */
 import React from 'react';
-import assign from 'lodash/assign';
 import classNames from 'classnames';
 import noop from 'lodash/noop';
 
@@ -20,7 +19,8 @@ export default React.createClass( {
 		type: React.PropTypes.string,
 		href: React.PropTypes.string,
 		onClick: React.PropTypes.func,
-		borderless: React.PropTypes.bool
+		borderless: React.PropTypes.bool,
+		className: React.PropTypes.string
 	},
 
 	getDefaultProps() {
@@ -34,17 +34,17 @@ export default React.createClass( {
 
 	render() {
 		const element = this.props.href ? 'a' : 'button';
+		let { primary, compact, scary, borderless, className, ...props } = this.props;
+
 		const buttonClasses = classNames( {
 			'dops-button': true,
-			'is-compact': this.props.compact,
-			'is-primary': this.props.primary,
-			'is-scary': this.props.scary,
-			'is-borderless': this.props.borderless
+			'is-compact': compact,
+			'is-primary': primary,
+			'is-scary': scary,
+			'is-borderless': borderless
 		} );
 
-		const props = assign( {}, this.props, {
-			className: classNames( this.props.className, buttonClasses )
-		} );
+		props.className = classNames( className, buttonClasses );
 
 		return React.createElement( element, props, this.props.children );
 	}
