@@ -2,7 +2,7 @@
  * External dependencies
  */
 var assert = require( 'assert' ),
-	React = require( 'react/addons' ),
+	React = require( 'react' ),
 	TestUtils = React.addons.TestUtils,
 	unique = require( 'lodash/uniq' );
 

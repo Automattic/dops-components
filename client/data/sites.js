@@ -1,7 +1,6 @@
 /*
  * Fake data for site list. Implement this in your app, however you've structured it.
  */
-var _sites;
 
 module.exports = {
 	initialized: true,
@@ -39,7 +38,7 @@ module.exports = {
 		return [ this.getSite( this.selected ) ];
 	},
 
-	search: function( term ) {},
+	search: function( /*term*/ ) {},
 
 	get: function() {
 		return [ {

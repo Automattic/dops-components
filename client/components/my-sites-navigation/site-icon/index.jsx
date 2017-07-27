@@ -30,7 +30,7 @@ module.exports = React.createClass( {
 	},
 
 	getIconSrcURL: function( imgURL ) {
-		var parsed = url.parse( imgURL, true , true ),
+		var parsed = url.parse( imgURL, true, true ),
 			sizeParam = this.imgSizeParam( parsed.host );
 
 		parsed.query[sizeParam] = this.props.imgSize;
@@ -70,8 +70,7 @@ module.exports = React.createClass( {
 		return (
 			<div className={ iconClasses } style={ style }>
 				{ iconSrc ?
-					<img className="site-icon__img" src={ iconSrc } />
-				:
+					<img className="site-icon__img" src={ iconSrc } alt="Site"/>				:
 					<span className="noticon noticon-website" style={ noticonStyle } />
 				}
 			</div>

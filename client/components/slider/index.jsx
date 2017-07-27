@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 /** 
  * Credit for this slider must go to https://github.com/mpowaga/react-slider, 
  * which was the basis for this implementation
@@ -269,17 +274,17 @@ let ReactSlider = React.createClass( {
 	_or: function( value, defaultValue ) {
 		var count = React.Children.count( this.props.children );
 		switch ( count ) {
-		case 0:
-			return value.length > 0 ? value : defaultValue;
-		case value.length:
-			return value;
-		case defaultValue.length:
-			return defaultValue;
-		default:
-			if ( value.length !== count || defaultValue.length !== count ) {
-				console.warn( this.constructor.displayName + ': Number of values does not match number of children.' );
-			}
-			return linspace( this.props.min, this.props.max, count );
+			case 0:
+				return value.length > 0 ? value : defaultValue;
+			case value.length:
+				return value;
+			case defaultValue.length:
+				return defaultValue;
+			default:
+				if ( value.length !== count || defaultValue.length !== count ) {
+					console.warn( this.constructor.displayName + ': Number of values does not match number of children.' );
+				}
+				return linspace( this.props.min, this.props.max, count );
 		}
 	},
 
@@ -303,14 +308,14 @@ let ReactSlider = React.createClass( {
 				// perhaps it belongs to a window that's been closed
 				return;
 			}
-			var slider = this.refs.slider.getDOMNode();
-			var handle = this.refs.handle0.getDOMNode();
-			var rect = slider.getBoundingClientRect();
+			let slider = this.refs.slider.getDOMNode();
+			let handle = this.refs.handle0.getDOMNode();
+			let rect = slider.getBoundingClientRect();
 
-			var size = this._sizeKey();
+			let size = this._sizeKey();
 
-			var sliderMax = rect[this._posMaxKey()];
-			var sliderMin = rect[this._posMinKey()];
+			let sliderMax = rect[this._posMaxKey()];
+			let sliderMin = rect[this._posMinKey()];
 
 			this.setState( {
 				upperBound: slider[size] - handle[size],
@@ -727,7 +732,7 @@ let ReactSlider = React.createClass( {
 			( this.state.index === i ? this.props.handleActiveClassName : '' );
 
 		var options = [];
-		for ( var val = this.props.min; val <= this.props.max; val += this.props.step ) {
+		for ( let val = this.props.min; val <= this.props.max; val += this.props.step ) {
 			if ( -1 === this.props.skipValues.indexOf( val ) ) {
 				options.push(
 					<option value={ val }>{ '$' + val + '.00' }</option>
@@ -858,8 +863,8 @@ let ReactSlider = React.createClass( {
 		e.stopPropagation();
 		let i = 0;
 
-		if ( 'undefined' !== e.target.dataset['index'] ){
-			i = e.target.dataset['index'];
+		if ( 'undefined' !== e.target.dataset.index ) {
+			i = e.target.dataset.index;
 		}
 
 		switch ( e.which ) {
@@ -881,8 +886,8 @@ let ReactSlider = React.createClass( {
 		let valueIndex = 0;
 		let allValues = this.state.value;
 
-		if ( 'undefined' !== e.target.dataset['index'] ){
-			valueIndex = e.target.dataset['index'];
+		if ( 'undefined' !== e.target.dataset.index ) {
+			valueIndex = e.target.dataset.index;
 		}
 
 		let value = allValues[ valueIndex ];
@@ -925,8 +930,8 @@ let ReactSlider = React.createClass( {
 				className={ className }
 				onMouseDown={ this._onSliderMouseDown }
 				onClick={ this._onSliderClick } >
-					{ bars }
-					{ handles }
+				{ bars }
+				{ handles }
 			</div>
 		);
 	}

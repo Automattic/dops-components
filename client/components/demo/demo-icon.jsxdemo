@@ -13,6 +13,6 @@ var DemoIcon = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoIcon, {} ), document.getElementById( Demo.domId )
 );

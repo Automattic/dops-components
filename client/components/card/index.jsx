@@ -91,7 +91,7 @@ let Card = React.createClass( {
 			'is-compact': this.props.compact
 		} );
 
-		const omitProps = [ 'compact', 'tagName' ];
+		const omitProps = [ 'compact', 'tagName', 'meta', 'iconColor' ];
 
 		let linkIndicator;
 		if ( this.props.href ) {
@@ -104,13 +104,15 @@ let Card = React.createClass( {
 
 		let fancyTitle;
 		if ( this.props.title ) {
-			fancyTitle = <h2 className="dops-card-title">
+			fancyTitle = (
+				<h2 className="dops-card-title">
 					{ this.props.title }
 					{ this.props.meta && <span className="dops-card-meta">{ this.props.meta }</span>}
 					{( this.props.icon || this.props.iconLabel ) && (
 						this._renderIcon()
 					)}
-				</h2>;
+				</h2>
+			);
 		}
 
 		return React.createElement(

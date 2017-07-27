@@ -81,7 +81,7 @@ TransactionFlow.prototype._pushStep = function( options ) {
 }
 
 TransactionFlow.prototype._paymentHandlers = {
-	'WPCOM_Billing_MoneyPress_Stored': function() {
+	WPCOM_Billing_MoneyPress_Stored: function() {
 		this._pushStep( { name: 'input-validation', first: true } );
 		debug( 'submitting transaction with stored card' );
 		this._submitWithPayment( {
@@ -90,7 +90,7 @@ TransactionFlow.prototype._paymentHandlers = {
 		} );
 	},
 
-	'WPCOM_Billing_MoneyPress_Paygate': function() {
+	WPCOM_Billing_MoneyPress_Paygate: function() {
 		var validation = validateCardDetails( this._initialData.payment.newCardDetails );
 		if ( ! isEmpty( validation.errors ) ) {
 			this._pushStep( {
@@ -112,25 +112,25 @@ TransactionFlow.prototype._paymentHandlers = {
 		}.bind( this ) );
 	},
 
-	'WPCOM_Billing_WPCOM': function() {
+	WPCOM_Billing_WPCOM: function() {
 		this._pushStep( { name: 'input-validation', first: true } );
 		this._submitWithPayment( { payment_method: 'WPCOM_Billing_WPCOM' } );
 	}
 };
 
 TransactionFlow.prototype._createPaygateToken = function( callback ) {
-	this._pushStep({ name: 'submitting-payment-key-request' });
+	this._pushStep( { name: 'submitting-payment-key-request' } );
 
 	createPaygateToken( this._initialData.payment.newCardDetails, function( error, paygateToken ) {
 		if ( error ) {
-			return this._pushStep({
+			return this._pushStep( {
 				name: 'received-payment-key-response',
 				error: error,
 				last: true
-			});
+			} );
 		}
 
-		this._pushStep({ name: 'received-payment-key-response' });
+		this._pushStep( { name: 'received-payment-key-response' } );
 		callback( paygateToken );
 	}.bind( this ) );
 };
@@ -143,22 +143,22 @@ TransactionFlow.prototype._submitWithPayment = function( payment ) {
 			payment: payment
 		};
 
-	this._pushStep({ name: 'submitting-wpcom-request' });
+	this._pushStep( { name: 'submitting-wpcom-request' } );
 
 	wpcom.transactions( 'POST', transaction, function( error, data ) {
 		if ( error ) {
-			return this._pushStep({
+			return this._pushStep( {
 				name: 'received-wpcom-response',
 				error: error,
 				last: true
-			});
+			} );
 		}
 
-		this._pushStep({
+		this._pushStep( {
 			name: 'received-wpcom-response',
 			data: data,
 			last: true
-		});
+		} );
 		onComplete();
 	}.bind( this ) );
 };

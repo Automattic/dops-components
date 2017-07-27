@@ -14,8 +14,8 @@ var config = require( 'config' ),
 // Load tracking scripts
 window._tkq = window._tkq || [];
 window.ga = window.ga || function() {
-		( window.ga.q = window.ga.q || [] ).push( arguments );
-	};
+	( window.ga.q = window.ga.q || [] ).push( arguments );
+};
 window.ga.l = +new Date();
 
 // loadScript( '//stats.wp.com/w.js?48' );
@@ -122,16 +122,16 @@ var analytics = {
 		},
 
 		recordJetpackClick: function( target ) {
-			const props = 'object' === typeof target
-				? target
-				: { target: target };
+			const props = 'object' === typeof target ?
+				target :
+				{ target: target };
 
 			analytics.tracks.recordEvent( 'jetpack_wpa_click', props );
 		},
 
 		recordPageView: function( urlPath ) {
 			analytics.tracks.recordEvent( 'akismet_page_view', {
-				'path': urlPath
+				path: urlPath
 			} );
 		},
 	},
@@ -146,7 +146,7 @@ var analytics = {
 			if ( ! analytics.ga.initialized ) {
 				if ( _user ) {
 					parameters = {
-						'userId': 'u-' + _user.ID
+						userId: 'u-' + _user.ID
 					};
 				}
 				window.ga( 'create', config( 'google_analytics_key' ), 'auto', parameters );
@@ -164,9 +164,9 @@ var analytics = {
 				window.ga( 'set', 'page', urlPath );
 
 				window.ga( 'send', {
-					'hitType': 'pageview',
-					'page': urlPath,
-					'title': pageTitle
+					hitType: 'pageview',
+					page: urlPath,
+					title: pageTitle
 				} );
 			}
 		},
@@ -192,23 +192,23 @@ var analytics = {
 		},
 
 		recordPurchase: function( transactionId, itemName, itemId, revenue, price, qty, currency ) {
-			window.ga('require', 'ecommerce');
-			window.ga('ecommerce:addTransaction', {
-				'id': transactionId,                     // Transaction ID. Required.
+			window.ga( 'require', 'ecommerce' );
+			window.ga( 'ecommerce:addTransaction', {
+				id: transactionId, // Transaction ID. Required.
 				// 'affiliation': 'Acme Clothing',   // Affiliation or store name.
-				'revenue': revenue,               // Grand Total.
+				revenue: revenue, // Grand Total.
 				// 'tax': '1.29',                     // Tax.
-				'currency': currency  // local currency code.
-			});
-			window.ga('ecommerce:addItem', {
-				'id': transactionId,                     // Transaction ID. Required.
-				'name': itemName,    // Product name. Required.
-				'sku': itemId,                 // SKU/code.
+				currency: currency // local currency code.
+			} );
+			window.ga( 'ecommerce:addItem', {
+				id: transactionId, // Transaction ID. Required.
+				name: itemName, // Product name. Required.
+				sku: itemId, // SKU/code.
 				// 'category': 'Party Toys',         // Category or variation.
-				'price': price,                 // Unit price.
-				'quantity': qty                   // Quantity.
-			});
-			window.ga('ecommerce:send');
+				price: price, // Unit price.
+				quantity: qty // Quantity.
+			} );
+			window.ga( 'ecommerce:send' );
 		}
 	},
 

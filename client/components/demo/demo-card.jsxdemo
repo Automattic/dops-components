@@ -32,6 +32,6 @@ var DemoCard = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoCard, {} ), document.getElementById( Demo.domId )
 );

@@ -6,7 +6,7 @@ var creditcards = require( 'creditcards' ),
 	isArray = require( 'lodash/isArray' ),
 	isEmpty = require( 'lodash/isEmpty' ),
 	toArray = require( 'lodash/toArray' ),
-	inRange = require( 'lodash/number/inRange' ),
+	inRange = require( 'lodash/inRange' ),
 	capitalize = require( 'lodash/capitalize' );
 
 /**
@@ -57,7 +57,7 @@ function creditCardFieldRules() {
 	};
 }
 
-var validators = {};
+let validators = {};
 
 validators.required = {
 	isValid: function( value ) {
@@ -118,24 +118,21 @@ function creditCardValidator( /* validationProperties... */ ) {
 	};
 }
 
-
 function validateCardDetails( cardDetails ) {
 	var rules = creditCardFieldRules(),
 		errors = Object.keys( rules ).reduce( function( allErrors, fieldName ) {
-		var field = rules[ fieldName ],
-			newErrors = getErrors( field, cardDetails[ fieldName ], cardDetails );
+			var field = rules[ fieldName ],
+				newErrors = getErrors( field, cardDetails[ fieldName ], cardDetails );
 
-		if ( newErrors.length ) {
-			allErrors[ fieldName ] = newErrors;
-		}
+			if ( newErrors.length ) {
+				allErrors[ fieldName ] = newErrors;
+			}
 
-		return allErrors;
-	}, {} );
+			return allErrors;
+		}, {} );
 
 	return { errors: errors };
 }
-
-
 
 /**
  * Retrieves the type of credit card from the specified number.
@@ -180,9 +177,8 @@ function getErrors( field, value, cardDetails ) {
 function getValidator( rule ) {
 	if ( isArray( rule ) ) {
 		return validators[ rule[ 0 ] ].apply( null, rule.slice( 1 ) );
-	} else {
-		return validators[ rule ];
 	}
+	return validators[ rule ];
 }
 
 module.exports = {

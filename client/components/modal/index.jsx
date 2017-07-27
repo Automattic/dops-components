@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/onclick-has-role */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
 var React = require( 'react' ),
 	ReactDOM = require( 'react-dom' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/assign' );
 
-var focusTrap = require('focus-trap');
+var focusTrap = require( 'focus-trap' );
 
 // this flag will prevent ANY modals from closing.
 // use with caution!
@@ -55,8 +57,8 @@ let Modal = React.createClass( {
 			focusTrap.activate( ReactDOM.findDOMNode( this ), {
 				// onDeactivate: this.maybeClose,
 				initialFocus: this.props.initialFocus
-			});
-		} catch( e ) {
+			} );
+		} catch ( e ) {
 			//noop
 		}
 	},
@@ -66,7 +68,7 @@ let Modal = React.createClass( {
 		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
 		try {
 			focusTrap.deactivate();
-		} catch( e ) {
+		} catch ( e ) {
 			//noop
 		}
 	},
@@ -78,7 +80,7 @@ let Modal = React.createClass( {
 	},
 
 	maybeClose: function() {
-		if ( this.props.onRequestClose && !preventCloseFlag) {
+		if ( this.props.onRequestClose && !preventCloseFlag ) {
 			this.props.onRequestClose();
 		}
 	},
@@ -94,7 +96,7 @@ let Modal = React.createClass( {
 	handleClickOverlay: function( e ) {
 		e.preventDefault();
 		e.stopPropagation();
-		if ( this.state.overlayMouseDown && this.props.onRequestClose && !preventCloseFlag) {
+		if ( this.state.overlayMouseDown && this.props.onRequestClose && !preventCloseFlag ) {
 			this.setState( { overlayMouseDown: false } );
 			this.props.onRequestClose();
 		}
@@ -102,31 +104,31 @@ let Modal = React.createClass( {
 
 	// prevent clicks from propagating to background
 	handleMouseEventModal: function( e ) {
-		e.stopPropagation(); 
+		e.stopPropagation();
 	},
-	
+
 	render: function() {
 		var containerStyle, combinedStyle;
 
 		var { style, className, width, title, ...other } = this.props;
 
 		switch ( width ) {
-		case 'wide':
-			containerStyle = { maxWidth: 'inherit', width: 'inherit' };
-			break;
-		case 'medium':
-			containerStyle = { maxWidth: 1050, width: 'inherit' };
-			break;
-		default:
-			containerStyle = {};
+			case 'wide':
+				containerStyle = { maxWidth: 'inherit', width: 'inherit' };
+				break;
+			case 'medium':
+				containerStyle = { maxWidth: 1050, width: 'inherit' };
+				break;
+			default:
+				containerStyle = {};
 		}
 
 		combinedStyle = assign( {}, style, containerStyle );
 		return (
 			<div className="dops-modal-wrapper" onClick={this.handleClickOverlay} onMouseDown={this.handleMouseDownOverlay}>
-				<div className={classNames( 'dops-modal', className )} 
-					style={combinedStyle} 
-					onClick={this.handleMouseEventModal} 
+				<div className={classNames( 'dops-modal', className )}
+					style={combinedStyle}
+					onClick={this.handleMouseEventModal}
 					onMouseDown={this.handleMouseEventModal}
 					onMouseUp={this.handleMouseEventModal}
 					role="dialog"

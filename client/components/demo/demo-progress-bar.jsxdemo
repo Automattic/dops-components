@@ -13,6 +13,6 @@ var DemoProgressBar = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoProgressBar, {} ), document.getElementById( Demo.domId )
 );

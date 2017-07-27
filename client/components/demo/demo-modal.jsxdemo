@@ -31,6 +31,6 @@ var DemoModal = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoModal, {} ), document.getElementById( Demo.domId )
 );

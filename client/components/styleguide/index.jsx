@@ -5,7 +5,7 @@ var React = require( 'react' ),
 
 require( './style.scss' );
 
-var Section = React.createClass( {
+const Section = React.createClass( {
 	render: function() {
 		return (
 			<div className="styleguide-section">
@@ -16,7 +16,7 @@ var Section = React.createClass( {
 	}
 } );
 
-var Subsection = React.createClass( {
+const Subsection = React.createClass( {
 	render: function() {
 		return (
 			<div className="styleguide-subsection">
@@ -27,7 +27,7 @@ var Subsection = React.createClass( {
 	}
 } );
 
-var SectionDemo = React.createClass( {
+const SectionDemo = React.createClass( {
 	render: function() {
 		return (
 			<div className="styleguide-section-demo">
@@ -37,7 +37,7 @@ var SectionDemo = React.createClass( {
 	}
 } );
 
-var Styleguide = React.createClass( {
+const Styleguide = React.createClass( {
 	render: function() {
 		return (
 			<div className="styleguide">
@@ -109,11 +109,11 @@ var Styleguide = React.createClass( {
 							font-size: 11px<br />
 							line-height: 16px<br />
 							color: #999
-						</Subsection>	
-					</div>				
+						</Subsection>
+					</div>
 				</Section>
 
-				<Section title="Buttons"> 
+				<Section title="Buttons">
 					<Subsection title="Standard Button">
 						<Button>Label</Button>
 					</Subsection>
@@ -123,7 +123,7 @@ var Styleguide = React.createClass( {
 					</Subsection>
 				</Section>
 
-				<Section title="Dropdowns"> 
+				<Section title="Dropdowns">
 					<Subsection title="Default">
 						<Form>
 							<Form.SelectInput name="foo">

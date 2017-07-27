@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-interactive-element-to-noninteractive-role */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 /**
  * External dependencies
  */
@@ -9,7 +13,7 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var translate = require ( '../../../mixins/translate' ),
+var translate = require( '../../../mixins/translate' ),
 	AllSites = require( '../all-sites' ),
 	Site = require( '../site' );
 

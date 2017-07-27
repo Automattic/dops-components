@@ -1,11 +1,12 @@
-require( 'babel/polyfill' );
 var Demo,
 	Tabs = require( './components/tabs' ),
 	Sidebar = require( './components/sidebar' ),
 	LegacyDemo = require( './components/demo' ),
 	Styleguide = require( './components/styleguide' ),
-	React = require( 'react' );
+	React = require( 'react' ),
+	ReactDOM = require( 'react-dom' );
 
+require( 'babel-polyfill' );
 require( './demo.scss' );
 
 Demo = React.createClass( {
@@ -27,7 +28,7 @@ Demo = React.createClass( {
 } );
 
 jQuery( document ).ready( function() {
-	React.render(
+	ReactDOM.render(
 		React.createElement( Demo, {} ), document.getElementById( 'demo' )
 	);
 } );

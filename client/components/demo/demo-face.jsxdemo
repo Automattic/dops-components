@@ -20,6 +20,6 @@ var DemoFace = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoFace, {} ), document.getElementById( Demo.domId )
 );

@@ -1,7 +1,5 @@
 /** External Dependencies **/
 var React = require( 'react' ),
-	classNames = require( 'classnames' ),
-	forEach = require( 'lodash/forEach' ),
 	isArray = require( 'lodash/isArray' ),
 	map = require( 'lodash/map' ),
 	Formsy = require( 'formsy-react' );

@@ -11,6 +11,6 @@ var DemoHoverIcon = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoHoverIcon, {} ), document.getElementById( Demo.domId )
 );

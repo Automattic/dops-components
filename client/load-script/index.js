@@ -19,7 +19,7 @@ var loadScript = function( url, callback ) {
 			if ( event.type === 'error' ) {
 				errorArgument = { src: event.target.src };
 			}
-			callbacksForURLsInProgress[ url ].forEach( function ( callback ) {
+			callbacksForURLsInProgress[ url ].forEach( function( callback ) {
 				if ( callback ) {
 					callback( errorArgument );
 				}
@@ -50,7 +50,7 @@ var loadjQueryDependentScript = function( scriptURL, callback ) {
 		return;
 	}
 	loadScript( JQUERY_URL, function( error ) {
-		if( error ) {
+		if ( error ) {
 			callback( error );
 		}
 		loadScript( scriptURL, callback );

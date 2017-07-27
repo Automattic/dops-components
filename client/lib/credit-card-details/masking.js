@@ -23,9 +23,8 @@ fieldMasks['expiration-date'] = {
 
 		if ( nextValue.length <= 2 ) {
 			return nextValue;
-		} else {
-			return nextValue.substring( 0, 2 ) + '/' + nextValue.substring( 2, 4 );
 		}
+		return nextValue.substring( 0, 2 ) + '/' + nextValue.substring( 2, 4 );
 	},
 
 	unmask: identity

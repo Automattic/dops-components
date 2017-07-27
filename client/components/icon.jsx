@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+
 // simple genericon wrapper
 
 var React = require( 'react' ),
@@ -28,7 +30,7 @@ var Icon = React.createClass( {
 		if ( this.props.isPresentation ) {
 			a11y = {
 				'aria-hidden': true,
-				'role': 'presentation',
+				role: 'presentation',
 			};
 		}
 

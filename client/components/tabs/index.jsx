@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+
 var React = require( 'react' );
 
 require( './style.scss' );
@@ -42,7 +44,7 @@ let Tabs = React.createClass( {
 		if ( this.props.onClick ) {
 			this.props.onClick( index );
 		}
-		this.selectTab(index);
+		this.selectTab( index );
 	},
 
 	handleMouseOverTab: function( index ) {
@@ -63,7 +65,7 @@ let Tabs = React.createClass( {
 		// var theme = this._isHorizontal() ? this.styles.horizontal : this.styles.vertical;
 		var theme = this._isHorizontal() ? 'horizontal' : 'vertical';
 		return (
-			<div className={'dops-tabs-'+theme}>
+			<div className={'dops-tabs-' + theme}>
 				{this._renderNav()}
 				<div aria-live="polite">
 					{React.Children.map( this.props.children, function( child, index ) {
@@ -82,9 +84,7 @@ let Tabs = React.createClass( {
 			<ul>
 				{React.Children.map( this.props.children, function( child, index ) {
 					var title = child.props.title,
-						ref = 'tab-' + ( index + 1 ),
-						active = this.state.activeTab === index,
-						hover = this.state.hoverTab === index;
+						ref = 'tab-' + ( index + 1 );
 
 					var className = this.state.activeTab === index ? 'active' : null;
 

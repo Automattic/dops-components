@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-var React = require( 'react/addons' ),
+var React = require( 'react' ),
 	classNames = require( 'classnames' );
 
 /**
@@ -19,11 +19,9 @@ require( './style.scss' );
 module.exports = React.createClass( {
 	displayName: 'MySitesNavigation',
 
-	/**
+	/*
 	 * Calculate the height of the sites list based on how many sites
 	 * the user has to be displayed
-	 *
-	 * @return {number}
 	 */
 	getSitesHeight: function() {
 		var count = this.props.sites.get().length;

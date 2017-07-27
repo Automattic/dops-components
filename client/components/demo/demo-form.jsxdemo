@@ -93,6 +93,6 @@ var DemoForm = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoForm, {} ), document.getElementById( Demo.domId )
 );

@@ -27,6 +27,6 @@ var DemoButton = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoButton, {} ), document.getElementById( Demo.domId )
 );

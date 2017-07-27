@@ -1,22 +1,25 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 require( './credit-card-selector.scss' );
 
 /**
  * External dependencies
  */
-var React = require( 'react' ),
+let React = require( 'react' ),
 	filter = require( 'lodash/filter' ),
 	classNames = require( 'classnames' );
 
 /**
  * Internal dependencies
  */
-var StoredCard = require( './stored-card' ),
+let StoredCard = require( './stored-card' ),
 	NewCardForm = require( './new-card-form' ),
 	storeTransactions = require( 'lib/store-transactions' ),
 	ScreenReaderText = require( '../screen-reader-text' );
 	// upgradesActions = require( 'lib/upgrades/actions' );
 
-var CreditCardSelector = React.createClass( {
+const CreditCardSelector = React.createClass( {
 	propTypes: {
 		onSelectPayment: React.PropTypes.func.isRequired,
 		defaultCCInfo: React.PropTypes.object.isRequired,
@@ -80,9 +83,9 @@ var CreditCardSelector = React.createClass( {
 
 	section: function( name, content ) {
 		var classes = classNames( 'payment-box-section', {
-			'selected': this.state.section === name,
-			'focused': this.state.focus === name,
-			'no-stored-cards' : name === 'new-card' && this.props.cards.get().length === 0
+			selected: this.state.section === name,
+			focused: this.state.focus === name,
+			'no-stored-cards': name === 'new-card' && this.props.cards.get().length === 0
 		} );
 
 		return (
@@ -104,7 +107,7 @@ var CreditCardSelector = React.createClass( {
 
 		if ( 'new-card' === this.state.section ) {
 			// get the form field values and check they're valid
-			var newCardValues = this.refs.newCardForm.getValidFormFields();
+			let newCardValues = this.refs.newCardForm.getValidFormFields();
 			if ( newCardValues === false ) {
 				return false;
 			}
@@ -127,7 +130,7 @@ var CreditCardSelector = React.createClass( {
 		this.setState( { section: section } );
 	},
 
-	addParentFocus: function( name ){
+	addParentFocus: function( name ) {
 		this.setState( { focus: name } );
 	},
 

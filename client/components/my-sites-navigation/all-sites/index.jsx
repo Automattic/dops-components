@@ -7,7 +7,7 @@ var React = require( 'react' ),
 /**
  * Internal dependencies
  */
-var translate = require ( '../../../mixins/translate' ),
+var translate = require( '../../../mixins/translate' ),
 	AllSitesIcon = require( '../all-sites-icon' );
 
 module.exports = React.createClass( {

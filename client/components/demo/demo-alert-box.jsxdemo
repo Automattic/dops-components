@@ -64,6 +64,6 @@ var DemoAlertBox = React.createClass( {
 	}
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoAlertBox, {} ), document.getElementById( Demo.domId )
 );

@@ -41,6 +41,6 @@ var DemoTextInputField = React.createClass( {
 	},
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoTextInputField, {} ), document.getElementById( Demo.domId )
 );

@@ -51,17 +51,16 @@ let PasswordBox = React.createClass( {
 					</button>
 				</div>
 			);
-		} else {
-			return (
-				<div className={ toggleVisibilityClasses }>
-					<input id={ this.props.id } className='dops-text-input' type="text" value={ this.props.value } aria-label={ this.props.ariaLabel }/>
-					<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility } aria-live='assertive'>
-						<Gridicon icon="not-visible" />
-						<ScreenReaderText>{ this.props.hideLabel }</ScreenReaderText>
-					</button>
-				</div>
-			);
 		}
+		return (
+			<div className={ toggleVisibilityClasses }>
+				<input id={ this.props.id } className='dops-text-input' type="text" value={ this.props.value } aria-label={ this.props.ariaLabel }/>
+				<button className='dops-password-box__toggle-visibility' onClick={ this.togglePasswordVisibility } aria-live='assertive'>
+					<Gridicon icon="not-visible" />
+					<ScreenReaderText>{ this.props.hideLabel }</ScreenReaderText>
+				</button>
+			</div>
+		);
 	}
 } );
 

@@ -28,7 +28,7 @@ function Export( id, sid, wpcom ) {
  * @api public
  * @returns {Response} api response
  */
-Export.prototype.new = function ( fn ) {
+Export.prototype.new = function( fn ) {
 	debug( '/sites/:site_id:/exports/new query' );
 	return this.wpcom.req.post( { path: '/sites/' + this._sid + '/exports/new' }, fn );
 };
@@ -41,7 +41,7 @@ Export.prototype.new = function ( fn ) {
  * @api public
  * @returns {Response} api response
  */
-Export.prototype.start = function ( exportConfig, fn ) {
+Export.prototype.start = function( exportConfig, fn ) {
 	debug( '/sites/:site_id:/exports/:export_id:/start query' );
 	var params = {
 		path: '/sites/' + this._sid + '/exports/' + this._id + '/start',
@@ -67,7 +67,7 @@ Export.prototype.start = function ( exportConfig, fn ) {
  * @api public
  * @returns {Response} api response
  */
-Export.prototype.get = function ( fn ) {
+Export.prototype.get = function( fn ) {
 	debug( '/sites/:site_id:/exports/:export_id query' );
 	return this.wpcom.req.get( { path: '/sites/' + this._sid + '/exports/' + this._id }, fn );
 };

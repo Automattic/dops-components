@@ -39,6 +39,6 @@ var DemoWizard = React.createClass( {
 	},
 } );
 
-React.render(
+ReactDOM.render(
   React.createElement( DemoWizard, {} ), document.getElementById( Demo.domId )
 );

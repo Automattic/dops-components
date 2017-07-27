@@ -18,7 +18,6 @@ gulp.task("webpack:build", function(callback) {
 	process.env.NODE_ENV = "production"
 	var buildConfig = Object.create(getWebpackConfig());
 	buildConfig.plugins = buildConfig.plugins.concat(
-		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.UglifyJsPlugin()
 	);
 
@@ -37,7 +36,7 @@ gulp.task("webpack:build-dev", function(callback) {
 
 	var devAccountConfig = Object.create(getWebpackConfig());
 	devAccountConfig.devtool = "sourcemap";
-	devAccountConfig.debug = true;
+	// devAccountConfig.debug = true;
 
 	// create a single instance of the compiler to allow caching
 	var devCompiler = webpack(devAccountConfig);
@@ -54,14 +53,14 @@ gulp.task("webpack:build-dev", function(callback) {
 gulp.task("webpack-dev-server", function(callback) {
 	// Start a webpack-dev-server
 	var serverConfig = Object.create(getWebpackConfig());
-	var entry = {}
-	Object.keys(serverConfig.entry).forEach( function( key ) {
-		entry[key] = ["webpack/hot/dev-server", serverConfig.entry[key]];
-	});
+	// var entry = {}
+	// Object.keys(serverConfig.entry).forEach( function( key ) {
+	// 	entry[key] = ["webpack/hot/dev-server", serverConfig.entry[key]];
+	// });
 
-	serverConfig.entry = entry;
-	serverConfig.devtool = "sourcemap"; //"eval" for performance, but no JSX :(
-	serverConfig.debug = true;
+	// serverConfig.entry = entry;
+	// serverConfig.devtool = "sourcemap"; //"eval" for performance, but no JSX :(
+	// serverConfig.debug = true;
 
 	new WebpackDevServer(webpack(serverConfig), {
 		publicPath: serverConfig.output.publicPath,
@@ -69,7 +68,8 @@ gulp.task("webpack-dev-server", function(callback) {
 		historyApiFallback: true,
 		stats: {
 			colors: true
-		}
+		},
+		disableHostCheck: true,
 	}).listen(8085, "localhost", function(err) {
 		if(err) throw new gutil.PluginError("webpack-dev-server", err);
 		// Server listening

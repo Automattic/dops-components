@@ -1,20 +1,28 @@
 {
     "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        },
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
     "env": {
         "browser": true,
         "es6": true,
         "mocha": true,
         "node": true
     },
-    "ecmaFeatures": {
-        "jsx": true,
-        "modules": true
-    },
     "plugins": [
         "eslint-plugin-react",
-        "eslint-plugin-jsx-a11y"
+        "jsx-a11y"
+    ],
+    "extends": [
+      "plugin:jsx-a11y/recommended"
     ],
     "rules": {
+        "strict": 0,
         "brace-style": [ 1, "1tbs" ],
         // REST API objects include underscores
         "camelcase": 0,
@@ -26,35 +34,6 @@
         "eqeqeq": [ 2, "allow-null" ],
         "eol-last": 1,
         "indent": [ 1, "tab", { "SwitchCase": 1 } ],
-        'jsx-a11y/accessible-emoji': 2,
-        // 'jsx-a11y/anchor-has-content' doesn't handle our translation system
-        'jsx-a11y/aria-activedescendant-has-tabindex': 2,
-        'jsx-a11y/aria-props': 2,
-        'jsx-a11y/aria-proptypes': 2,
-        'jsx-a11y/aria-role': 2,
-        'jsx-a11y/aria-unsupported-elements': 2,
-        'jsx-a11y/click-events-have-key-events': 2,
-        'jsx-a11y/heading-has-content': 2,
-        'jsx-a11y/href-no-hash': 2,
-        'jsx-a11y/html-has-lang': 2,
-        'jsx-a11y/iframe-has-title': 2,
-        'jsx-a11y/img-has-alt': 2,
-        'jsx-a11y/img-redundant-alt': 2,
-        // 'jsx-a11y/label-has-for' Disabled because it doesn't check nested labels, which are valid
-        'jsx-a11y/lang': 2,
-        'jsx-a11y/mouse-events-have-key-events': 2,
-        'jsx-a11y/no-access-key': 2,
-        // 'jsx-a11y/no-autofocus' Replace this with a rule that detects if all autofocus have a describedby
-        'jsx-a11y/no-distracting-elements': 2,
-        'jsx-a11y/no-onchange': 2,
-        'jsx-a11y/no-redundant-roles': 2,
-        // 'jsx-a11y/no-static-element-interactions' Not needed right now if the following two rules are set
-        'jsx-a11y/onclick-has-focus': 2,
-        'jsx-a11y/onclick-has-role': 2,
-        'jsx-a11y/role-has-required-aria-props': 2,
-        'jsx-a11y/role-supports-aria-props': 2,
-        'jsx-a11y/scope': 2,
-        'jsx-a11y/tabindex-no-positive': 2,
         "key-spacing": 1,
         // Most common is "Emitter", should be improved
         "new-cap": 1,
@@ -66,7 +45,7 @@
         "no-lonely-if": 1,
         "no-mixed-requires": 0,
         "no-mixed-spaces-and-tabs": 1,
-        "no-multiple-empty-lines": [ 1, { max: 1 } ],
+        "no-multiple-empty-lines": [ 1, { "max": 1 } ],
         "no-multi-spaces": 1,
         "no-nested-ternary": 1,
         "no-new": 1,
@@ -90,7 +69,7 @@
         "quote-props": [ 1, "as-needed" ],
         "quotes": [ 1, "single", "avoid-escape" ],
         "semi-spacing": 1,
-        "space-after-keywords": [ 1, "always" ],
+        "keyword-spacing": [ 1, {"before": true, "after": true} ],
         "space-before-blocks": [ 1, "always" ],
         "space-before-function-paren": [ 1, "never" ],
         // Our array literal index exception violates this rule
@@ -100,7 +79,7 @@
         // Ideal for "!" but not for "++"
         "space-unary-ops": 0,
         // Assumed by default with Babel
-        "strict": [ 2, "never" ],
+        // "strict": [ 2, "never" ],
         "valid-jsdoc": [ 1, { "requireReturn": false } ],
         // Common top-of-file requires, expressions between external, interal
         "vars-on-top": 1,

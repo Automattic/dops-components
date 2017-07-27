@@ -46,16 +46,16 @@ module.exports = React.createClass( {
 	componentDidMount: function() {
 		var el = this.refs.input.getDOMNode();
 		switch ( this.props.formatter ) {
-		case 'cardNumber':
-			Payment.formatCardNumber( el );
-			break;
-		case 'cardExpiry':
-			Payment.formatCardExpiry( el );
-			break;
-		case 'cardCVV':
-		case 'cardCVC':
-			Payment.formatCardCVC( el );
-			break;
+			case 'cardNumber':
+				Payment.formatCardNumber( el );
+				break;
+			case 'cardExpiry':
+				Payment.formatCardExpiry( el );
+				break;
+			case 'cardCVV':
+			case 'cardCVC':
+				Payment.formatCardCVC( el );
+				break;
 		}
 	},
 
@@ -98,7 +98,7 @@ module.exports = React.createClass( {
 		if ( this.props.floatingLabel ) {
 			className = className + ' dops-floating-label-input';
 			labelClass = classNames( {
-				'floating': true,
+				floating: true,
 				'floating--floated': this.state.animating,
 				'floating--floated-active': this.state.floated,
 			} );
