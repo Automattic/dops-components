@@ -123,16 +123,7 @@ var _demos = [
 		requires: {
 			'./slider': require( '../slider' )
 		}
-	},
-	// {
-	// 	title: 'Progress Bar',
-	// 	description: 'A simple progress bar',
-	// 	id: 'demo-progress-bar',
-	// 	js: require( 'raw-loader!./demo-progress-bar.jsxdemo' ),
-	// 	requires: {
-	// 		'../progress-bar': require( '../progress-bar' )
-	// 	}
-	// }
+	}
 ];
 
 var DemoModule = React.createClass( {
