@@ -7,6 +7,8 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/assign' );
 
+import { localize } from 'i18n-calypso';
+
 /**
  * Internal dependencies
  */
@@ -14,7 +16,7 @@ var Form = require( '../form' ),
 	// XXX temporary hack because default country select has 3-char countries
 	CountrySelect = require( '../form/input-select-country-2' );
 
-module.exports = React.createClass( {
+module.exports = localize( React.createClass( {
 	displayName: 'NewCardForm',
 
 	propTypes: {
@@ -52,7 +54,7 @@ module.exports = React.createClass( {
 		if ( ! this.props.showForm ) {
 			return (
 				<div className="new-card">
-					<p className="new-card-label" id="new-card-label">{ this.translate( '+ Use a New Credit/Debit Card' ) }</p>
+					<p className="new-card-label" id="new-card-label">{ this.props.translate( '+ Use a New Credit/Debit Card' ) }</p>
 				</div>
 			);
 		}
@@ -61,17 +63,17 @@ module.exports = React.createClass( {
 			<div className="new-card">
 				<Form ref="form" value={this.state.formValue} className="new-card-fields">
 					{ this.props.hasStoredCards ?
-						<h6 className="new-card-header" id="new-card-label">{ this.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
+						<h6 className="new-card-header" id="new-card-label">{ this.props.translate( 'Use New Credit/Debit Card' ) }:</h6> : null
 					}
 
-					<span className={ classes }>{ this.translate( 'All fields required' ) }</span>
+					<span className={ classes }>{ this.props.translate( 'All fields required' ) }</span>
 
 					<Form.TextInput
 						ref='inputName'
 						name="name"
 						value={this.state.formValue.name}
 						floatingLabel
-						label={this.translate( 'Name on Card' )}/>
+						label={this.props.translate( 'Name on Card' )}/>
 
 					<Form.TextInput
 						name="number"
@@ -79,14 +81,14 @@ module.exports = React.createClass( {
 						validations="isCC"
 						validationError="Not a valid Credit Card number"
 						floatingLabel
-						label={this.translate( 'Card Number' )}/>
+						label={this.props.translate( 'Card Number' )}/>
 
 					<div className="new-card-extras">
 						<Form.TextInput
 							name="expiration-date"
 							className="expiration-date"
 							formatter="cardExpiry"
-							label={this.translate( 'MM/YY' )}
+							label={this.props.translate( 'MM/YY' )}
 							floatingLabel
 							required />
 
@@ -94,7 +96,7 @@ module.exports = React.createClass( {
 							name="cvv"
 							className="cvv"
 							formatter="cardCVV"
-							label={this.translate( 'CVV' )}
+							label={this.props.translate( 'CVV' )}
 							floatingLabel
 							required />
 
@@ -107,7 +109,7 @@ module.exports = React.createClass( {
 							name="postal-code"
 							className="postal-code"
 							value={this.state.formValue['postal-code']}
-							label={this.translate( 'Postal Code' )}
+							label={this.props.translate( 'Postal Code' )}
 							floatingLabel
 							required />
 
@@ -117,4 +119,4 @@ module.exports = React.createClass( {
 			</div>
 		);
 	}
-} );
+} ) );
