@@ -7,31 +7,35 @@ var debug = require( 'debug' )( 'calypso:paygate' );
  * Internal dependencies
  */
 var loadScript = require( 'load-script' ),
-	config = require( 'config' );
+	config = require( 'config' ),
+	paygateUrl = false;
 
-var PAYGATE_URL = 'https://pay-js.automattic.com/v1/paygate.js';
 
 /**
  * PaygateLoader component
  *
  * @api public
  */
-function PaygateLoader() {
-	var isDevelopment, isSandboxed;
+function PaygateLoader( settings ) {
 	if ( ! ( this instanceof PaygateLoader ) ) {
-		return new PaygateLoader();
+		return new PaygateLoader( settings );
 	}
+	debug( 'paygate config settings: ' + settings );
 
-	isDevelopment = 'development' === config( 'env' );
-	isSandboxed = document.cookie.indexOf( 'store_sandbox=' ) !== -1;
+	paygateUrl = settings.jsUrl;
+	this._publicKey = settings.publicKey;
+	this._processor = settings.processor;
+	this._apiUrl = settings.apiUrl;
+	this._environment = settings.environment;
 
-	if ( isDevelopment || isSandboxed ) {
+	//sandbox paygate request if in development or if store_sandbox cookie is set
+	if ( 'development' === config( 'env' ) ||
+		document.cookie.indexOf( 'store_sandbox=' ) !== -1
+	) {
 		this._environment = 'sandbox';
 		this._publicKey = config( 'paygate_keys' ).sandbox;
-	} else {
-		this._environment = 'production';
-		this._publicKey = config( 'paygate_keys' ).production;
 	}
+	debug( 'paygateLoader: ' + this );
 }
 
 /**
@@ -45,7 +49,7 @@ PaygateLoader.prototype.ready = function( callback ) {
 		return callback( null, window.Paygate );
 	}
 
-	loadScript.loadjQueryDependentScript( PAYGATE_URL, function( error ) {
+	loadScript.loadjQueryDependentScript( paygateUrl, function( error ) {
 		if ( error ) {
 			callback( error );
 			return;
@@ -54,6 +58,8 @@ PaygateLoader.prototype.ready = function( callback ) {
 		debug( 'Paygate loaded for the first time' );
 		window.Paygate.setPublicKey( this._publicKey );
 		window.Paygate.setEnvironment( this._environment );
+		window.Paygate.setProcessor( this._processor );
+		window.Paygate.setApiUrl( this._apiUrl );
 		callback( null, window.Paygate );
 	}.bind( this ) );
 };
@@ -61,4 +67,4 @@ PaygateLoader.prototype.ready = function( callback ) {
 /**
  * Expose `PaygateLoader`
  */
-module.exports = new PaygateLoader();
+module.exports = PaygateLoader;
