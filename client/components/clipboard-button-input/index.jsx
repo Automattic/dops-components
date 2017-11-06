@@ -56,10 +56,20 @@ export default React.createClass( {
 	},
 
 	render() {
+		const forwardedProps = omit( this.props,
+			'className',
+			'copied',
+			'copy',
+			'isError',
+			'isValid',
+			'prompt',
+			'selectOnFocus',
+		);
+
 		return (
 			<span className={ classnames( 'dops-clipboard-button-input', this.props.className ) }>
 				<TextInput
-					{ ...omit( this.props, 'className' ) }
+					{ ...forwardedProps }
 					type="text"
 					selectOnFocus
 					readOnly />
