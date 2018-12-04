@@ -3,8 +3,6 @@ var React = require( 'react' ),
 	classNames = require( 'classnames' ),
 	assign = require( 'lodash/object/assign' );
 
-var focusTrap = require('focus-trap');
-
 // this flag will prevent ANY modals from closing.
 // use with caution!
 // e.g. Modal.preventClose();
@@ -48,24 +46,11 @@ let Modal = React.createClass( {
 	componentDidMount: function() {
 		jQuery( 'body' ).addClass( 'dops-modal-showing' );
 		jQuery( document ).keyup( this.handleEscapeKey );
-		try {
-			focusTrap.activate(this.getDOMNode(), {
-				// onDeactivate: this.maybeClose,
-				initialFocus: this.props.initialFocus,
-			});
-		} catch( e ) {
-			//noop
-		}
 	},
 
 	componentWillUnmount: function() {
 		jQuery( 'body' ).removeClass( 'dops-modal-showing' );
 		jQuery( document ).unbind( 'keyup', this.handleEscapeKey );
-		try {
-			focusTrap.deactivate();
-		} catch( e ) {
-			//noop
-		}
 	},
 
 	handleEscapeKey: function( e ) {
